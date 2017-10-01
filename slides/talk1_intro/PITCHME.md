@@ -1,231 +1,77 @@
-Marp
+<!-- $theme: default -->
+
+Введение в генерализацию пространственных данных
 ===
 
-# ![](images/marp.png)
+##### Картографические базы данных. Лекция 1
 
-##### Markdown presentation writer, powered by [Electron](http://electron.atom.io/)
-
-###### Created by Yuki Hattori ( [@yhatt](https://github.com/yhatt) )
+###### Тимофей Самсонов (tsamsonov@geogr.msu.ru)
 
 ---
 
-# Features
+# Программа курса
 
-- **Slides are written in Markdown.**
-- Cross-platform. Supports Windows, Mac, and Linux
-- Live Preview with 3 modes
-- Slide themes (`default`, `gaia`) and custom background images
-- Supports emoji :heart:
-- Render maths in your slides
-- Export your slides to PDF
-
----
-
-# How to write slides?
-
-Split slides by horizontal ruler `---`. It's very simple.
-
-```md
-# Slide 1
-
-foobar
+- Масштаб и связанные с ним характеристики
+- Теоретические и математические основы генерализации
+- Концептуальные модели и типология операторов генерализации
+- Алгоритмы геометрической генерализации
+- Алгоритмы семантической генерализации
+- Теория картографических баз данных
+- Организация производственных процессов в национальных картографических агентствах
+- Мультимасштабное картографирование
 
 ---
 
-# Slide 2
+# Практические работы
 
-foobar
-```
+1. Две практические работы по OpenStreetMap (побригадно)
+2. Шесть практических работ по генерализации (индивидуально)
+3. Доклад по национальным картографическим агентствам (побригадно)
 
-> *Notice: Ruler (`<hr>`) is not displayed in Marp.*
-
----
-
-# Directives
-
-Marp's Markdown has extended directives to affect slides.
-
-Insert HTML comment as below:
-```html
-<!-- {directive_name}: {value} -->
-```
-
-```html
-<!--
-{first_directive_name}:  {value}
-{second_directive_name}: {value}
-...
--->
-```
----
-
-## Global Directives
-
-### `$theme`
-
-Changes the theme of all the slides in the deck. You can also change from `View -> Theme` menu.
-
-```
-<!-- $theme: gaia -->
-```
-
-|Theme name|Value|Directive|
-|:-:|:-:|:-|
-|***Default***|default|`<!-- $theme: default -->`
-|**Gaia**|gaia|`<!-- $theme: gaia -->`
-
+**Допуск к экзамену**: сданные практические работы + выполненный доклад
 
 ---
 
-### `$width` / `$height`
+# Экзамен
 
-Changes width and height of all the slides.
+В каждом билете 3 вопроса:
 
-You can use units: `px` (default), `cm`, `mm`, `in`, `pt`, and `pc`.
-
-```html
-<!-- $width: 12in -->
-```
-
-### `$size`
-
-Changes slide size by presets.
-
-Presets: `4:3`, `16:9`, `A0`-`A8`, `B0`-`B8` and suffix of `-portrait`.
-
-```html
-<!-- $size: 16:9 -->
-```
-
-<!--
-$size: a4
-
-Example is here. Global Directive is enabled in anywhere.
-It apply the latest value if you write multiple same Global Directives.
--->
+1. Теория картографической генерализации, КБД и мультимасштабного картографирования
+2. Методы и алгоритмы картографической генерализации
+3. Данные *OpenStreetMap*
 
 ---
 
-## Page Directives
+# Литература
+## 1991
 
-The page directive would apply to the  **current page and the following pages**.
-You should insert it *at the top* to apply it to all slides.
+![200% center](t1_gen1991.png) 
 
-### `page_number`
-
-Set `true` to show page number on slides. *See lower right!*
-
-```html
-<!-- page_number: true -->
-```
-
-<!--
-page_number: true
-
-Example is here. Pagination starts from this page.
-If you use multi-line comment, directives should write to each new lines.
--->
+**Buttenfield, B.P. and McMaster, R.B.** (Eds.) *Map Generalization: Making Rules for Knowledge Representation.* New York: Longman. (1st Printing, 1991; 2nd Printing 1994 Longman Scientific; 3rd printing 1999 Internet-Print-on-Demand: Wiley & Sons).
 
 ---
 
-### `template`
+# Литература
+## 1995
 
-Set to use template of theme.
-
-The `template` directive just enables that using theme supports templates.
-
-```html
-<!--
-$theme: gaia
-template: invert
--->
-
-Example: Set "invert" template of Gaia theme.
-```
+![200% center](t1_gen1995.png) 
+**Muller, J-C., Lagrange, J.-P. & Weibel, R.** (eds.). *GIS and Generalization: Methodology and Practice.* London: Taylor & Francis, 1995.
 
 ---
 
-### `footer`
+# Литература
+## 2007
 
-Add a footer to the current slide and all of the following slides
-
-```html
-<!-- footer: This is a footer -->
-```
-
-Example: Adds "This is a footer" in the bottom of each slide
+![200% center](t1_gen2007.png) 
+**Mackaness, W. A., Ruas, A. & Sarjakoski, L. T.**  (eds.) 
+*Generalisation of Geographic Information: Cartographic Modelling and Applications.* Amsterdam: Elsevier, 2007, 370 p.
 
 ---
 
-### `prerender`
+# Литература
+## 2014
 
-Pre-renders a slide, which can prevent issues with very large background images.
-
-```html
-<!-- prerender: true -->
-```
+![200% center](t1_gen2014.png) 
+**Burghardt D., Duchene C. and Mackaness W.** (eds.). *Abstracting Geographic Information in a Data Rich World.* Lecture Notes in Geoinformation and Cartography series, Springer-Verlag, Berlin, Germany, 2014
 
 ---
-
-## Pro Tips
-
-#### Apply page directive to current slide only
-
-Page directive can be selectively applied to the current slide by prefixing the page directive with `*`.
-
-```
-<!-- *page_number: false -->
-<!-- *template: invert -->
-```
-
-<!--
-*page_number: false
-
-Example is here.
-Page number is not shown in current page, but it's shown on later pages.
--->
-
----
-
-#### Slide background Images
-
-You can set an image as a slide background.
-
-```html
-![bg](mybackground.png)
-```
-
-Options can be provided after `bg`, for example `![bg original](path)`.
-
-Options include:
-
-- `original` to include the image without any effects
-- `x%` to include the  image at `x` percent of the slide size
-
-Include multiple`![bg](path)` tags to stack background images horizontally.
-
-![bg](images/background.png)
-
----
-
-#### Maths Typesetting
-
-Mathematics is typeset using the `KaTeX` package. Use `$` for inline maths, such as $ax^2+bc+c$, and `$$` for block maths:
-
-$$I_{xx}=\int\int_Ry^2f(x,y)\cdot{}dydx$$
-
-```html
-This is inline: $ax^2+bx+c$, and this is block:
-
-$$I_{xx}=\int\int_Ry^2f(x,y)\cdot{}dydx$$
-
-```
-
----
-
-## Enjoy writing slides! :+1:
-
-### https://github.com/yhatt/marp
-
-Copyright &copy; 2016 [Yuki Hattori](https://github.com/yhatt)
-This software released under the [MIT License](https://github.com/yhatt/marp/blob/master/LICENSE).
