@@ -1,10 +1,3 @@
----
-presentation:
-  width: 1024
-  height: 576
-  slideNumber: true
----
-
 <!-- slide -->
 ---
 # Сложность, иерархия и масштаб
