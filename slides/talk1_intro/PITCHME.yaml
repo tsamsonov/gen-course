@@ -3,3 +3,4 @@ presentation:
   height: 576
   slideNumber: true
 mathjax : TeX-MML-AM_HTMLorMML-full
+theme-override : slides/PITCHME.css
