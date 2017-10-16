@@ -1,3 +1,8 @@
+---
+presentation:
+  slideNumber: true
+---
+
 <!-- slide -->
 # Генерализация множеств точечных объектов
 
@@ -255,3 +260,106 @@
 1. Ограничивающие прямоугольники
 2. Выпуклая оболочка
 3. Невыпуклые оболочки ($\alpha$-shape, $\chi$-shape)
+
+<!-- slide -->
+# Ограничивающий прямоугольник (envelope)
+
+![](envelope.png){width=800px}
+
+- Наиболее простой тип оболочки, который используется в ГИС для описания территориального охвата слоя (*экстент*)
+
+- Для построения в общем случае нужно 4 точки, которые обладают минимальным и максимальным значением координат из всего множества
+
+<!-- slide -->
+# Выпуклая оболочка (convex hull)
+
+![](chull.png){width=500px}
+
+- **Выпуклой оболочкой** множества $p$ называется  наименьшее выпуклое множество, содержащее $p$
+
+- Выпуклая оболочка обозначается как $Conv(p)$
+
+- Выпуклая оболочка на плоскости является *пересечением всех полуплоскостей, содержащих* $p$
+
+- Существует несколько алгоритмов построения $Conv(p)$
+
+<!-- slide -->
+# Выпуклая оболочка
+<div style="display: inline-block; width: 45%; vertical-align: top;">
+  **Аналогия**
+
+  Представьте себе лассо,  которое накидывается на  множество гвоздей,  вбитых в доску:
+
+  ![](lasso.png){width=330px}
+</div>
+
+<div style="display: inline-block; width: 45%; vertical-align: top; margin-left: 2%">
+  **Выпуклое и невыпуклое**
+
+  *Выпуклое множество* в аффинном или векторном пространстве — множество, содержащее вместе с любыми двумя точками соединяющий их отрезок:
+
+  ![](convex_concave.png)
+</div>
+
+<!-- slide -->
+# Выпуклая оболочка
+
+**Алгоритм Джарвиса**
+
+<div style="display: inline-block; width: 55%; vertical-align: top;">
+
+  1. Найти точку $p_0$ с наименьшим значением координаты $X$. Добавить в результат.
+  2. Найти точку $p_1$, образующую наименьший угол поворота по часовой стрелке относительно направления оси $Y$. Добавить в результат.
+  3. Найти все оставшиеся точки выпуклой оболочки $p_i, i = 2..k$, выбирая каждый раз такую точку $p_i$, что угол поворота от $p_{i-2} p_{i-1}$ к $p_{i-2} p_{i-1}$ наименьший. Остановиться, когда $p_i = p_0$
+
+</div>
+
+<div style="display: inline-block; width: 40%; vertical-align: top; margin-left: 2%">
+  ![](jarvis.png)
+</div>
+
+**Jarvis, R. A.** (1973). *On the identification of the convex hull of a finite set of points in the plane*. Information Processing Letters 2: 18–21. doi:10.1016/0020-0190(73)90020-3.
+
+
+<!-- slide -->
+# Выпуклая оболочка
+
+**Алгоритм Джарвиса**
+
+![](jarvis.gif)
+
+**Jarvis, R. A.** (1973). *On the identification of the convex hull of a finite set of points in the plane*. Information Processing Letters 2: 18–21. doi:10.1016/0020-0190(73)90020-3.
+
+<!-- slide -->
+# Минимальный по площади ограничивающий прямоугольник
+
+**Минимальный по площади ограничивающий прямоугольник** (*minimum bounding rectangle --- MBR*) является наименьшим по площади среди всех прямоугольников, охватывающих данное множество точек
+
+<div style="display: inline-block; width: 45%; vertical-align: top;">
+  ![](mbr.png)
+</div>
+
+<div style="display: inline-block; width: 45%; vertical-align: top; margin-left: 2%">
+  Согласно теореме Фримана-Шапиро *одна из сторон MBR должна касаться выпуклой оболочки*.
+
+  **Freeman, H.; Shapira, R.** (1975), *Determining the minimum-area encasing rectangle for an arbitrary closed curve*. Communications of the ACM, 18: 409–413, MR 0375828, doi:10.1145/360881.360919.
+</div>
+
+
+<!-- slide -->
+# Алгоритм Rotating Calipers
+
+Поворачиваем ограничивающий прямоугольник, совмещая его с одной из сторон выпуклой оболочки. Из них выбираем минимальный по площади.
+
+![](calipers.png){width=700px}
+
+**G.T.Toussaint** (1983). *Solving geometric problems with the rotating calipers*. Proceedings of IEEE MELECON'83, Athens, Greece, May 1983, pp. A10. 02/1-4.
+
+<!-- slide -->
+# Альфа-оболочка
+
+**Альфа-оболочка ($\alpha$-shape)** --- обобщение понятия выпуклой оболочки, позволяющее строить оболочки, более точно описывающие форму множества, в том числе и вогнутые оболочки. Альфа-оболочка является площадной компонентой *альфа-комплекса ($\alpha$-complex)*, который строится на основе триангуляции Делоне множества точек.
+
+![](ashape.png){width=700px}
+
+**Edelsbrunner H, Kirkpatrick D, Seidel R **(1983) *On the shape of a set of points in the plane*. IEEE Transactions on Information Theory, 29:551–559. doi: 10.1109/TIT.1983.1056714
