@@ -127,7 +127,7 @@ knitr::include_graphics("img/talk2/Ratajski.png")
 ]
 
 .right-column[
-.large[Польский картограф Лех Ратайский предлагал разделять качественную и количественную генерализацию]
+.large[__1967__ — Польский картограф Лех Ратайский предлагал разделять качественную и количественную генерализацию]
 
 __Ratajski, L.__, (1967) _Phenomenes des points de generalisation_, International Yearbook of Cartography, 7, 143–151.
 
@@ -159,7 +159,7 @@ knitr::include_graphics("img/talk2/Morrison.png")
 
 .right-column[
 
-.large[Американский картограф Джоэл Моррисон предложил модель генерализации, основанную на теории множеств]
+.large[__1974__ — Американский картограф Джоэл Моррисон предложил модель генерализации, основанную на теории множеств]
 
 __Morrison, J. L.__, (1974) _A theoretical framework for cartographic generalization with emphasis on the process of symbolization_, International Yearbook of Cartography, 14, 115–127.
 
@@ -169,13 +169,147 @@ __Morrison, J. L.__, (1974) _A theoretical framework for cartographic generaliza
 
 ## Модель Моррисона
 
-.left-column[
+```{r, out.width = "800px", fig.cap=""}
+knitr::include_graphics("img/talk2/MorrisonModel.png")
+```
+
 __Morrison, J. L.__, (1974) _A theoretical framework for cartographic generalization with emphasis on the process of symbolization_, International Yearbook of Cartography, 14, 115–127.
+
+---
+
+## Модели генерализации
+
+.left-column[
+```{r, out.width = "200px", fig.cap="Bradford G. Nickerson Professor Emeritus, University of New Brunswick"}
+knitr::include_graphics("img/talk2/Nickerson.png")
+```
 ]
 
 .right-column[
-```{r, out.width = "800px", fig.cap=""}
-knitr::include_graphics("img/talk2/MorrisonModel.png")
+
+.large[__1988__ — Канадский картограф Брэдфорд Никерсон предложил модель на основе правил]
+- Модификация объектов.
+- Масштабирование символов.
+- Смещение объектов.
+- Уменьшение масштаба.
+- Размещение подписей.
+
+.small[__Nickerson, B. G., and Freeman, H.__, (1986) _Development of a Rule-Based System for Automatic Map Generalization_, Proceedings of the Second International Symposium on Spatial Data Handling, Seattle, Washington, July 5–10, pp. 537–556.]
+
+]
+
+---
+
+## Модель Никерсона-Фримена
+
+```{r, out.width = "1000px", fig.cap=""}
+knitr::include_graphics("img/talk2/NickersonModel.png")
+```
+
+.small[__Nickerson, B. G., and Freeman, H.__, (1986) _Development of a Rule-Based System for Automatic Map Generalization_, Proceedings of the Second International Symposium on Spatial Data Handling, Seattle, Washington, July 5–10, pp. 537–556.]
+
+---
+
+## Модели генерализации
+
+.left-column[
+```{r, out.width = "100%", fig.cap="Kurt Brassel, Professor Emeritus, University of Zurich"}
+knitr::include_graphics("img/talk2/Brassel.png")
+```
+]
+
+.right-column[
+
+.large[__1988__ —  Курт Брассель и Роберт Вайбель (Швейцария) предложили модель на основе библиотеки процессов]
+
+__Brassel, K. E., and Weibel, R.__, (1988) _A Review and Conceptual Framework of Automated Map Generalization_, International Journal of Geographical Information Systems, 2(3), 229–244.
+
+]
+
+---
+
+## Модель Брасселя-Вайбеля
+
+.left-column[
+__Brassel, K. E., and Weibel, R.__, (1988) _A Review and Conceptual Framework of Automated Map Generalization_, International Journal of Geographical Information Systems, 2(3), 229–244.
+]
+
+.right-column[
+```{r, out.width = "650px", fig.cap=""}
+knitr::include_graphics("img/talk2/BrasselModel.png")
+```
+]
+
+---
+
+## Модели генерализации
+
+.left-column[
+```{r, out.width = "100%", fig.cap="Robert McMaster, Professor of Geography, University of Minnesota"}
+knitr::include_graphics("img/talk2/McMaster.png")
+```
+]
+
+.right-column[
+
+.large[__1988__ —  МакМастер и Ши (США) предложили модель, в которой логика генерализации разделена на три аспекта]
+
+- Причины генерализации
+- Оценка контекста
+- Операторы трансформации
+
+.small[__McMaster, R. B., and Shea, K. S.__, (1988) _Cartographic Generalization in a Digital Environment: A Framework for Implementation in a Geographic Information System_, GIS/LIS’88 Proceedings, San Antonio, Texas, November 30 – December 2, pp. 240–249.]
+
+]
+
+---
+
+## Модель МакМастера-Ши
+
+.left-column[
+__McMaster, R. B., and Shea, K. S.__, (1988) _Cartographic Generalization in a Digital Environment: A Framework for Implementation in a Geographic Information System_, GIS/LIS’88 Proceedings, pp. 240–249.
+]
+
+.right-column[
+```{r, out.width = "450px", fig.cap=""}
+knitr::include_graphics("img/talk2/McMasterModel.png")
+```
+]
+
+---
+
+## Модели генерализации
+
+.left-column[
+```{r, out.width = "100%", fig.cap="Mark Monmonier Distinguished Professor Syracuse University"}
+knitr::include_graphics("img/talk2/Monmonier.png")
+```
+]
+
+.right-column[
+
+.large[__1989__ —  МакМастер и Монмонье (США) предложили модель растровой генерализации, в которой выделили 4 категории трансформаций:]
+
+- Структурная
+- Количественная
+- Количественно-категорийная
+- Категорийная
+
+.small[__McMaster, R. B., Monmonier, M. S.__, (1989) _A conceptual framework for quantitative and qualitative raster-mode generalization_, Proceedings of GIS/LIS ’89, Orlando, Florida, 2, pp. 390–403.]
+
+]
+
+---
+
+## Модель МакМастера-Монмонье
+
+.left-column[
+__McMaster, R. B., Monmonier, M. S.__, (1989) _A conceptual framework for quantitative and qualitative raster-mode generalization_, Proceedings of GIS/LIS ’89, Orlando, Florida, 2, pp. 390–403.
+]
+
+.right-column[
+```{r, out.width = "350px", fig.cap=""}
+knitr::include_graphics("img/talk2/MonmonierModel.png")
 ```
 ]
 
@@ -186,7 +320,7 @@ knitr::include_graphics("img/talk2/MorrisonModel.png")
 ### 1991
 
 .left-column[
-```{r, out.width = "150px"}
+```{r, out.width = "100%"}
 knitr::include_graphics("img/talk2/t1_gen1991.png")
 ```
 ]
@@ -202,7 +336,7 @@ knitr::include_graphics("img/talk2/t1_gen1991.png")
 ### 1995
 
 .left-column[
-```{r, out.width = "150px"}
+```{r, out.width = "100%"}
 knitr::include_graphics("img/talk2/t1_gen1995.png")
 ```
 ]
@@ -218,7 +352,7 @@ knitr::include_graphics("img/talk2/t1_gen1995.png")
 ### 2006
 
 .left-column[
-```{r, out.width = "150px"}
+```{r, out.width = "100%"}
 knitr::include_graphics("img/talk2/t1_gen2006.png")
 ```
 ]
@@ -234,7 +368,7 @@ knitr::include_graphics("img/talk2/t1_gen2006.png")
 ### 2007
 
 .left-column[
-```{r, out.width = "150px"}
+```{r, out.width = "100%"}
 knitr::include_graphics("img/talk2/t1_gen2007.png")
 ```
 ]
@@ -251,7 +385,7 @@ knitr::include_graphics("img/talk2/t1_gen2007.png")
 ### 2014
 
 .left-column[
-```{r, out.width = "150px"}
+```{r, out.width = "100%"}
 knitr::include_graphics("img/talk2/t1_gen2014.png")
 ```
 ]
@@ -267,7 +401,7 @@ knitr::include_graphics("img/talk2/t1_gen2014.png")
 ### 2019
 
 .left-column[
-```{r, out.width = "150px"}
+```{r, out.width = "100%"}
 knitr::include_graphics("img/talk2/t1_gen2019.png")
 ```
 ]
