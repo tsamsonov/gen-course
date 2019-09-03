@@ -7,6 +7,7 @@ output:
   xaringan::moon_reader:
     css: [default, "style.css"]
     lib_dir: libs
+    self_contained: true
     nature:
       highlightStyle: github
       highlightLines: true
@@ -31,10 +32,6 @@ knitr::opts_chunk$set(echo = FALSE, message = FALSE)
 1. Теория картографических баз данных
 
 1. Мультимасштабное картографирование
-
----
-
-# Сложность, иерархия и масштаб как свойства реального мира и концепции структурирования знаний
 
 ---
 
@@ -303,10 +300,6 @@ graph LR;
 Иерархия --> Масштаб;",
 height = 400)
 ```
-
----
-
-# Проблема масштаба и иерархии в географии
 
 ---
 
