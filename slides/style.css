@@ -8,9 +8,15 @@ ol { font-size: 22pt; }
 h3 { margin-top: 0;}
 .caption { font-size: 20pt; }
 .right-column { padding: 0px; }
+.left-column { font-size: 14pt;}
 .red { color: crimson; }
 .blue { color: steelblue; }
 .large { font-size: 25pt; }
+.small { font-size: 20pt;}
+
+.left-column>p{
+  font-size: 20pt;
+}
 
 h1, h2, h3 {
   font-family: 'Cuprum';

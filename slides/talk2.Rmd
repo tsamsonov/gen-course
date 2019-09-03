@@ -149,6 +149,38 @@ knitr::include_graphics("img/talk2/RatajskiModel.png")
 
 ---
 
+## Модели генерализации
+
+.left-column[
+```{r, out.width = "200px", fig.cap="Joel L. Morrison, Professor Emeritus, Ohio State University"}
+knitr::include_graphics("img/talk2/Morrison.png")
+```
+]
+
+.right-column[
+
+.large[Американский картограф Джоэл Моррисон предложил модель генерализации, основанную на теории множеств]
+
+__Morrison, J. L.__, (1974) _A theoretical framework for cartographic generalization with emphasis on the process of symbolization_, International Yearbook of Cartography, 14, 115–127.
+
+]
+
+---
+
+## Модель Моррисона
+
+.left-column[
+__Morrison, J. L.__, (1974) _A theoretical framework for cartographic generalization with emphasis on the process of symbolization_, International Yearbook of Cartography, 14, 115–127.
+]
+
+.right-column[
+```{r, out.width = "800px", fig.cap=""}
+knitr::include_graphics("img/talk2/MorrisonModel.png")
+```
+]
+
+---
+
 ## Литература
 
 ### 1991
