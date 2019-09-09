@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Картографические базы данных</title>
+  <title>Глава 1 Генерализация точечных объектов | Картографические базы данных</title>
   <meta name="description" content="Курс лекций по генерализации пространственных данных" />
   <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Картографические базы данных" />
+  <meta property="og:title" content="Глава 1 Генерализация точечных объектов | Картографические базы данных" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="tsamsonov/r-geo-course" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Картографические базы данных" />
+  <meta name="twitter:title" content="Глава 1 Генерализация точечных объектов | Картографические базы данных" />
   
   <meta name="twitter:description" content="Курс лекций по генерализации пространственных данных" />
   
@@ -31,7 +31,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
+<link rel="prev" href="index.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -66,10 +66,11 @@
 <li><a href="./">Генерализация пространственных данных</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="03-Points.html"><a href="#points"><i class="fa fa-check"></i><b>1</b> Генерализация точечных объектов</a><ul>
-<li class="chapter" data-level="1.1" data-path="03-Points.html"><a href="#points-sel"><i class="fa fa-check"></i><b>1.1</b> Отбор</a><ul>
-<li class="chapter" data-level="1.1.1" data-path="03-Points.html"><a href="#section"><i class="fa fa-check"></i><b>1.1.1</b> Краткий обзор</a></li>
-<li class="chapter" data-level="1.1.2" data-path="03-Points.html"><a href="#points-sel-work"><i class="fa fa-check"></i><b>1.1.2</b> Самостоятельная работа</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Введение</a></li>
+<li class="chapter" data-level="1" data-path="points.html"><a href="points.html"><i class="fa fa-check"></i><b>1</b> Генерализация точечных объектов</a><ul>
+<li class="chapter" data-level="1.1" data-path="points.html"><a href="points.html#points-sel"><i class="fa fa-check"></i><b>1.1</b> Отбор</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="points.html"><a href="points.html#section-1"><i class="fa fa-check"></i><b>1.1.1</b> Краткий обзор</a></li>
+<li class="chapter" data-level="1.1.2" data-path="points.html"><a href="points.html#points-sel-work"><i class="fa fa-check"></i><b>1.1.2</b> Самостоятельная работа</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -92,17 +93,11 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Картографические базы данных</h1>
-<h2 class="subtitle"><em>Генерализация пространственных данных</em></h2>
-<p class="author"><em>Тимофей Самсонов</em></p>
-<p class="date"><em>2019-09-09</em></p>
-</div>
 <div id="points" class="section level1">
 <h1><span class="header-section-number">Глава 1</span> Генерализация точечных объектов</h1>
 <div id="points-sel" class="section level2">
 <h2><span class="header-section-number">1.1</span> Отбор</h2>
-<div id="section" class="section level3">
+<div id="section-1" class="section level3">
 <h3><span class="header-section-number">1.1.1</span> Краткий обзор</h3>
 <p>Для просмотра презентации щелкните на ней один раз левой кнопкой мыши и листайте, используя кнопки на клавиатуре:
 <iframe src="https://tsamsonov.github.io/gen-course/slides/talk3_PointSelection.html#1" width="672" height="500px"></iframe></p>
@@ -161,7 +156,7 @@
 <li><p>Вычислите поле Remain для текущей точки (2.1), используя значение флага отбора, полученное на шаге 5 (Calculate Field).</p></li>
 </ol>
 </div>
-<div id="section-1" class="section level4 unnumbered">
+<div id="section-2" class="section level4 unnumbered">
 <h4>Реализация модели оценки условной графической нагрузки</h4>
 <p>Условная графическая нагрузка – средневзвешенное количество точек на единицу площади, где в качестве веса выступает размер точки, используемый при ее отображении на карте</p>
 <p><strong>Входные параметры:</strong></p>
@@ -179,7 +174,7 @@
 <li>Сохраняет полученную сетку в выходной файл.</li>
 </ol>
 </div>
-<div id="section-2" class="section level4 unnumbered">
+<div id="section-3" class="section level4 unnumbered">
 <h4>Отбор населенных пунктов для карты масштаба 1:4 000 000</h4>
 <p>В данной — заключительной — части задания необходимо произвести отбор населенных пунктов, используя собственные модели геообработки, а также произвести графическую оценку полученных результатов.</p>
 <p>Алгоритм выполнения задания:</p>
@@ -238,7 +233,7 @@
 </ul></li>
 </ol>
 </div>
-<div id="section-3" class="section level4 unnumbered">
+<div id="section-4" class="section level4 unnumbered">
 <h4>Отчет</h4>
 <p>Работа оформляется в виде письменного отчета, в котором необходимо изложить все этапы исследования:</p>
 <ul>
@@ -258,7 +253,7 @@
           </div>
         </div>
       </div>
-
+<a href="index.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
     </div>
   </div>
