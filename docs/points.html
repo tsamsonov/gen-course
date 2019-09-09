@@ -100,7 +100,7 @@
 <div id="section-1" class="section level3">
 <h3><span class="header-section-number">1.1.1</span> Краткий обзор</h3>
 <p>Для просмотра презентации щелкните на ней один раз левой кнопкой мыши и листайте, используя кнопки на клавиатуре:
-<iframe src="https://tsamsonov.github.io/gen-course/slides/talk3_PointSelection.html#1" width="672" height="400px"></iframe></p>
+<iframe src="https://tsamsonov.github.io/gen-course/slides/talk3_PointSelection.html#1" width="672" height="380px"></iframe></p>
 <blockquote>
 <p>Презентацию можно открыть в отдельном окне или вкладке браузере. Для этого щелкните по ней правой кнопкой мыши и выберите соответствующую команду.</p>
 </blockquote>
@@ -119,21 +119,25 @@
 </ol>
 <div id="settlement-spacing" class="section level4 unnumbered">
 <h4>Реализация алгоритма Settlement Spacing</h4>
-<p>Входные параметры:</p>
+<p><strong>Входные параметры:</strong></p>
 <ol style="list-style-type: decimal">
 <li>Точечный слой (<em>Input Points</em>).</li>
 <li>Поле веса точки (<em>Importance Field</em>). Выносится в качестве параметра из инструмента <strong>Get Field Value</strong> (2.2).</li>
 <li>Поле сохранения точки (<em>Remain Field</em>). Выносится в качестве параметра из инструмента <strong>Calculate Field</strong> (6).</li>
 <li>Масштабирующий коэффициент (<em>Scale</em>). Вводится как свободный параметр типа <em>Double</em>.</li>
 </ol>
-<p>Требования к входным параметрам
-1. Поля, указанные в параметрах <em>Importance Field</em> и <em>Remain Field</em> должны быть уже созданы в слое.
-2. Данные должны быть физически отсортированы в порядке увеличения поля <code>Importance</code> (чем больше значение этого поля, тем менее важной является точка). Для этого можно использовать инструмент <strong>Sort</strong>.
-3. Поле Remain по умолчанию должно быть пустым или заполненным нулями.</p>
+<p><strong>Требования к входным параметрам:</strong></p>
+<ol style="list-style-type: decimal">
+<li>Поля, указанные в параметрах <em>Importance Field</em> и <em>Remain Field</em> должны быть уже созданы в слое.</li>
+<li>Данные должны быть физически отсортированы в порядке увеличения поля <code>Importance</code> (чем больше значение этого поля, тем менее важной является точка). Для этого можно использовать инструмент <strong>Sort</strong>.</li>
+<li>Поле Remain по умолчанию должно быть пустым или заполненным нулями.</li>
+</ol>
 <p>Допустимые значения поля <em>Remain</em>:</p>
-<p><span class="math inline">\(0\)</span> — флаг не установлен
-<span class="math inline">\(1\)</span> — точку необходимо оставить
-<span class="math inline">\(2\)</span> — точку необходимо убрать</p>
+<ul>
+<li><span class="math inline">\(0\)</span> — флаг не установлен.</li>
+<li><span class="math inline">\(1\)</span> — точку необходимо оставить.</li>
+<li><span class="math inline">\(2\)</span> — точку необходимо убрать.</li>
+</ul>
 <p><strong>Предусловия:</strong>
 Необходимо расставить предусловия таким образом, чтобы каждый инструмент <strong>A</strong>, использующий вычисленное значение <strong>B</strong>, выполнялся после того как вычислится <strong>B</strong>.</p>
 <p><strong>Входные данные:</strong>
