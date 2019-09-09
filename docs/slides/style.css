@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css?family=Cuprum:400,400i,700,700i&subset=cyrillic');
+@import url('https://fonts.googleapis.com/css?family=Scada:400,400i,700,700i&subset=cyrillic');
+
+body { font-family: 'Scada', serif; font-size: 22pt; }
+p { font-size: 22pt; margin-top: 0;}
+ul { font-size: 22pt; }
+ol { font-size: 22pt; }
+h3 { margin-top: 0;}
+.caption { font-size: 20pt; }
+.right-column { padding: 0px; }
+.left-column { font-size: 14pt;}
+.red { color: crimson; }
+.blue { color: steelblue; }
+.large { font-size: 25pt; }
+.small { font-size: 20pt;}
+
+.left-column>p{
+  font-size: 20pt;
+}
+
+h1, h2, h3 {
+  font-family: 'Cuprum';
+  font-weight: bold;
+}
+table { font-size: 18pt; }
+img {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+MathJax { color: red; }
