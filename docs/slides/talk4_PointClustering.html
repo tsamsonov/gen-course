@@ -1,35 +1,39 @@
----
-title: "Кластеризация точечных объектов"
-subtitle: "Картографические базы данных. Лекция №4"
-author: "Тимофей Самсонов"
-date: "`r Sys.Date()`"
-output:
-  xaringan::moon_reader:
-    css: [default, "style.css"]
-    lib_dir: libs
-    nature:
-      highlightStyle: github
-      highlightLines: true
-      countIncrementalSlides: false
-      ratio: "16:9"
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Кластеризация точечных объектов</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Тимофей Самсонов" />
+    <meta name="date" content="2019-09-16" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Кластеризация точечных объектов
+## Картографические базы данных. Лекция №4
+### Тимофей Самсонов
+### 2019-09-16
+
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-```
+
+
 
 ## Постановка задачи кластеризации
 
 **Дано**:
 
-- $X$  пространство объектов;
-- $X^l$ = $\{x_1, ..., x_l\}$  обучающая выборка;
-- $\rho: X \times X \rightarrow [0, \infty)$  функция расстояния между объектами.
+- `\(X\)`  пространство объектов;
+- `\(X^l\)` = `\(\{x_1, ..., x_l\}\)`  обучающая выборка;
+- `\(\rho: X \times X \rightarrow [0, \infty)\)`  функция расстояния между объектами.
 
 .pull-left[
 **Найти:**
-- $Y$  множество кластеров;
-- $a: X \rightarrow Y$  алгоритм кластеризации,
+- `\(Y\)`  множество кластеров;
+- `\(a: X \rightarrow Y\)`  алгоритм кластеризации,
 ]
 .pull-right[
 *Такие что*:
@@ -37,8 +41,8 @@ knitr::opts_chunk$set(echo = FALSE)
 - объекты разных кластеров существенно различны
 ]
 
-> Кластеризация относится к методам классификации  *без учителя*
-<!-- .small[**К.В.Воронцов** Машинное обучение (курс лекций). [http://www.machinelearning.ru](http://www.machinelearning.ru)] -->
+&gt; Кластеризация относится к методам классификации  *без учителя*
+&lt;!-- .small[**К.В.Воронцов** Машинное обучение (курс лекций). [http://www.machinelearning.ru](http://www.machinelearning.ru)] --&gt;
 
 ---
 
@@ -88,8 +92,8 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Метод К средних
 
-1. Установить количество кластеров $K$
-2. Выбрать случайным образом $K$ точек в качестве центров кластеров
+1. Установить количество кластеров `\(K\)`
+2. Выбрать случайным образом `\(K\)` точек в качестве центров кластеров
 3. Определить для каждой точки ближайший центр кластера
 4. Рассчитать новый центр кластера на основе координат его точек
 5. Повторять шаги 3-4, до тех пор пока центры кластеров не перестанут менять свое местоположение.
@@ -108,9 +112,7 @@ knitr::opts_chunk$set(echo = FALSE)
 Пример с четырьмя кластерами:
 ]
 .right-column[
-```{r, out.width = "75%", fig.cap=""}
-knitr::include_graphics("img/talk3/kmeans.gif")
-```
+&lt;img src="img/talk3/kmeans.gif" width="75%" /&gt;
 [http://shabal.in/visuals/kmeans/](http://shabal.in/visuals/kmeans/)
 ]
 
@@ -122,10 +124,10 @@ knitr::include_graphics("img/talk3/kmeans.gif")
 **Свойства метода**
 
 Метод К средних стремится минимизировать суммарное квадратичное отклонение точек кластеров от центров этих кластеров:
-$$V = \sum_{i=1}^{k} \sum_{x_j \in S_I} (x_j - \mu_i)^2$$
-где $k$ — число кластеров, $S_i$ — полученные кластеры, $\mu_i$ — центры кластеров (центры масс векторов этих кластеров)
+`$$V = \sum_{i=1}^{k} \sum_{x_j \in S_I} (x_j - \mu_i)^2$$`
+где `\(k\)` — число кластеров, `\(S_i\)` — полученные кластеры, `\(\mu_i\)` — центры кластеров (центры масс векторов этих кластеров)
 
-**Однако**: не гарантируется достижение глобального минимума суммарного квадратичного отклонения $V$, а только одного из локальных минимумов.
+**Однако**: не гарантируется достижение глобального минимума суммарного квадратичного отклонения `\(V\)`, а только одного из локальных минимумов.
 
 ---
 
@@ -140,9 +142,7 @@ $$V = \sum_{i=1}^{k} \sum_{x_j \in S_I} (x_j - \mu_i)^2$$
 ]
 
 .pull-right[
-```{r, out.width = "100%", fig.cap=""}
-knitr::include_graphics("img/talk3/kmeans_vor.png")
-```
+&lt;img src="img/talk3/kmeans_vor.png" width="100%" /&gt;
 ]
 
 
@@ -157,12 +157,8 @@ knitr::include_graphics("img/talk3/kmeans_vor.png")
 ]
 
 .right-column[
-```{r, out.width = "100%", fig.cap=""}
-knitr::include_graphics("img/talk3/kmeans-2.png")
-```
-```{r, out.width = "100%", fig.cap=""}
-knitr::include_graphics("img/talk3/kmeans-2.png")
-```
+&lt;img src="img/talk3/kmeans-2.png" width="100%" /&gt;
+&lt;img src="img/talk3/kmeans-2.png" width="100%" /&gt;
 [E.M. Mirkes, K-means and K-medoids applet. University of Leicester, 2011.](http://www.math.le.ac.uk/people/ag153/homepage/KmeansKmedoids/Kmeans_Kmedoids.html)
 ]
 
@@ -180,9 +176,7 @@ knitr::include_graphics("img/talk3/kmeans-2.png")
 
 .right-column[
 __Пример неудачной кластеризации:__
-```{r, out.width = "70%", fig.cap=""}
-knitr::include_graphics("img/talk3/kmeans-irr.png")
-```
+&lt;img src="img/talk3/kmeans-irr.png" width="70%" /&gt;
 ]
 
 ---
@@ -191,7 +185,7 @@ knitr::include_graphics("img/talk3/kmeans-irr.png")
 
 ### Свойства метода
 
-1. Не гарантируется достижение глобального минимума суммарного квадратичного отклонения $V$, а только одного из локальных минимумов.
+1. Не гарантируется достижение глобального минимума суммарного квадратичного отклонения `\(V\)`, а только одного из локальных минимумов.
 
 2. Результат зависит от выбора исходных центров кластеров, их оптимальный выбор неизвестен.
 
@@ -213,34 +207,35 @@ knitr::include_graphics("img/talk3/kmeans-irr.png")
 
 ## Метод ISODATA
 
-( 1 ) Установить допустимые значения стандартных отклонений $\sigma_x^{max}$, $\sigma_y^{max}$, минимальное расстояние между кластерами $d_{max}$ (опционально) и требуемое количество кластеров $K$ (опционально).
+( 1 ) Установить допустимые значения стандартных отклонений `\(\sigma_x^{max}\)`, `\(\sigma_y^{max}\)`, минимальное расстояние между кластерами `\(d_{max}\)` (опционально) и требуемое количество кластеров `\(K\)` (опционально).
 
-( 2 ) Распределить $k$ случайных центров кластеров. Допустимо принять $k=1$, тогда местоположение кластера не имеет значения.
+( 2 ) Распределить `\(k\)` случайных центров кластеров. Допустимо принять `\(k=1\)`, тогда местоположение кластера не имеет значения.
 
 ( 3 ) Распределить точки в кластеры по расстоянию до ближайшего центра.
 
-( 4 ) Вычислить расстояния $d$ между центрами кластеров. Если среди них есть такие что $d < d_{max}$, произвести объединение центров, вычислив координаты, взвешенные на количество точек, содержащихся в кластере. Заново перераспределить между ними точки.
+( 4 ) Вычислить расстояния `\(d\)` между центрами кластеров. Если среди них есть такие что `\(d &lt; d_{max}\)`, произвести объединение центров, вычислив координаты, взвешенные на количество точек, содержащихся в кластере. Заново перераспределить между ними точки.
 
 ---
 
 ## Метод ISODATA
 
-( 5 ) Для каждого кластера вычислить значения выборочного среднего $\mu_x, \mu_y$ и стандартного отклонения $\sigma_x$ и $\sigma_y$ координат по осям $X$ и $Y$.
+( 5 ) Для каждого кластера вычислить значения выборочного среднего `\(\mu_x, \mu_y\)` и стандартного отклонения `\(\sigma_x\)` и `\(\sigma_y\)` координат по осям `\(X\)` и `\(Y\)`.
 
-( 6 ) Разбить пополам значением $\mu_x$ или $\mu_y$ все кластеры, в которых $\sigma_x > \sigma_x^{max}$ или $\sigma_y > \sigma_y^{max}$. Если в кластере $\sigma$ превышает допуск по обоим направлениям, он разбивается по направлению, в котором $\sigma$ больше.
+( 6 ) Разбить пополам значением `\(\mu_x\)` или `\(\mu_y\)` все кластеры, в которых `\(\sigma_x &gt; \sigma_x^{max}\)` или `\(\sigma_y &gt; \sigma_y^{max}\)`. Если в кластере `\(\sigma\)` превышает допуск по обоим направлениям, он разбивается по направлению, в котором `\(\sigma\)` больше.
 
 ( 7 ) Вычислить центры разбитых кластеров, включить их в общее множество центров.
 
-( 8 ) Повторять шаги 3-5, пока во всех кластерах значения $\sigma_x$ и $\sigma_y$ на станут меньше соответствующих значений $\sigma_x^{max}$ и $\sigma_y^{max}$ или когда не будет достигнуто требуемое количество кластеров $K$.
+( 8 ) Повторять шаги 3-5, пока во всех кластерах значения `\(\sigma_x\)` и `\(\sigma_y\)` на станут меньше соответствующих значений `\(\sigma_x^{max}\)` и `\(\sigma_y^{max}\)` или когда не будет достигнуто требуемое количество кластеров `\(K\)`.
 
 ---
 
 ## Метод ISODATA
 
 .pull-left[
-```{r, out.width = "100%", fig.cap=" "}
-knitr::include_graphics("img/talk3/isodata-0.png")
-```
+&lt;div class="figure"&gt;
+&lt;img src="img/talk3/isodata-0.png" alt=" " width="100%" /&gt;
+&lt;p class="caption"&gt; &lt;/p&gt;
+&lt;/div&gt;
 ]
 
 .pull-right[
@@ -255,9 +250,10 @@ knitr::include_graphics("img/talk3/isodata-0.png")
 ## Метод ISODATA
 
 .pull-left[
-```{r, out.width = "100%", fig.cap=" "}
-knitr::include_graphics("img/talk3/isodata-1.png")
-```
+&lt;div class="figure"&gt;
+&lt;img src="img/talk3/isodata-1.png" alt=" " width="100%" /&gt;
+&lt;p class="caption"&gt; &lt;/p&gt;
+&lt;/div&gt;
 ]
 
 .pull-right[
@@ -269,9 +265,10 @@ knitr::include_graphics("img/talk3/isodata-1.png")
 ## Метод ISODATA
 
 .pull-left[
-```{r, out.width = "100%", fig.cap=" "}
-knitr::include_graphics("img/talk3/isodata-2.png")
-```
+&lt;div class="figure"&gt;
+&lt;img src="img/talk3/isodata-2.png" alt=" " width="100%" /&gt;
+&lt;p class="caption"&gt; &lt;/p&gt;
+&lt;/div&gt;
 ]
 
 .pull-right[
@@ -283,9 +280,10 @@ knitr::include_graphics("img/talk3/isodata-2.png")
 ## Метод ISODATA
 
 .pull-left[
-```{r, out.width = "100%", fig.cap=" "}
-knitr::include_graphics("img/talk3/isodata-3.png")
-```
+&lt;div class="figure"&gt;
+&lt;img src="img/talk3/isodata-3.png" alt=" " width="100%" /&gt;
+&lt;p class="caption"&gt; &lt;/p&gt;
+&lt;/div&gt;
 ]
 
 .pull-right[
@@ -297,9 +295,10 @@ knitr::include_graphics("img/talk3/isodata-3.png")
 ## Метод ISODATA
 
 .pull-left[
-```{r, out.width = "100%", fig.cap=" "}
-knitr::include_graphics("img/talk3/isodata-4.png")
-```
+&lt;div class="figure"&gt;
+&lt;img src="img/talk3/isodata-4.png" alt=" " width="100%" /&gt;
+&lt;p class="caption"&gt; &lt;/p&gt;
+&lt;/div&gt;
 ]
 
 .pull-right[
@@ -311,9 +310,10 @@ knitr::include_graphics("img/talk3/isodata-4.png")
 ## Метод ISODATA
 
 .pull-left[
-```{r, out.width = "100%", fig.cap=" "}
-knitr::include_graphics("img/talk3/isodata-5.png")
-```
+&lt;div class="figure"&gt;
+&lt;img src="img/talk3/isodata-5.png" alt=" " width="100%" /&gt;
+&lt;p class="caption"&gt; &lt;/p&gt;
+&lt;/div&gt;
 ]
 
 .pull-right[
@@ -325,9 +325,10 @@ knitr::include_graphics("img/talk3/isodata-5.png")
 ## Метод ISODATA
 
 .pull-left[
-```{r, out.width = "100%", fig.cap=" "}
-knitr::include_graphics("img/talk3/isodata-6.png")
-```
+&lt;div class="figure"&gt;
+&lt;img src="img/talk3/isodata-6.png" alt=" " width="100%" /&gt;
+&lt;p class="caption"&gt; &lt;/p&gt;
+&lt;/div&gt;
 ]
 
 .pull-right[
@@ -339,9 +340,10 @@ knitr::include_graphics("img/talk3/isodata-6.png")
 ## Метод ISODATA
 
 .pull-left[
-```{r, out.width = "100%", fig.cap=" "}
-knitr::include_graphics("img/talk3/isodata-7.png")
-```
+&lt;div class="figure"&gt;
+&lt;img src="img/talk3/isodata-7.png" alt=" " width="100%" /&gt;
+&lt;p class="caption"&gt; &lt;/p&gt;
+&lt;/div&gt;
 ]
 
 .pull-right[
@@ -353,9 +355,10 @@ knitr::include_graphics("img/talk3/isodata-7.png")
 ## Метод ISODATA
 
 .pull-left[
-```{r, out.width = "100%", fig.cap=" "}
-knitr::include_graphics("img/talk3/isodata-8.png")
-```
+&lt;div class="figure"&gt;
+&lt;img src="img/talk3/isodata-8.png" alt=" " width="100%" /&gt;
+&lt;p class="caption"&gt; &lt;/p&gt;
+&lt;/div&gt;
 ]
 
 .pull-right[
@@ -369,9 +372,10 @@ knitr::include_graphics("img/talk3/isodata-8.png")
 ## Метод ISODATA
 
 .pull-left[
-```{r, out.width = "100%", fig.cap=" "}
-knitr::include_graphics("img/talk3/isodata-9.png")
-```
+&lt;div class="figure"&gt;
+&lt;img src="img/talk3/isodata-9.png" alt=" " width="100%" /&gt;
+&lt;p class="caption"&gt; &lt;/p&gt;
+&lt;/div&gt;
 ]
 
 .pull-right[
@@ -385,9 +389,10 @@ knitr::include_graphics("img/talk3/isodata-9.png")
 ## Метод ISODATA
 
 .pull-left[
-```{r, out.width = "90%", fig.cap=" "}
-knitr::include_graphics("img/talk3/isodata-10.png")
-```
+&lt;div class="figure"&gt;
+&lt;img src="img/talk3/isodata-10.png" alt=" " width="90%" /&gt;
+&lt;p class="caption"&gt; &lt;/p&gt;
+&lt;/div&gt;
 ]
 
 .pull-right[
@@ -399,9 +404,10 @@ knitr::include_graphics("img/talk3/isodata-10.png")
 ## Метод ISODATA
 
 .pull-left[
-```{r, out.width = "100%", fig.cap=" "}
-knitr::include_graphics("img/talk3/isodata-11.png")
-```
+&lt;div class="figure"&gt;
+&lt;img src="img/talk3/isodata-11.png" alt=" " width="100%" /&gt;
+&lt;p class="caption"&gt; &lt;/p&gt;
+&lt;/div&gt;
 ]
 
 .pull-right[
@@ -413,9 +419,7 @@ knitr::include_graphics("img/talk3/isodata-11.png")
 ## Метод ISODATA
 
 .pull-left[
-```{r, out.width = "100%", fig.cap=""}
-knitr::include_graphics("img/talk3/isodata-12.png")
-```
+&lt;img src="img/talk3/isodata-12.png" width="100%" /&gt;
 ]
 
 .pull-right[
@@ -427,9 +431,7 @@ knitr::include_graphics("img/talk3/isodata-12.png")
 ## Метод ISODATA
 
 .pull-left[
-```{r, out.width = "100%", fig.cap=""}
-knitr::include_graphics("img/talk3/isodata-13.png")
-```
+&lt;img src="img/talk3/isodata-13.png" width="100%" /&gt;
 ]
 
 .pull-right[
@@ -441,9 +443,7 @@ knitr::include_graphics("img/talk3/isodata-13.png")
 ## Метод ISODATA
 
 .pull-left[
-```{r, out.width = "100%", fig.cap=""}
-knitr::include_graphics("img/talk3/isodata-14.png")
-```
+&lt;img src="img/talk3/isodata-14.png" width="100%" /&gt;
 ]
 
 .pull-right[
@@ -455,9 +455,7 @@ knitr::include_graphics("img/talk3/isodata-14.png")
 ## Метод ISODATA
 
 .pull-left[
-```{r, out.width = "100%", fig.cap=""}
-knitr::include_graphics("img/talk3/isodata-15.png")
-```
+&lt;img src="img/talk3/isodata-15.png" width="100%" /&gt;
 ]
 
 .pull-right[
@@ -469,9 +467,7 @@ knitr::include_graphics("img/talk3/isodata-15.png")
 ## Метод ISODATA
 
 .pull-left[
-```{r, out.width = "100%", fig.cap=""}
-knitr::include_graphics("img/talk3/isodata-16.png")
-```
+&lt;img src="img/talk3/isodata-16.png" width="100%" /&gt;
 ]
 
 .pull-right[
@@ -483,9 +479,7 @@ knitr::include_graphics("img/talk3/isodata-16.png")
 ## Метод ISODATA
 
 .pull-left[
-```{r, out.width = "100%", fig.cap=""}
-knitr::include_graphics("img/talk3/isodata-17.png")
-```
+&lt;img src="img/talk3/isodata-17.png" width="100%" /&gt;
 ]
 
 .pull-right[
@@ -508,17 +502,17 @@ knitr::include_graphics("img/talk3/isodata-17.png")
 
 ## FOREL (ФОРмальные ЭЛементы)
 
-**Дано:** множество точек $U:= X^l$, количество кластеров $K$, радиус поиска $R$.
+**Дано:** множество точек `\(U:= X^l\)`, количество кластеров `\(K\)`, радиус поиска `\(R\)`.
 
-1. Выбрать случайную точку $p_0$
+1. Выбрать случайную точку `\(p_0\)`
 
-2. Образовать кластер с центром в $p_0$ и радиусом $R$
+2. Образовать кластер с центром в `\(p_0\)` и радиусом `\(R\)`
 
-3. Переместить центр $p_0$ в центр масс кластера
+3. Переместить центр `\(p_0\)` в центр масс кластера
 
-4. Повторять шаги 2-3, пока состав кластера $K_0$ не стабилизируется
+4. Повторять шаги 2-3, пока состав кластера `\(K_0\)` не стабилизируется
 
-5. Исключить кластеризованные точки из множества $U := K \setminus K_0$
+5. Исключить кластеризованные точки из множества `\(U := K \setminus K_0\)`
 
 6. Повторять шаги 2-5, пока в выборке есть некластеризованные точки
 
@@ -540,7 +534,7 @@ knitr::include_graphics("img/talk3/isodata-17.png")
 
 **Ёлкина В.Н., Ёлкин Е.А., Загоруйко Н.Г.** *О применении методики распознавания образов к решению задач палеонтологии*, 1967
 
-<!-- - Возможность проверки гипотез схожести и компактности в процессе работы алгоритма -->
+&lt;!-- - Возможность проверки гипотез схожести и компактности в процессе работы алгоритма --&gt;
 
 ---
 
@@ -562,45 +556,45 @@ knitr::include_graphics("img/talk3/isodata-17.png")
 
 ## Иерархическая кластеризация
 
-**Алгоритм** (Lance, Williams, 1967) основан на пересчете расстояний $R_{UV}$ между кластерами $U$ и $V$:
+**Алгоритм** (Lance, Williams, 1967) основан на пересчете расстояний `\(R_{UV}\)` между кластерами `\(U\)` и `\(V\)`:
 
-( 1 ) Представить все кластеры как одноэлементные: $C_1 := \Bigl\{ \{x_1\}, ..., \{x_l\} \Bigr\}$.
+( 1 ) Представить все кластеры как одноэлементные: `\(C_1 := \Bigl\{ \{x_1\}, ..., \{x_l\} \Bigr\}\)`.
 
-( 2 ) Рассчитать расстояния между ними $R_{\{x_i\}\{x_j\}} = \rho_{x_i, x_j}$.
+( 2 ) Рассчитать расстояния между ними `\(R_{\{x_i\}\{x_j\}} = \rho_{x_i, x_j}\)`.
 
-( 3 ) Установить переменную цикла $t = 2$.
+( 3 ) Установить переменную цикла `\(t = 2\)`.
 
-( 4 ) Найти пару кластеров с минимальным расстоянием $\rho_{ij}$.
+( 4 ) Найти пару кластеров с минимальным расстоянием `\(\rho_{ij}\)`.
 
-( 5 ) Объединить их в один кластер: $W := U \cup V$; $C_t := C_{t-1} \{W\} \setminus \{U, V\}$.
+( 5 ) Объединить их в один кластер: `\(W := U \cup V\)`; `\(C_t := C_{t-1} \{W\} \setminus \{U, V\}\)`.
 
 ---
 
 ## Иерархическая кластеризация
 
-( 6 ) Пересчитать расстояния $R_{WS}$ от нового кластера $W$ до всех кластеров $S \in С_t$ по формуле Ланса-Уильямса: 
+( 6 ) Пересчитать расстояния `\(R_{WS}\)` от нового кластера `\(W\)` до всех кластеров `\(S \in С_t\)` по формуле Ланса-Уильямса: 
 
-$$R_{WS} := \alpha_{U}R_{US} + \alpha_V R_{VS} + \beta R_{UV} + \gamma |R_{US} - R_{VS}|.$$
+`$$R_{WS} := \alpha_{U}R_{US} + \alpha_V R_{VS} + \beta R_{UV} + \gamma |R_{US} - R_{VS}|.$$`
 
-( 7 ) Установить $t = t + 1$.
+( 7 ) Установить `\(t = t + 1\)`.
 
-( 8 ) Повторять шаги 4-7, пока $t \leq l$.
+( 8 ) Повторять шаги 4-7, пока `\(t \leq l\)`.
 
 **Lance G. N., Willams W. T.** *A general theory of classification sorting strategies. 1. hierarchical systems* // Comp. J. — 1967. — no. 9. — Pp. 373–380
 
 ---
 
 ## Варианты расстояний
-<!-- ![](hierch-dist1.png){width=900px} -->
-<img src="hierch-dist1.png" width="700">
+&lt;!-- ![](hierch-dist1.png){width=900px} --&gt;
+&lt;img src="hierch-dist1.png" width="700"&gt;
 
 .small[**К.В.Воронцов** Машинное обучение (курс лекций). [http://www.machinelearning.ru](http://www.machinelearning.ru)]
 
 ---
 
 ## Варианты расстояний
-<!-- ![](hierch-dist2.png){width=900px} -->
-<img src="hierch-dist2.png" width="700">
+&lt;!-- ![](hierch-dist2.png){width=900px} --&gt;
+&lt;img src="hierch-dist2.png" width="700"&gt;
 
 .small[**К.В.Воронцов** Машинное обучение (курс лекций). [http://www.machinelearning.ru](http://www.machinelearning.ru)]
 
@@ -610,8 +604,8 @@ $$R_{WS} := \alpha_{U}R_{US} + \alpha_V R_{VS} + \beta R_{UV} + \gamma |R_{US} -
 
 **Расстояние ближнего соседа**
 
-<!-- ![](hierch-dend1.png){width=900px} -->
-<img src="hierch-dend1.png" width="700">
+&lt;!-- ![](hierch-dend1.png){width=900px} --&gt;
+&lt;img src="hierch-dend1.png" width="700"&gt;
 
 .small[**К.В.Воронцов** Машинное обучение (курс лекций). [http://www.machinelearning.ru](http://www.machinelearning.ru)]
 
@@ -621,8 +615,8 @@ $$R_{WS} := \alpha_{U}R_{US} + \alpha_V R_{VS} + \beta R_{UV} + \gamma |R_{US} -
 
 **Расстояние дальнего соседа**
 
-<!-- ![](hierch-dend2.png){width=900px} -->
-<img src="hierch-dend2.png" width="700">
+&lt;!-- ![](hierch-dend2.png){width=900px} --&gt;
+&lt;img src="hierch-dend2.png" width="700"&gt;
 
 .small[**К.В.Воронцов** Машинное обучение (курс лекций). [http://www.machinelearning.ru](http://www.machinelearning.ru)]
 
@@ -632,8 +626,8 @@ $$R_{WS} := \alpha_{U}R_{US} + \alpha_V R_{VS} + \beta R_{UV} + \gamma |R_{US} -
 
 **Групповое среднее**
 
-<!-- ![](hierch-dend3.png){width=900px}-->
-<img src="hierch-dend3.png" width="700">
+&lt;!-- ![](hierch-dend3.png){width=900px}--&gt;
+&lt;img src="hierch-dend3.png" width="700"&gt;
 
 .small[**К.В.Воронцов** Машинное обучение (курс лекций). [http://www.machinelearning.ru](http://www.machinelearning.ru)]
 
@@ -643,8 +637,8 @@ $$R_{WS} := \alpha_{U}R_{US} + \alpha_V R_{VS} + \beta R_{UV} + \gamma |R_{US} -
 
 **Расстояние Уорда**
 
-<!-- ![](hierch-dend4.png){width=900px} -->
-<img src="hierch-dend4.png" width="700">
+&lt;!-- ![](hierch-dend4.png){width=900px} --&gt;
+&lt;img src="hierch-dend4.png" width="700"&gt;
 
 .small[**К.В.Воронцов** Машинное обучение (курс лекций). [http://www.machinelearning.ru](http://www.machinelearning.ru)]
 
@@ -658,8 +652,8 @@ $$R_{WS} := \alpha_{U}R_{US} + \alpha_V R_{VS} + \beta R_{UV} + \gamma |R_{US} -
 
 1. Уровень кластеризации получается путем отсечения дерева по заданному расстоянию.
 
-<!-- ![](hierch-res.png){width=800px} -->
-<img src="hierch-res.png" width="500">
+&lt;!-- ![](hierch-res.png){width=800px} --&gt;
+&lt;img src="hierch-res.png" width="500"&gt;
 
 .small[**К.В.Воронцов** Машинное обучение (курс лекций). [http://www.machinelearning.ru](http://www.machinelearning.ru)]
 
@@ -687,22 +681,22 @@ $$R_{WS} := \alpha_{U}R_{US} + \alpha_V R_{VS} + \beta R_{UV} + \gamma |R_{US} -
 
 **DBSCAN** *(Density-based spatial clustering of applications with noise)*  алгоритм плотностной кластеризации, который группирует плотно упакованные точки.
 
-<!-- <div style="display: inline-block; width: 55%; vertical-align: top;"> -->
+&lt;!-- &lt;div style="display: inline-block; width: 55%; vertical-align: top;"&gt; --&gt;
 
-  1. Точка $p$ является *ядерной (core)*, если ее $\epsilon$-окрестность содержит не менее $minPts$ точек. Эти точки именуются *прямо достижимыми* от $p$
-  2. Точка $q$ является *достижимой (reachable)* от точки $p$, если существует такая последовательность точек $p_1, ..., p_n$, $p_1 = p$, $p_n = q$ в которой каждая точка $p_{i+1}$ прямо достижима от $p_i$. Все точки, кроме $q$ должн быть ядерными
-  3. Точка $r$ является *выброшенной (outlier)*, если оне не достижима ни от одной другой точки
+  1. Точка `\(p\)` является *ядерной (core)*, если ее `\(\epsilon\)`-окрестность содержит не менее `\(minPts\)` точек. Эти точки именуются *прямо достижимыми* от `\(p\)`
+  2. Точка `\(q\)` является *достижимой (reachable)* от точки `\(p\)`, если существует такая последовательность точек `\(p_1, ..., p_n\)`, `\(p_1 = p\)`, `\(p_n = q\)` в которой каждая точка `\(p_{i+1}\)` прямо достижима от `\(p_i\)`. Все точки, кроме `\(q\)` должн быть ядерными
+  3. Точка `\(r\)` является *выброшенной (outlier)*, если оне не достижима ни от одной другой точки
 
-<!-- </div> -->
+&lt;!-- &lt;/div&gt; --&gt;
 ---
-<!-- <div style="display: inline-block; width: 45%; vertical-align: top; margin-left: 2%"> -->
+&lt;!-- &lt;div style="display: inline-block; width: 45%; vertical-align: top; margin-left: 2%"&gt; --&gt;
 ## DBSCAN
 
-  Если $A$  ядерная точка, то она формирует кластер со всеми точками, которые достижимы от нее.  Точки $B$ и $С$ являются граничными (edge), поскольку входят в кластер, но при этом не являются ядерными. Точка $N$ выброшена:
-<img src="dbscan.svg" width="300">
-  <!-- ![](dbscan.svg){width=300px} -->
+  Если `\(A\)`  ядерная точка, то она формирует кластер со всеми точками, которые достижимы от нее.  Точки `\(B\)` и `\(С\)` являются граничными (edge), поскольку входят в кластер, но при этом не являются ядерными. Точка `\(N\)` выброшена:
+&lt;img src="dbscan.svg" width="300"&gt;
+  &lt;!-- ![](dbscan.svg){width=300px} --&gt;
   [https://en.wikipedia.org/wiki/DBSCAN](https://en.wikipedia.org/wiki/DBSCAN)
-<!-- </div> -->
+&lt;!-- &lt;/div&gt; --&gt;
 
 **Ester, Martin, Hans P Kriegel, Jorg Sander, and Xiaowei Xu**. 1996. *A Density-Based Algorithm for Discovering Clusters in Large Spatial Databases with Noise.* Proceedings of the 2nd International Conference on Knowledge Discovery and Data Mining, 226–31. doi:10.1.1.71.1980.
 
@@ -710,21 +704,21 @@ $$R_{WS} := \alpha_{U}R_{US} + \alpha_V R_{VS} + \beta R_{UV} + \gamma |R_{US} -
 
 ## DBSCAN
 
-<!-- **Алгоритм:** -->
+&lt;!-- **Алгоритм:** --&gt;
 
-<!-- 1. Задать С = 0 -->
-<!-- 1. Для каждой точки $p$ из множества $P$ -->
-i. Найти множество точек $N$, входящих в $\epsilon$-окрестность точки $p$
-i. Если $|N| < minPts$, то пометить точку $p$ как выброшенную и перейти на новую итерацию.
-i. Если $|N| \geq minPts$, то создать новый номер кластера $C = C+1$ (изначально C = 0) и пометить им точку $p$
-i. Создать множество точек $Q = N \setminus \{p\}$
-i. Для каждой точки $q$ из множества $Q$:
-    1. Если $q$ помечена как выброшенная, пометить $q$ номером кластера $C$
-    1. Если $q$ имеет метку, перейти на новую итерацию.
-    1. Если $q$ не имеет метки, то:
-        i. пометить $q$  номером кластера $C$
-        ii. найти множество точек $K$, входящих в $\epsilon$-окрестность $q$
-        iii. если $|K| \geq minPts$, то $Q = Q \cup K$ (добавить $K$ к $Q$)
+&lt;!-- 1. Задать С = 0 --&gt;
+&lt;!-- 1. Для каждой точки `\(p\)` из множества `\(P\)` --&gt;
+i. Найти множество точек `\(N\)`, входящих в `\(\epsilon\)`-окрестность точки `\(p\)`
+i. Если `\(|N| &lt; minPts\)`, то пометить точку `\(p\)` как выброшенную и перейти на новую итерацию.
+i. Если `\(|N| \geq minPts\)`, то создать новый номер кластера `\(C = C+1\)` (изначально C = 0) и пометить им точку `\(p\)`
+i. Создать множество точек `\(Q = N \setminus \{p\}\)`
+i. Для каждой точки `\(q\)` из множества `\(Q\)`:
+    1. Если `\(q\)` помечена как выброшенная, пометить `\(q\)` номером кластера `\(C\)`
+    1. Если `\(q\)` имеет метку, перейти на новую итерацию.
+    1. Если `\(q\)` не имеет метки, то:
+        i. пометить `\(q\)`  номером кластера `\(C\)`
+        ii. найти множество точек `\(K\)`, входящих в `\(\epsilon\)`-окрестность `\(q\)`
+        iii. если `\(|K| \geq minPts\)`, то `\(Q = Q \cup K\)` (добавить `\(K\)` к `\(Q\)`)
 
 **Ester, Martin, Hans P Kriegel, Jorg Sander, and Xiaowei Xu**. 1996. *A Density-Based Algorithm for Discovering Clusters in Large Spatial Databases with Noise.* Proceedings of the 2nd International Conference on Knowledge Discovery and Data Mining, 226–31. doi:10.1.1.71.1980.
 
@@ -734,9 +728,9 @@ i. Для каждой точки $q$ из множества $Q$:
 
 **Пуассоновский (случайный) точечный процесс:**
 
-<img src="dbscan_uniform.gif" width="500">
+&lt;img src="dbscan_uniform.gif" width="500"&gt;
 
-<!-- ![](dbscan_uniform.gif) -->
+&lt;!-- ![](dbscan_uniform.gif) --&gt;
 
 *Visualizing DBSCAN Clustering:*
 
@@ -748,8 +742,8 @@ i. Для каждой точки $q$ из множества $Q$:
 
 **Кластерный процесс Томаса (смесь нормальных распределений):**
 
-<img src="dbscan_gaussian.gif" width="500">
-<!-- ![](dbscan_gaussian.gif) -->
+&lt;img src="dbscan_gaussian.gif" width="500"&gt;
+&lt;!-- ![](dbscan_gaussian.gif) --&gt;
 
 *Visualizing DBSCAN Clustering:*
 
@@ -761,8 +755,8 @@ i. Для каждой точки $q$ из множества $Q$:
 
 **Смайлик:**
 
-<img src="dbscan_face.gif" width="500">
-<!-- ![](dbscan_face.gif) -->
+&lt;img src="dbscan_face.gif" width="500"&gt;
+&lt;!-- ![](dbscan_face.gif) --&gt;
 
 *Visualizing DBSCAN Clustering:*
 
@@ -772,7 +766,7 @@ i. Для каждой точки $q$ из множества $Q$:
 
 ## DBSCAN
 
-<!-- <div style="display: inline-block; width: 45%; vertical-align: top;"> -->
+&lt;!-- &lt;div style="display: inline-block; width: 45%; vertical-align: top;"&gt; --&gt;
 
 **Достоинства:**
 
@@ -786,9 +780,9 @@ i. Для каждой точки $q$ из множества $Q$:
 
 1. *DBSCAN* способен использовать пространственные индексы для эффективного поиска точек в окрестности.
 
-<!-- </div> -->
+&lt;!-- &lt;/div&gt; --&gt;
 
-<!-- <div style="display: inline-block; width: 45%; vertical-align: top; margin-left: 2%"> -->
+&lt;!-- &lt;div style="display: inline-block; width: 45%; vertical-align: top; margin-left: 2%"&gt; --&gt;
 ---
 
 ## DBSCAN
@@ -797,11 +791,11 @@ i. Для каждой точки $q$ из множества $Q$:
 
 1. *DBSCAN* не является полностью детерминированным: граничные точки, доступные из более чем одного кластера, могут быть частью любого кластера, в зависимости от порядка обработки данных.
 
-1. Качество *DBSCAN* зависит от метрики расстояния, используемой в функции запроса диапазона (*region query*). Наиболее распространенной метрикой расстояния является евклидово расстояние, однако в пространствах высокой размерности подбор подходящего значения $\epsilon$ вызывает большие трудности.
+1. Качество *DBSCAN* зависит от метрики расстояния, используемой в функции запроса диапазона (*region query*). Наиболее распространенной метрикой расстояния является евклидово расстояние, однако в пространствах высокой размерности подбор подходящего значения `\(\epsilon\)` вызывает большие трудности.
 
-1. *DBSCAN* не может хорошо сгруппировать наборы данных в которых кластеры имеют разную плотность. Комбинация $minPts$ и $\epsilon$ характеризует только определенный масштаб кластеризации.
+1. *DBSCAN* не может хорошо сгруппировать наборы данных в которых кластеры имеют разную плотность. Комбинация `\(minPts\)` и `\(\epsilon\)` характеризует только определенный масштаб кластеризации.
 
-<!-- </div> -->
+&lt;!-- &lt;/div&gt; --&gt;
 
 ---
 
@@ -809,10 +803,10 @@ i. Для каждой точки $q$ из множества $Q$:
 
 **Выбор параметров**
 
-(1). Для определения оптимальной величины $\epsilon$ рекомендуется построить функцию среднего расстояния до $minPts-1$ ближайших соседей в зависимости от $\epsilon$. Оптимальными считаются значения $\epsilon$, при которых наблюдается наиболее интенсивное изменение роста функции (перегиб):
+(1). Для определения оптимальной величины `\(\epsilon\)` рекомендуется построить функцию среднего расстояния до `\(minPts-1\)` ближайших соседей в зависимости от `\(\epsilon\)`. Оптимальными считаются значения `\(\epsilon\)`, при которых наблюдается наиболее интенсивное изменение роста функции (перегиб):
 
-<img src="dbscan_eselect.png" width="500">
-<!-- ![](dbscan_eselect.png){width=600px} -->
+&lt;img src="dbscan_eselect.png" width="500"&gt;
+&lt;!-- ![](dbscan_eselect.png){width=600px} --&gt;
 
 **Sander, Jörg; Ester, Martin; Kriegel, Hans-Peter; Xu, Xiaowei** 1998. "Density-Based Clustering in Spatial Databases: The Algorithm GDBSCAN and Its Applications". Data Mining and Knowledge Discovery. Berlin: Springer-Verlag. 2 (2): 169–194. doi:10.1023/A:1009745219419
 
@@ -822,7 +816,7 @@ i. Для каждой точки $q$ из множества $Q$:
 
 **Выбор параметров**
 
-(2). Количество точек в кластере должно быть больше размерности пространства: $minPts \geq D +1$. В качестве отправной точки рекомендуется взять значение $minPts = 2D$
+(2). Количество точек в кластере должно быть больше размерности пространства: `\(minPts \geq D +1\)`. В качестве отправной точки рекомендуется взять значение `\(minPts = 2D\)`
 
 (3). Функция вычисления расстояния должна выбираться в соответствии с сущностью точек. Например, если координаты точек заданы широтой и долготой, для вычисления расстояний следует использовать *обратную геодезическую задачу*.
 
@@ -834,7 +828,7 @@ i. Для каждой точки $q$ из множества $Q$:
 
 OPTICS является модификацией алгоритма DBSCAN, который решает одну из его основных проблем  невозможность выделять кластеры различной плотности. Точки линейно упорядочиваются таким образом, что близкие друг другу точки становятся соседями в последовательности:
 
-<img src="OPTICS.svg" width="700">
+&lt;img src="OPTICS.svg" width="700"&gt;
 
 ---
 
@@ -842,7 +836,7 @@ OPTICS является модификацией алгоритма DBSCAN, ко
 
 **Возможны различные варианты:**
 
-<img src="cluster_centers.png" width="500">
+&lt;img src="cluster_centers.png" width="500"&gt;
 
 ---
 
@@ -851,22 +845,22 @@ OPTICS является модификацией алгоритма DBSCAN, ко
 **Среднее внутрикластерное расстояние**:
 
 $$
-F_0 = \frac{\sum_{i < j} [a_i = a_j] \rho(x_i, x_j)}{\sum_{i < j} [a_i = a_j]} \rightarrow min
+F_0 = \frac{\sum_{i &lt; j} [a_i = a_j] \rho(x_i, x_j)}{\sum_{i &lt; j} [a_i = a_j]} \rightarrow min
 $$
 
 **Среднее межкластерное расстояние**:
 
 $$
-F_1 = \frac{\sum_{i < j} [a_i \neq a_j] \rho(x_i, x_j)}{\sum_{i < j} [a_i \neq a_j]} \rightarrow max
+F_1 = \frac{\sum_{i &lt; j} [a_i \neq a_j] \rho(x_i, x_j)}{\sum_{i &lt; j} [a_i \neq a_j]} \rightarrow max
 $$
 
-где $[\cdot]$  индикаторная функция в нотации Айверсона:
+где `\([\cdot]\)`  индикаторная функция в нотации Айверсона:
 
 $$
 [P] = \begin{cases}
   1, \text{if } P \text{ is TRUE};\\
   0, \text{if } P \text{ is FALSE}.
-\end{cases}
+\end{cases}`
 $$
 
 **Отношение пары функционалов**:
@@ -874,3 +868,95 @@ $$
 $$
 F_0/F_1 \rightarrow min
 $$
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
