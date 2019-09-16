@@ -2,7 +2,7 @@
 title: "Картографические базы данных"
 subtitle: "Генерализация пространственных данных"
 author: "Тимофей Самсонов"
-date: "2019-09-09"
+date: "2019-09-16"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book

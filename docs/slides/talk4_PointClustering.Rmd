@@ -528,7 +528,7 @@ knitr::include_graphics("img/talk3/isodata-17.png")
 
 ### .blue[Преимущества]
 
-- Точность минимизации функционала качества (при удачном подборе R)
+<!-- - Точность минимизации функционала качества (при удачном подборе R) -->
 
 - Наглядность визуализации кластеризации
 
@@ -548,7 +548,9 @@ knitr::include_graphics("img/talk3/isodata-17.png")
 
 ### .red[Недостатки]
 
-- Относительно низкая производительность (решается введением функции пересчета поиска центра при добавлении 1 объекта внутрь сферы)
+ - Относительно низкая производительность 
+ 
+ <!-- (решается введением функции пересчета поиска центра при добавлении 1 объекта внутрь сферы) -->
 
 - Плохая применимость алгоритма при плохой разделимости выборки на кластеры
 
@@ -572,7 +574,7 @@ knitr::include_graphics("img/talk3/isodata-17.png")
 
 ( 4 ) Найти пару кластеров с минимальным расстоянием $\rho_{ij}$.
 
-( 5 ) Объединить их в один кластер: $W := U \cup V$; $C_t := C_{t-1} \{W\} \setminus \{U, V\}$.
+( 5 ) Объединить их в один кластер: $W := U \cup V$; $C_t := C_{t-1} \cup \{W\} \setminus \{U, V\}$.
 
 ---
 
@@ -591,16 +593,18 @@ $$R_{WS} := \alpha_{U}R_{US} + \alpha_V R_{VS} + \beta R_{UV} + \gamma |R_{US} -
 ---
 
 ## Варианты расстояний
-<!-- ![](hierch-dist1.png){width=900px} -->
-<img src="hierch-dist1.png" width="700">
 
-.small[**К.В.Воронцов** Машинное обучение (курс лекций). [http://www.machinelearning.ru](http://www.machinelearning.ru)]
+```{r, out.width = "75%", fig.cap=""}
+knitr::include_graphics("img/talk3/hierch-dist1.png")
+```
 
 ---
 
 ## Варианты расстояний
-<!-- ![](hierch-dist2.png){width=900px} -->
-<img src="hierch-dist2.png" width="700">
+
+```{r, out.width = "85%", fig.cap=""}
+knitr::include_graphics("img/talk3/hierch-dist2.png")
+```
 
 .small[**К.В.Воронцов** Машинное обучение (курс лекций). [http://www.machinelearning.ru](http://www.machinelearning.ru)]
 
@@ -608,58 +612,52 @@ $$R_{WS} := \alpha_{U}R_{US} + \alpha_V R_{VS} + \beta R_{UV} + \gamma |R_{US} -
 
 ## Дендрограммы
 
-**Расстояние ближнего соседа**
+### Расстояние ближнего соседа
 
-<!-- ![](hierch-dend1.png){width=900px} -->
-<img src="hierch-dend1.png" width="700">
-
-.small[**К.В.Воронцов** Машинное обучение (курс лекций). [http://www.machinelearning.ru](http://www.machinelearning.ru)]
-
----
-
-## Дендрограммы
-
-**Расстояние дальнего соседа**
-
-<!-- ![](hierch-dend2.png){width=900px} -->
-<img src="hierch-dend2.png" width="700">
-
-.small[**К.В.Воронцов** Машинное обучение (курс лекций). [http://www.machinelearning.ru](http://www.machinelearning.ru)]
+```{r, out.width = "75%", fig.cap=""}
+knitr::include_graphics("img/talk3/hierch-dend1.png")
+```
 
 ---
 
 ## Дендрограммы
 
-**Групповое среднее**
+### Расстояние дальнего соседа
 
-<!-- ![](hierch-dend3.png){width=900px}-->
-<img src="hierch-dend3.png" width="700">
-
-.small[**К.В.Воронцов** Машинное обучение (курс лекций). [http://www.machinelearning.ru](http://www.machinelearning.ru)]
+```{r, out.width = "75%", fig.cap=""}
+knitr::include_graphics("img/talk3/hierch-dend2.png")
+```
 
 ---
 
 ## Дендрограммы
 
-**Расстояние Уорда**
+### Групповое среднее
 
-<!-- ![](hierch-dend4.png){width=900px} -->
-<img src="hierch-dend4.png" width="700">
+```{r, out.width = "75%", fig.cap=""}
+knitr::include_graphics("img/talk3/hierch-dend3.png")
+```
 
-.small[**К.В.Воронцов** Машинное обучение (курс лекций). [http://www.machinelearning.ru](http://www.machinelearning.ru)]
+---
 
+## Дендрограммы
+
+### Групповое среднее
+
+```{r, out.width = "75%", fig.cap=""}
+knitr::include_graphics("img/talk3/hierch-dend4.png")
+```
 ---
 
 ## Иерархическая кластеризация
 
 1. Рекомендуют пользоваться расстоянием Уорда
-
 1. Имеет смысл построить несколько вариантов и выбрать лучший
-
 1. Уровень кластеризации получается путем отсечения дерева по заданному расстоянию.
 
-<!-- ![](hierch-res.png){width=800px} -->
-<img src="hierch-res.png" width="500">
+```{r, out.width = "50%", fig.cap=""}
+knitr::include_graphics("img/talk3/hierch-res.png")
+```
 
 .small[**К.В.Воронцов** Машинное обучение (курс лекций). [http://www.machinelearning.ru](http://www.machinelearning.ru)]
 
@@ -667,19 +665,19 @@ $$R_{WS} := \alpha_{U}R_{US} + \alpha_V R_{VS} + \beta R_{UV} + \gamma |R_{US} -
 
 ## Кратчайший незамкнутый путь
 
-**Алгоритм:**
-
 1. Пометить все точки как изолированные
+
 1. Найти пару вершин с наименьшим расстоянием и соединить их ребром. Пометить вершины как неизолированные
+
 2. Найти изолированную точку, ближайшую к некоторой неизолированной
+
 3. Соединить эти точки ребром
+
 4. Повторять шаги 2-3, пока остаются изолированные точки
+
 5. Удалить K-1 самых длинных рёбер.
 
-**Недостатки**:
-
-- необходимость задавать число кластеров
-- высокая чувствительность к шуму.
+.red[**Недостатки**:] необходимость задавать число кластеров и высокая чувствительность к шуму.
 
 ---
 
@@ -687,154 +685,193 @@ $$R_{WS} := \alpha_{U}R_{US} + \alpha_V R_{VS} + \beta R_{UV} + \gamma |R_{US} -
 
 **DBSCAN** *(Density-based spatial clustering of applications with noise)*  алгоритм плотностной кластеризации, который группирует плотно упакованные точки.
 
-<!-- <div style="display: inline-block; width: 55%; vertical-align: top;"> -->
-
-  1. Точка $p$ является *ядерной (core)*, если ее $\epsilon$-окрестность содержит не менее $minPts$ точек. Эти точки именуются *прямо достижимыми* от $p$
-  2. Точка $q$ является *достижимой (reachable)* от точки $p$, если существует такая последовательность точек $p_1, ..., p_n$, $p_1 = p$, $p_n = q$ в которой каждая точка $p_{i+1}$ прямо достижима от $p_i$. Все точки, кроме $q$ должн быть ядерными
-  3. Точка $r$ является *выброшенной (outlier)*, если оне не достижима ни от одной другой точки
-
-<!-- </div> -->
----
-<!-- <div style="display: inline-block; width: 45%; vertical-align: top; margin-left: 2%"> -->
-## DBSCAN
-
-  Если $A$  ядерная точка, то она формирует кластер со всеми точками, которые достижимы от нее.  Точки $B$ и $С$ являются граничными (edge), поскольку входят в кластер, но при этом не являются ядерными. Точка $N$ выброшена:
-<img src="dbscan.svg" width="300">
-  <!-- ![](dbscan.svg){width=300px} -->
-  [https://en.wikipedia.org/wiki/DBSCAN](https://en.wikipedia.org/wiki/DBSCAN)
-<!-- </div> -->
-
-**Ester, Martin, Hans P Kriegel, Jorg Sander, and Xiaowei Xu**. 1996. *A Density-Based Algorithm for Discovering Clusters in Large Spatial Databases with Noise.* Proceedings of the 2nd International Conference on Knowledge Discovery and Data Mining, 226–31. doi:10.1.1.71.1980.
+1. Точка $p$ является *ядерной (core)*, если ее $\epsilon$-окрестность содержит не менее $minPts$ точек. Эти точки именуются *прямо достижимыми* от $p$.
+  
+2. Точка $q$ является *достижимой (reachable)* от точки $p$, если существует такая последовательность точек $p_1, ..., p_n$, $p_1 = p$, $p_n = q$ в которой каждая точка $p_{i+1}$ прямо достижима от $p_i$. Все точки, кроме $q$ должн быть ядерными.
+  
+3. Точка $r$ является *выброшенной (outlier)*, если оне не достижима ни от одной другой точки.
 
 ---
 
 ## DBSCAN
 
-<!-- **Алгоритм:** -->
+.pull-left[
+Если $A$  ядерная точка, то она формирует кластер со всеми точками, которые достижимы от нее.  
 
-<!-- 1. Задать С = 0 -->
-<!-- 1. Для каждой точки $p$ из множества $P$ -->
-i. Найти множество точек $N$, входящих в $\epsilon$-окрестность точки $p$
-i. Если $|N| < minPts$, то пометить точку $p$ как выброшенную и перейти на новую итерацию.
-i. Если $|N| \geq minPts$, то создать новый номер кластера $C = C+1$ (изначально C = 0) и пометить им точку $p$
-i. Создать множество точек $Q = N \setminus \{p\}$
-i. Для каждой точки $q$ из множества $Q$:
-    1. Если $q$ помечена как выброшенная, пометить $q$ номером кластера $C$
-    1. Если $q$ имеет метку, перейти на новую итерацию.
-    1. Если $q$ не имеет метки, то:
-        i. пометить $q$  номером кластера $C$
-        ii. найти множество точек $K$, входящих в $\epsilon$-окрестность $q$
-        iii. если $|K| \geq minPts$, то $Q = Q \cup K$ (добавить $K$ к $Q$)
+Точки $B$ и $С$ являются граничными (edge), поскольку входят в кластер, но при этом не являются ядерными. 
 
-**Ester, Martin, Hans P Kriegel, Jorg Sander, and Xiaowei Xu**. 1996. *A Density-Based Algorithm for Discovering Clusters in Large Spatial Databases with Noise.* Proceedings of the 2nd International Conference on Knowledge Discovery and Data Mining, 226–31. doi:10.1.1.71.1980.
+Точка $N$ выброшена.
+]
+.pull-right[
+```{r, out.width = "90%", fig.cap=""}
+knitr::include_graphics("img/talk3/dbscan.svg")
+```
+]
+
+.small[**Ester, Martin, Hans P Kriegel, Jorg Sander, and Xiaowei Xu**. 1996. *A Density-Based Algorithm for Discovering Clusters in Large Spatial Databases with Noise.* Proceedings of the 2nd International Conference on Knowledge Discovery and Data Mining, 226–31. doi:10.1.1.71.1980.]
 
 ---
 
 ## DBSCAN
 
-**Пуассоновский (случайный) точечный процесс:**
+Задать С = 0. 
 
-<img src="dbscan_uniform.gif" width="500">
+Для каждой точки $p$ из множества $P$:
 
-<!-- ![](dbscan_uniform.gif) -->
+1. Найти множество точек $N$, входящих в $\epsilon$-окрестность точки $p$
+
+1. Если $|N| < minPts$, то пометить точку $p$ как выброшенную и перейти на новую итерацию.
+
+1. Если $|N| \geq minPts$, то создать новый номер кластера $C = C+1$ (изначально C = 0) и пометить им точку $p$
+
+1. Создать множество точек $Q = N \setminus \{p\}$
+
+---
+
+## DBSCAN
+
+Для каждой точки $q$ из множества $Q$:
+
+1. Если $q$ помечена как выброшенная, пометить $q$ номером кластера $C$
+
+1. Если $q$ имеет метку, перейти на новую итерацию.
+
+1. Если $q$ не имеет метки, то:
+
+    + пометить $q$  номером кластера $C$
+    
+    + найти множество точек $K$, входящих в $\epsilon$-окрестность $q$
+    
+    + если $|K| \geq minPts$, то $Q = Q \cup K$ (добавить $K$ к $Q$)
+        
+---
+
+## DBSCAN
+
+.pull-left[
+### Пуассоновский (случайный) точечный процесс
 
 *Visualizing DBSCAN Clustering:*
 
-[https://www.naftaliharris.com/blog/visualizing-dbscan-clustering/](https://www.naftaliharris.com/blog/visualizing-dbscan-clustering/)
+[https://www.naftaliharris.com/blog/](https://www.naftaliharris.com/blog/visualizing-dbscan-clustering/)
+[visualizing-dbscan-clustering/](https://www.naftaliharris.com/blog/visualizing-dbscan-clustering/)
+]
+
+.pull-right[
+```{r, out.width = "100%", fig.cap=""}
+knitr::include_graphics("img/talk3/dbscan_uniform.gif")
+```
+]
 
 ---
 
 ## DBSCAN
 
-**Кластерный процесс Томаса (смесь нормальных распределений):**
-
-<img src="dbscan_gaussian.gif" width="500">
-<!-- ![](dbscan_gaussian.gif) -->
+.pull-left[
+### Кластерный процесс Томаса (смесь нормальных распределений)
 
 *Visualizing DBSCAN Clustering:*
 
-[https://www.naftaliharris.com/blog/visualizing-dbscan-clustering/](https://www.naftaliharris.com/blog/visualizing-dbscan-clustering/)
+[https://www.naftaliharris.com/blog/](https://www.naftaliharris.com/blog/visualizing-dbscan-clustering/)
+[visualizing-dbscan-clustering/](https://www.naftaliharris.com/blog/visualizing-dbscan-clustering/)
+]
+
+.pull-right[
+```{r, out.width = "120%", fig.cap=""}
+knitr::include_graphics("img/talk3/dbscan_gaussian.gif")
+```
+]
 
 ---
 
 ## DBSCAN
 
-**Смайлик:**
+.pull-left[
 
-<img src="dbscan_face.gif" width="500">
-<!-- ![](dbscan_face.gif) -->
+### Смайлик
 
 *Visualizing DBSCAN Clustering:*
 
-[https://www.naftaliharris.com/blog/visualizing-dbscan-clustering/](https://www.naftaliharris.com/blog/visualizing-dbscan-clustering/)
+[https://www.naftaliharris.com/blog/](https://www.naftaliharris.com/blog/visualizing-dbscan-clustering/)
+[visualizing-dbscan-clustering/](https://www.naftaliharris.com/blog/visualizing-dbscan-clustering/)
+]
+
+.pull-right[
+```{r, out.width = "100%", fig.cap=""}
+knitr::include_graphics("img/talk3/dbscan_face.gif")
+```
+]
+
 
 ---
 
 ## DBSCAN
 
-<!-- <div style="display: inline-block; width: 45%; vertical-align: top;"> -->
+.blue[**Достоинства:**]
 
-**Достоинства:**
+1. Не требует указания количества кластеров.
 
-1. *DBSCAN* не требует указания количества кластеров.
+1. Может найти кластеры произвольной формы. Он может даже найти кластер, полностью окруженный другим кластером, но не связанный с ним.
 
-1. *DBSCAN* может найти кластеры произвольной формы. Он может даже найти кластер, полностью окруженный другим кластером, но не связанный с ним.
+1. Имеет представление о шуме и устойчив к выбросам.
 
-1. *DBSCAN* имеет представление о шуме и устойчив к выбросам.
+1. Требует всего два параметра и в основном нечувствителен к упорядочению точек в исходном множестве. Тем не менее, точки, расположенные на краю двух разных кластеров, могут менять кластерное членство.
 
-1. *DBSCAN* требует всего два параметра и в основном нечувствителен к упорядочению точек в исходном множестве. Тем не менее, точки, расположенные на краю двух разных кластеров, могут менять кластерное членство.
-
-1. *DBSCAN* способен использовать пространственные индексы для эффективного поиска точек в окрестности.
-
-<!-- </div> -->
-
-<!-- <div style="display: inline-block; width: 45%; vertical-align: top; margin-left: 2%"> -->
----
-
-## DBSCAN
-
-**Недостатки:**
-
-1. *DBSCAN* не является полностью детерминированным: граничные точки, доступные из более чем одного кластера, могут быть частью любого кластера, в зависимости от порядка обработки данных.
-
-1. Качество *DBSCAN* зависит от метрики расстояния, используемой в функции запроса диапазона (*region query*). Наиболее распространенной метрикой расстояния является евклидово расстояние, однако в пространствах высокой размерности подбор подходящего значения $\epsilon$ вызывает большие трудности.
-
-1. *DBSCAN* не может хорошо сгруппировать наборы данных в которых кластеры имеют разную плотность. Комбинация $minPts$ и $\epsilon$ характеризует только определенный масштаб кластеризации.
-
-<!-- </div> -->
+1. Способен использовать пространственные индексы для эффективного поиска точек в окрестности.
 
 ---
 
 ## DBSCAN
 
-**Выбор параметров**
+.red[**Недостатки:**]
 
-(1). Для определения оптимальной величины $\epsilon$ рекомендуется построить функцию среднего расстояния до $minPts-1$ ближайших соседей в зависимости от $\epsilon$. Оптимальными считаются значения $\epsilon$, при которых наблюдается наиболее интенсивное изменение роста функции (перегиб):
+1. Не является полностью детерминированным: граничные точки, доступные из более чем одного кластера, могут быть частью любого кластера, в зависимости от порядка обработки данных.
 
-<img src="dbscan_eselect.png" width="500">
-<!-- ![](dbscan_eselect.png){width=600px} -->
+1. Качество зависит от метрики расстояния, используемой в функции запроса диапазона (*region query*). Наиболее распространенной метрикой расстояния является евклидово расстояние, однако в пространствах высокой размерности подбор подходящего значения $\epsilon$ вызывает большие трудности.
 
-**Sander, Jörg; Ester, Martin; Kriegel, Hans-Peter; Xu, Xiaowei** 1998. "Density-Based Clustering in Spatial Databases: The Algorithm GDBSCAN and Its Applications". Data Mining and Knowledge Discovery. Berlin: Springer-Verlag. 2 (2): 169–194. doi:10.1023/A:1009745219419
+1. Не может хорошо сгруппировать наборы данных в которых кластеры имеют разную плотность. Комбинация $minPts$ и $\epsilon$ характеризует только определенный масштаб кластеризации.
 
 ---
 
 ## DBSCAN
 
-**Выбор параметров**
+### Выбор параметров
 
-(2). Количество точек в кластере должно быть больше размерности пространства: $minPts \geq D +1$. В качестве отправной точки рекомендуется взять значение $minPts = 2D$
+.pull-left[Для определения оптимальной величины $\epsilon$ рекомендуется построить функцию среднего расстояния до $minPts-1$ ближайших соседей в зависимости от $\epsilon$. Оптимальными считаются значения $\epsilon$, при которых наблюдается наиболее интенсивное изменение роста функции (перегиб)]
 
-(3). Функция вычисления расстояния должна выбираться в соответствии с сущностью точек. Например, если координаты точек заданы широтой и долготой, для вычисления расстояний следует использовать *обратную геодезическую задачу*.
+.pull-right[
+```{r, out.width = "100%", fig.cap=""}
+knitr::include_graphics("img/talk3/dbscan_eselect.png")
+```
+]
 
-**Sander, Jörg; Ester, Martin; Kriegel, Hans-Peter; Xu, Xiaowei** 1998. "Density-Based Clustering in Spatial Databases: The Algorithm GDBSCAN and Its Applications". Data Mining and Knowledge Discovery. Berlin: Springer-Verlag. 2 (2): 169–194. doi:10.1023/A:1009745219419
+---
+
+## DBSCAN
+
+### Выбор параметров
+
+- Количество точек в кластере должно быть больше размерности пространства: $minPts \geq D +1$. В качестве отправной точки рекомендуется взять значение $minPts = 2D$
+
+- Функция вычисления расстояния должна выбираться в соответствии с сущностью точек. Например, если координаты точек заданы широтой и долготой, для вычисления расстояний следует использовать *обратную геодезическую задачу*.
+
+.small[**Sander, Jörg; Ester, Martin; Kriegel, Hans-Peter; Xu, Xiaowei** 1998. "Density-Based Clustering in Spatial Databases: The Algorithm GDBSCAN and Its Applications". Data Mining and Knowledge Discovery. Berlin: Springer-Verlag. 2 (2): 169–194]
 
 ---
 
 ## OPTICS
 
-OPTICS является модификацией алгоритма DBSCAN, который решает одну из его основных проблем  невозможность выделять кластеры различной плотности. Точки линейно упорядочиваются таким образом, что близкие друг другу точки становятся соседями в последовательности:
+.pull-left[__OPTICS__ является модификацией алгоритма DBSCAN, который решает одну из его основных проблем — невозможность выделять кластеры различной плотности. 
 
-<img src="OPTICS.svg" width="700">
+Точки линейно упорядочиваются таким образом, что близкие друг другу точки становятся соседями в последовательности.]
+
+.pull-right[
+```{r, out.width = "100%", fig.cap=""}
+knitr::include_graphics("img/talk3/OPTICS.svg")
+```
+]
+
+.small[Ankerst, M., Breunig, M.M., Kriegel, H., Sander, J., 1999. OPTICS: Ordering Points To Identify the Clustering Structure. Proceedings of the 1999 ACM SIGMOD international conference on Management of data - SIGMOD ’99 49–60. https://doi.org/10.1145/304182.304187]
 
 ---
 
@@ -842,7 +879,9 @@ OPTICS является модификацией алгоритма DBSCAN, ко
 
 **Возможны различные варианты:**
 
-<img src="cluster_centers.png" width="500">
+```{r, out.width = "40%", fig.cap=""}
+knitr::include_graphics("img/talk3/cluster_centers.png")
+```
 
 ---
 
@@ -850,27 +889,23 @@ OPTICS является модификацией алгоритма DBSCAN, ко
 
 **Среднее внутрикластерное расстояние**:
 
-$$
-F_0 = \frac{\sum_{i < j} [a_i = a_j] \rho(x_i, x_j)}{\sum_{i < j} [a_i = a_j]} \rightarrow min
-$$
+$$F_0 = \frac{\sum_{i < j} [a_i = a_j] \rho(x_i, x_j)}{\sum_{i < j} [a_i = a_j]} \rightarrow min$$
 
 **Среднее межкластерное расстояние**:
 
-$$
-F_1 = \frac{\sum_{i < j} [a_i \neq a_j] \rho(x_i, x_j)}{\sum_{i < j} [a_i \neq a_j]} \rightarrow max
-$$
-
-где $[\cdot]$  индикаторная функция в нотации Айверсона:
-
-$$
-[P] = \begin{cases}
-  1, \text{if } P \text{ is TRUE};\\
-  0, \text{if } P \text{ is FALSE}.
-\end{cases}
-$$
+$$F_1 = \frac{\sum_{i < j} [a_i \neq a_j] \rho(x_i, x_j)}{\sum_{i < j} [a_i \neq a_j]} \rightarrow max$$
 
 **Отношение пары функционалов**:
 
-$$
-F_0/F_1 \rightarrow min
-$$
+$$F_0/F_1 \rightarrow min$$
+
+---
+
+## Критерии качества кластеризации:
+
+где $[\cdot]$  индикаторная функция в нотации Айверсона:
+
+$$[P] = \begin{cases}
+  1, \text{if } P \text{ is TRUE};\\
+  0, \text{if } P \text{ is FALSE}.
+\end{cases}$$
