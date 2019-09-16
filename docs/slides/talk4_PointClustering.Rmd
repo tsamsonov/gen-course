@@ -40,7 +40,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 Кластеризация относится к методам классификации (обучения) *без учителя*
 
-**К.В.Воронцов** Машинное обучение (курс лекций). [http://www.machinelearning.ru](http://www.machinelearning.ru)
+.small[**К.В.Воронцов** Машинное обучение (курс лекций). [http://www.machinelearning.ru](http://www.machinelearning.ru)]
 
 ---
 
@@ -455,7 +455,7 @@ knitr::opts_chunk$set(echo = FALSE)
 <!-- ![](hierch-dist1.png){width=900px} -->
 <img src="hierch-dist1.png" width="700">
 
-**К.В.Воронцов** Машинное обучение (курс лекций). [http://www.machinelearning.ru](http://www.machinelearning.ru)
+.small[**К.В.Воронцов** Машинное обучение (курс лекций). [http://www.machinelearning.ru](http://www.machinelearning.ru)]
 
 ---
 
@@ -463,7 +463,7 @@ knitr::opts_chunk$set(echo = FALSE)
 <!-- ![](hierch-dist2.png){width=900px} -->
 <img src="hierch-dist2.png" width="700">
 
-**К.В.Воронцов** Машинное обучение (курс лекций). [http://www.machinelearning.ru](http://www.machinelearning.ru)
+.small[**К.В.Воронцов** Машинное обучение (курс лекций). [http://www.machinelearning.ru](http://www.machinelearning.ru)]
 
 ---
 
@@ -474,7 +474,7 @@ knitr::opts_chunk$set(echo = FALSE)
 <!-- ![](hierch-dend1.png){width=900px} -->
 <img src="hierch-dend1.png" width="700">
 
-**К.В.Воронцов** Машинное обучение (курс лекций). [http://www.machinelearning.ru](http://www.machinelearning.ru)
+.small[**К.В.Воронцов** Машинное обучение (курс лекций). [http://www.machinelearning.ru](http://www.machinelearning.ru)]
 
 ---
 
@@ -485,7 +485,7 @@ knitr::opts_chunk$set(echo = FALSE)
 <!-- ![](hierch-dend2.png){width=900px} -->
 <img src="hierch-dend2.png" width="700">
 
-**К.В.Воронцов** Машинное обучение (курс лекций). [http://www.machinelearning.ru](http://www.machinelearning.ru)
+.small[**К.В.Воронцов** Машинное обучение (курс лекций). [http://www.machinelearning.ru](http://www.machinelearning.ru)]
 
 ---
 
@@ -496,7 +496,7 @@ knitr::opts_chunk$set(echo = FALSE)
 <!-- ![](hierch-dend3.png){width=900px}-->
 <img src="hierch-dend3.png" width="700">
 
-**К.В.Воронцов** Машинное обучение (курс лекций). [http://www.machinelearning.ru](http://www.machinelearning.ru)
+.small[**К.В.Воронцов** Машинное обучение (курс лекций). [http://www.machinelearning.ru](http://www.machinelearning.ru)]
 
 ---
 
@@ -507,7 +507,7 @@ knitr::opts_chunk$set(echo = FALSE)
 <!-- ![](hierch-dend4.png){width=900px} -->
 <img src="hierch-dend4.png" width="700">
 
-**К.В.Воронцов** Машинное обучение (курс лекций). [http://www.machinelearning.ru](http://www.machinelearning.ru)
+.small[**К.В.Воронцов** Машинное обучение (курс лекций). [http://www.machinelearning.ru](http://www.machinelearning.ru)]
 
 ---
 
@@ -522,7 +522,7 @@ knitr::opts_chunk$set(echo = FALSE)
 <!-- ![](hierch-res.png){width=800px} -->
 <img src="hierch-res.png" width="500">
 
-**К.В.Воронцов** Машинное обучение (курс лекций). [http://www.machinelearning.ru](http://www.machinelearning.ru)
+.small[**К.В.Воронцов** Машинное обучение (курс лекций). [http://www.machinelearning.ru](http://www.machinelearning.ru)]
 
 ---
 
