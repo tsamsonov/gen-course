@@ -18,150 +18,176 @@ output:
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
----
-
 ## Регионизация точек
 
 **Методы регионизации:**
 
 1. Ограничивающие прямоугольники
+
 2. Выпуклая оболочка
-3. Невыпуклые оболочки ($\alpha$-shape, $\chi$-shape)
 
+3. Невыпуклые оболочки ( $\alpha$-shape, $\chi$-shape)
 
+---
 
 ## Ограничивающий прямоугольник (envelope)
 
-<img src="envelope.png" width="800">
-<!-- ![](envelope.png){width=800px} -->
+```{r, out.width = "70%", fig.cap=""}
+knitr::include_graphics("img/talk3/envelope.png")
+```
 
 - Наиболее простой тип оболочки, который используется в ГИС для описания территориального охвата слоя (*экстент*)
 
 - Для построения в общем случае нужно 4 точки, которые обладают минимальным и максимальным значением координат из всего множества
 
-
+---
 
 ## Выпуклая оболочка (convex hull)
 
-<img src="chull.png" width="400">
-<!-- ![](chull.png){width=400px} -->
+```{r, out.width = "40%", fig.cap=""}
+knitr::include_graphics("img/talk3/chull.png")
+```
 
 - **Выпуклой оболочкой** множества $p$ называется
 наименьшее выпуклое множество, содержащее $p$
-
 - Выпуклая оболочка обозначается как $Conv(p)$
-
 - Выпуклая оболочка на плоскости является *пересечением всех полуплоскостей, содержащих* $p$
-
 - Существует несколько алгоритмов построения $Conv(p)$
 
-
-
-## Выпуклая оболочка
-<div style="display: inline-block; width: 45%; vertical-align: top;">
-  **Аналогия**
-
-  Представьте себе лассо, которое накидывается на множество гвоздей, битых в доску:
-  ![](lasso.png){width=330px}
-  
-</div>
-
-<div style="display: inline-block; width: 45%; vertical-align: top; margin-left: 2%">
-  **Выпуклое и невыпуклое**
-
-  *Выпуклое множество* в аффинном или векторном пространстве — множество, содержащее вместе с любыми двумя точками соединяющий их отрезок:
-  
-  <img src="convex_concave.png" width="400">
-  <!-- ![](convex_concave.png) -->
-</div>
-
-
+---
 
 ## Выпуклая оболочка
 
-**Алгоритм Джарвиса**
+.pull-left[
+```{r, out.width = "80%", fig.cap=""}
+knitr::include_graphics("img/talk3/chull.png")
+```
+Представьте себе лассо, которое накидывается на множество гвоздей, битых в доску:
+```{r, out.width = "40%", fig.cap=""}
+knitr::include_graphics("img/talk3/lasso.png")
+```
+]
 
-<div style="display: inline-block; width: 55%; vertical-align: top;">
+.pull-right[
+*Выпуклое множество* в аффинном или векторном пространстве — множество, содержащее вместе с любыми двумя точками соединяющий их отрезок:
+```{r, out.width = "100%", fig.cap=""}
+knitr::include_graphics("img/talk3/convex_concave.png")
+```
+]
 
-  1. Найти точку $p_0$ с наименьшим значением координаты $X$. Добавить в результат.
-  2. Найти точку $p_1$, образующую наименьший угол поворота по часовой стрелке относительно направления оси $Y$. Добавить в результат.
-  3. Найти все оставшиеся точки выпуклой оболочки $p_i, i = 2..k$, выбирая каждый раз такую точку $p_i$, что угол поворота от $p_{i-2} p_{i-1}$ к $p_{i-2} p_{i-1}$ наименьший. Остановиться, когда $p_i = p_0$
+---
 
-</div>
+## Алгоритм Джарвиса
 
-<div style="display: inline-block; width: 40%; vertical-align: top; margin-left: 2%">
-  ![](jarvis.png)
-</div>
+.left-60[
+1. Найти точку $p_0$ с наименьшим значением координаты $X$. Добавить в результат.
 
-**Jarvis, R. A.** (1973). *On the identification of the convex hull of a finite set of points in the plane*. Information Processing Letters 2: 18–21. doi:10.1016/0020-0190(73)90020-3.
+2. Найти точку $p_1$, образующую наименьший угол поворота по часовой стрелке относительно направления оси $Y$. Добавить в результат.
 
-## Выпуклая оболочка
+3. Найти все оставшиеся точки выпуклой оболочки $p_i, i = 2..k$, выбирая каждый раз такую точку $p_i$, что угол поворота от $p_{i-2} p_{i-1}$ к $p_{i-2} p_{i-1}$ наименьший. Остановиться, когда $p_i = p_0$
+]
 
-**Алгоритм Джарвиса**
+.right-40[
+```{r, out.width = "100%", fig.cap=""}
+knitr::include_graphics("img/talk3/jarvis.png")
+```
+]
 
-![](jarvis.gif)
+---
 
-**Jarvis, R. A.** (1973). *On the identification of the convex hull of a finite set of points in the plane*. Information Processing Letters 2: 18–21. doi:10.1016/0020-0190(73)90020-3.
+## Алгоритм Джарвиса
 
+.pull-left[
+```{r, out.width = "100%", fig.cap=""}
+knitr::include_graphics("img/talk3/jarvis.gif")
+```
+]
 
-## Минимальный по площади ограничивающий прямоугольник
+.pull-right[
+**Jarvis, R. A.** (1973). On the identification of the convex hull of a finite set of points in the plane. _Information Processing Letters_, 2: 18–21. doi:10.1016/0020-0190(73)90020-3.
+]
 
-**Минимальный по площади ограничивающий прямоугольник** (*minimum bounding rectangle  MBR*) является наименьшим по площади среди всех прямоугольников, охватывающих данное множество точек
+---
 
-<div style="display: inline-block; width: 45%; vertical-align: top;">
-  ![](mbr.png)
-</div>
+## MBR
 
-<div style="display: inline-block; width: 45%; vertical-align: top; margin-left: 2%">
-  Согласно теореме Фримана-Шапиро *одна из сторон MBR должна касаться выпуклой оболочки*.
+**Минимальный по площади ограничивающий прямоугольник** (*minimum bounding rectangle,  MBR*) является наименьшим по площади среди всех прямоугольников, охватывающих данное множество точек
 
-  **Freeman, H.; Shapira, R.** (1975), *Determining the minimum-area encasing rectangle for an arbitrary closed curve*. Communications of the ACM, 18: 409–413, MR 0375828, doi:10.1145/360881.360919.
-</div>
+.pull-left[
+```{r, out.width = "90%", fig.cap=""}
+knitr::include_graphics("img/talk3/mbr.png")
+```
+]
 
+.pull-right[
+Согласно теореме Фримана-Шапиро *одна из сторон MBR должна касаться выпуклой оболочки*.
+
+.small[**Freeman, H.; Shapira, R.** (1975), *Determining the minimum-area encasing rectangle for an arbitrary closed curve*. Communications of the ACM, 18: 409–413, MR 0375828, doi:10.1145/360881.360919.]
+]
+
+---
 
 ## Алгоритм Rotating Calipers
 
 Поворачиваем ограничивающий прямоугольник, совмещая его с одной из сторон выпуклой оболочки. Из них выбираем минимальный по площади.
 
-![](calipers.png){width=700px}
+.left-column[
+.small[**G.T.Toussaint** (1983). *Solving geometric problems with the rotating calipers*. Proceedings of IEEE MELECON'83, Athens, Greece, May 1983, pp. A10. 02/1-4.]
 
-**G.T.Toussaint** (1983). *Solving geometric problems with the rotating calipers*. Proceedings of IEEE MELECON'83, Athens, Greece, May 1983, pp. A10. 02/1-4.
+]
 
+.right-column[
+```{r, out.width = "85%", fig.cap=""}
+knitr::include_graphics("img/talk3/calipers.png")
+```
+]
 
+---
 
 ## Альфа-оболочка
 
-**Альфа-оболочка ($\alpha$-shape)**  обобщение понятия выпуклой оболочки, позволяющее строить оболочки, более точно описывающие форму множества, в том числе и вогнутые оболочки. Альфа-оболочка является площадной компонентой *альфа-комплекса ($\alpha$-complex)*, который строится на основе триангуляции Делоне множества точек.
+**Альфа-оболочка ( $\alpha$-shape)** — объединение треугольников в триангуляции Делоне, имеющих размеры больше заданного.
 
-![](ashape.png){width=600px}
+.left-column[
+.small[**Edelsbrunner H, Kirkpatrick D, Seidel R **(1983) *On the shape of a set of points in the plane*. IEEE Transactions on Information Theory, 29:551–559]
+]
 
-**Edelsbrunner H, Kirkpatrick D, Seidel R **(1983) *On the shape of a set of points in the plane*. IEEE Transactions on Information Theory, 29:551–559. doi: 10.1109/TIT.1983.1056714
+.right-column[
+```{r, out.width = "70%", fig.cap=""}
+knitr::include_graphics("img/talk3/ashape.png")
+```
+
+_Объединяемые треугольники входят в площадную компоненту альфа-комплекса._
+]
+
+---
 
 ## Альфа-комплекс
 
-**Альфа-комплекс ($\alpha$-complex)**  подмножество триангуляции Делоне, включающее узлы, а также ребра и треугольники, существующие при заданном радиусе диска $r= 1/\alpha$ (при $\alpha > 0$).
+**Альфа-комплекс ( $\alpha$-complex)**  подмножество триангуляции Делоне, включающее узлы, а также ребра и треугольники, существующие при заданном радиусе диска $r= 1/\alpha$ (при $\alpha > 0$).
 
-![](acomplex.png){width=900px}
+```{r, out.width = "75%", fig.cap=""}
+knitr::include_graphics("img/talk3/acomplex.png")
+```
 
 - При увеличении радиуса диска происходит образование и исчезновение циклов.
 
 - При $\alpha = 0$ объединение треугольников альфа-комплекса совпадает с *выпуклой оболочкой* множества точек.
 
-
+---
 
 ## Типы альфа-комплексов
-<div style="display: inline-block; width: 45%; vertical-align: top;">
-  **Стандартный**
 
-  $\alpha = const$
+.pull-left[
+**Стандартный**
+```{r, out.width = "100%", fig.cap=""}
+knitr::include_graphics("img/talk3/acomplex_std.png")
+```
+]
 
-  ![](acomplex_std.png)
-</div>
-
-<div style="display: inline-block; width: 45%; vertical-align: top; margin-left: 2%">
-  **Взвешенный**
-
-  $\alpha = f(p)$
-
-  ![](acomplex_wgt.png)
-</div>
+.pull-right[
+**Взвешенный**
+```{r, out.width = "100%", fig.cap=""}
+knitr::include_graphics("img/talk3/acomplex_wgt.png")
+```
+]
