@@ -70,10 +70,11 @@
 <li class="chapter" data-level="1" data-path="points.html"><a href="points.html"><i class="fa fa-check"></i><b>1</b> Генерализация точечных объектов</a><ul>
 <li class="chapter" data-level="1.1" data-path="points.html"><a href="points.html#points-sel"><i class="fa fa-check"></i><b>1.1</b> Отбор</a><ul>
 <li class="chapter" data-level="1.1.1" data-path="points.html"><a href="points.html#section-1"><i class="fa fa-check"></i><b>1.1.1</b> Краткий обзор</a></li>
-<li class="chapter" data-level="1.1.2" data-path="points.html"><a href="points.html#points-sel-work"><i class="fa fa-check"></i><b>1.1.2</b> Самостоятельная работа</a></li>
+<li class="chapter" data-level="1.1.2" data-path="points.html"><a href="points.html#points-sel-work"><i class="fa fa-check"></i><b>1.1.2</b> Самостоятельная работа №1</a></li>
 </ul></li>
-<li class="chapter" data-level="1.2" data-path="points.html"><a href="points.html#points-clust"><i class="fa fa-check"></i><b>1.2</b> Кластеризация</a><ul>
+<li class="chapter" data-level="1.2" data-path="points.html"><a href="points.html#points-clust"><i class="fa fa-check"></i><b>1.2</b> Кластеризация и регионизация</a><ul>
 <li class="chapter" data-level="1.2.1" data-path="points.html"><a href="points.html#section-5"><i class="fa fa-check"></i><b>1.2.1</b> Краткий обзор</a></li>
+<li class="chapter" data-level="1.2.2" data-path="points.html"><a href="points.html#points-clust-work"><i class="fa fa-check"></i><b>1.2.2</b> Самостоятельная работа №2</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -109,7 +110,7 @@
 </blockquote>
 </div>
 <div id="points-sel-work" class="section level3">
-<h3><span class="header-section-number">1.1.2</span> Самостоятельная работа</h3>
+<h3><span class="header-section-number">1.1.2</span> Самостоятельная работа №1</h3>
 <p><strong>Цель задания</strong> — освоение методики автоматизированного отбора точечных объектов на примере населенных пунктов.</p>
 <p>Задачи:</p>
 <ol style="list-style-type: decimal">
@@ -240,6 +241,12 @@
 <li>картограмму условной графической нагрузки</li>
 </ul></li>
 </ol>
+<div class="figure"><span id="fig:unnamed-chunk-3"></span>
+<img src="img/selection.png" alt="Пример оформления результатов работы" width="80%" />
+<p class="caption">
+Рис. 1.1: Пример оформления результатов работы
+</p>
+</div>
 </div>
 <div id="section-4" class="section level4 unnumbered">
 <h4>Отчет</h4>
@@ -255,15 +262,84 @@
 </div>
 </div>
 <div id="points-clust" class="section level2">
-<h2><span class="header-section-number">1.2</span> Кластеризация</h2>
+<h2><span class="header-section-number">1.2</span> Кластеризация и регионизация</h2>
 <div id="section-5" class="section level3">
 <h3><span class="header-section-number">1.2.1</span> Краткий обзор</h3>
 <p>Для просмотра презентации щелкните на ней один раз левой кнопкой мыши и листайте, используя кнопки на клавиатуре:
 <iframe src="https://tsamsonov.github.io/gen-course/slides/talk4_PointClustering.html#1" width="672" height="380px"></iframe></p>
+<iframe src="https://tsamsonov.github.io/gen-course/slides/talk5_PointAggregation.html#1" width="672" height="380px">
+</iframe>
 <blockquote>
 <p>Презентацию можно открыть в отдельном окне или вкладке браузере. Для этого щелкните по ней правой кнопкой мыши и выберите соответствующую команду.</p>
 </blockquote>
+</div>
+<div id="points-clust-work" class="section level3">
+<h3><span class="header-section-number">1.2.2</span> Самостоятельная работа №2</h3>
+<p><strong>Цель задания</strong> — освоение методов кластеризации и регионизации точек, а также построения центроидов. В качестве метода кластеризации предлагается использовать DBSCAN. В качестве метода построения региона — альфа-оболочку.</p>
+<p>Исходные данные: точки населенных пунктов из Самостоятельной работы №1.</p>
+<div id="section-6" class="section level4 unnumbered">
+<h4>Изучение работы методов кластеризации и регионизации</h4>
+<p>На данном этапе необходимо изучить принципы работы метода кластеризации DBSCAN, построения альфа-оболочки и центроида полигона:</p>
+<ol style="list-style-type: decimal">
+<li>Метод DBSCAN доступен в виде инструмента Python, приложенного к данному заданию.</li>
+<li>Метод альфа-оболочки доступен в инструменте <strong>Cartography Tools</strong> &gt; <strong>Generalization</strong> &gt; <strong>Aggregate Points</strong></li>
+<li>Центроид полигона можно получить посредством применения инструмента <strong>Data Management Tools</strong> &gt; <strong>Features</strong> &gt; <strong>Feature to Polygon</strong></li>
+</ol>
+<p>Меняя параметры инструментов (расстояния, количество точек), ознакомьтесь с тем, как это влияет на получаемый результат. Оболочки, как и кластеры стройте для набора данных test.</p>
+</div>
+<div id="section-7" class="section level4 unnumbered">
+<h4>Автоматизация выделения регионов и центроидов кластеров</h4>
+<p>Необходимо создать модель геообработки, которая будет принимать на вход слой маркированных точек и выдавать класс пространственных объектов с альфа-оболочками каждого кластера, а также центроидами кластеров</p>
+<p><strong>Параметры инструмента:</strong></p>
+<ol style="list-style-type: decimal">
+<li>Входной слой точек (Input points)</li>
+<li>Название поля, в котором хранятся марки кластеров (Cluster ID Field)</li>
+<li>Расстояние кластеризации (Сluster distance)</li>
+<li>Выходной слой альфа-оболочек (Output regions feature class)</li>
+<li>Выходной слой центроидов (Output centroids feature class)</li>
+</ol>
+<p><strong>Требования к результатам:</strong></p>
+<ol style="list-style-type: decimal">
+<li>Каждый регион должен соответствовать своему кластеру и содержать в качестве атрибутов исходный идентификатор и количество точек, входящих в данный кластер.</li>
+<li>Центроиды кластеров должны быть получены методом Inside (внутри)</li>
+</ol>
+<p><strong>Рекомендации по выполнению:</strong></p>
+<ol style="list-style-type: decimal">
+<li>Инструмент должен состоять из двух моделей. Первая модель принимает на вход все параметры и создает пустой полигональный класс пространственных объектов для добавления альфа-оболочек кластеров. Это класс вместе со всеми исходными параметрами передается в другую модель, которая будет наполнять его оболочками для каждого кластера.</li>
+<li>Для прохода по номерам кластеров используйте итератор типа Iterate Field Values в режиме Unique Values (уникальные значения). Сделайте так, чтобы на выходе не создавались кластеры для точек-выбросов (идентификатор -1).</li>
+<li>Для полученных регионов кластеров необходимо сделать Dissolve, так как они могут состоять из нескольких оболочек, касающихся в одной точке.</li>
+<li>В качестве расстояния кластеризации необходимо указывать удвоенное расстояние, использованное ранее в методе DBSCAN. В этом случае оболочки будут соответствовать исходным кластерам.</li>
+</ol>
+</div>
+<div id="section-8" class="section level4 unnumbered">
+<h4>Кластеризация системы расселения субъекта</h4>
+<ol style="list-style-type: decimal">
+<li>Cроецируйте исходные данные в проекцию, оптимальную для выбранного региона.</li>
+<li>Используя созданный инструмент, постройте серию из 5 кластеризаций населенных пунктов выбранного вами субъекта методом DBSCAN &gt; альфа-оболочки &gt; центроиды. Количество точек в кластере оставьте постоянным (3), но меняйте значение расстояния кластеризации. Расстояния подберите таким образом, чтобы различия в кластеризации были очевидны и помогали выявлять пространственные группировки разного масштаба.</li>
+<li>Рассчитайте для каждой кластеризации меры качества: среднее внутрикластерное и межкластерное расстояние, их отношение. Сведите их в таблицу.</li>
+<li>Для каждого уровня кластеризации подготовьте изображение, включающее: а) исходные точки, б) регионы кластеров, в) центроиды кластеров г) элементы географической основы (реки, дороги, границы субъекта). Точки и регионы должны быть помечены разными цветами по номерам кластеров. Центроиды должны быть показаны окружностями радиуса, пропорционального количеству входящих точек.</li>
+</ol>
+Пример изображения кластеров:
+<div class="figure"><span id="fig:unnamed-chunk-6"></span>
+<img src="img/clustering.png" alt="Пример оформления результатов работы" width="100%" />
+<p class="caption">
+Рис. 1.2: Пример оформления результатов работы
+</p>
+</div>
+</div>
+<div id="section-9" class="section level4 unnumbered">
+<h4>Отчет</h4>
+<p>Напишите отчет о проделанной работе, включающий:</p>
+<ol style="list-style-type: decimal">
+<li>Цель и задачи работы.</li>
+<li>Описание алгоритмов DBSCAN, построения альфа-оболочки и центроида полигона.</li>
+<li>Описание процесса создания модели геообработки для выделения регионов и центроидов кластеров.</li>
+<li>Серию из 5 карт кластерной структуры системы расселения региона, полученную по результатам кластеризации.</li>
+<li>Географический анализ результатов.</li>
+</ol>
+<p>В отчете необходимо отразить, насколько реалистично выглядят полученные кластеры, к чему они привязаны, Можно ли выявить полимасштабность организации системы расселения на основе полученных изображений? Проанализируйте также полученные оценки критериев качества кластеризации.</p>
 
+</div>
 </div>
 </div>
 </div>
