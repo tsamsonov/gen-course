@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Картографические базы данных</title>
   <meta name="description" content="Курс лекций по генерализации пространственных данных" />
-  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Картографические базы данных" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Тимофей Самсонов" />
 
 
-<meta name="date" content="2019-09-16" />
+<meta name="date" content="2019-10-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -40,6 +40,9 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -69,11 +72,18 @@
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Введение</a></li>
 <li class="chapter" data-level="1" data-path="points.html"><a href="points.html"><i class="fa fa-check"></i><b>1</b> Генерализация точечных объектов</a><ul>
 <li class="chapter" data-level="1.1" data-path="points.html"><a href="points.html#points-sel"><i class="fa fa-check"></i><b>1.1</b> Отбор</a><ul>
-<li class="chapter" data-level="1.1.1" data-path="points.html"><a href="points.html#section-1"><i class="fa fa-check"></i><b>1.1.1</b> Краткий обзор</a></li>
-<li class="chapter" data-level="1.1.2" data-path="points.html"><a href="points.html#points-sel-work"><i class="fa fa-check"></i><b>1.1.2</b> Самостоятельная работа</a></li>
+<li class="chapter" data-level="1.1.1" data-path="points.html"><a href="points.html#краткий-обзор"><i class="fa fa-check"></i><b>1.1.1</b> Краткий обзор</a></li>
+<li class="chapter" data-level="1.1.2" data-path="points.html"><a href="points.html#points-sel-work"><i class="fa fa-check"></i><b>1.1.2</b> Самостоятельная работа №1</a></li>
 </ul></li>
-<li class="chapter" data-level="1.2" data-path="points.html"><a href="points.html#points-clust"><i class="fa fa-check"></i><b>1.2</b> Кластеризация</a><ul>
-<li class="chapter" data-level="1.2.1" data-path="points.html"><a href="points.html#section-5"><i class="fa fa-check"></i><b>1.2.1</b> Краткий обзор</a></li>
+<li class="chapter" data-level="1.2" data-path="points.html"><a href="points.html#points-clust"><i class="fa fa-check"></i><b>1.2</b> Кластеризация и регионизация</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="points.html"><a href="points.html#краткий-обзор-1"><i class="fa fa-check"></i><b>1.2.1</b> Краткий обзор</a></li>
+<li class="chapter" data-level="1.2.2" data-path="points.html"><a href="points.html#points-clust-work"><i class="fa fa-check"></i><b>1.2.2</b> Самостоятельная работа №2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="lines.html"><a href="lines.html"><i class="fa fa-check"></i><b>2</b> Генерализация линейных объектов</a><ul>
+<li class="chapter" data-level="2.1" data-path="points.html"><a href="points.html#points-sel"><i class="fa fa-check"></i><b>2.1</b> Геометрическое упрощение</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="lines.html"><a href="lines.html#краткий-обзор-2"><i class="fa fa-check"></i><b>2.1.1</b> Краткий обзор</a></li>
+<li class="chapter" data-level="2.1.2" data-path="points.html"><a href="points.html#points-sel-work"><i class="fa fa-check"></i><b>2.1.2</b> Самостоятельная работа №3 (Автоматизация геометрического упрощения линий)</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -100,9 +110,9 @@
 <h1 class="title">Картографические базы данных</h1>
 <h2 class="subtitle"><em>Генерализация пространственных данных</em></h2>
 <p class="author"><em>Тимофей Самсонов</em></p>
-<p class="date"><em>2019-09-16</em></p>
+<p class="date"><em>2019-10-14</em></p>
 </div>
-<div id="section" class="section level1 unnumbered">
+<div id="введение" class="section level1 unnumbered">
 <h1>Введение</h1>
 <p>Картографические базы данных</p>
 
@@ -118,11 +128,13 @@
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({

@@ -4,6 +4,7 @@ output_dir: docs
 rmd_files:
     - "index.Rmd"
     - "03-Points.Rmd"
+    - "04-Lines.Rmd"
 new_session: yes
 language:
   label:

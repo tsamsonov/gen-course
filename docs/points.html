@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Глава 1 Генерализация точечных объектов | Картографические базы данных</title>
   <meta name="description" content="Курс лекций по генерализации пространственных данных" />
-  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Глава 1 Генерализация точечных объектов | Картографические базы данных" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Тимофей Самсонов" />
 
 
-<meta name="date" content="2019-09-16" />
+<meta name="date" content="2019-10-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="index.html"/>
-
+<link rel="next" href="lines.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -40,6 +40,9 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -69,12 +72,18 @@
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Введение</a></li>
 <li class="chapter" data-level="1" data-path="points.html"><a href="points.html"><i class="fa fa-check"></i><b>1</b> Генерализация точечных объектов</a><ul>
 <li class="chapter" data-level="1.1" data-path="points.html"><a href="points.html#points-sel"><i class="fa fa-check"></i><b>1.1</b> Отбор</a><ul>
-<li class="chapter" data-level="1.1.1" data-path="points.html"><a href="points.html#section-1"><i class="fa fa-check"></i><b>1.1.1</b> Краткий обзор</a></li>
+<li class="chapter" data-level="1.1.1" data-path="points.html"><a href="points.html#краткий-обзор"><i class="fa fa-check"></i><b>1.1.1</b> Краткий обзор</a></li>
 <li class="chapter" data-level="1.1.2" data-path="points.html"><a href="points.html#points-sel-work"><i class="fa fa-check"></i><b>1.1.2</b> Самостоятельная работа №1</a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="points.html"><a href="points.html#points-clust"><i class="fa fa-check"></i><b>1.2</b> Кластеризация и регионизация</a><ul>
-<li class="chapter" data-level="1.2.1" data-path="points.html"><a href="points.html#section-5"><i class="fa fa-check"></i><b>1.2.1</b> Краткий обзор</a></li>
+<li class="chapter" data-level="1.2.1" data-path="points.html"><a href="points.html#краткий-обзор-1"><i class="fa fa-check"></i><b>1.2.1</b> Краткий обзор</a></li>
 <li class="chapter" data-level="1.2.2" data-path="points.html"><a href="points.html#points-clust-work"><i class="fa fa-check"></i><b>1.2.2</b> Самостоятельная работа №2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="lines.html"><a href="lines.html"><i class="fa fa-check"></i><b>2</b> Генерализация линейных объектов</a><ul>
+<li class="chapter" data-level="2.1" data-path="points.html"><a href="points.html#points-sel"><i class="fa fa-check"></i><b>2.1</b> Геометрическое упрощение</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="lines.html"><a href="lines.html#краткий-обзор-2"><i class="fa fa-check"></i><b>2.1.1</b> Краткий обзор</a></li>
+<li class="chapter" data-level="2.1.2" data-path="points.html"><a href="points.html#points-sel-work"><i class="fa fa-check"></i><b>2.1.2</b> Самостоятельная работа №3 (Автоматизация геометрического упрощения линий)</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -101,7 +110,7 @@
 <h1><span class="header-section-number">Глава 1</span> Генерализация точечных объектов</h1>
 <div id="points-sel" class="section level2">
 <h2><span class="header-section-number">1.1</span> Отбор</h2>
-<div id="section-1" class="section level3">
+<div id="краткий-обзор" class="section level3">
 <h3><span class="header-section-number">1.1.1</span> Краткий обзор</h3>
 <p>Для просмотра презентации щелкните на ней один раз левой кнопкой мыши и листайте, используя кнопки на клавиатуре:
 <iframe src="https://tsamsonov.github.io/gen-course/slides/talk3_PointSelection.html#1" width="672" height="380px"></iframe></p>
@@ -121,7 +130,7 @@
 <li>Осуществить автоматизированный отбор населенных пунктов для масштаба <span class="math inline">\(1:4~000~000\)</span>.</li>
 <li>Произвести графическую оценку результатов генерализации.</li>
 </ol>
-<div id="settlement-spacing" class="section level4 unnumbered">
+<div id="реализация-алгоритма-settlement-spacing" class="section level4 unnumbered">
 <h4>Реализация алгоритма Settlement Spacing</h4>
 <p><strong>Входные параметры:</strong></p>
 <ol style="list-style-type: decimal">
@@ -165,7 +174,7 @@
 <li><p>Вычислите поле <code>Remain</code> для текущей точки (2.1), используя значение флага отбора, полученное на шаге 5 (<strong>Calculate Field</strong>).</p></li>
 </ol>
 </div>
-<div id="section-2" class="section level4 unnumbered">
+<div id="реализация-модели-оценки-условной-графической-нагрузки" class="section level4 unnumbered">
 <h4>Реализация модели оценки условной графической нагрузки</h4>
 <p><em>Условная графическая нагрузка</em> – средневзвешенное количество точек на единицу площади, где в качестве веса выступает размер точки, используемый при ее отображении на карте</p>
 <p><strong>Входные параметры:</strong></p>
@@ -183,7 +192,7 @@
 <li>Сохраняет полученную сетку в выходной файл.</li>
 </ol>
 </div>
-<div id="section-3" class="section level4 unnumbered">
+<div id="отбор-населенных-пунктов-для-карты-масштаба-14-000-000" class="section level4 unnumbered">
 <h4>Отбор населенных пунктов для карты масштаба 1:4 000 000</h4>
 <p>В данной — заключительной — части задания необходимо произвести отбор населенных пунктов, используя собственные модели геообработки, а также произвести графическую оценку полученных результатов.</p>
 <p><strong>Алгоритм выполнения задания:</strong></p>
@@ -248,7 +257,7 @@
 </p>
 </div>
 </div>
-<div id="section-4" class="section level4 unnumbered">
+<div id="отчет" class="section level4 unnumbered">
 <h4>Отчет</h4>
 <p>Работа оформляется в виде письменного отчета, в котором необходимо изложить все этапы исследования:</p>
 <ul>
@@ -263,7 +272,7 @@
 </div>
 <div id="points-clust" class="section level2">
 <h2><span class="header-section-number">1.2</span> Кластеризация и регионизация</h2>
-<div id="section-5" class="section level3">
+<div id="краткий-обзор-1" class="section level3">
 <h3><span class="header-section-number">1.2.1</span> Краткий обзор</h3>
 <p>Для просмотра презентации щелкните на ней один раз левой кнопкой мыши и листайте, используя кнопки на клавиатуре:
 <iframe src="https://tsamsonov.github.io/gen-course/slides/talk4_PointClustering.html#1" width="672" height="380px"></iframe></p>
@@ -277,7 +286,7 @@
 <h3><span class="header-section-number">1.2.2</span> Самостоятельная работа №2</h3>
 <p><strong>Цель задания</strong> — освоение методов кластеризации и регионизации точек, а также построения центроидов. В качестве метода кластеризации предлагается использовать <em>DBSCAN</em>. В качестве метода построения региона — <em>альфа-оболочку</em>.</p>
 <p>Исходные данные: точки населенных пунктов из Самостоятельной работы №1.</p>
-<div id="section-6" class="section level4 unnumbered">
+<div id="изучение-работы-методов-кластеризации-и-регионизации" class="section level4 unnumbered">
 <h4>Изучение работы методов кластеризации и регионизации</h4>
 <p>На данном этапе необходимо изучить принципы работы метода кластеризации DBSCAN, построения альфа-оболочки и центроида полигона:</p>
 <ol style="list-style-type: decimal">
@@ -287,7 +296,7 @@
 </ol>
 <p>Меняя параметры инструментов (расстояния, количество точек), ознакомьтесь с тем, как это влияет на получаемый результат. Оболочки, как и кластеры стройте для набора данных <code>test</code>.</p>
 </div>
-<div id="section-7" class="section level4 unnumbered">
+<div id="автоматизация-выделения-регионов-и-центроидов-кластеров" class="section level4 unnumbered">
 <h4>Автоматизация выделения регионов и центроидов кластеров</h4>
 <p>Необходимо создать модель геообработки, которая будет принимать на вход слой маркированных точек и выдавать класс пространственных объектов с альфа-оболочками каждого кластера, а также центроидами кластеров</p>
 <p><strong>Параметры инструмента:</strong></p>
@@ -311,7 +320,7 @@
 <li>В качестве расстояния кластеризации необходимо указывать удвоенное расстояние, использованное ранее в методе <em>DBSCAN</em>. В этом случае оболочки будут соответствовать исходным кластерам.</li>
 </ol>
 </div>
-<div id="section-8" class="section level4 unnumbered">
+<div id="кластеризация-системы-расселения-субъекта" class="section level4 unnumbered">
 <h4>Кластеризация системы расселения субъекта</h4>
 <ol style="list-style-type: decimal">
 <li>Cроецируйте исходные данные в проекцию, оптимальную для выбранного региона.</li>
@@ -328,7 +337,7 @@
 </div>
 <p>Перед вставкой данных карт в отчет добавьте на них элементы географической основы или используйте карту-подложку в виде картографического веб-сервиса.</p>
 </div>
-<div id="section-9" class="section level4 unnumbered">
+<div id="отчет-1" class="section level4 unnumbered">
 <h4>Отчет</h4>
 <p>Напишите отчет о проделанной работе, включающий:</p>
 <ol style="list-style-type: decimal">
@@ -349,17 +358,19 @@
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="lines.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
