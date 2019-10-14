@@ -1,11 +1,11 @@
-book_filename: "gen-course"
-chapter_name: "Глава "
+book_filename: "gen"
+delete_merged_file: true
 output_dir: docs
+chapter_name: "Глава "
 rmd_files:
     - "index.Rmd"
     - "03-Points.Rmd"
     - "04-Lines.Rmd"
-new_session: yes
 language:
   label:
     fig: 'Рис. '

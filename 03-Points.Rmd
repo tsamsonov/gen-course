@@ -1,9 +1,5 @@
 # Генерализация точечных объектов {#points}
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-```
-
 ## Отбор {#points-sel}
 
 ### Краткий обзор

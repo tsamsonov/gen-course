@@ -1,9 +1,10 @@
 bookdown::gitbook:
+  fig_caption: yes
+  split_by: 'section+number'
   css: style.css
-#  df_print: paged
   config:
     toc:
-      collapse: section
+      collapse: subsection
       before: |
         <li><a href="./">Генерализация пространственных данных</a></li>
       after: |
