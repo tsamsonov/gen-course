@@ -82,8 +82,7 @@
 </ul></li>
 <li class="chapter" data-level="2" data-path="2-lines.html"><a href="2-lines.html"><i class="fa fa-check"></i><b>2</b> Генерализация линейных объектов</a><ul>
 <li class="chapter" data-level="2.1" data-path="2-1-lines-simpl.html"><a href="2-1-lines-simpl.html"><i class="fa fa-check"></i><b>2.1</b> Геометрическое упрощение</a><ul>
-<li class="chapter" data-level="2.1.1" data-path="2-1-lines-simpl.html"><a href="2-1-lines-simpl.html#lines-simpl-over"><i class="fa fa-check"></i><b>2.1.1</b> Краткий обзор</a></li>
-<li class="chapter" data-level="2.1.2" data-path="2-1-lines-simpl.html"><a href="2-1-lines-simpl.html#lines-simpl-work"><i class="fa fa-check"></i><b>2.1.2</b> Самостоятельная работа №3 (Автоматизация геометрического упрощения линий)</a></li>
+<li class="chapter" data-level="2.1.1" data-path="2-1-lines-simpl.html"><a href="2-1-lines-simpl.html#lines-simpl-work"><i class="fa fa-check"></i><b>2.1.1</b> Самостоятельная работа №3 (Автоматизация геометрического упрощения линий)</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -108,16 +107,14 @@
             <section class="normal" id="section-">
 <div id="lines-simpl" class="section level2">
 <h2><span class="header-section-number">2.1</span> Геометрическое упрощение</h2>
-<div id="lines-simpl-over" class="section level3">
-<h3><span class="header-section-number">2.1.1</span> Краткий обзор</h3>
-<p>Для просмотра презентации щелкните на ней один раз левой кнопкой мыши и листайте, используя кнопки на клавиатуре:
-<iframe src="https://tsamsonov.github.io/gen-course/slides/talk6_LineSimplification.html#1" width="672" height="380px"></iframe></p>
-<blockquote>
-<p>Презентацию можно открыть в отдельном окне или вкладке браузере. Для этого щелкните по ней правой кнопкой мыши и выберите соответствующую команду.</p>
-</blockquote>
-</div>
+<!-- ### Краткий обзор {#lines-simpl-over} -->
+<!-- Для просмотра презентации щелкните на ней один раз левой кнопкой мыши и листайте, используя кнопки на клавиатуре: -->
+<!-- ```{r, echo=FALSE} -->
+<!-- knitr::include_url('https://tsamsonov.github.io/gen-course/slides/talk6_LineSimplification.html#1', height = '380px') -->
+<!-- ``` -->
+<!-- > Презентацию можно открыть в отдельном окне или вкладке браузере. Для этого щелкните по ней правой кнопкой мыши и выберите соответствующую команду. -->
 <div id="lines-simpl-work" class="section level3">
-<h3><span class="header-section-number">2.1.2</span> Самостоятельная работа №3 (Автоматизация геометрического упрощения линий)</h3>
+<h3><span class="header-section-number">2.1.1</span> Самостоятельная работа №3 (Автоматизация геометрического упрощения линий)</h3>
 <p><strong>Цель задания</strong> — освоение методики геометрического упрощения линий.</p>
 <p><strong>Аннотация</strong>. Необходимо реализовать метод Ли-Оупеншоу для генерализации линий. Для этого в среде Model Builder создается модель геообработки, осуществляющая последовательный запуск инструментов ArcToolbox. После создания инструмента необходимо сравнить результаты работы алгоритма с тем, что получается при обработке линий посредством алгоритма Дугласа-Пейкера, Ванга-Мюллера и Висвалингам-Уайатта. Задание выполняется в ГИС-пакете ArcGIS 10.5.</p>
 <p><strong>Алгоритм Ли-Оупеншоу</strong> <span class="citation">(Li and Openshaw <a href="#ref-Li:1992jg" role="doc-biblioref">1992</a>)</span> использует «естественный принцип», суть которого заключается в удалении деталей, размер которых менее видимой величины. Для этого на исходное множество линий накладывается регулярная сет ка ячеек с разрешением <em>d</em> Участок линии, пересекающий ячейку, имеет точку входа в нее и точку выхода. Этот участок заменяется на середину отрезка, соединяющего две данные точки. Таким образом, удаляются все изгибы, находящиеся внутри ячеек. Принцип работы алгоритма иллюстрирует Рис. <a href="2-1-lines-simpl.html#fig:lio">3</a>. Видно, что по своему поведению результирующая линия похожа на скользящее среднее.</p>
