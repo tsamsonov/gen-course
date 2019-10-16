@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>1.2 Кластеризация и регионизация | Картографические базы данных</title>
+  <meta name="description" content="Курс лекций по генерализации пространственных данных" />
+  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="1.2 Кластеризация и регионизация | Картографические базы данных" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Курс лекций по генерализации пространственных данных" />
+  <meta name="github-repo" content="tsamsonov/gen-course" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="1.2 Кластеризация и регионизация | Картографические базы данных" />
+  
+  <meta name="twitter:description" content="Курс лекций по генерализации пространственных данных" />
+  
+
+<meta name="author" content="Тимофей Самсонов" />
+
+
+<meta name="date" content="2019-10-16" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="points-sel.html"/>
+<link rel="next" href="lines.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Генерализация пространственных данных</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Введение</a></li>
+<li class="chapter" data-level="1" data-path="points.html"><a href="points.html"><i class="fa fa-check"></i><b>1</b> Генерализация точечных объектов</a><ul>
+<li class="chapter" data-level="1.1" data-path="points-sel.html"><a href="points-sel.html"><i class="fa fa-check"></i><b>1.1</b> Отбор</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="points-sel.html"><a href="points-sel.html#краткий-обзор"><i class="fa fa-check"></i><b>1.1.1</b> Краткий обзор</a></li>
+<li class="chapter" data-level="1.1.2" data-path="points-sel.html"><a href="points-sel.html#points-sel-work"><i class="fa fa-check"></i><b>1.1.2</b> Самостоятельная работа №1</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="points-clust.html"><a href="points-clust.html"><i class="fa fa-check"></i><b>1.2</b> Кластеризация и регионизация</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="points-clust.html"><a href="points-clust.html#краткий-обзор-1"><i class="fa fa-check"></i><b>1.2.1</b> Краткий обзор</a></li>
+<li class="chapter" data-level="1.2.2" data-path="points-clust.html"><a href="points-clust.html#points-clust-work"><i class="fa fa-check"></i><b>1.2.2</b> Самостоятельная работа №2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="lines.html"><a href="lines.html"><i class="fa fa-check"></i><b>2</b> Генерализация линейных объектов</a><ul>
+<li class="chapter" data-level="2.1" data-path="lines-simpl.html"><a href="lines-simpl.html"><i class="fa fa-check"></i><b>2.1</b> Геометрическое упрощение</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="lines-simpl.html"><a href="lines-simpl.html#lines-simpl-work"><i class="fa fa-check"></i><b>2.1.1</b> Самостоятельная работа №3 (Автоматизация геометрического упрощения линий)</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://istina.msu.ru/profile/tsamsonov/" target="blank">Тимофей Самсонов</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Картографические базы данных</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="points-clust" class="section level2">
+<h2><span class="header-section-number">1.2</span> Кластеризация и регионизация</h2>
+<div id="краткий-обзор-1" class="section level3">
+<h3><span class="header-section-number">1.2.1</span> Краткий обзор</h3>
+<p>Для просмотра презентации щелкните на ней один раз левой кнопкой мыши и листайте, используя кнопки на клавиатуре:
+<iframe src="https://tsamsonov.github.io/gen-course/slides/talk4_PointClustering.html#1" width="672" height="380px"></iframe></p>
+<iframe src="https://tsamsonov.github.io/gen-course/slides/talk5_PointAggregation.html#1" width="672" height="380px">
+</iframe>
+<blockquote>
+<p>Презентацию можно открыть в отдельном окне или вкладке браузере. Для этого щелкните по ней правой кнопкой мыши и выберите соответствующую команду.</p>
+</blockquote>
+</div>
+<div id="points-clust-work" class="section level3">
+<h3><span class="header-section-number">1.2.2</span> Самостоятельная работа №2</h3>
+<p><strong>Цель задания</strong> — освоение методов кластеризации и регионизации точек, а также построения центроидов. В качестве метода кластеризации предлагается использовать <em>DBSCAN</em>. В качестве метода построения региона — <em>альфа-оболочку</em>.</p>
+<p>Исходные данные: точки населенных пунктов из Самостоятельной работы №1.</p>
+<div id="изучение-работы-методов-кластеризации-и-регионизации" class="section level4 unnumbered">
+<h4>Изучение работы методов кластеризации и регионизации</h4>
+<p>На данном этапе необходимо изучить принципы работы метода кластеризации DBSCAN, построения альфа-оболочки и центроида полигона:</p>
+<ol style="list-style-type: decimal">
+<li>Метод DBSCAN доступен в виде инструмента Python, приложенного к данному заданию.</li>
+<li>Метод альфа-оболочки доступен в инструменте <strong>Cartography Tools</strong> &gt; <strong>Generalization</strong> &gt; <strong>Aggregate Points</strong>.</li>
+<li>Центроид полигона можно получить посредством применения инструмента <strong>Data Management Tools</strong> &gt; <strong>Features</strong> &gt; <strong>Feature to Polygon</strong>.</li>
+</ol>
+<p>Меняя параметры инструментов (расстояния, количество точек), ознакомьтесь с тем, как это влияет на получаемый результат. Оболочки, как и кластеры стройте для набора данных <code>test</code>.</p>
+</div>
+<div id="автоматизация-выделения-регионов-и-центроидов-кластеров" class="section level4 unnumbered">
+<h4>Автоматизация выделения регионов и центроидов кластеров</h4>
+<p>Необходимо создать модель геообработки, которая будет принимать на вход слой маркированных точек и выдавать класс пространственных объектов с альфа-оболочками каждого кластера, а также центроидами кластеров</p>
+<p><strong>Параметры инструмента:</strong></p>
+<ol style="list-style-type: decimal">
+<li>Входной слой точек (<em>Input points</em>)</li>
+<li>Название поля, в котором хранятся марки кластеров (<em>Cluster ID Field</em>)</li>
+<li>Расстояние кластеризации (<em>Сluster distance</em>)</li>
+<li>Выходной слой альфа-оболочек (<em>Output regions feature class</em>)</li>
+<li>Выходной слой центроидов (<em>Output centroids feature class</em>)</li>
+</ol>
+<p><strong>Требования к результатам:</strong></p>
+<ol style="list-style-type: decimal">
+<li>Каждый регион должен соответствовать своему кластеру и содержать в качестве атрибутов исходный идентификатор и количество точек, входящих в данный кластер.</li>
+<li>Центроиды кластеров должны быть получены методом <code>Inside</code> (внутри)</li>
+</ol>
+<p><strong>Рекомендации по выполнению:</strong></p>
+<ol style="list-style-type: decimal">
+<li>Инструмент должен состоять из двух моделей. Первая модель принимает на вход все параметры и создает пустой полигональный класс пространственных объектов для добавления альфа-оболочек кластеров. Это класс вместе со всеми исходными параметрами передается в другую модель, которая будет наполнять его оболочками для каждого кластера.</li>
+<li>Для прохода по номерам кластеров используйте итератор типа <strong>Iterate Field Values</strong> в режиме <code>Unique Values</code> (уникальные значения). Сделайте так, чтобы на выходе не создавались кластеры для точек-выбросов (идентификатор -1).</li>
+<li>Для полученных регионов кластеров необходимо выполнить операцию объединения <strong>Dissolve</strong>, так как они могут состоять из нескольких оболочек, касающихся в одной точке.</li>
+<li>В качестве расстояния кластеризации необходимо указывать удвоенное расстояние, использованное ранее в методе <em>DBSCAN</em>. В этом случае оболочки будут соответствовать исходным кластерам.</li>
+</ol>
+</div>
+<div id="кластеризация-системы-расселения-субъекта" class="section level4 unnumbered">
+<h4>Кластеризация системы расселения субъекта</h4>
+<ol style="list-style-type: decimal">
+<li>Cроецируйте исходные данные в проекцию, оптимальную для выбранного региона.</li>
+<li>Используя созданный инструмент, постройте серию из 5 кластеризаций населенных пунктов выбранного вами субъекта. Количество точек в кластере оставьте постоянным (3), но меняйте значение расстояния кластеризации. Расстояния подберите таким образом, чтобы различия в кластеризации были очевидны и помогали выявлять пространственные группировки разного масштаба.</li>
+<li>Рассчитайте для каждой кластеризации меры качества: среднее внутрикластерное и межкластерное расстояние, их отношение. Сведите их в таблицу.</li>
+<li>Для каждого уровня кластеризации подготовьте изображение, включающее: а) исходные точки, б) регионы кластеров, в) центроиды кластеров. Точки и регионы должны быть помечены разными цветами по номерам кластеров. Центроиды должны быть показаны окружностями радиуса, пропорционального количеству входящих точек.</li>
+</ol>
+Пример изображения кластеров:
+<div class="figure"><span id="fig:unnamed-chunk-6"></span>
+<img src="img/clustering.png" alt="Пример оформления результатов работы" width="100%" />
+<p class="caption">
+Рис. 2: Пример оформления результатов работы
+</p>
+</div>
+<p>Перед вставкой данных карт в отчет добавьте на них элементы географической основы или используйте карту-подложку в виде картографического веб-сервиса.</p>
+</div>
+<div id="отчет-1" class="section level4 unnumbered">
+<h4>Отчет</h4>
+<p>Напишите отчет о проделанной работе, включающий:</p>
+<ol style="list-style-type: decimal">
+<li>Цель и задачи работы.</li>
+<li>Описание алгоритмов DBSCAN, построения альфа-оболочки и центроида полигона.</li>
+<li>Описание процесса создания моделей геообработки для выделения регионов и центроидов кластеров.</li>
+<li>Серию из 5 карт кластерной структуры системы расселения региона, полученную по результатам кластеризации.</li>
+<li>Анализ качества кластеризации (согласно рассчитанным критериям).</li>
+<li>Географический анализ результатов. Насколько реалистично выглядят полученные кластеры, к чему они привязаны? Можно ли выявить полимасштабность организации системы расселения на основе полученных изображений?</li>
+</ol>
+
+</div>
+</div>
+</div>
+<!-- </div> -->
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="points-sel.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="lines.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection",
+"edit": "https://github.com/tsamsonov/gen-course/edit/master/%s"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

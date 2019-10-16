@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>1.1 Отбор | Картографические базы данных</title>
+  <meta name="description" content="Курс лекций по генерализации пространственных данных" />
+  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="1.1 Отбор | Картографические базы данных" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Курс лекций по генерализации пространственных данных" />
+  <meta name="github-repo" content="tsamsonov/gen-course" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="1.1 Отбор | Картографические базы данных" />
+  
+  <meta name="twitter:description" content="Курс лекций по генерализации пространственных данных" />
+  
+
+<meta name="author" content="Тимофей Самсонов" />
+
+
+<meta name="date" content="2019-10-16" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="points.html"/>
+<link rel="next" href="points-clust.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Генерализация пространственных данных</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Введение</a></li>
+<li class="chapter" data-level="1" data-path="points.html"><a href="points.html"><i class="fa fa-check"></i><b>1</b> Генерализация точечных объектов</a><ul>
+<li class="chapter" data-level="1.1" data-path="points-sel.html"><a href="points-sel.html"><i class="fa fa-check"></i><b>1.1</b> Отбор</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="points-sel.html"><a href="points-sel.html#краткий-обзор"><i class="fa fa-check"></i><b>1.1.1</b> Краткий обзор</a></li>
+<li class="chapter" data-level="1.1.2" data-path="points-sel.html"><a href="points-sel.html#points-sel-work"><i class="fa fa-check"></i><b>1.1.2</b> Самостоятельная работа №1</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="points-clust.html"><a href="points-clust.html"><i class="fa fa-check"></i><b>1.2</b> Кластеризация и регионизация</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="points-clust.html"><a href="points-clust.html#краткий-обзор-1"><i class="fa fa-check"></i><b>1.2.1</b> Краткий обзор</a></li>
+<li class="chapter" data-level="1.2.2" data-path="points-clust.html"><a href="points-clust.html#points-clust-work"><i class="fa fa-check"></i><b>1.2.2</b> Самостоятельная работа №2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="lines.html"><a href="lines.html"><i class="fa fa-check"></i><b>2</b> Генерализация линейных объектов</a><ul>
+<li class="chapter" data-level="2.1" data-path="lines-simpl.html"><a href="lines-simpl.html"><i class="fa fa-check"></i><b>2.1</b> Геометрическое упрощение</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="lines-simpl.html"><a href="lines-simpl.html#lines-simpl-work"><i class="fa fa-check"></i><b>2.1.1</b> Самостоятельная работа №3 (Автоматизация геометрического упрощения линий)</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://istina.msu.ru/profile/tsamsonov/" target="blank">Тимофей Самсонов</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Картографические базы данных</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="points-sel" class="section level2">
+<h2><span class="header-section-number">1.1</span> Отбор</h2>
+<div id="краткий-обзор" class="section level3">
+<h3><span class="header-section-number">1.1.1</span> Краткий обзор</h3>
+<p>Для просмотра презентации щелкните на ней один раз левой кнопкой мыши и листайте, используя кнопки на клавиатуре:
+<iframe src="https://tsamsonov.github.io/gen-course/slides/talk3_PointSelection.html#1" width="672" height="380px"></iframe></p>
+<blockquote>
+<p>Презентацию можно открыть в отдельном окне или вкладке браузере. Для этого щелкните по ней правой кнопкой мыши и выберите соответствующую команду.</p>
+</blockquote>
+</div>
+<div id="points-sel-work" class="section level3">
+<h3><span class="header-section-number">1.1.2</span> Самостоятельная работа №1</h3>
+<p><strong>Цель задания</strong> — освоение методики автоматизированного отбора точечных объектов на примере населенных пунктов.</p>
+<p>Задачи:</p>
+<ol style="list-style-type: decimal">
+<li>Изучить принципы, заложенные в метод отбора (исключения) точек <em>Settlement Spacing</em>.</li>
+<li>Реализовать метод <em>Settlement Spacing</em> в среде <strong>ArcGIS Desktop</strong> с помощью среды автоматизации процессов геообработки <strong>Model Builder</strong>.</li>
+<li>Реализовать метод оценки графической нагрузки по сетке регулярных квадратов средствами <strong>Model Builder</strong>.</li>
+<li>Подготовить слой населенных пунктов субъекта РФ на основе данных <em>OpenStreetMap</em>.</li>
+<li>Осуществить автоматизированный отбор населенных пунктов для масштаба <span class="math inline">\(1:4~000~000\)</span>.</li>
+<li>Произвести графическую оценку результатов генерализации.</li>
+</ol>
+<div id="реализация-алгоритма-settlement-spacing" class="section level4 unnumbered">
+<h4>Реализация алгоритма Settlement Spacing</h4>
+<p><strong>Входные параметры:</strong></p>
+<ol style="list-style-type: decimal">
+<li>Точечный слой (<em>Input Points</em>).</li>
+<li>Поле веса точки (<em>Importance Field</em>). Выносится в качестве параметра из инструмента <strong>Get Field Value</strong> (2.2).</li>
+<li>Поле сохранения точки (<em>Remain Field</em>). Выносится в качестве параметра из инструмента <strong>Calculate Field</strong> (6).</li>
+<li>Масштабирующий коэффициент (<em>Scale</em>). Вводится как свободный параметр типа <em>Double</em>.</li>
+</ol>
+<p><strong>Требования к входным параметрам:</strong></p>
+<ol style="list-style-type: decimal">
+<li>Поля, указанные в параметрах <em>Importance Field</em> и <em>Remain Field</em> должны быть уже созданы в слое.</li>
+<li>Данные должны быть физически отсортированы в порядке увеличения поля <code>Importance</code> (чем больше значение этого поля, тем менее важной является точка). Для этого можно использовать инструмент <strong>Sort</strong>.</li>
+<li>Поле Remain по умолчанию должно быть пустым или заполненным нулями.</li>
+</ol>
+<p>Допустимые значения поля <em>Remain</em>:</p>
+<ul>
+<li><span class="math inline">\(0\)</span> — флаг не установлен.</li>
+<li><span class="math inline">\(1\)</span> — точку необходимо оставить.</li>
+<li><span class="math inline">\(2\)</span> — точку необходимо убрать.</li>
+</ul>
+<p><strong>Предусловия:</strong>
+Необходимо расставить предусловия таким образом, чтобы каждый инструмент <strong>A</strong>, использующий вычисленное значение <strong>B</strong>, выполнялся после того как вычислится <strong>B</strong>.</p>
+<p><strong>Входные данные:</strong>
+Тестирование инструмента производится на примере слоя <code>poppnt_ural</code> (можно вырезать из него небольшой фрагмент из нескольких десятков точек.</p>
+<p><strong>Результат:</strong>
+По результатам выполнения инструмента каждой точке в поле <em>Remain Field</em> должно быть проставлено значение <span class="math inline">\(1\)</span> (оставить) или <span class="math inline">\(2\)</span> (убрать).</p>
+<p><strong>Алгоритм решения задачи:</strong></p>
+<ol style="list-style-type: decimal">
+<li><p><em>Поток 1</em></p>
+<p>1.1. Создать слой из точек (<strong>Make Feature Layer</strong>)</p>
+<p>1.2. Выбрать точки (уже отобранные + текущая) по атрибутам (<strong>Select Layer by Attributes</strong>). Подсказка: используйте двойное условие, в котором поле <code>Remain</code> сравнивается с <span class="math inline">\(1\)</span>, а поле <code>OBJECTID</code> сравнивается со значением <code>Value</code>, полученным на шаге 2.1.</p></li>
+<li><p><em>Поток 2</em></p>
+<p>2.1. Выбрать текущую точку с помощью итератора (<strong>Iterate Feature Selection</strong>)</p>
+<p>2.2. Извлечь значение поля <code>Importance</code> (<strong>Get Field Value</strong>)</p>
+<p>2.3. Вычислить радиус буферной зоны (<strong>Calculate Value</strong>) как произведение <code>Importance</code> (2.2) и входного параметра <em>Scale</em>.</p>
+<p>2.4. Построить буферную зону, используя вычисленное значение 2.3 (Buffer)</p></li>
+<li><p>Довыбрать (<code>SUBSET_SELECTION</code>) буферной зоной (2.4) отобранные точки + текущую (1.2) с помощью пространственного запроса (<strong>Select Layer by Location</strong>).
+&gt; Внимание: в результате должны остаться только те точки, которые пересекаются буферной зоной!</p></li>
+<li><p>Подсчитать количество отобранных на шаге 3 точек (<strong>Get Count</strong>)</p></li>
+<li><p>Вычислить значение флага отбора точек, используя результат шага 4 (<strong>Calculate Value</strong>). Если выборка содержит 1 точку, то значение флага должно быть равно 1, если больше точек, то оно должно быть равно 2. Подсказка: тип выходного поля сделайте равным Long, но для вычисления используйте логическое выражение, результатом которого будет являться <code>Ложь (0)</code> или <code>Истина (1)</code>.</p></li>
+<li><p>Вычислите поле <code>Remain</code> для текущей точки (2.1), используя значение флага отбора, полученное на шаге 5 (<strong>Calculate Field</strong>).</p></li>
+</ol>
+</div>
+<div id="реализация-модели-оценки-условной-графической-нагрузки" class="section level4 unnumbered">
+<h4>Реализация модели оценки условной графической нагрузки</h4>
+<p><em>Условная графическая нагрузка</em> – средневзвешенное количество точек на единицу площади, где в качестве веса выступает размер точки, используемый при ее отображении на карте</p>
+<p><strong>Входные параметры:</strong></p>
+<ol style="list-style-type: decimal">
+<li>Точечный слой</li>
+<li>Поле <em>Size Field</em>, отвечающее за графический вес точки (диаметр значка).</li>
+<li>Пространственное разрешение сетки (в метрах)</li>
+</ol>
+<p><strong>Требования к входным данным:</strong></p>
+<p>Поле <em>Size Field</em> должно содержать размеры значков, используемых для визуализации точек. Если значения всех размеров равны <span class="math inline">\(1\)</span>, вы получите обычную густоту точек на единицу площади.</p>
+<p>Необходимо самостоятельно реализовать модель геообработки, которая:</p>
+<ol style="list-style-type: decimal">
+<li>Строит регулярную сетку с заданным разрешением и охватом, покрывающим входной набор точек с небольшим запасом. Подсказка: вам необходимо построить горизонтальный ограничивающий прямоугольник (<strong>Minimum Bounding Geometry</strong>), буферизовать его на величину разрешения сетки (<strong>Buffer</strong>) и подать буфер в качестве экстента в инструмент генерации регулярной сетки (<strong>Create Fishnet</strong>).</li>
+<li>Подсчитывает суммарный графический вес точек в каждой ячейке и записывает результат в новое поле. Подсказка: вам понадобятся инструменты статистики (<strong>Tabulate Intersection</strong>), и присоединения поля (<strong>Join Field</strong>).</li>
+<li>Сохраняет полученную сетку в выходной файл.</li>
+</ol>
+</div>
+<div id="отбор-населенных-пунктов-для-карты-масштаба-14-000-000" class="section level4 unnumbered">
+<h4>Отбор населенных пунктов для карты масштаба 1:4 000 000</h4>
+<p>В данной — заключительной — части задания необходимо произвести отбор населенных пунктов, используя собственные модели геообработки, а также произвести графическую оценку полученных результатов.</p>
+<p><strong>Алгоритм выполнения задания:</strong></p>
+<ol style="list-style-type: decimal">
+<li>Скачать данные <em>OSM</em> на территорию Субъекта Федерации</li>
+<li>Перепроецировать слой <code>settlement-points</code> в наилучшую проекцию для выбранной территории</li>
+<li>Сформировать поля <code>Importance</code> и <code>Size</code>, используя следующее отображение атрибутов:</li>
+</ol>
+<table>
+<caption><span id="tab:unnamed-chunk-2">Таблица 1: </span>Параметры заполнения полей</caption>
+<thead>
+<tr class="header">
+<th align="center">PLACE</th>
+<th align="center">Importance</th>
+<th align="center">Size</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">City</td>
+<td align="center">1</td>
+<td align="center">5</td>
+</tr>
+<tr class="even">
+<td align="center">Town</td>
+<td align="center">2</td>
+<td align="center">3</td>
+</tr>
+<tr class="odd">
+<td align="center">Village</td>
+<td align="center">3</td>
+<td align="center">1</td>
+</tr>
+<tr class="even">
+<td align="center">Hamlet</td>
+<td align="center">4</td>
+<td align="center">1</td>
+</tr>
+<tr class="odd">
+<td align="center">Locality</td>
+<td align="center">5</td>
+<td align="center">1</td>
+</tr>
+</tbody>
+</table>
+<ol start="4" style="list-style-type: decimal">
+<li>Используя фрагмент данных и значения параметра <em>Scale</em> в диапазоне от <span class="math inline">\(1000\)</span> до <span class="math inline">\(10000\)</span> с шагом <span class="math inline">\(1000\)</span>, подобрать регрессионную зависимость между значением параметра масштабирования Scale и средней графической нагрузкой (<span class="math inline">\(ед.~на~см^2\)</span>) в масштабе <span class="math inline">\(1:4~000~000\)</span>. Средняя графическая нагрузка оценивается как среднее значение по всем ненулевым ячейкам регулярной сетки. Размер сетки — <span class="math inline">\(1~см^2\)</span> в результирующем масштабе.</li>
+<li>Выполнить отбор населенных пунктов с графической нагрузкой <span class="math inline">\(1\)</span>, <span class="math inline">\(3\)</span> и <span class="math inline">\(5\)</span> населенных пункта на <span class="math inline">\(см^2\)</span> для масштаба <span class="math inline">\(1:4~000~000\)</span>. Соответствующий параметр <em>Scale</em> подберите, используя найденную регрессионную зависимость.</li>
+<li>Оформить результаты в виде картосхемы, отображающей:
+<ul>
+<li>границу региона</li>
+<li>множество исходных точек бледно-серым цветом</li>
+<li>множество отобранных точек черным цветом соответствующего размера</li>
+<li>подписи основных населенных пунктов</li>
+<li>картограмму условной графической нагрузки</li>
+</ul></li>
+</ol>
+<div class="figure"><span id="fig:unnamed-chunk-3"></span>
+<img src="img/selection.png" alt="Пример оформления результатов работы" width="80%" />
+<p class="caption">
+Рис. 1: Пример оформления результатов работы
+</p>
+</div>
+</div>
+<div id="отчет" class="section level4 unnumbered">
+<h4>Отчет</h4>
+<p>Работа оформляется в виде письменного отчета, в котором необходимо изложить все этапы исследования:</p>
+<ul>
+<li>цель и задачи исследования,</li>
+<li>суть метода отбора точек,</li>
+<li>суть принципа оценки графической нагрузки,</li>
+<li>этапы создания моделей геообработки и их внешний вид,</li>
+<li>описание эксперимента по генерализации, включая постановку задачи, нахождение регрессионной зависимости, выполнение отбора.</li>
+</ul>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="points.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="points-clust.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection",
+"edit": "https://github.com/tsamsonov/gen-course/edit/master/%s"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
