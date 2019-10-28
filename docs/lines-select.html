@@ -166,7 +166,7 @@
 <p>Реализуйте модель в соответствии со следующей последовательностью действий:</p>
 <ol style="list-style-type: decimal">
 <li><p>Итерировать выбор объектов в слое диаграммы Вороного (<em>Input Thiessen Polygons</em>).</p></li>
-<li><p>Выбрать с помощью полигона 1 его соседей, используя правило BOUNDARY_TOUCHES (<strong>Select By Location</strong>). <em>Вам понадобится применить операцию дважды, чтобы исключить сам исходный полигон 5а из выборки</em>.</p></li>
+<li><p>Выбрать с помощью полигона 1 его соседей, используя правило BOUNDARY_TOUCHES (<strong>Select By Location</strong>).</p></li>
 <li><p>Выбрать точки соседей с помощью полигонов 2, используя правило INTERSECT (<strong>Select By Location</strong>).</p></li>
 <li><p>Создать на основе сетевого набора данных слой поиска ближайших пунктов обслуживания (<strong>Make Closest Facility Layer</strong>). В качестве параметра <em>Number of Facilities to Find</em> оставьте 1. Установите режим движения TRAVEL_FROM<em>.</em></p></li>
 <li><p>Добавить в слой поиска 4 точки соседей 3 (<strong>Add Locations</strong> в режиме <em>Incidents</em>)</p></li>
