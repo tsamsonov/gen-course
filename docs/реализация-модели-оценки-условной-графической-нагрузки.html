@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>1.1 Отбор | Картографические базы данных</title>
+  <title>Реализация модели оценки условной графической нагрузки | Картографические базы данных</title>
   <meta name="description" content="Курс лекций по генерализации пространственных данных" />
   <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="1.1 Отбор | Картографические базы данных" />
+  <meta property="og:title" content="Реализация модели оценки условной графической нагрузки | Картографические базы данных" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="tsamsonov/gen-course" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1.1 Отбор | Картографические базы данных" />
+  <meta name="twitter:title" content="Реализация модели оценки условной графической нагрузки | Картографические базы данных" />
   
   <meta name="twitter:description" content="Курс лекций по генерализации пространственных данных" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="points.html"/>
-<link rel="next" href="points-clust.html"/>
+<link rel="prev" href="реализация-алгоритма-settlement-spacing.html"/>
+<link rel="next" href="отбор-населенных-пунктов-для-карты-масштаба-14-000-000.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -121,24 +121,31 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="points-sel" class="section level2">
-<h2><span class="header-section-number">1.1</span> Отбор</h2>
-<div id="краткий-обзор" class="section level3">
-<h3><span class="header-section-number">1.1.1</span> Краткий обзор</h3>
-<p>Для просмотра презентации щелкните на ней один раз левой кнопкой мыши и листайте, используя кнопки на клавиатуре:
-<iframe src="https://tsamsonov.github.io/gen-course/slides/talk3_PointSelection.html#1" width="672" height="380px"></iframe></p>
-<blockquote>
-<p>Презентацию можно открыть в отдельном окне или вкладке браузере. Для этого щелкните по ней правой кнопкой мыши и выберите соответствующую команду.</p>
-</blockquote>
-</div>
+<div id="реализация-модели-оценки-условной-графической-нагрузки" class="section level2 unnumbered">
+<h2>Реализация модели оценки условной графической нагрузки</h2>
+<p><em>Условная графическая нагрузка</em> – средневзвешенное количество точек на единицу площади, где в качестве веса выступает размер точки, используемый при ее отображении на карте</p>
+<p><strong>Входные параметры:</strong></p>
+<ol style="list-style-type: decimal">
+<li>Точечный слой</li>
+<li>Поле <em>Size Field</em>, отвечающее за графический вес точки (диаметр значка).</li>
+<li>Пространственное разрешение сетки (в метрах)</li>
+</ol>
+<p><strong>Требования к входным данным:</strong></p>
+<p>Поле <em>Size Field</em> должно содержать размеры значков, используемых для визуализации точек. Если значения всех размеров равны <span class="math inline">\(1\)</span>, вы получите обычную густоту точек на единицу площади.</p>
+<p>Необходимо самостоятельно реализовать модель геообработки, которая:</p>
+<ol style="list-style-type: decimal">
+<li>Строит регулярную сетку с заданным разрешением и охватом, покрывающим входной набор точек с небольшим запасом. Подсказка: вам необходимо построить горизонтальный ограничивающий прямоугольник (<strong>Minimum Bounding Geometry</strong>), буферизовать его на величину разрешения сетки (<strong>Buffer</strong>) и подать буфер в качестве экстента в инструмент генерации регулярной сетки (<strong>Create Fishnet</strong>).</li>
+<li>Подсчитывает суммарный графический вес точек в каждой ячейке и записывает результат в новое поле. Подсказка: вам понадобятся инструменты статистики (<strong>Tabulate Intersection</strong>), и присоединения поля (<strong>Join Field</strong>).</li>
+<li>Сохраняет полученную сетку в выходной файл.</li>
+</ol>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="points.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="points-clust.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="реализация-алгоритма-settlement-spacing.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="отбор-населенных-пунктов-для-карты-масштаба-14-000-000.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

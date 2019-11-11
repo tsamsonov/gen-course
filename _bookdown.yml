@@ -4,9 +4,23 @@ output_dir: docs
 chapter_name: "Глава "
 rmd_files:
     - "index.Rmd"
+    - "01-Scale.Rmd"
+    - "02-Concepts.Rmd"
     - "03-Points.Rmd"
     - "04-Lines.Rmd"
     - "05-Polygons.Rmd"
+    - "06-Fields.Rmd"
+    - "07-Semantics.Rmd"
+    - "08-Time.Rmd"
+    - "09-Symbology.Rmd"
+    - "10-Models.Rmd"
+    - "11-DataStructures.Rmd"
+    - "12-Databases.Rmd"
+    - "Ex01-PointSelection.Rmd"
+    - "Ex02-PointClustering.Rmd"
+    - "Ex03-LineSimplification.Rmd"
+    - "Ex04-LineSelection.Rmd"
+    - "Ex05-PolygonAxis.Rmd"
 language:
   label:
     fig: 'Рис. '

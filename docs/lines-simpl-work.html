@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2.1 Геометрическое упрощение | Картографические базы данных</title>
+  <title>C Задание №3. Геометрическое упрощение линий | Картографические базы данных</title>
   <meta name="description" content="Курс лекций по генерализации пространственных данных" />
   <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2.1 Геометрическое упрощение | Картографические базы данных" />
+  <meta property="og:title" content="C Задание №3. Геометрическое упрощение линий | Картографические базы данных" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="tsamsonov/gen-course" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2.1 Геометрическое упрощение | Картографические базы данных" />
+  <meta name="twitter:title" content="C Задание №3. Геометрическое упрощение линий | Картографические базы данных" />
   
   <meta name="twitter:description" content="Курс лекций по генерализации пространственных данных" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="lines.html"/>
-<link rel="next" href="lines-select.html"/>
+<link rel="prev" href="points-clust-work.html"/>
+<link rel="next" href="lines-network-work.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -72,34 +72,68 @@
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Введение</a></li>
-<li class="chapter" data-level="1" data-path="points.html"><a href="points.html"><i class="fa fa-check"></i><b>1</b> Генерализация точечных объектов</a><ul>
-<li class="chapter" data-level="1.1" data-path="points-sel.html"><a href="points-sel.html"><i class="fa fa-check"></i><b>1.1</b> Отбор</a><ul>
-<li class="chapter" data-level="1.1.1" data-path="points-sel.html"><a href="points-sel.html#краткий-обзор"><i class="fa fa-check"></i><b>1.1.1</b> Краткий обзор</a></li>
+<li class="part"><span><b>I Теоретические основы</b></span></li>
+<li class="chapter" data-level="1" data-path="scale.html"><a href="scale.html"><i class="fa fa-check"></i><b>1</b> Масштаб и иерархия</a></li>
+<li class="chapter" data-level="2" data-path="conceptual.html"><a href="conceptual.html"><i class="fa fa-check"></i><b>2</b> Концепции</a></li>
+<li class="part"><span><b>II Геометрия</b></span></li>
+<li class="chapter" data-level="3" data-path="points.html"><a href="points.html"><i class="fa fa-check"></i><b>3</b> Точки</a><ul>
+<li class="chapter" data-level="3.1" data-path="points.html"><a href="points.html#points-sel"><i class="fa fa-check"></i><b>3.1</b> Отбор</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="points.html"><a href="points.html#краткий-обзор"><i class="fa fa-check"></i><b>3.1.1</b> Краткий обзор</a></li>
 </ul></li>
-<li class="chapter" data-level="1.2" data-path="points-clust.html"><a href="points-clust.html"><i class="fa fa-check"></i><b>1.2</b> Кластеризация и регионизация</a><ul>
-<li class="chapter" data-level="1.2.1" data-path="points-clust.html"><a href="points-clust.html#краткий-обзор-1"><i class="fa fa-check"></i><b>1.2.1</b> Краткий обзор</a></li>
-<li class="chapter" data-level="1.2.2" data-path="points-clust.html"><a href="points-clust.html#points-clust-work"><i class="fa fa-check"></i><b>1.2.2</b> Задание №2. Кластеризация системы расселения</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="2" data-path="lines.html"><a href="lines.html"><i class="fa fa-check"></i><b>2</b> Генерализация линейных объектов</a><ul>
-<li class="chapter" data-level="2.1" data-path="lines-simpl.html"><a href="lines-simpl.html"><i class="fa fa-check"></i><b>2.1</b> Геометрическое упрощение</a><ul>
-<li class="chapter" data-level="2.1.1" data-path="lines-simpl.html"><a href="lines-simpl.html#lines-simpl-work"><i class="fa fa-check"></i><b>2.1.1</b> Задание №3. Геометрическое упрощение линий</a></li>
-</ul></li>
-<li class="chapter" data-level="2.2" data-path="lines-select.html"><a href="lines-select.html"><i class="fa fa-check"></i><b>2.2</b> Отбор</a><ul>
-<li class="chapter" data-level="2.2.1" data-path="lines-select.html"><a href="lines-select.html#lines-network-work"><i class="fa fa-check"></i><b>2.2.1</b> Задание №4. Отбор элементов транспортной сети</a></li>
+<li class="chapter" data-level="3.2" data-path="points.html"><a href="points.html#points-clust"><i class="fa fa-check"></i><b>3.2</b> Кластеризация и регионизация</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="points.html"><a href="points.html#краткий-обзор-1"><i class="fa fa-check"></i><b>3.2.1</b> Краткий обзор</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="polygons.html"><a href="polygons.html"><i class="fa fa-check"></i><b>3</b> Генерализация площадных объектов</a><ul>
-<li class="chapter" data-level="3.1" data-path="polygons-skeleton.html"><a href="polygons-skeleton.html"><i class="fa fa-check"></i><b>3.1</b> Скелетизация (построение срединной оси)</a><ul>
-<li class="chapter" data-level="3.1.1" data-path="polygons-skeleton.html"><a href="polygons-skeleton.html#polygons-skeleton-work"><i class="fa fa-check"></i><b>3.1.1</b> Задание №5. Скелетизация площадных объектов гидрографии</a></li>
+<li class="chapter" data-level="4" data-path="lines.html"><a href="lines.html"><i class="fa fa-check"></i><b>4</b> Линии</a><ul>
+<li class="chapter" data-level="4.1" data-path="lines.html"><a href="lines.html#lines-simpl"><i class="fa fa-check"></i><b>4.1</b> Геометрическое упрощение</a></li>
+<li class="chapter" data-level="4.2" data-path="lines.html"><a href="lines.html#lines-select"><i class="fa fa-check"></i><b>4.2</b> Отбор</a></li>
 </ul></li>
+<li class="chapter" data-level="5" data-path="polygons.html"><a href="polygons.html"><i class="fa fa-check"></i><b>5</b> Полигоны</a><ul>
+<li class="chapter" data-level="5.1" data-path="polygons.html"><a href="polygons.html#polygons-skeleton"><i class="fa fa-check"></i><b>5.1</b> Скелетизация (построение срединной оси)</a></li>
 </ul></li>
+<li class="chapter" data-level="6" data-path="surfaces.html"><a href="surfaces.html"><i class="fa fa-check"></i><b>6</b> Поля (поверхности)</a></li>
+<li class="part"><span><b>III Семантика, время и символика</b></span></li>
+<li class="chapter" data-level="7" data-path="semantic.html"><a href="semantic.html"><i class="fa fa-check"></i><b>7</b> Семантика</a></li>
+<li class="chapter" data-level="8" data-path="temporal.html"><a href="temporal.html"><i class="fa fa-check"></i><b>8</b> Время</a></li>
+<li class="chapter" data-level="9" data-path="symbolic.html"><a href="symbolic.html"><i class="fa fa-check"></i><b>9</b> Символика</a></li>
+<li class="part"><span><b>IV Моделирование</b></span></li>
+<li class="chapter" data-level="10" data-path="models.html"><a href="models.html"><i class="fa fa-check"></i><b>10</b> Модели генерализации</a></li>
+<li class="chapter" data-level="11" data-path="data-structures.html"><a href="data-structures.html"><i class="fa fa-check"></i><b>11</b> Структуры данных</a></li>
+<li class="chapter" data-level="12" data-path="databases.html"><a href="databases.html"><i class="fa fa-check"></i><b>12</b> Картографические базы данных</a></li>
 <li class="appendix"><span><b>Задания</b></span></li>
 <li class="chapter" data-level="A" data-path="points-sel-work.html"><a href="points-sel-work.html"><i class="fa fa-check"></i><b>A</b> Задание №1. Отбор точечных объектов</a><ul>
-<li class="chapter" data-level="" data-path="реализация-алгоритма-settlement-spacing.html"><a href="реализация-алгоритма-settlement-spacing.html"><i class="fa fa-check"></i>Реализация алгоритма Settlement Spacing</a></li>
-<li class="chapter" data-level="" data-path="реализация-модели-оценки-условной-графической-нагрузки.html"><a href="реализация-модели-оценки-условной-графической-нагрузки.html"><i class="fa fa-check"></i>Реализация модели оценки условной графической нагрузки</a></li>
-<li class="chapter" data-level="" data-path="отбор-населенных-пунктов-для-карты-масштаба-14-000-000.html"><a href="отбор-населенных-пунктов-для-карты-масштаба-14-000-000.html"><i class="fa fa-check"></i>Отбор населенных пунктов для карты масштаба 1:4 000 000</a></li>
-<li class="chapter" data-level="" data-path="отчет-2.html"><a href="отчет-2.html"><i class="fa fa-check"></i>Отчет</a></li>
+<li class="chapter" data-level="" data-path="points-sel-work.html"><a href="points-sel-work.html#реализация-алгоритма-settlement-spacing"><i class="fa fa-check"></i>Реализация алгоритма Settlement Spacing</a></li>
+<li class="chapter" data-level="" data-path="points-sel-work.html"><a href="points-sel-work.html#реализация-модели-оценки-условной-графической-нагрузки"><i class="fa fa-check"></i>Реализация модели оценки условной графической нагрузки</a></li>
+<li class="chapter" data-level="" data-path="points-sel-work.html"><a href="points-sel-work.html#отбор-населенных-пунктов-для-карты-масштаба-14-000-000"><i class="fa fa-check"></i>Отбор населенных пунктов для карты масштаба 1:4 000 000</a></li>
+<li class="chapter" data-level="" data-path="points-sel-work.html"><a href="points-sel-work.html#отчет"><i class="fa fa-check"></i>Отчет</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="points-clust-work.html"><a href="points-clust-work.html"><i class="fa fa-check"></i><b>B</b> Задание №2. Кластеризация системы расселения</a><ul>
+<li class="chapter" data-level="" data-path="points-clust-work.html"><a href="points-clust-work.html#изучение-работы-методов-кластеризации-и-регионизации"><i class="fa fa-check"></i>Изучение работы методов кластеризации и регионизации</a></li>
+<li class="chapter" data-level="" data-path="points-clust-work.html"><a href="points-clust-work.html#автоматизация-выделения-регионов-и-центроидов-кластеров"><i class="fa fa-check"></i>Автоматизация выделения регионов и центроидов кластеров</a></li>
+<li class="chapter" data-level="" data-path="points-clust-work.html"><a href="points-clust-work.html#кластеризация-системы-расселения-субъекта"><i class="fa fa-check"></i>Кластеризация системы расселения субъекта</a></li>
+<li class="chapter" data-level="" data-path="points-clust-work.html"><a href="points-clust-work.html#отчет-1"><i class="fa fa-check"></i>Отчет</a></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html"><i class="fa fa-check"></i><b>C</b> Задание №3. Геометрическое упрощение линий</a><ul>
+<li class="chapter" data-level="" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#часть-1.-автоматизация-метода-ли-оупеншоу"><i class="fa fa-check"></i>Часть 1. Автоматизация метода Ли-Оупеншоу</a></li>
+<li class="chapter" data-level="" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#часть-2.-автоматизация-методов-оценки-геометрической-точности-и-коэффициента-относительной-извилистости"><i class="fa fa-check"></i>Часть 2. Автоматизация методов оценки геометрической точности и коэффициента относительной извилистости</a><ul>
+<li><a href="lines-simpl-work.html#автоматизация-вычисления-модифицрованного-хаусдорфова-расстояния-mhd-оценка-геометрической-точности">Автоматизация вычисления модифицрованного Хаусдорфова расстояния <strong>MHD</strong> (оценка геометрической точности)</a></li>
+<li class="chapter" data-level="" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#автоматизация-вычисления-коэффициента-относительной-извилистости-оценка-морфологического-соответствия"><i class="fa fa-check"></i>Автоматизация вычисления коэффициента относительной извилистости (оценка морфологического соответствия)</a></li>
+<li class="chapter" data-level="" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#отчет-2"><i class="fa fa-check"></i>Отчет</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#часть-3.-сравнение-алгоритмов-ли-оупеншоу-ванга-мюллера-дугласа-пейкера-и-висвалингам-уайатта"><i class="fa fa-check"></i>Часть 3. Сравнение алгоритмов Ли-Оупеншоу, Ванга-Мюллера, Дугласа-Пейкера и Висвалингам-Уайатта</a></li>
+</ul></li>
+<li class="chapter" data-level="D" data-path="lines-network-work.html"><a href="lines-network-work.html"><i class="fa fa-check"></i><b>D</b> Задание №4. Отбор элементов транспортной сети</a><ul>
+<li class="chapter" data-level="" data-path="lines-network-work.html"><a href="lines-network-work.html#часть-1.-подготовка-исходных-данных"><i class="fa fa-check"></i>Часть 1. Подготовка исходных данных</a></li>
+<li class="chapter" data-level="" data-path="lines-network-work.html"><a href="lines-network-work.html#часть-2.-создание-моделей-геообработки-для-отбора-элементов-транспортной-сети"><i class="fa fa-check"></i>Часть 2. Создание моделей геообработки для отбора элементов транспортной сети</a></li>
+<li class="chapter" data-level="" data-path="lines-network-work.html"><a href="lines-network-work.html#часть-3.-создание-модели-геообработки-для-оценки-относительной-графической-нагрузки-по-линейным-объектам"><i class="fa fa-check"></i>Часть 3. Создание модели геообработки для оценки относительной графической нагрузки по линейным объектам</a></li>
+<li class="chapter" data-level="" data-path="lines-network-work.html"><a href="lines-network-work.html#часть-4.-создание-и-анализ-карты-транспортной-связности-районных-центров-субъекта"><i class="fa fa-check"></i>Часть 4. Создание и анализ карты транспортной связности районных центров субъекта</a></li>
+</ul></li>
+<li class="chapter" data-level="E" data-path="polygons-skeleton-work.html"><a href="polygons-skeleton-work.html"><i class="fa fa-check"></i><b>E</b> Задание №5. Скелетизация площадных объектов гидрографии</a><ul>
+<li class="chapter" data-level="" data-path="polygons-skeleton-work.html"><a href="polygons-skeleton-work.html#часть-1.-подготовка-входных-данных"><i class="fa fa-check"></i>Часть 1. Подготовка входных данных</a></li>
+<li class="chapter" data-level="" data-path="polygons-skeleton-work.html"><a href="polygons-skeleton-work.html#часть-2.-автоматизация-построения-скелета-фигуры"><i class="fa fa-check"></i>Часть 2. Автоматизация построения скелета фигуры</a></li>
+<li class="chapter" data-level="" data-path="polygons-skeleton-work.html"><a href="polygons-skeleton-work.html#часть-3.-построение-сетевой-модели-данных"><i class="fa fa-check"></i>Часть 3. Построение сетевой модели данных</a></li>
+<li class="chapter" data-level="" data-path="polygons-skeleton-work.html"><a href="polygons-skeleton-work.html#часть-4.-автоматизация-построения-срединной-оси-фигуры"><i class="fa fa-check"></i>Часть 4. Автоматизация построения срединной оси фигуры</a></li>
+<li class="chapter" data-level="" data-path="polygons-skeleton-work.html"><a href="polygons-skeleton-work.html#часть-5.-построение-срединной-оси-и-описание-результатов"><i class="fa fa-check"></i>Часть 5. Построение срединной оси и описание результатов</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://istina.msu.ru/profile/tsamsonov/" target="blank">Тимофей Самсонов</a></li>
@@ -121,48 +155,40 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="lines-simpl" class="section level2">
-<h2><span class="header-section-number">2.1</span> Геометрическое упрощение</h2>
-<!-- ### Краткий обзор {#lines-simpl-over} -->
-<!-- Для просмотра презентации щелкните на ней один раз левой кнопкой мыши и листайте, используя кнопки на клавиатуре: -->
-<!-- ```{r, echo=FALSE} -->
-<!-- knitr::include_url('https://tsamsonov.github.io/gen-course/slides/talk6_LineSimplification.html#1', height = '380px') -->
-<!-- ``` -->
-<!-- > Презентацию можно открыть в отдельном окне или вкладке браузере. Для этого щелкните по ней правой кнопкой мыши и выберите соответствующую команду. -->
-<div id="lines-simpl-work" class="section level3">
-<h3><span class="header-section-number">2.1.1</span> Задание №3. Геометрическое упрощение линий</h3>
+<div id="lines-simpl-work" class="section level1">
+<h1><span class="header-section-number">C</span> Задание №3. Геометрическое упрощение линий</h1>
 <p><strong>Цель задания</strong> — освоение методики геометрического упрощения линий.</p>
 <p><strong>Аннотация</strong>. Необходимо реализовать метод Ли-Оупеншоу для генерализации линий. Для этого в среде Model Builder создается модель геообработки, осуществляющая последовательный запуск инструментов ArcToolbox. После создания инструмента необходимо сравнить результаты работы алгоритма с тем, что получается при обработке линий посредством алгоритма Дугласа-Пейкера, Ванга-Мюллера и Висвалингам-Уайатта. Задание выполняется в ГИС-пакете ArcGIS 10.5.</p>
-<p><strong>Алгоритм Ли-Оупеншоу</strong> <span class="citation">(Li and Openshaw <a href="#ref-Li:1992jg" role="doc-biblioref">1992</a>)</span> использует «естественный принцип», суть которого заключается в удалении деталей, размер которых менее видимой величины. Для этого на исходное множество линий накладывается регулярная сет ка ячеек с разрешением <em>d</em> Участок линии, пересекающий ячейку, имеет точку входа в нее и точку выхода. Этот участок заменяется на середину отрезка, соединяющего две данные точки. Таким образом, удаляются все изгибы, находящиеся внутри ячеек. Принцип работы алгоритма иллюстрирует Рис. <a href="lines-simpl.html#fig:lio">0.2</a>. Видно, что по своему поведению результирующая линия похожа на скользящее среднее.</p>
+<p><strong>Алгоритм Ли-Оупеншоу</strong> <span class="citation">(Li and Openshaw <a href="#ref-Li:1992jg" role="doc-biblioref">1992</a>)</span> использует «естественный принцип», суть которого заключается в удалении деталей, размер которых менее видимой величины. Для этого на исходное множество линий накладывается регулярная сет ка ячеек с разрешением <em>d</em> Участок линии, пересекающий ячейку, имеет точку входа в нее и точку выхода. Этот участок заменяется на середину отрезка, соединяющего две данные точки. Таким образом, удаляются все изгибы, находящиеся внутри ячеек. Принцип работы алгоритма иллюстрирует Рис. <a href="lines-simpl-work.html#fig:lio">C.1</a>. Видно, что по своему поведению результирующая линия похожа на скользящее среднее.</p>
 <div class="figure"><span id="fig:lio"></span>
 <img src="img/li-openshaw.png" alt="Принцип работы алгоритма Ли-Оупеншоу" width="50%" />
 <p class="caption">
-Рис. 0.2: Принцип работы алгоритма Ли-Оупеншоу
+Рис. C.1: Принцип работы алгоритма Ли-Оупеншоу
 </p>
 </div>
-<p>В основе работы <strong>алгоритма Ванга-Мюллера</strong> <span class="citation">(Wang and Müller <a href="#ref-Wang:1998eh" role="doc-biblioref">1998</a>)</span> лежит сегментация линий на отдельные изгибы. Изгиб определяется как участок линии, на котором угол ее поворота сохраняет свой знак. Важным аспектом алгоритма является четкий алгоритм вычисления вершины изгиба, которая определяется как точка, имеющая максимальную сумму расстояний до начальной и конечной точки изгиба. Для каждого изгиба в алгоритме Ванга-Мюллера определяется его размер, изолированность, близость и схожесть с соседним изгибом. Изолированные изгибы подвергаются преувеличению. Расположенные рядом схожие изгибы объединяются в один путем слияния вершин и удаления изгиба между ними. Наконец, изгибы малого размера удаляются. Данные операции проиллюстрированы на Рис. <a href="lines-simpl.html#fig:wang">0.3</a>. В ArcGIS метод Ванга-Мюллера реализован в инструменте <strong>Simplify Line</strong> (режим <em>BEND_SIMPLIFY</em>).</p>
+<p>В основе работы <strong>алгоритма Ванга-Мюллера</strong> <span class="citation">(Wang and Müller <a href="#ref-Wang:1998eh" role="doc-biblioref">1998</a>)</span> лежит сегментация линий на отдельные изгибы. Изгиб определяется как участок линии, на котором угол ее поворота сохраняет свой знак. Важным аспектом алгоритма является четкий алгоритм вычисления вершины изгиба, которая определяется как точка, имеющая максимальную сумму расстояний до начальной и конечной точки изгиба. Для каждого изгиба в алгоритме Ванга-Мюллера определяется его размер, изолированность, близость и схожесть с соседним изгибом. Изолированные изгибы подвергаются преувеличению. Расположенные рядом схожие изгибы объединяются в один путем слияния вершин и удаления изгиба между ними. Наконец, изгибы малого размера удаляются. Данные операции проиллюстрированы на Рис. <a href="lines-simpl-work.html#fig:wang">C.2</a>. В ArcGIS метод Ванга-Мюллера реализован в инструменте <strong>Simplify Line</strong> (режим <em>BEND_SIMPLIFY</em>).</p>
 <div class="figure"><span id="fig:wang"></span>
 <img src="img/wang-muller.png" alt="Элементы алгоритма Ванга-Мюллера: а) удаление; б) объединение; в) преувеличение изгибов" width="100%" />
 <p class="caption">
-Рис. 0.3: Элементы алгоритма Ванга-Мюллера: а) удаление; б) объединение; в) преувеличение изгибов
+Рис. C.2: Элементы алгоритма Ванга-Мюллера: а) удаление; б) объединение; в) преувеличение изгибов
 </p>
 </div>
-<p>Алгоритм <strong>Дугласа-Пейкера</strong> <span class="citation">(Douglas and Peucker <a href="#ref-Douglas:1973if" role="doc-biblioref">1973</a>)</span> относится к алгоритмам редуцирования точек и основан на последовательном нахождении узлов линии, образующих максимальное отклонение от стягивающей хорды (Рис. <a href="lines-simpl.html#fig:douglas">0.4</a>). В ArcGIS метод Дугласа-Пейкера реализован в инструменте <strong>Simplify Line</strong> (режим <em>POINT_REMOVE</em>).</p>
+<p>Алгоритм <strong>Дугласа-Пейкера</strong> <span class="citation">(Douglas and Peucker <a href="#ref-Douglas:1973if" role="doc-biblioref">1973</a>)</span> относится к алгоритмам редуцирования точек и основан на последовательном нахождении узлов линии, образующих максимальное отклонение от стягивающей хорды (Рис. <a href="lines-simpl-work.html#fig:douglas">C.3</a>). В ArcGIS метод Дугласа-Пейкера реализован в инструменте <strong>Simplify Line</strong> (режим <em>POINT_REMOVE</em>).</p>
 <div class="figure"><span id="fig:douglas"></span>
 <img src="img/douglas.png" alt="Принцип работы алгоритма Дугласа-Пейкера" width="80%" />
 <p class="caption">
-Рис. 0.4: Принцип работы алгоритма Дугласа-Пейкера
+Рис. C.3: Принцип работы алгоритма Дугласа-Пейкера
 </p>
 </div>
-<p>Наконец, <strong>алгоритм Висвалингам-Уайатта</strong> <span class="citation">(Visvalingam and Whyatt <a href="#ref-Visvalingam:1993hx" role="doc-biblioref">1993</a>)</span> относится к алгоритмам редуцирования точек и основан на последовательном удалении точек, углы которых образуют минимальную эффективную площадь (Рис. <a href="lines-simpl.html#fig:visvalingam">0.5</a>). В ArcGIS данный алгоритм представлен в модификации Жу и Джонса <span class="citation">(Zhou and Jones <a href="#ref-zhou:2005" role="doc-biblioref">2005</a>)</span>, где каждая площадь приобретает различный вес в зависимости от пропорций угла линии и реализован в инструменте <strong>Simplify Line</strong> (режим <em>WEIGHTED_AREA</em>).</p>
+<p>Наконец, <strong>алгоритм Висвалингам-Уайатта</strong> <span class="citation">(Visvalingam and Whyatt <a href="#ref-Visvalingam:1993hx" role="doc-biblioref">1993</a>)</span> относится к алгоритмам редуцирования точек и основан на последовательном удалении точек, углы которых образуют минимальную эффективную площадь (Рис. <a href="lines-simpl-work.html#fig:visvalingam">C.4</a>). В ArcGIS данный алгоритм представлен в модификации Жу и Джонса <span class="citation">(Zhou and Jones <a href="#ref-zhou:2005" role="doc-biblioref">2005</a>)</span>, где каждая площадь приобретает различный вес в зависимости от пропорций угла линии и реализован в инструменте <strong>Simplify Line</strong> (режим <em>WEIGHTED_AREA</em>).</p>
 <div class="figure"><span id="fig:visvalingam"></span>
 <img src="img/visvalingam.png" alt="Принцип работы алгоритма Висвалингам-Уайатта" width="100%" />
 <p class="caption">
-Рис. 0.5: Принцип работы алгоритма Висвалингам-Уайатта
+Рис. C.4: Принцип работы алгоритма Висвалингам-Уайатта
 </p>
 </div>
-<div id="часть-1.-автоматизация-метода-ли-оупеншоу" class="section level4 unnumbered">
-<h4>Часть 1. Автоматизация метода Ли-Оупеншоу</h4>
+<div id="часть-1.-автоматизация-метода-ли-оупеншоу" class="section level2 unnumbered">
+<h2>Часть 1. Автоматизация метода Ли-Оупеншоу</h2>
 <ol style="list-style-type: decimal">
 <li><p>Создайте базу геоданных для результатов генерализации и назначьте ее базой данных по умолчанию для размещения результатов пространственного анализа.</p></li>
 <li><p>Проделайте следующую последовательность операций (жирным шрифтом указаны названия инструментов):</p>
@@ -199,10 +225,10 @@
 <li><p>Изложите ваш опыт создания инструмента в отчете, включая краткое описание среды Model Builder, интерпретацию метода Ли-Оупеншоу в терминах инструмента геообработки, процесс создания модели и оформления ее параметров. Проиллюстрируйте текст снимками экрана.</p></li>
 </ol>
 </div>
-<div id="часть-2.-автоматизация-методов-оценки-геометрической-точности-и-коэффициента-относительной-извилистости" class="section level4 unnumbered">
-<h4>Часть 2. Автоматизация методов оценки геометрической точности и коэффициента относительной извилистости</h4>
-<div id="автоматизация-вычисления-модифицрованного-хаусдорфова-расстояния-mhd-оценка-геометрической-точности" class="section level5 unnumbered">
-<h5>Автоматизация вычисления модифицрованного Хаусдорфова расстояния <strong>MHD</strong> (оценка геометрической точности)</h5>
+<div id="часть-2.-автоматизация-методов-оценки-геометрической-точности-и-коэффициента-относительной-извилистости" class="section level2 unnumbered">
+<h2>Часть 2. Автоматизация методов оценки геометрической точности и коэффициента относительной извилистости</h2>
+<div id="автоматизация-вычисления-модифицрованного-хаусдорфова-расстояния-mhd-оценка-геометрической-точности" class="section level3 unnumbered">
+<h3>Автоматизация вычисления модифицрованного Хаусдорфова расстояния <strong>MHD</strong> (оценка геометрической точности)</h3>
 <p>Модель <em>Modified</em> <em>Hausdorff Distance</em> должна включать следующие этапы.</p>
 <ol style="list-style-type: decimal">
 <li><p>Конвертируйте исходную линию в точки (<strong>Feature vertices to points</strong>).</p></li>
@@ -213,11 +239,11 @@
 <li><p>Замените значения поля <em>Sort</em> в полученном слое на 1 (<strong>Calculate Field)</strong>.</p></li>
 <li><p>Добавьте содержимое полученного слоя к точечному классу, содержащему исходные точки (<strong>Append</strong>).</p></li>
 <li><p>Конвертируйте полученные точки в линии векторов смещения (<strong>Points to Line</strong>). В качестве Line Field используйте поле ID, в качестве Sort Field – поле Sort.</p></li>
-<li><p>Визуализируйте полученный слой стрелками как на Рис. <a href="lines-simpl.html#fig:shift">0.6</a>.</p>
+<li><p>Визуализируйте полученный слой стрелками как на Рис. <a href="lines-simpl-work.html#fig:shift">C.5</a>.</p>
 <div class="figure"><span id="fig:shift"></span>
 <img src="img/shift-vectors.png" alt="Пример визуализации векторов смещения линии" width="100%" />
 <p class="caption">
-Рис. 0.6: Пример визуализации векторов смещения линии
+Рис. C.5: Пример визуализации векторов смещения линии
 </p>
 </div>
 <blockquote>
@@ -234,17 +260,17 @@
 <li><p>Выходной класс векторов смещения</p></li>
 </ul>
 </div>
-<div id="автоматизация-вычисления-коэффициента-относительной-извилистости-оценка-морфологического-соответствия" class="section level5 unnumbered">
-<h5>Автоматизация вычисления коэффициента относительной извилистости (оценка морфологического соответствия)</h5>
+<div id="автоматизация-вычисления-коэффициента-относительной-извилистости-оценка-морфологического-соответствия" class="section level3 unnumbered">
+<h3>Автоматизация вычисления коэффициента относительной извилистости (оценка морфологического соответствия)</h3>
 <p>Создайте новую модель геообработки <em>Sinuosity</em>, модифицировав модель генерализации, созданную ранее для алгоритма Ли-Оупеншоу. Вам необходимо внутри каждого квадрата поделить длину исходной линии на длину отрезка, соединяющего точки пересечения с линиями сетки. А затем посчитать среднее из полученных значений (<strong>Summary Statistics</strong>).</p>
 </div>
-<div id="отчет-1" class="section level5 unnumbered">
-<h5>Отчет</h5>
+<div id="отчет-2" class="section level3 unnumbered">
+<h3>Отчет</h3>
 <p>Опишите ваш опыт разработки моделей оценки геометрической точности морфологического соответствия для линий. Сопроводите данный раздел отчета снимками экрана и примерами получаемых результатов</p>
 </div>
 </div>
-<div id="часть-3.-сравнение-алгоритмов-ли-оупеншоу-ванга-мюллера-дугласа-пейкера-и-висвалингам-уайатта" class="section level4 unnumbered">
-<h4>Часть 3. Сравнение алгоритмов Ли-Оупеншоу, Ванга-Мюллера, Дугласа-Пейкера и Висвалингам-Уайатта</h4>
+<div id="часть-3.-сравнение-алгоритмов-ли-оупеншоу-ванга-мюллера-дугласа-пейкера-и-висвалингам-уайатта" class="section level2 unnumbered">
+<h2>Часть 3. Сравнение алгоритмов Ли-Оупеншоу, Ванга-Мюллера, Дугласа-Пейкера и Висвалингам-Уайатта</h2>
 <p>Сравните результаты работы вашей модели и инструмента <strong>Simplify Line</strong> в режимах BEND_SIMPLIFY (алгоритм Ванга-Мюллера), POINT_REMOVE (алгоритм Дугласа-Пейкера) и WEIGHTED_AREA (алгоритм Висвалингам-Уайатта).</p>
 <ol style="list-style-type: decimal">
 <li><p>Используя шаг сетки, равный 2 мм в результирующем масштабе (<em>1:4 000 000</em>), упростите линию с помощью метода Ли-Оупеншоу.</p></li>
@@ -262,7 +288,7 @@
 <li><p>Сделайте для отчета 4 иллюстрации с мини-легендой, на каждой из которых показан исходный контур и поверх — его генерализованная версия (по иллюстрации на каждый алгоритм). Разные алгоритмы выделите разными цветами.</p></li>
 <li><p>Изложите в отчете свой опыт сравнительного анализа алгоритмов генерализации.</p></li>
 </ol>
-</div>
+
 </div>
 </div>
 <h3>References</h3>
@@ -288,8 +314,8 @@
           </div>
         </div>
       </div>
-<a href="lines.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="lines-select.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="points-clust-work.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="lines-network-work.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -330,7 +356,7 @@ gitbook.start({
 },
 "download": null,
 "toc": {
-"collapse": "subsection",
+"collapse": "section",
 "edit": "https://github.com/tsamsonov/gen-course/edit/master/%s"
 }
 });

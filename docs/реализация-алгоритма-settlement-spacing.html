@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>1.1 Отбор | Картографические базы данных</title>
+  <title>Реализация алгоритма Settlement Spacing | Картографические базы данных</title>
   <meta name="description" content="Курс лекций по генерализации пространственных данных" />
   <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="1.1 Отбор | Картографические базы данных" />
+  <meta property="og:title" content="Реализация алгоритма Settlement Spacing | Картографические базы данных" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="tsamsonov/gen-course" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1.1 Отбор | Картографические базы данных" />
+  <meta name="twitter:title" content="Реализация алгоритма Settlement Spacing | Картографические базы данных" />
   
   <meta name="twitter:description" content="Курс лекций по генерализации пространственных данных" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="points.html"/>
-<link rel="next" href="points-clust.html"/>
+<link rel="prev" href="points-sel-work.html"/>
+<link rel="next" href="реализация-модели-оценки-условной-графической-нагрузки.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -121,24 +121,57 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="points-sel" class="section level2">
-<h2><span class="header-section-number">1.1</span> Отбор</h2>
-<div id="краткий-обзор" class="section level3">
-<h3><span class="header-section-number">1.1.1</span> Краткий обзор</h3>
-<p>Для просмотра презентации щелкните на ней один раз левой кнопкой мыши и листайте, используя кнопки на клавиатуре:
-<iframe src="https://tsamsonov.github.io/gen-course/slides/talk3_PointSelection.html#1" width="672" height="380px"></iframe></p>
-<blockquote>
-<p>Презентацию можно открыть в отдельном окне или вкладке браузере. Для этого щелкните по ней правой кнопкой мыши и выберите соответствующую команду.</p>
-</blockquote>
-</div>
+<div id="реализация-алгоритма-settlement-spacing" class="section level2 unnumbered">
+<h2>Реализация алгоритма Settlement Spacing</h2>
+<p><strong>Входные параметры:</strong></p>
+<ol style="list-style-type: decimal">
+<li>Точечный слой (<em>Input Points</em>).</li>
+<li>Поле веса точки (<em>Importance Field</em>). Выносится в качестве параметра из инструмента <strong>Get Field Value</strong> (2.2).</li>
+<li>Поле сохранения точки (<em>Remain Field</em>). Выносится в качестве параметра из инструмента <strong>Calculate Field</strong> (6).</li>
+<li>Масштабирующий коэффициент (<em>Scale</em>). Вводится как свободный параметр типа <em>Double</em>.</li>
+</ol>
+<p><strong>Требования к входным параметрам:</strong></p>
+<ol style="list-style-type: decimal">
+<li>Поля, указанные в параметрах <em>Importance Field</em> и <em>Remain Field</em> должны быть уже созданы в слое.</li>
+<li>Данные должны быть физически отсортированы в порядке увеличения поля <code>Importance</code> (чем больше значение этого поля, тем менее важной является точка). Для этого можно использовать инструмент <strong>Sort</strong>.</li>
+<li>Поле Remain по умолчанию должно быть пустым или заполненным нулями.</li>
+</ol>
+<p>Допустимые значения поля <em>Remain</em>:</p>
+<ul>
+<li><span class="math inline">\(0\)</span> — флаг не установлен.</li>
+<li><span class="math inline">\(1\)</span> — точку необходимо оставить.</li>
+<li><span class="math inline">\(2\)</span> — точку необходимо убрать.</li>
+</ul>
+<p><strong>Предусловия:</strong>
+Необходимо расставить предусловия таким образом, чтобы каждый инструмент <strong>A</strong>, использующий вычисленное значение <strong>B</strong>, выполнялся после того как вычислится <strong>B</strong>.</p>
+<p><strong>Входные данные:</strong>
+Тестирование инструмента производится на примере слоя <code>poppnt_ural</code> (можно вырезать из него небольшой фрагмент из нескольких десятков точек.</p>
+<p><strong>Результат:</strong>
+По результатам выполнения инструмента каждой точке в поле <em>Remain Field</em> должно быть проставлено значение <span class="math inline">\(1\)</span> (оставить) или <span class="math inline">\(2\)</span> (убрать).</p>
+<p><strong>Алгоритм решения задачи:</strong></p>
+<ol style="list-style-type: decimal">
+<li><p><em>Поток 1</em></p>
+<p>1.1. Создать слой из точек (<strong>Make Feature Layer</strong>)</p>
+<p>1.2. Выбрать точки (уже отобранные + текущая) по атрибутам (<strong>Select Layer by Attributes</strong>). Подсказка: используйте двойное условие, в котором поле <code>Remain</code> сравнивается с <span class="math inline">\(1\)</span>, а поле <code>OBJECTID</code> сравнивается со значением <code>Value</code>, полученным на шаге 2.1.</p></li>
+<li><p><em>Поток 2</em></p>
+<p>2.1. Выбрать текущую точку с помощью итератора (<strong>Iterate Feature Selection</strong>)</p>
+<p>2.2. Извлечь значение поля <code>Importance</code> (<strong>Get Field Value</strong>)</p>
+<p>2.3. Вычислить радиус буферной зоны (<strong>Calculate Value</strong>) как произведение <code>Importance</code> (2.2) и входного параметра <em>Scale</em>.</p>
+<p>2.4. Построить буферную зону, используя вычисленное значение 2.3 (Buffer)</p></li>
+<li><p>Довыбрать (<code>SUBSET_SELECTION</code>) буферной зоной (2.4) отобранные точки + текущую (1.2) с помощью пространственного запроса (<strong>Select Layer by Location</strong>).
+&gt; Внимание: в результате должны остаться только те точки, которые пересекаются буферной зоной!</p></li>
+<li><p>Подсчитать количество отобранных на шаге 3 точек (<strong>Get Count</strong>)</p></li>
+<li><p>Вычислить значение флага отбора точек, используя результат шага 4 (<strong>Calculate Value</strong>). Если выборка содержит 1 точку, то значение флага должно быть равно 1, если больше точек, то оно должно быть равно 2. Подсказка: тип выходного поля сделайте равным Long, но для вычисления используйте логическое выражение, результатом которого будет являться <code>Ложь (0)</code> или <code>Истина (1)</code>.</p></li>
+<li><p>Вычислите поле <code>Remain</code> для текущей точки (2.1), используя значение флага отбора, полученное на шаге 5 (<strong>Calculate Field</strong>).</p></li>
+</ol>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="points.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="points-clust.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="points-sel-work.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="реализация-модели-оценки-условной-графической-нагрузки.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

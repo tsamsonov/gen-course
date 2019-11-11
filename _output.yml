@@ -1,10 +1,10 @@
 bookdown::gitbook:
   fig_caption: yes
-  split_by: 'section'
+  split_by: 'chapter'
   css: style.css
   config:
     toc:
-      collapse: subsection
+      collapse: section
       before: |
         <li><a href="./">Генерализация пространственных данных</a></li>
       after: |

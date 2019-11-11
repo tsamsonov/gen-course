@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>1.1 Отбор | Картографические базы данных</title>
+  <title>Отбор населенных пунктов для карты масштаба 1:4 000 000 | Картографические базы данных</title>
   <meta name="description" content="Курс лекций по генерализации пространственных данных" />
   <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="1.1 Отбор | Картографические базы данных" />
+  <meta property="og:title" content="Отбор населенных пунктов для карты масштаба 1:4 000 000 | Картографические базы данных" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="tsamsonov/gen-course" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1.1 Отбор | Картографические базы данных" />
+  <meta name="twitter:title" content="Отбор населенных пунктов для карты масштаба 1:4 000 000 | Картографические базы данных" />
   
   <meta name="twitter:description" content="Курс лекций по генерализации пространственных данных" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="points.html"/>
-<link rel="next" href="points-clust.html"/>
+<link rel="prev" href="реализация-модели-оценки-условной-графической-нагрузки.html"/>
+<link rel="next" href="отчет-2.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -121,15 +121,107 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="points-sel" class="section level2">
-<h2><span class="header-section-number">1.1</span> Отбор</h2>
-<div id="краткий-обзор" class="section level3">
-<h3><span class="header-section-number">1.1.1</span> Краткий обзор</h3>
-<p>Для просмотра презентации щелкните на ней один раз левой кнопкой мыши и листайте, используя кнопки на клавиатуре:
-<iframe src="https://tsamsonov.github.io/gen-course/slides/talk3_PointSelection.html#1" width="672" height="380px"></iframe></p>
-<blockquote>
-<p>Презентацию можно открыть в отдельном окне или вкладке браузере. Для этого щелкните по ней правой кнопкой мыши и выберите соответствующую команду.</p>
-</blockquote>
+<div id="отбор-населенных-пунктов-для-карты-масштаба-14-000-000" class="section level2 unnumbered">
+<h2>Отбор населенных пунктов для карты масштаба 1:4 000 000</h2>
+<p>В данной — заключительной — части задания необходимо произвести отбор населенных пунктов, используя собственные модели геообработки, а также произвести графическую оценку полученных результатов.</p>
+<p><strong>Алгоритм выполнения задания:</strong></p>
+<ol style="list-style-type: decimal">
+<li>Скачать данные <em>OSM</em> на территорию Субъекта Федерации</li>
+<li>Перепроецировать слой <code>settlement-points</code> в наилучшую проекцию для выбранной территории</li>
+<li>Сформировать поля <code>Importance</code> и <code>Size</code>, используя следующее отображение атрибутов:</li>
+</ol>
+<table class="table table-striped table-bordered" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:unnamed-chunk-6">Таблица A.1: </span>Параметры заполнения полей
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+PLACE
+</th>
+<th style="text-align:center;">
+Importance
+</th>
+<th style="text-align:center;">
+Size
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+City
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Town
+</td>
+<td style="text-align:center;">
+2
+</td>
+<td style="text-align:center;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Village
+</td>
+<td style="text-align:center;">
+3
+</td>
+<td style="text-align:center;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Hamlet
+</td>
+<td style="text-align:center;">
+4
+</td>
+<td style="text-align:center;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Locality
+</td>
+<td style="text-align:center;">
+5
+</td>
+<td style="text-align:center;">
+1
+</td>
+</tr>
+</tbody>
+</table>
+<ol start="4" style="list-style-type: decimal">
+<li>Используя фрагмент данных и значения параметра <em>Scale</em> в диапазоне от <span class="math inline">\(1000\)</span> до <span class="math inline">\(10000\)</span> с шагом <span class="math inline">\(1000\)</span>, подобрать регрессионную зависимость между значением параметра масштабирования Scale и средней графической нагрузкой (<span class="math inline">\(ед.~на~см^2\)</span>) в масштабе <span class="math inline">\(1:4~000~000\)</span>. Средняя графическая нагрузка оценивается как среднее значение по всем ненулевым ячейкам регулярной сетки. Размер сетки — <span class="math inline">\(1~см^2\)</span> в результирующем масштабе.</li>
+<li>Выполнить отбор населенных пунктов с графической нагрузкой <span class="math inline">\(1\)</span>, <span class="math inline">\(3\)</span> и <span class="math inline">\(5\)</span> населенных пункта на <span class="math inline">\(см^2\)</span> для масштаба <span class="math inline">\(1:4~000~000\)</span>. Соответствующий параметр <em>Scale</em> подберите, используя найденную регрессионную зависимость.</li>
+<li>Оформить результаты в виде картосхемы, отображающей:
+<ul>
+<li>границу региона</li>
+<li>множество исходных точек бледно-серым цветом</li>
+<li>множество отобранных точек черным цветом соответствующего размера</li>
+<li>подписи основных населенных пунктов</li>
+<li>картограмму условной графической нагрузки</li>
+</ul></li>
+</ol>
+<div class="figure"><span id="fig:unnamed-chunk-7"></span>
+<img src="img/selection.png" alt="Пример оформления результатов работы" width="80%" />
+<p class="caption">
+Рис. A.1: Пример оформления результатов работы
+</p>
 </div>
 </div>
             </section>
@@ -137,8 +229,8 @@
           </div>
         </div>
       </div>
-<a href="points.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="points-clust.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="реализация-модели-оценки-условной-графической-нагрузки.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="отчет-2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
