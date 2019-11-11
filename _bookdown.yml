@@ -6,6 +6,7 @@ rmd_files:
     - "index.Rmd"
     - "03-Points.Rmd"
     - "04-Lines.Rmd"
+    - "05-Polygons.Rmd"
 language:
   label:
     fig: 'Рис. '
