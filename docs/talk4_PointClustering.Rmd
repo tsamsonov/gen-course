@@ -1,0 +1,911 @@
+---
+title: "Кластеризация точечных объектов"
+subtitle: "Картографические базы данных. Лекция №4"
+author: "Тимофей Самсонов"
+date: "`r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    css: [default, "style.css"]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Постановка задачи кластеризации
+
+**Дано**:
+
+- $X$  пространство объектов;
+- $X^l$ = $\{x_1, ..., x_l\}$  обучающая выборка;
+- $\rho: X \times X \rightarrow [0, \infty)$  функция расстояния между объектами.
+
+.pull-left[
+**Найти:**
+- $Y$  множество кластеров;
+- $a: X \rightarrow Y$  алгоритм кластеризации,
+]
+.pull-right[
+*Такие что*:
+- каждый кластер состоит из близких объектов
+- объекты разных кластеров существенно различны
+]
+
+> Кластеризация относится к методам классификации  *без учителя*
+<!-- .small[**К.В.Воронцов** Машинное обучение (курс лекций). [http://www.machinelearning.ru](http://www.machinelearning.ru)] -->
+
+---
+
+## Кластеризация
+
+.pull-left[
+**Цели кластеризации:**
+1. Упрощение обработки данных
+
+1. Сжатие данных
+
+1. Выделение аномалий (нетипичных объектов)
+
+1. Построение иерархии объектов
+]
+
+.pull-right[
+**Проблемы кластеризации:**
+
+1. Нечеткая постановка задачи
+
+1. Разнообразие критериев качества
+
+1. Распространенность эвристических подходов
+
+1. Неизвестное количество кластеров
+
+1. Зависимость результата от выбранной метрики
+]
+
+---
+
+## Алгоритмы кластеризации
+
+1. Статистическая кластеризация
+  - К средних
+  
+  - ISODATA
+  
+  - ФОРЭЛ (формальные элементы)
+
+1. Иерархическая/графовая кластеризация
+
+1. Плотностная кластеризация (DBSCAN/OPTICS)
+
+---
+
+## Метод К средних
+
+1. Установить количество кластеров $K$
+2. Выбрать случайным образом $K$ точек в качестве центров кластеров
+3. Определить для каждой точки ближайший центр кластера
+4. Рассчитать новый центр кластера на основе координат его точек
+5. Повторять шаги 3-4, до тех пор пока центры кластеров не перестанут менять свое местоположение.
+
+.small[**Steinhaus H.** (1956). *Sur la division des corps materiels en parties.* Bull. Acad. Polon. Sci., C1. III vol IV: 801—804.]
+
+.small[**Lloyd S.** (1957). *Least square quantization in PCM’s.* Bell Telephone Laboratories Paper.]
+
+.small[**MacQueen J.** (1967). *Some methods for classification and analysis of multivariate observations.* In Proc. 5th Berkeley Symp. on Math. Statistics and Probability, pages 281—297.]
+
+---
+
+## Метод К средних
+
+.left-column[
+Пример с четырьмя кластерами:
+]
+.right-column[
+```{r, out.width = "75%", fig.cap=""}
+knitr::include_graphics("img/talk3/kmeans.gif")
+```
+[http://shabal.in/visuals/kmeans/](http://shabal.in/visuals/kmeans/)
+]
+
+
+---
+
+## Метод К средних
+
+**Свойства метода**
+
+Метод К средних стремится минимизировать суммарное квадратичное отклонение точек кластеров от центров этих кластеров:
+$$V = \sum_{i=1}^{k} \sum_{x_j \in S_I} (x_j - \mu_i)^2$$
+где $k$ — число кластеров, $S_i$ — полученные кластеры, $\mu_i$ — центры кластеров (центры масс векторов этих кластеров)
+
+**Однако**: не гарантируется достижение глобального минимума суммарного квадратичного отклонения $V$, а только одного из локальных минимумов.
+
+---
+
+## Метод К средних
+
+.pull-left[
+### Свойства метода
+
+Все точки результирующих кластеров лежат в пределах ячеек диаграммы Вороного для центров этих кластеров:
+
+[https://moderndata.plot.ly/voronoi-diagrams-in-plotly-and-r/](https://moderndata.plot.ly/voronoi-diagrams-in-plotly-and-r/)
+]
+
+.pull-right[
+```{r, out.width = "100%", fig.cap=""}
+knitr::include_graphics("img/talk3/kmeans_vor.png")
+```
+]
+
+
+---
+
+## Метод К средних
+
+.left-column[
+### Свойства метода
+
+Результат зависит от выбора исходных центров кластеров, их оптимальный выбор неизвестен:
+]
+
+.right-column[
+```{r, out.width = "100%", fig.cap=""}
+knitr::include_graphics("img/talk3/kmeans-2.png")
+```
+```{r, out.width = "100%", fig.cap=""}
+knitr::include_graphics("img/talk3/kmeans-2.png")
+```
+[E.M. Mirkes, K-means and K-medoids applet. University of Leicester, 2011.](http://www.math.le.ac.uk/people/ag153/homepage/KmeansKmedoids/Kmeans_Kmedoids.html)
+]
+
+
+
+
+---
+
+## Метод К средних
+
+.left-column[
+### Свойства метода
+Алгоритм хорошо выделяет только разнесенные в пространстве кластеры выпуклой формы. 
+]
+
+.right-column[
+__Пример неудачной кластеризации:__
+```{r, out.width = "70%", fig.cap=""}
+knitr::include_graphics("img/talk3/kmeans-irr.png")
+```
+]
+
+---
+
+## Метод К средних
+
+### Свойства метода
+
+1. Не гарантируется достижение глобального минимума суммарного квадратичного отклонения $V$, а только одного из локальных минимумов.
+
+2. Результат зависит от выбора исходных центров кластеров, их оптимальный выбор неизвестен.
+
+3. Алгоритм хорошо выделяет только кластеры выпуклой формы.
+
+4. Метод может выявлять только заданное количество кластеров, но не их естественное число.
+
+---
+
+## Метод ISODATA
+
+**ISODATA** означает *Iterative Self-Organizing Data Analysis Technique Algorithm*
+
+Метод начинает работу с одного кластера и выполняет рекурсивное разделение множества вдоль его наиболее протяженной оси до тех пор пока все внутрикластерные расстояния не будут в пределах заданного допуска.
+
+**Ball, Geoffrey H., Hall, David J.** (1965) *Isodata: a method of data analysis and pattern classification* Stanford Research Institute, Menlo Park,United States. Office of Naval Research. Information Sciences Branch
+
+---
+
+## Метод ISODATA
+
+( 1 ) Установить допустимые значения стандартных отклонений $\sigma_x^{max}$, $\sigma_y^{max}$, минимальное расстояние между кластерами $d_{max}$ (опционально) и требуемое количество кластеров $K$ (опционально).
+
+( 2 ) Распределить $k$ случайных центров кластеров. Допустимо принять $k=1$, тогда местоположение кластера не имеет значения.
+
+( 3 ) Распределить точки в кластеры по расстоянию до ближайшего центра.
+
+( 4 ) Вычислить расстояния $d$ между центрами кластеров. Если среди них есть такие что $d < d_{max}$, произвести объединение центров, вычислив координаты, взвешенные на количество точек, содержащихся в кластере. Заново перераспределить между ними точки.
+
+---
+
+## Метод ISODATA
+
+( 5 ) Для каждого кластера вычислить значения выборочного среднего $\mu_x, \mu_y$ и стандартного отклонения $\sigma_x$ и $\sigma_y$ координат по осям $X$ и $Y$.
+
+( 6 ) Разбить пополам значением $\mu_x$ или $\mu_y$ все кластеры, в которых $\sigma_x > \sigma_x^{max}$ или $\sigma_y > \sigma_y^{max}$. Если в кластере $\sigma$ превышает допуск по обоим направлениям, он разбивается по направлению, в котором $\sigma$ больше.
+
+( 7 ) Вычислить центры разбитых кластеров, включить их в общее множество центров.
+
+( 8 ) Повторять шаги 3-5, пока во всех кластерах значения $\sigma_x$ и $\sigma_y$ на станут меньше соответствующих значений $\sigma_x^{max}$ и $\sigma_y^{max}$ или когда не будет достигнуто требуемое количество кластеров $K$.
+
+---
+
+## Метод ISODATA
+
+.pull-left[
+```{r, out.width = "100%", fig.cap=" "}
+knitr::include_graphics("img/talk3/isodata-0.png")
+```
+]
+
+.pull-right[
+Исходный набор данных: вес и рост спортсменов из разных видов спорта.
+
+**Ball, Geoffrey H., Hall, David J.** (1965) *Isodata: a method of data analysis and pattern classification* Stanford Research Institute, Menlo Park,United States. Office of Naval Research. Information Sciences Branch
+]
+
+
+---
+
+## Метод ISODATA
+
+.pull-left[
+```{r, out.width = "100%", fig.cap=" "}
+knitr::include_graphics("img/talk3/isodata-1.png")
+```
+]
+
+.pull-right[
+Даже если центры выбраны неудачно, в результате они разместятся в подходящих местах.
+]
+
+---
+
+## Метод ISODATA
+
+.pull-left[
+```{r, out.width = "100%", fig.cap=" "}
+knitr::include_graphics("img/talk3/isodata-2.png")
+```
+]
+
+.pull-right[
+Разбиение диаграммой Вороного
+]
+
+---
+
+## Метод ISODATA
+
+.pull-left[
+```{r, out.width = "100%", fig.cap=" "}
+knitr::include_graphics("img/talk3/isodata-3.png")
+```
+]
+
+.pull-right[
+Распределение точек по кластерам
+]
+
+---
+
+## Метод ISODATA
+
+.pull-left[
+```{r, out.width = "100%", fig.cap=" "}
+knitr::include_graphics("img/talk3/isodata-4.png")
+```
+]
+
+.pull-right[
+Вычисление средней точки
+]
+
+---
+
+## Метод ISODATA
+
+.pull-left[
+```{r, out.width = "100%", fig.cap=" "}
+knitr::include_graphics("img/talk3/isodata-5.png")
+```
+]
+
+.pull-right[
+Разделение центров
+]
+
+---
+
+## Метод ISODATA
+
+.pull-left[
+```{r, out.width = "100%", fig.cap=" "}
+knitr::include_graphics("img/talk3/isodata-6.png")
+```
+]
+
+.pull-right[
+Разбиение диаграммой Вороного
+]
+
+---
+
+## Метод ISODATA
+
+.pull-left[
+```{r, out.width = "100%", fig.cap=" "}
+knitr::include_graphics("img/talk3/isodata-7.png")
+```
+]
+
+.pull-right[
+Распределение точек по кластерам
+]
+
+---
+
+## Метод ISODATA
+
+.pull-left[
+```{r, out.width = "100%", fig.cap=" "}
+knitr::include_graphics("img/talk3/isodata-8.png")
+```
+]
+
+.pull-right[
+**Центры кластеров** после второй итерации. 
+
+Точка-выброс помечена стрелочкой
+]
+
+---
+
+## Метод ISODATA
+
+.pull-left[
+```{r, out.width = "100%", fig.cap=" "}
+knitr::include_graphics("img/talk3/isodata-9.png")
+```
+]
+
+.pull-right[
+**Центры кластеров** после третьей итерации 3. 
+
+Точка-выброс образовала самостоятельный кластер
+]
+
+---
+
+## Метод ISODATA
+
+.pull-left[
+```{r, out.width = "90%", fig.cap=" "}
+knitr::include_graphics("img/talk3/isodata-10.png")
+```
+]
+
+.pull-right[
+Разбиение кластеров
+]
+
+---
+
+## Метод ISODATA
+
+.pull-left[
+```{r, out.width = "100%", fig.cap=" "}
+knitr::include_graphics("img/talk3/isodata-11.png")
+```
+]
+
+.pull-right[
+Распределение точек по кластерам
+]
+
+---
+
+## Метод ISODATA
+
+.pull-left[
+```{r, out.width = "100%", fig.cap=""}
+knitr::include_graphics("img/talk3/isodata-12.png")
+```
+]
+
+.pull-right[
+Вычисление новых центров кластеров
+]
+
+---
+
+## Метод ISODATA
+
+.pull-left[
+```{r, out.width = "100%", fig.cap=""}
+knitr::include_graphics("img/talk3/isodata-13.png")
+```
+]
+
+.pull-right[
+Слияние близких центров
+]
+
+---
+
+## Метод ISODATA
+
+.pull-left[
+```{r, out.width = "100%", fig.cap=""}
+knitr::include_graphics("img/talk3/isodata-14.png")
+```
+]
+
+.pull-right[
+Разбиение на кластеры
+]
+
+---
+
+## Метод ISODATA
+
+.pull-left[
+```{r, out.width = "100%", fig.cap=""}
+knitr::include_graphics("img/talk3/isodata-15.png")
+```
+]
+
+.pull-right[
+Центры кластеров
+]
+
+---
+
+## Метод ISODATA
+
+.pull-left[
+```{r, out.width = "100%", fig.cap=""}
+knitr::include_graphics("img/talk3/isodata-16.png")
+```
+]
+
+.pull-right[
+Центры кластеров и их слияние
+]
+
+---
+
+## Метод ISODATA
+
+.pull-left[
+```{r, out.width = "100%", fig.cap=""}
+knitr::include_graphics("img/talk3/isodata-17.png")
+```
+]
+
+.pull-right[
+Итоговые центры
+]
+
+---
+
+## Метод ISODATA
+
+**По сравнению с К средних:**
+
+1. .blue[Не обязательно задавать количество кластеров.]
+
+2. .blue[Более робастный метод вычисления итоговых кластеров.]
+
+3. .red[Так же не эффективен при выделении кластеров неправильной формы]
+
+---
+
+## FOREL (ФОРмальные ЭЛементы)
+
+**Дано:** множество точек $U:= X^l$, количество кластеров $K$, радиус поиска $R$.
+
+1. Выбрать случайную точку $p_0$
+
+2. Образовать кластер с центром в $p_0$ и радиусом $R$
+
+3. Переместить центр $p_0$ в центр масс кластера
+
+4. Повторять шаги 2-3, пока состав кластера $K_0$ не стабилизируется
+
+5. Исключить кластеризованные точки из множества $U := K \setminus K_0$
+
+6. Повторять шаги 2-5, пока в выборке есть некластеризованные точки
+
+---
+
+## FOREL (ФОРмальные ЭЛементы)
+
+### .blue[Преимущества]
+
+<!-- - Точность минимизации функционала качества (при удачном подборе R) -->
+
+- Наглядность визуализации кластеризации
+
+- Сходимость алгоритма
+
+- Возможность операций над промежуточными центрами кластеров
+
+- Возможность подсчета промежуточных функционалов качества
+
+**Ёлкина В.Н., Ёлкин Е.А., Загоруйко Н.Г.** *О применении методики распознавания образов к решению задач палеонтологии*, 1967
+
+<!-- - Возможность проверки гипотез схожести и компактности в процессе работы алгоритма -->
+
+---
+
+## FOREL (ФОРмальные ЭЛементы)
+
+### .red[Недостатки]
+
+ - Относительно низкая производительность 
+ 
+ <!-- (решается введением функции пересчета поиска центра при добавлении 1 объекта внутрь сферы) -->
+
+- Плохая применимость алгоритма при плохой разделимости выборки на кластеры
+
+- Неустойчивость алгоритма (зависимость от выбора начального объекта)
+
+- Произвольное по количеству разбиение на кластеры
+
+- Необходимость априорных знаний о ширине (диаметре) кластеров
+
+---
+
+## Иерархическая кластеризация
+
+**Алгоритм** (Lance, Williams, 1967) основан на пересчете расстояний $R_{UV}$ между кластерами $U$ и $V$:
+
+( 1 ) Представить все кластеры как одноэлементные: $C_1 := \Bigl\{ \{x_1\}, ..., \{x_l\} \Bigr\}$.
+
+( 2 ) Рассчитать расстояния между ними $R_{\{x_i\}\{x_j\}} = \rho_{x_i, x_j}$.
+
+( 3 ) Установить переменную цикла $t = 2$.
+
+( 4 ) Найти пару кластеров с минимальным расстоянием $\rho_{ij}$.
+
+( 5 ) Объединить их в один кластер: $W := U \cup V$; $C_t := C_{t-1} \cup \{W\} \setminus \{U, V\}$.
+
+---
+
+## Иерархическая кластеризация
+
+( 6 ) Пересчитать расстояния $R_{WS}$ от нового кластера $W$ до всех кластеров $S \in С_t$ по формуле Ланса-Уильямса: 
+
+$$R_{WS} := \alpha_{U}R_{US} + \alpha_V R_{VS} + \beta R_{UV} + \gamma |R_{US} - R_{VS}|.$$
+
+( 7 ) Установить $t = t + 1$.
+
+( 8 ) Повторять шаги 4-7, пока $t \leq l$.
+
+**Lance G. N., Willams W. T.** *A general theory of classification sorting strategies. 1. hierarchical systems* // Comp. J. — 1967. — no. 9. — Pp. 373–380
+
+---
+
+## Варианты расстояний
+
+```{r, out.width = "75%", fig.cap=""}
+knitr::include_graphics("img/talk3/hierch-dist1.png")
+```
+
+---
+
+## Варианты расстояний
+
+```{r, out.width = "85%", fig.cap=""}
+knitr::include_graphics("img/talk3/hierch-dist2.png")
+```
+
+.small[**К.В.Воронцов** Машинное обучение (курс лекций). [http://www.machinelearning.ru](http://www.machinelearning.ru)]
+
+---
+
+## Дендрограммы
+
+### Расстояние ближнего соседа
+
+```{r, out.width = "75%", fig.cap=""}
+knitr::include_graphics("img/talk3/hierch-dend1.png")
+```
+
+---
+
+## Дендрограммы
+
+### Расстояние дальнего соседа
+
+```{r, out.width = "75%", fig.cap=""}
+knitr::include_graphics("img/talk3/hierch-dend2.png")
+```
+
+---
+
+## Дендрограммы
+
+### Групповое среднее
+
+```{r, out.width = "75%", fig.cap=""}
+knitr::include_graphics("img/talk3/hierch-dend3.png")
+```
+
+---
+
+## Дендрограммы
+
+### Групповое среднее
+
+```{r, out.width = "75%", fig.cap=""}
+knitr::include_graphics("img/talk3/hierch-dend4.png")
+```
+---
+
+## Иерархическая кластеризация
+
+1. Рекомендуют пользоваться расстоянием Уорда
+1. Имеет смысл построить несколько вариантов и выбрать лучший
+1. Уровень кластеризации получается путем отсечения дерева по заданному расстоянию.
+
+```{r, out.width = "50%", fig.cap=""}
+knitr::include_graphics("img/talk3/hierch-res.png")
+```
+
+.small[**К.В.Воронцов** Машинное обучение (курс лекций). [http://www.machinelearning.ru](http://www.machinelearning.ru)]
+
+---
+
+## Кратчайший незамкнутый путь
+
+1. Пометить все точки как изолированные
+
+1. Найти пару вершин с наименьшим расстоянием и соединить их ребром. Пометить вершины как неизолированные
+
+2. Найти изолированную точку, ближайшую к некоторой неизолированной
+
+3. Соединить эти точки ребром
+
+4. Повторять шаги 2-3, пока остаются изолированные точки
+
+5. Удалить K-1 самых длинных рёбер.
+
+.red[**Недостатки**:] необходимость задавать число кластеров и высокая чувствительность к шуму.
+
+---
+
+## DBSCAN
+
+**DBSCAN** *(Density-based spatial clustering of applications with noise)*  алгоритм плотностной кластеризации, который группирует плотно упакованные точки.
+
+1. Точка $p$ является *ядерной (core)*, если ее $\epsilon$-окрестность содержит не менее $minPts$ точек. Эти точки именуются *прямо достижимыми* от $p$.
+  
+2. Точка $q$ является *достижимой (reachable)* от точки $p$, если существует такая последовательность точек $p_1, ..., p_n$, $p_1 = p$, $p_n = q$ в которой каждая точка $p_{i+1}$ прямо достижима от $p_i$. Все точки, кроме $q$ должны быть ядерными.
+  
+3. Точка $r$ является *выброшенной (outlier)*, если оне не достижима ни от одной другой точки.
+
+---
+
+## DBSCAN
+
+.pull-left[
+Если $A$  ядерная точка, то она формирует кластер со всеми точками, которые достижимы от нее.  
+
+Точки $B$ и $С$ являются граничными (edge), поскольку входят в кластер, но при этом не являются ядерными. 
+
+Точка $N$ выброшена.
+]
+.pull-right[
+```{r, out.width = "90%", fig.cap=""}
+knitr::include_graphics("img/talk3/dbscan.svg")
+```
+]
+
+.small[**Ester, Martin, Hans P Kriegel, Jorg Sander, and Xiaowei Xu**. 1996. *A Density-Based Algorithm for Discovering Clusters in Large Spatial Databases with Noise.* Proceedings of the 2nd International Conference on Knowledge Discovery and Data Mining, 226–31. doi:10.1.1.71.1980.]
+
+---
+
+## DBSCAN
+
+Задать С = 0. 
+
+Для каждой точки $p$ из множества $P$:
+
+1. Найти множество точек $N$, входящих в $\epsilon$-окрестность точки $p$
+
+1. Если $|N| < minPts$, то пометить точку $p$ как выброшенную и перейти на новую итерацию.
+
+1. Если $|N| \geq minPts$, то создать новый номер кластера $C = C+1$ (изначально C = 0) и пометить им точку $p$
+
+1. Создать множество точек $Q = N \setminus \{p\}$
+
+---
+
+## DBSCAN
+
+Для каждой точки $q$ из множества $Q$:
+
+1. Если $q$ помечена как выброшенная, пометить $q$ номером кластера $C$
+
+1. Если $q$ имеет метку, пропустить ее и перейти на новую итерацию (к следующей точке).
+
+1. Если $q$ не имеет метки, то:
+
+    + пометить $q$  номером кластера $C$
+    
+    + найти множество точек $K$, входящих в $\epsilon$-окрестность $q$
+    
+    + если $|K| \geq minPts$, то $Q = Q \cup K$ (добавить $K$ к $Q$)
+        
+---
+
+## DBSCAN
+
+.pull-left[
+### Пуассоновский (случайный) точечный процесс
+
+*Visualizing DBSCAN Clustering:*
+
+[https://www.naftaliharris.com/blog/](https://www.naftaliharris.com/blog/visualizing-dbscan-clustering/)
+[visualizing-dbscan-clustering/](https://www.naftaliharris.com/blog/visualizing-dbscan-clustering/)
+]
+
+.pull-right[
+```{r, out.width = "100%", fig.cap=""}
+knitr::include_graphics("img/talk3/dbscan_uniform.gif")
+```
+]
+
+---
+
+## DBSCAN
+
+.pull-left[
+### Кластерный процесс Томаса (смесь нормальных распределений)
+
+*Visualizing DBSCAN Clustering:*
+
+[https://www.naftaliharris.com/blog/](https://www.naftaliharris.com/blog/visualizing-dbscan-clustering/)
+[visualizing-dbscan-clustering/](https://www.naftaliharris.com/blog/visualizing-dbscan-clustering/)
+]
+
+.pull-right[
+```{r, out.width = "120%", fig.cap=""}
+knitr::include_graphics("img/talk3/dbscan_gaussian.gif")
+```
+]
+
+---
+
+## DBSCAN
+
+.pull-left[
+
+### Смайлик
+
+*Visualizing DBSCAN Clustering:*
+
+[https://www.naftaliharris.com/blog/](https://www.naftaliharris.com/blog/visualizing-dbscan-clustering/)
+[visualizing-dbscan-clustering/](https://www.naftaliharris.com/blog/visualizing-dbscan-clustering/)
+]
+
+.pull-right[
+```{r, out.width = "100%", fig.cap=""}
+knitr::include_graphics("img/talk3/dbscan_face.gif")
+```
+]
+
+
+---
+
+## DBSCAN
+
+.blue[**Достоинства:**]
+
+1. Не требует указания количества кластеров.
+
+1. Может найти кластеры произвольной формы. Он может даже найти кластер, полностью окруженный другим кластером, но не связанный с ним.
+
+1. Имеет представление о шуме и устойчив к выбросам.
+
+1. Требует всего два параметра и в основном нечувствителен к упорядочению точек в исходном множестве. Тем не менее, точки, расположенные на краю двух разных кластеров, могут менять кластерное членство.
+
+1. Способен использовать пространственные индексы для эффективного поиска точек в окрестности.
+
+---
+
+## DBSCAN
+
+.red[**Недостатки:**]
+
+1. Не является полностью детерминированным: граничные точки, доступные из более чем одного кластера, могут быть частью любого кластера, в зависимости от порядка обработки данных.
+
+1. Качество зависит от метрики расстояния, используемой в функции запроса диапазона (*region query*). Наиболее распространенной метрикой расстояния является евклидово расстояние, однако в пространствах высокой размерности подбор подходящего значения $\epsilon$ вызывает большие трудности.
+
+1. Не может хорошо сгруппировать наборы данных в которых кластеры имеют разную плотность. Комбинация $minPts$ и $\epsilon$ характеризует только определенный масштаб кластеризации.
+
+---
+
+## DBSCAN
+
+### Выбор параметров
+
+.pull-left[Для определения оптимальной величины $\epsilon$ рекомендуется построить функцию среднего расстояния до $minPts-1$ ближайших соседей в зависимости от $\epsilon$. Оптимальными считаются значения $\epsilon$, при которых наблюдается наиболее интенсивное изменение роста функции (перегиб)]
+
+.pull-right[
+```{r, out.width = "100%", fig.cap=""}
+knitr::include_graphics("img/talk3/dbscan_eselect.png")
+```
+]
+
+---
+
+## DBSCAN
+
+### Выбор параметров
+
+- Количество точек в кластере должно быть больше размерности пространства: $minPts \geq D +1$. В качестве отправной точки рекомендуется взять значение $minPts = 2D$
+
+- Функция вычисления расстояния должна выбираться в соответствии с сущностью точек. Например, если координаты точек заданы широтой и долготой, для вычисления расстояний следует использовать *обратную геодезическую задачу*.
+
+.small[**Sander, Jörg; Ester, Martin; Kriegel, Hans-Peter; Xu, Xiaowei** 1998. "Density-Based Clustering in Spatial Databases: The Algorithm GDBSCAN and Its Applications". Data Mining and Knowledge Discovery. Berlin: Springer-Verlag. 2 (2): 169–194]
+
+---
+
+## OPTICS
+
+.pull-left[__OPTICS__ является модификацией алгоритма DBSCAN, который решает одну из его основных проблем — невозможность выделять кластеры различной плотности. 
+
+Точки линейно упорядочиваются таким образом, что близкие друг другу точки становятся соседями в последовательности.]
+
+.pull-right[
+```{r, out.width = "100%", fig.cap=""}
+knitr::include_graphics("img/talk3/OPTICS.svg")
+```
+]
+
+.small[Ankerst, M., Breunig, M.M., Kriegel, H., Sander, J., 1999. OPTICS: Ordering Points To Identify the Clustering Structure. Proceedings of the 1999 ACM SIGMOD international conference on Management of data - SIGMOD ’99 49–60. https://doi.org/10.1145/304182.304187]
+
+---
+
+## Вычисление центров кластеров
+
+**Возможны различные варианты:**
+
+```{r, out.width = "40%", fig.cap=""}
+knitr::include_graphics("img/talk3/cluster_centers.png")
+```
+
+---
+
+## Критерии качества кластеризации:
+
+**Среднее внутрикластерное расстояние**:
+
+$$F_0 = \frac{\sum_{i < j} [a_i = a_j] \rho(x_i, x_j)}{\sum_{i < j} [a_i = a_j]} \rightarrow min$$
+
+**Среднее межкластерное расстояние**:
+
+$$F_1 = \frac{\sum_{i < j} [a_i \neq a_j] \rho(x_i, x_j)}{\sum_{i < j} [a_i \neq a_j]} \rightarrow max$$
+
+**Отношение пары функционалов**:
+
+$$F_0/F_1 \rightarrow min$$
+
+---
+
+## Критерии качества кластеризации:
+
+где $[\cdot]$  индикаторная функция в нотации Айверсона:
+
+$$[P] = \begin{cases}
+  1, \text{if } P \text{ is TRUE};\\
+  0, \text{if } P \text{ is FALSE}.
+\end{cases}$$
