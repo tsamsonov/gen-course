@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Генерализация рельефа</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Тимофей Самсонов" />
+    <meta name="date" content="2019-11-18" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Генерализация рельефа
+## Картографические базы данных. Лекция №8
+### Тимофей Самсонов
+### 2019-11-18
+
+---
+
+
+
+
+## Глобальные цифровые модели рельефа
+
+---
+
+## Мелкомасштабные ЦМР
+
+---
+
+## Проблемы качества существующих ЦМР
+
+---
+
+## Проблемы качества существующих ЦМР
+
+Избыточное соотношение детализации и разрешения (detail/resolution)
+
+---
+
+## Проблемы качества существующих ЦМР
+
+Избыточное соотношение детализации и разрешения (detail/resolution)
+
+---
+
+## Проблемы качества существующих ЦМР
+
+Избыточное соотношение детализации и разрешения (detail/resolution)
+
+---
+
+## Проблемы качества существующих ЦМР
+
+Низкое качество моделей обзорного разрешения
+
+---
+
+## Требования к изображению рельефа в мелких масштабах
+
+- Сохранение на карте форм (положительных и отрицательных), имеющих размеры больше установленной величины или типичных для изображаемого ландшафта;
+- Сохранение географического подобия изображаемых форм путем выделения характерных особенностей их рисунка;
+- Получение наглядности в изображении обобщенных форм, т.е. создание впечатления их выпуклости, объемности;
+- Сохранение определенной степени точности местоположения и высоты крупных форм.
+
+&gt; Заруцкая И. П. Методы составления рельефа на гипсометрических картах. — М.: Изд-во геодезической литературы, 1958. — 216 с.
+
+---
+
+## Требования к алгоритмам генерализации ЦМР
+
+1. Максимальная степень автоматизации. 
+1. Эффективность в широком диапазоне масштабов. 
+1. Адаптируемость к характеристикам рельефа. 
+1. Оперирование непосредственно ЦМР. 
+1. Возможность анализа результатов. 
+1. Возможность сдвигов и преувеличений форм, основанных на распознавании 
+1. Основных орографических элементов и отдельных форм рельефа (для значительной генерализации)
+
+&gt; Weibel R. An Adaptive Methodology for Automated Relief Generalization // Proc. AutoCarto 8, Balt. Maryland, USA. 1987. P. 42–49.
+
+---
+
+## Генерализация сеточных ЦМР
+
+1. Передискретизация
+1. Агрегирование
+1. лобальная фильтрация
+1. Структурная генерализация
+1. Адаптивная фильтрация 
+1. Спектральная декомпозиция
+
+---
+
+## Структурная генерализация
+
+В разработанном методе используется структурный подход к  генерализации, в котором упрощенная поверхность восстанавливается на основе триангуляции тальвегов и водоразделов различного порядка
+
+---
+
+## Структурная генерализация
+
+Исходная ЦМР
+
+---
+
+## Структурная генерализация
+
+Триангуляция по структурным линиям
+
+---
+
+## Структурная генерализация
+
+Триангуляция по структурным линиям
+
+---
+
+## Структурная генерализация
+
+Триангулированная поверхность
+
+---
+
+## Структурная генерализация
+
+Расширение долин и междуречий
+
+---
+
+## Структурная генерализация
+
+Исходная поверхность
+
+---
+
+## Расширение долин и междуречий
+
+Адаптировано с Leonowicz, Jenny &amp; Hürni (2009) Automatic generation of hypsometric layers for small-scale maps. Computers &amp; Geosciences, 35, p. 2074–2083.
+
+- Используется только для пост-процессинга
+- Области водоразделов также расширяются
+- Производится гладкое взвешивание на основе растров евклидовых расстояний в качестве весовых функций
+- MIN and MAX-фильтры используются вместо квартилей
+
+---
+
+## Расширение долин и междуречий
+
+0: Исходная ЦМР
+
+
+---
+
+## Расширение долин и междуречий
+
+1: Долинная ЦМР — MIN filter
+
+---
+
+## Расширение долин и междуречий
+
+2: Междуречная ЦМР — MAX filter
+
+---
+
+## Расширение долин и междуречий
+
+3: Тальвеги
+
+---
+
+## Расширение долин и междуречий
+
+4: Евклидовы расстояния
+
+---
+
+## Расширение долин и междуречий
+
+5: Веса долин
+
+---
+
+## Расширение долин и междуречий
+
+6: Веса междуречий
+
+---
+
+## Расширение долин и междуречий
+
+7: Веса склонов
+
+---
+
+## Расширение долин и междуречий
+
+8: Взвешенная сумма
+
+---
+
+## Расширение (вид в профиль)
+
+---
+
+## Расширение
+
+Генерализованная ЦМР
+
+---
+
+## Сравнение
+
+ETOPO1
+Генерализованная ЦМР
+
+---
+
+## 1:2 500 000: Генерализованная ЦМР vs GMTED2010
+
+GMTED2010
+
+---
+
+## 1:2 500 000: Генерализованная ЦМР vs GMTED2010
+
+Генерализованная ЦМР
+
+---
+
+## Глобальные модели HYPSO
+
+- Разрешение 0.5′, 1′, 2.5′, 5′, 10′ (размер ячейки порядка 1, 2, 5, 10, 20 км)
+
+- На основе модели GMTED2010 0.5′
+
+- Для получения применена технология тайлового процессинга с разбиением исходных ЦМР на ячейки размером 2048×2048 пикселов
+
+- Корректная обработка маски морских территорий
+
+---
+
+## Набор инструментов DEM Generalization для ArcGIS
+
+---
+
+## generalize-dem
+
+---
+
+## Генерализация по ячейкам 2048х2048 px
+
+200 ячеек, время обработки одной ячейки — 10 мин.
+
+---
+
+## Генерализация по перекрывающимся ячейкам
+
+---
+
+## Генерализация по перекрывающимся ячейкам
+
+---
+
+## Пример HYPSO05
+
+---
+
+## GMTED2010
+
+---
+
+## HYPSO05
+
+---
+
+## Генерализация изолиний
+
+Триангуляция каждой горизонтали. Выделение ложбин и построение их иерархии и скелета
+
+Отбираются только те изгибы, чья глубина превышает допуск. Строятся тальвеги.
+
+---
+
+## Генерализация изолиний
+
+Классификация тальвегов по длине. Выделение коротких тальвегов
+
+Удаление долин путем спрямления участков горизонталей над долинами
+
+---
+
+## Трехмерный алгоритм Дугласа-Пейкера
+
+Fei et al., 2008
+
+---
+
+## Генерализация триангуляционных ЦМР
+
+- __Алгоритмы детализации__ работают снизу вверх. Строится оболочка для всех точек, далее в нее добавляются узлы в порядке уменьшения ошибки про высоте.
+
+- __Алгоритмы опустошения__ (децимации) работают снизу вверх. Из полного множества точки удаляются в порядке увеличения ошибки по высоте
+
+---
+
+## Генерализация батиметрических карт
+
+Допустимо только занижать глубины (делать их более мелкими)
+
+---
+
+## Генерализация батиметрических карт
+
+Peters et al., 2014. Ре-интерполяция методом естественного соседа (Natural Neighbor).
+Производится переоценка значения в точке на основе соседей. Полученное значение сохраняется только если оно больше исходного
+
+.small[Peters, Ravi, Hugo Ledoux, and Martijn Meijers. 2014. “A Voronoi-Based Approach to Generating Depth-Contours for Hydrographic Charts.” Marine Geodesy 37 (2): 145–66. doi:10.1080/01490419.2014.902882.]
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
