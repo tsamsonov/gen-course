@@ -4,39 +4,7 @@
 
 В настоящем задании необходимо сравнить два метода мелкомасштабной генерализации ЦМР: глобальная фильтрация и структурная генерализация. 
 
-__Задачи__ работы включают разработку программного инструмента итерационного сглаживания ЦМР, подготовку исходных данных, выполнение генерализации ЦМР методами структурной генерализации и глобальной фильтрации, а также сравнительный анализ полученных результатов
-
-## Автоматизация итерационного сглаживания ЦМР {#ex-dem-iter}
-
-В данной части задания необходимо создать набор инструментов _Python Toolbox_, содержащий один инструмент __Iterate Focal Statistics__, который выполняет последовательное сглаживание цифровой модели рельефа фильтром среднего в несколько проходов с использованием заданных параметров.
-
-__Предварительное чтение:__
-
-1. Синтаксис вызова инструмента [Focal Statistics](http://desktop.arcgis.com/ru/arcmap/10.5/tools/spatial-analyst-toolbox/focal-statistics.htm) средствами языка программирования Python.
-1. Создание нового набора инструментов [Python Toolbox](http://desktop.arcgis.com/ru/arcmap/10.5/analyze/creating-tools/creating-a-new-python-toolbox.htm).
-
-__Параметры инструмента:__
-
-1. Входная ЦМР (_Input Raster DEM_).
-1. Размер плавающего окна (_Filter size_).
-1. Количество итераций (_Number of iterations_).
-1. Выходная ЦМР (_Output Raster DEM_).
-
-__Указания к выполнению:__
-
-1. Скачайте [шаблон](http://desktop.arcgis.com/ru/arcmap/10.5/analyze/creating-tools/a-template-for-python-toolboxes.htm) инструмента Python Toolbox.
-1. Переименуйте шаблон в `Ex6.pyt`.
-1. Модифицируйте шаблон, дав основному инструменту название `Iterate Focal Statistics` и определив в нем необходимые [параметры](http://desktop.arcgis.com/ru/arcmap/10.5/analyze/creating-tools/defining-parameters-in-a-python-toolbox.htm) и их [типы](http://desktop.arcgis.com/ru/arcmap/10.5/analyze/creating-tools/defining-parameter-data-types-in-a-python-toolbox.htm).
-1. Добавьте строку импорта функций модуля __Spatial Analyst__: `from arcpy.sa import *`.
-1. Выполните редактирование функции `execute()`, включив в нее следующие шаги (_вместо многоточия подставьте нужные параметры_):
-
-    - [Чтение параметров](http://desktop.arcgis.com/ru/arcmap/10.5/analyze/creating-tools/accessing-parameters-within-a-python-toolbox.htm) инструмента в теле функции. Например: `in_raster = parameters[0].valueAsText`.
-    - Создание объекта типа [Raster](https://desktop.arcgis.com/ru/arcmap/latest/extensions/spatial-analyst/map-algebra/working-with-raster-objects.htm) из слоя входной ЦМР: `dem = Raster(...)`.
-    - Создание [прямоугольной окрестности](http://desktop.arcgis.com/ru/arcmap/10.5/analyze/arcpy-spatial-analyst/nbrrectangle-class.htm) заданного размера: `nbr = NbrRectangle(...)`.
-    - Организация цикла от $0$ до $N-1$, где $N$ — количество итераций, переданное в качестве параметра инструмента: `for i in range(N):`. Внутри цикла:
-        - Вывод сообщения о текущем номере итерации: `arcpy.AddMessage(...)`.
-        - Вызов функции [фокальной статистики](http://desktop.arcgis.com/ru/arcmap/10.5/tools/spatial-analyst-toolbox/focal-statistics.htm) с созданной ранее окрестностью. Чтобы на каждой итерации на вход подавался результат выполнения предыдущей итерации, просто записывайте его в ту же переменную: `dem = FocalStatistics(dem, ...)`.
-    - Сохранение полученного растра в выходной набор данных _Output Raster DEM_: `dem.save(...)`.
+__Задачи__ работы включают подготовку исходных данных, разработку программного инструмента итерационного сглаживания ЦМР, выполнение генерализации ЦМР методами структурной генерализации и глобальной фильтрации, а также сравнительный анализ полученных результатов
 
 ## Подготовка исходных данных {#ex-dem-data}
 
@@ -77,6 +45,38 @@ __Указания к выполнению:__
 1. Перепроецируйте все исходные данные (ЦМР + три векторных слоя) в цилиндрическую равнопромежуточную проекцию _World_Plate_Carree_. 
 
     > Если операция выполнена верно, то проецированная версия ЦМР должна в точности совпадать с исходной как по размерам, так и по значениям. Отличие будет заключаться только в координатах ячеек, которые от градусов перейдут в метрические.
+    
+## Автоматизация итерационного сглаживания ЦМР {#ex-dem-iter}
+
+В данной части задания необходимо создать набор инструментов _Python Toolbox_, содержащий один инструмент __Iterate Focal Statistics__, который выполняет последовательное сглаживание цифровой модели рельефа фильтром среднего в несколько проходов с использованием заданных параметров.
+
+__Предварительное чтение:__
+
+1. Синтаксис вызова инструмента [Focal Statistics](http://desktop.arcgis.com/ru/arcmap/10.5/tools/spatial-analyst-toolbox/focal-statistics.htm) средствами языка программирования Python.
+1. Создание нового набора инструментов [Python Toolbox](http://desktop.arcgis.com/ru/arcmap/10.5/analyze/creating-tools/creating-a-new-python-toolbox.htm).
+
+__Параметры инструмента:__
+
+1. Входная ЦМР (_Input Raster DEM_).
+1. Размер плавающего окна (_Filter size_).
+1. Количество итераций (_Number of iterations_).
+1. Выходная ЦМР (_Output Raster DEM_).
+
+__Указания к выполнению:__
+
+1. Скачайте [шаблон](http://desktop.arcgis.com/ru/arcmap/10.5/analyze/creating-tools/a-template-for-python-toolboxes.htm) инструмента Python Toolbox.
+1. Переименуйте шаблон в `Ex6.pyt`.
+1. Модифицируйте шаблон, дав основному инструменту название `Iterate Focal Statistics` и определив в нем необходимые [параметры](http://desktop.arcgis.com/ru/arcmap/10.5/analyze/creating-tools/defining-parameters-in-a-python-toolbox.htm) и их [типы](http://desktop.arcgis.com/ru/arcmap/10.5/analyze/creating-tools/defining-parameter-data-types-in-a-python-toolbox.htm).
+1. Добавьте строку импорта функций модуля __Spatial Analyst__: `from arcpy.sa import *`.
+1. Выполните редактирование функции `execute()`, включив в нее следующие шаги (_вместо многоточия подставьте нужные параметры_):
+
+    - [Чтение параметров](http://desktop.arcgis.com/ru/arcmap/10.5/analyze/creating-tools/accessing-parameters-within-a-python-toolbox.htm) инструмента в теле функции. Например: `in_raster = parameters[0].valueAsText`.
+    - Создание объекта типа [Raster](https://desktop.arcgis.com/ru/arcmap/latest/extensions/spatial-analyst/map-algebra/working-with-raster-objects.htm) из слоя входной ЦМР: `dem = Raster(...)`.
+    - Создание [прямоугольной окрестности](http://desktop.arcgis.com/ru/arcmap/10.5/analyze/arcpy-spatial-analyst/nbrrectangle-class.htm) заданного размера: `nbr = NbrRectangle(...)`.
+    - Организация цикла от $0$ до $N-1$, где $N$ — количество итераций, переданное в качестве параметра инструмента: `for i in range(N):`. Внутри цикла:
+        - Вывод сообщения о текущем номере итерации: `arcpy.AddMessage(...)`.
+        - Вызов функции [фокальной статистики](http://desktop.arcgis.com/ru/arcmap/10.5/tools/spatial-analyst-toolbox/focal-statistics.htm) с созданной ранее окрестностью. Чтобы на каждой итерации на вход подавался результат выполнения предыдущей итерации, просто записывайте его в ту же переменную: `dem = FocalStatistics(dem, ...)`.
+    - Сохранение полученного растра в выходной набор данных _Output Raster DEM_: `dem.save(...)`.
     
 ## Сравнение структурной генерализации и глобальной фильтрации ЦМР {#ex-dem-iter}
 

@@ -136,8 +136,8 @@
 <li class="chapter" data-level="" data-path="polygons-skeleton-work.html"><a href="polygons-skeleton-work.html#часть-5.-построение-срединной-оси-и-описание-результатов"><i class="fa fa-check"></i>Часть 5. Построение срединной оси и описание результатов</a></li>
 </ul></li>
 <li class="chapter" data-level="F" data-path="ex-dem.html"><a href="ex-dem.html"><i class="fa fa-check"></i><b>F</b> Задание №6. Генерализация цифровой модели рельефа</a><ul>
-<li class="chapter" data-level="F.1" data-path="ex-dem.html"><a href="ex-dem.html#ex-dem-iter"><i class="fa fa-check"></i><b>F.1</b> Автоматизация итерационного сглаживания ЦМР</a></li>
-<li class="chapter" data-level="F.2" data-path="ex-dem.html"><a href="ex-dem.html#ex-dem-data"><i class="fa fa-check"></i><b>F.2</b> Подготовка исходных данных</a></li>
+<li class="chapter" data-level="F.1" data-path="ex-dem.html"><a href="ex-dem.html#ex-dem-data"><i class="fa fa-check"></i><b>F.1</b> Подготовка исходных данных</a></li>
+<li class="chapter" data-level="F.2" data-path="ex-dem.html"><a href="ex-dem.html#ex-dem-iter"><i class="fa fa-check"></i><b>F.2</b> Автоматизация итерационного сглаживания ЦМР</a></li>
 <li class="chapter" data-level="F.3" data-path="ex-dem.html"><a href="ex-dem.html#ex-dem-iter"><i class="fa fa-check"></i><b>F.3</b> Сравнение структурной генерализации и глобальной фильтрации ЦМР</a></li>
 </ul></li>
 <li class="divider"></li>
@@ -164,44 +164,9 @@
 <h1><span class="header-section-number">F</span> Задание №6. Генерализация цифровой модели рельефа</h1>
 <p><strong>Цель задания</strong> — овладение различными техниками генерализации ЦМР.</p>
 <p>В настоящем задании необходимо сравнить два метода мелкомасштабной генерализации ЦМР: глобальная фильтрация и структурная генерализация.</p>
-<p><strong>Задачи</strong> работы включают разработку программного инструмента итерационного сглаживания ЦМР, подготовку исходных данных, выполнение генерализации ЦМР методами структурной генерализации и глобальной фильтрации, а также сравнительный анализ полученных результатов</p>
-<div id="ex-dem-iter" class="section level2">
-<h2><span class="header-section-number">F.1</span> Автоматизация итерационного сглаживания ЦМР</h2>
-<p>В данной части задания необходимо создать набор инструментов <em>Python Toolbox</em>, содержащий один инструмент <strong>Iterate Focal Statistics</strong>, который выполняет последовательное сглаживание цифровой модели рельефа фильтром среднего в несколько проходов с использованием заданных параметров.</p>
-<p><strong>Предварительное чтение:</strong></p>
-<ol style="list-style-type: decimal">
-<li>Синтаксис вызова инструмента <a href="http://desktop.arcgis.com/ru/arcmap/10.5/tools/spatial-analyst-toolbox/focal-statistics.htm">Focal Statistics</a> средствами языка программирования Python.</li>
-<li>Создание нового набора инструментов <a href="http://desktop.arcgis.com/ru/arcmap/10.5/analyze/creating-tools/creating-a-new-python-toolbox.htm">Python Toolbox</a>.</li>
-</ol>
-<p><strong>Параметры инструмента:</strong></p>
-<ol style="list-style-type: decimal">
-<li>Входная ЦМР (<em>Input Raster DEM</em>).</li>
-<li>Размер плавающего окна (<em>Filter size</em>).</li>
-<li>Количество итераций (<em>Number of iterations</em>).</li>
-<li>Выходная ЦМР (<em>Output Raster DEM</em>).</li>
-</ol>
-<p><strong>Указания к выполнению:</strong></p>
-<ol style="list-style-type: decimal">
-<li><p>Скачайте <a href="http://desktop.arcgis.com/ru/arcmap/10.5/analyze/creating-tools/a-template-for-python-toolboxes.htm">шаблон</a> инструмента Python Toolbox.</p></li>
-<li><p>Переименуйте шаблон в <code>Ex6.pyt</code>.</p></li>
-<li><p>Модифицируйте шаблон, дав основному инструменту название <code>Iterate Focal Statistics</code> и определив в нем необходимые <a href="http://desktop.arcgis.com/ru/arcmap/10.5/analyze/creating-tools/defining-parameters-in-a-python-toolbox.htm">параметры</a> и их <a href="http://desktop.arcgis.com/ru/arcmap/10.5/analyze/creating-tools/defining-parameter-data-types-in-a-python-toolbox.htm">типы</a>.</p></li>
-<li><p>Добавьте строку импорта функций модуля <strong>Spatial Analyst</strong>: <code>from arcpy.sa import *</code>.</p></li>
-<li><p>Выполните редактирование функции <code>execute()</code>, включив в нее следующие шаги (<em>вместо многоточия подставьте нужные параметры</em>):</p>
-<ul>
-<li><a href="http://desktop.arcgis.com/ru/arcmap/10.5/analyze/creating-tools/accessing-parameters-within-a-python-toolbox.htm">Чтение параметров</a> инструмента в теле функции. Например: <code>in_raster = parameters[0].valueAsText</code>.</li>
-<li>Создание объекта типа <a href="https://desktop.arcgis.com/ru/arcmap/latest/extensions/spatial-analyst/map-algebra/working-with-raster-objects.htm">Raster</a> из слоя входной ЦМР: <code>dem = Raster(...)</code>.</li>
-<li>Создание <a href="http://desktop.arcgis.com/ru/arcmap/10.5/analyze/arcpy-spatial-analyst/nbrrectangle-class.htm">прямоугольной окрестности</a> заданного размера: <code>nbr = NbrRectangle(...)</code>.</li>
-<li>Организация цикла от <span class="math inline">\(0\)</span> до <span class="math inline">\(N-1\)</span>, где <span class="math inline">\(N\)</span> — количество итераций, переданное в качестве параметра инструмента: <code>for i in range(N):</code>. Внутри цикла:
-<ul>
-<li>Вывод сообщения о текущем номере итерации: <code>arcpy.AddMessage(...)</code>.</li>
-<li>Вызов функции <a href="http://desktop.arcgis.com/ru/arcmap/10.5/tools/spatial-analyst-toolbox/focal-statistics.htm">фокальной статистики</a> с созданной ранее окрестностью. Чтобы на каждой итерации на вход подавался результат выполнения предыдущей итерации, просто записывайте его в ту же переменную: <code>dem = FocalStatistics(dem, ...)</code>.</li>
-</ul></li>
-<li>Сохранение полученного растра в выходной набор данных <em>Output Raster DEM</em>: <code>dem.save(...)</code>.</li>
-</ul></li>
-</ol>
-</div>
+<p><strong>Задачи</strong> работы включают подготовку исходных данных, разработку программного инструмента итерационного сглаживания ЦМР, выполнение генерализации ЦМР методами структурной генерализации и глобальной фильтрации, а также сравнительный анализ полученных результатов</p>
 <div id="ex-dem-data" class="section level2">
-<h2><span class="header-section-number">F.2</span> Подготовка исходных данных</h2>
+<h2><span class="header-section-number">F.1</span> Подготовка исходных данных</h2>
 <ol style="list-style-type: decimal">
 <li><p>Закачайте набор инструментов <a href="https://github.com/tsamsonov/generalize-dem">DEM Generalization</a> и разархивируйте его:</p>
 <div class="figure"><span id="fig:demgen"></span>
@@ -243,6 +208,41 @@
 <blockquote>
 <p>Если операция выполнена верно, то проецированная версия ЦМР должна в точности совпадать с исходной как по размерам, так и по значениям. Отличие будет заключаться только в координатах ячеек, которые от градусов перейдут в метрические.</p>
 </blockquote></li>
+</ol>
+</div>
+<div id="ex-dem-iter" class="section level2">
+<h2><span class="header-section-number">F.2</span> Автоматизация итерационного сглаживания ЦМР</h2>
+<p>В данной части задания необходимо создать набор инструментов <em>Python Toolbox</em>, содержащий один инструмент <strong>Iterate Focal Statistics</strong>, который выполняет последовательное сглаживание цифровой модели рельефа фильтром среднего в несколько проходов с использованием заданных параметров.</p>
+<p><strong>Предварительное чтение:</strong></p>
+<ol style="list-style-type: decimal">
+<li>Синтаксис вызова инструмента <a href="http://desktop.arcgis.com/ru/arcmap/10.5/tools/spatial-analyst-toolbox/focal-statistics.htm">Focal Statistics</a> средствами языка программирования Python.</li>
+<li>Создание нового набора инструментов <a href="http://desktop.arcgis.com/ru/arcmap/10.5/analyze/creating-tools/creating-a-new-python-toolbox.htm">Python Toolbox</a>.</li>
+</ol>
+<p><strong>Параметры инструмента:</strong></p>
+<ol style="list-style-type: decimal">
+<li>Входная ЦМР (<em>Input Raster DEM</em>).</li>
+<li>Размер плавающего окна (<em>Filter size</em>).</li>
+<li>Количество итераций (<em>Number of iterations</em>).</li>
+<li>Выходная ЦМР (<em>Output Raster DEM</em>).</li>
+</ol>
+<p><strong>Указания к выполнению:</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>Скачайте <a href="http://desktop.arcgis.com/ru/arcmap/10.5/analyze/creating-tools/a-template-for-python-toolboxes.htm">шаблон</a> инструмента Python Toolbox.</p></li>
+<li><p>Переименуйте шаблон в <code>Ex6.pyt</code>.</p></li>
+<li><p>Модифицируйте шаблон, дав основному инструменту название <code>Iterate Focal Statistics</code> и определив в нем необходимые <a href="http://desktop.arcgis.com/ru/arcmap/10.5/analyze/creating-tools/defining-parameters-in-a-python-toolbox.htm">параметры</a> и их <a href="http://desktop.arcgis.com/ru/arcmap/10.5/analyze/creating-tools/defining-parameter-data-types-in-a-python-toolbox.htm">типы</a>.</p></li>
+<li><p>Добавьте строку импорта функций модуля <strong>Spatial Analyst</strong>: <code>from arcpy.sa import *</code>.</p></li>
+<li><p>Выполните редактирование функции <code>execute()</code>, включив в нее следующие шаги (<em>вместо многоточия подставьте нужные параметры</em>):</p>
+<ul>
+<li><a href="http://desktop.arcgis.com/ru/arcmap/10.5/analyze/creating-tools/accessing-parameters-within-a-python-toolbox.htm">Чтение параметров</a> инструмента в теле функции. Например: <code>in_raster = parameters[0].valueAsText</code>.</li>
+<li>Создание объекта типа <a href="https://desktop.arcgis.com/ru/arcmap/latest/extensions/spatial-analyst/map-algebra/working-with-raster-objects.htm">Raster</a> из слоя входной ЦМР: <code>dem = Raster(...)</code>.</li>
+<li>Создание <a href="http://desktop.arcgis.com/ru/arcmap/10.5/analyze/arcpy-spatial-analyst/nbrrectangle-class.htm">прямоугольной окрестности</a> заданного размера: <code>nbr = NbrRectangle(...)</code>.</li>
+<li>Организация цикла от <span class="math inline">\(0\)</span> до <span class="math inline">\(N-1\)</span>, где <span class="math inline">\(N\)</span> — количество итераций, переданное в качестве параметра инструмента: <code>for i in range(N):</code>. Внутри цикла:
+<ul>
+<li>Вывод сообщения о текущем номере итерации: <code>arcpy.AddMessage(...)</code>.</li>
+<li>Вызов функции <a href="http://desktop.arcgis.com/ru/arcmap/10.5/tools/spatial-analyst-toolbox/focal-statistics.htm">фокальной статистики</a> с созданной ранее окрестностью. Чтобы на каждой итерации на вход подавался результат выполнения предыдущей итерации, просто записывайте его в ту же переменную: <code>dem = FocalStatistics(dem, ...)</code>.</li>
+</ul></li>
+<li>Сохранение полученного растра в выходной набор данных <em>Output Raster DEM</em>: <code>dem.save(...)</code>.</li>
+</ul></li>
 </ol>
 </div>
 <div id="ex-dem-iter" class="section level2">
