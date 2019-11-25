@@ -136,7 +136,8 @@
 <li class="chapter" data-level="" data-path="polygons-skeleton-work.html"><a href="polygons-skeleton-work.html#часть-5.-построение-срединной-оси-и-описание-результатов"><i class="fa fa-check"></i>Часть 5. Построение срединной оси и описание результатов</a></li>
 </ul></li>
 <li class="chapter" data-level="F" data-path="ex-dem.html"><a href="ex-dem.html"><i class="fa fa-check"></i><b>F</b> Задание №6. Генерализация цифровой модели рельефа</a><ul>
-<li class="chapter" data-level="F.1" data-path="ex-dem.html"><a href="ex-dem.html#автоматизация-итерационного-сглаживания-цмр"><i class="fa fa-check"></i><b>F.1</b> Автоматизация итерационного сглаживания ЦМР</a></li>
+<li class="chapter" data-level="F.1" data-path="ex-dem.html"><a href="ex-dem.html#ex-dem-iter"><i class="fa fa-check"></i><b>F.1</b> Автоматизация итерационного сглаживания ЦМР</a></li>
+<li class="chapter" data-level="F.2" data-path="ex-dem.html"><a href="ex-dem.html#ex-dem-iter"><i class="fa fa-check"></i><b>F.2</b> Сравнение структурной генерализации и глобальной фильтрации ЦМР</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://istina.msu.ru/profile/tsamsonov/" target="blank">Тимофей Самсонов</a></li>
@@ -161,8 +162,8 @@
 <div id="ex-dem" class="section level1">
 <h1><span class="header-section-number">F</span> Задание №6. Генерализация цифровой модели рельефа</h1>
 <p><strong>Цель задания</strong> — овладение различными техниками генерализации ЦМР.</p>
-<p>В настоящем задании необходимо сравнить три метода мелкомасштабной генерализации ЦМР: глобальная фильтрация, структурная генерализация и децимация (опустошение) триангуляционной модели.</p>
-<div id="автоматизация-итерационного-сглаживания-цмр" class="section level2">
+<p>В настоящем задании необходимо сравнить два метода мелкомасштабной генерализации ЦМР: глобальная фильтрация и структурная генерализация.</p>
+<div id="ex-dem-iter" class="section level2">
 <h2><span class="header-section-number">F.1</span> Автоматизация итерационного сглаживания ЦМР</h2>
 <p>В данной части задания необходимо создать инструмент Python Toolbox, который выполняет последовательное сглаживание цифровой модели рельефа фильтром среднего в несколько проходов с использованием заданных параметров.</p>
 <p><strong>Предварительное чтение:</strong></p>
@@ -188,6 +189,40 @@
 <li>Организация цикла от <span class="math inline">\(0\)</span> до <span class="math inline">\(N-1\)</span>, где <span class="math inline">\(N\)</span> — количество итераций (<code>for i in range(N):</code>).</li>
 <li>Внутри цикла — вызов функции <a href="http://desktop.arcgis.com/ru/arcmap/10.5/tools/spatial-analyst-toolbox/focal-statistics.htm">фокальной статистики</a> с типом фильтра <em>MEAN</em>, размером окна, равным <strong><em>Filter size</em></strong> по обеим осям и именем выходного набора данных таким же, как и входным (<code>FocalStatistics</code>).</li>
 <li>Копирование полученного растра в выходной набор данных (<strong>Output Raster DEM</strong>).</li>
+</ul></li>
+</ol>
+</div>
+<div id="ex-dem-iter" class="section level2">
+<h2><span class="header-section-number">F.2</span> Сравнение структурной генерализации и глобальной фильтрации ЦМР</h2>
+<p>В данной части задания необходимо выполнить генерализацию фрагмента глобальной ЦМР двумя методами: структурная генерализация и глобальная фильтрация.</p>
+<p><strong>Исходные данные и инструменты:</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>Закачайте набор инструментов <a href="https://github.com/tsamsonov/generalize-dem">DEM Generalization</a> и разархивируйте его:</p>
+<div class="figure"><span id="fig:demgen"></span>
+<img src="img/generalize-dem.png" alt="Инструмент генерализации ЦМР DEM Generalization" width="100%" />
+<p class="caption">
+Рис. F.1: Инструмент генерализации ЦМР DEM Generalization
+</p>
+</div></li>
+<li><p>Закачайте фрагмент ЦМР <em>GEBCO 2019</em> размером <span class="math inline">\(10^\circ \times 10^\circ\)</span>, используя <a href="https://download.gebco.net/">веб-интерфейс</a>. Для этого включите показ градусной сетки (<em>Show graticule</em>), выберите формат <em>GeoTIFF</em> и, используя CTRL + клик, обведите квадрат со сторонами, примерно совпадающими с линиями сетки, кратными 5 градусам:</p>
+<div class="figure"><span id="fig:gebco-download"></span>
+<img src="img/download-gebco.png" alt="Загрузка цифровой модели рельефа GEBCO 2019" width="100%" />
+<p class="caption">
+Рис. F.2: Загрузка цифровой модели рельефа GEBCO 2019
+</p>
+</div>
+<p>На выбор предлагаются фрагменты с центрами в следующих точках:</p>
+<ul>
+<li>Красное море (<span class="math inline">\(40; 15\)</span>);</li>
+<li>Альпы (<span class="math inline">\(10; 45\)</span>);</li>
+<li>Норвегия (<span class="math inline">\(10; 60\)</span>);</li>
+<li>Южный Каспий (<span class="math inline">\(50; 40\)</span>);</li>
+<li>Центральные Анды (<span class="math inline">\(-70; -15\)</span>);</li>
+<li>Северные Анды (<span class="math inline">\(-75; 5\)</span>);</li>
+<li>Аляска (<span class="math inline">\(-150; 60\)</span>);</li>
+<li>Камчатка (<span class="math inline">\(160; 55\)</span>);</li>
+<li>Австралия (<span class="math inline">\(150; -35\)</span>);</li>
+<li>Калифорния (<span class="math inline">\(-120; 35\)</span>)</li>
 </ul></li>
 </ol>
 
