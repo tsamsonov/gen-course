@@ -170,19 +170,19 @@
 <p><strong>Предварительное чтение:</strong></p>
 <ol style="list-style-type: decimal">
 <li>Синтаксис вызова инструмента <a href="http://desktop.arcgis.com/ru/arcmap/10.5/tools/spatial-analyst-toolbox/focal-statistics.htm">Focal Statistics</a> средствами языка программирования Python.</li>
-<li>Создание нового набора инструментов <a href="http://desktop.arcgis.com/ru/arcmap/10.5/analyze/creating-tools/creating-a-new-python-toolbox.htm">Python Toolbox</a></li>
+<li>Создание нового набора инструментов <a href="http://desktop.arcgis.com/ru/arcmap/10.5/analyze/creating-tools/creating-a-new-python-toolbox.htm">Python Toolbox</a>.</li>
 </ol>
 <p><strong>Параметры инструмента:</strong></p>
 <ol style="list-style-type: decimal">
-<li>Входная ЦМР (<strong>Input Raster DEM</strong>)</li>
-<li>Размер плавающего окна (<strong>Filter size</strong>)</li>
-<li>Количество итераций (<strong>Number of iterations</strong>)</li>
-<li>Выходная ЦМР (<strong>Output Raster DEM</strong>)</li>
+<li>Входная ЦМР (<strong>Input Raster DEM</strong>).</li>
+<li>Размер плавающего окна (<strong>Filter size</strong>).</li>
+<li>Количество итераций (<strong>Number of iterations</strong>).</li>
+<li>Выходная ЦМР (<strong>Output Raster DEM</strong>).</li>
 </ol>
 <p><strong>Указания к выполнению:</strong></p>
 <ol style="list-style-type: decimal">
 <li><p>Скачайте <a href="http://desktop.arcgis.com/ru/arcmap/10.5/analyze/creating-tools/a-template-for-python-toolboxes.htm">шаблон</a> инструмента Python Toolbox.</p></li>
-<li><p>Переименуйте шаблон в <code>DEM Generalization.pyt</code>.</p></li>
+<li><p>Переименуйте шаблон в <code>Ex6.pyt</code>.</p></li>
 <li><p>Модифицируйте шаблон, дав основному инструменту название <code>Iterate Focal Statistics</code> и определив в нем необходимые <a href="http://desktop.arcgis.com/ru/arcmap/10.5/analyze/creating-tools/defining-parameters-in-a-python-toolbox.htm">параметры</a> и их <a href="http://desktop.arcgis.com/ru/arcmap/10.5/analyze/creating-tools/defining-parameter-data-types-in-a-python-toolbox.htm">типы</a>.</p></li>
 <li><p>Выполните редактирование функции <code>execute()</code>, включив в нее следующие шаги:</p>
 <ul>
@@ -243,7 +243,7 @@
 <h2><span class="header-section-number">F.3</span> Сравнение структурной генерализации и глобальной фильтрации ЦМР</h2>
 <p>В данной части задания необходимо выполнить генерализацию фрагмента глобальной ЦМР двумя методами: структурная генерализация и глобальная фильтрация.</p>
 <ol style="list-style-type: decimal">
-<li><p>Выполните генерализацию ЦМР с использованием инструмента <strong>Generalize DEM</strong>, указав слой <em>ocean</em> в качестве параметра <em>Matine area polygon feature layer</em>. Для начала выполните генерализацию со стандартными параметрами, после этого усильте генерализационный эффект в блоке <em>Main parameters</em> таким образом чтобы результирующая ЦМР по детализации соответствовала масштабу 1:10 000 000.</p></li>
+<li><p>Выполните генерализацию ЦМР с использованием инструмента <strong>Generalize DEM</strong>, указав слой <em>ocean</em> в качестве параметра <em>Marine area polygon feature layer</em>. Для начала выполните генерализацию со стандартными параметрами, после этого усильте генерализационный эффект в блоке <em>Main parameters</em> таким образом чтобы результирующая ЦМР по детализации соответствовала масштабу 1:10 000 000.</p></li>
 <li><p>Выполните генерализацию ЦМР с использованием созданного вами инструмента <strong>Iterate Focal Statistics</strong>. Используйте размер окна, равный 5 ячейкам и подберите количество итераций такое, при котором детализация сглаженной ЦМР будет равна результату, полученному методом структурной генерализации.</p></li>
 <li><p>Создайте таблицу описательных статистик исходной и генерализованных ЦМР, включающую следующие столбцы:</p>
 <ul>

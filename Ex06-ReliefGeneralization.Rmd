@@ -15,15 +15,15 @@ __Предварительное чтение:__
 
 __Параметры инструмента:__
 
-1. Входная ЦМР (__Input Raster DEM__)
-1. Размер плавающего окна (__Filter size__)
-1. Количество итераций (__Number of iterations__)
-1. Выходная ЦМР (__Output Raster DEM__)
+1. Входная ЦМР (__Input Raster DEM__).
+1. Размер плавающего окна (__Filter size__).
+1. Количество итераций (__Number of iterations__).
+1. Выходная ЦМР (__Output Raster DEM__).
 
 __Указания к выполнению:__
 
 1. Скачайте [шаблон](http://desktop.arcgis.com/ru/arcmap/10.5/analyze/creating-tools/a-template-for-python-toolboxes.htm) инструмента Python Toolbox.
-1. Переименуйте шаблон в `DEM Generalization.pyt`.
+1. Переименуйте шаблон в `Ex6.pyt`.
 1. Модифицируйте шаблон, дав основному инструменту название `Iterate Focal Statistics` и определив в нем необходимые [параметры](http://desktop.arcgis.com/ru/arcmap/10.5/analyze/creating-tools/defining-parameters-in-a-python-toolbox.htm) и их [типы](http://desktop.arcgis.com/ru/arcmap/10.5/analyze/creating-tools/defining-parameter-data-types-in-a-python-toolbox.htm).
 1. Выполните редактирование функции `execute()`, включив в нее следующие шаги:
 
