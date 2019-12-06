@@ -4,7 +4,7 @@
     <title>Схематичные геоизображения</title>
     <meta charset="utf-8" />
     <meta name="author" content="Тимофей Самсонов" />
-    <meta name="date" content="2019-12-06" />
+    <meta name="date" content="2019-12-07" />
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" type="text/css" />
   </head>
@@ -15,7 +15,7 @@ class: center, middle, inverse, title-slide
 # Схематичные геоизображения
 ## Лекторий географического факультета
 ### Тимофей Самсонов
-### 2019-12-06
+### 2019-12-07
 
 ---
 
@@ -114,6 +114,31 @@ __Схематизация__ — это геометрическое упрощ�
 
 ---
 
+## Схематизация
+
+Замена отрезков дугами окружностей
+
+&lt;img src="img/talkxx/arcs.png" width="100%" /&gt;
+
+.vsmall[van Goethem, A., Meulemans, W., Speckmann, B., Wood, J., 2015. Exploring Curved Schematization of Territorial Outlines. Visualization and Computer Graphics, IEEE Transactions on 21, 889–902. https://doi.org/10.1109/TVCG.2015.2401025]
+
+---
+
+## Схематизация
+
+Схематизация дугами окружностей
+
+.left-60[
+&lt;img src="img/talkxx/italy_art.png" width="90%" /&gt;
+]
+
+.right-40[
+&lt;img src="img/talkxx/france_art.png" width="100%" /&gt;
+.vsmall[van Goethem, A., Meulemans, W., Speckmann, B., Wood, J., 2015. Exploring Curved Schematization of Territorial Outlines. Visualization and Computer Graphics, IEEE Transactions on 21, 889–902. https://doi.org/10.1109/TVCG.2015.2401025]
+]
+
+---
+
 ## Фокус-контекст
 
 Схематизация может использоваться для выделения самых важных объектов (фокуса) на карте
@@ -127,6 +152,189 @@ __Схематизация__ — это геометрическое упрощ�
 Степень схематизации может увеличиваится при удалении от объекта-фокуса
 &lt;img src="img/talkxx/germany_focus.png" width="90%" /&gt;
 .vsmall[van Dijk, T., van Goethem, A., Haunert, J.-H., Meulemans, W., Speckmann, B., 2013. Accentuating focus maps via partial schematization, in: Proceedings of the 21st ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems - SIGSPATIAL’13, pp. 428–431. https://doi.org/10.1145/2525314.2525452]
+
+---
+
+## Фокус-контекст
+
+Важные объекты могут быть преувеличены в размерах
+
+&lt;img src="img/talkxx/britain.png" width="100%" /&gt;
+
+.vsmall[van Dijk, T., van Goethem, A., Haunert, J.-H., Meulemans, W., Speckmann, B., 2013. Accentuating focus maps via partial schematization, in: Proceedings of the 21st ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems - SIGSPATIAL’13, pp. 428–431. https://doi.org/10.1145/2525314.2525452]
+
+---
+
+## Карты потоков
+
+Карты потоков нуждаются в специальных алгоритмах схематизации маршрутов перемещения
+
+&lt;img src="img/talkxx/flow-europe.png" width="90%" /&gt;
+.vsmall[Jenny, B., Stephen, D.M., Muehlenhaus, I., Marston, B.E., Sharma, R., Zhang, E., Jenny, H., 2018. Design principles for origin-destination flow maps. Cartography and Geographic Information Science 45, 62–75. https://doi.org/10.1080/15230406.2016.1262280]
+
+---
+
+## Карты потоков
+
+Основные принципы создания карт потоков
+
+&lt;img src="img/talkxx/flow-principles.png" width="100%" /&gt;
+
+.vsmall[Jenny, B., Stephen, D.M., Muehlenhaus, I., Marston, B.E., Sharma, R., Zhang, E., Jenny, H., 2018. Design principles for origin-destination flow maps. Cartography and Geographic Information Science 45, 62–75. https://doi.org/10.1080/15230406.2016.1262280]
+
+---
+
+## Карты потоков
+
+Натяжение отрезка перемещения под действием невидимой пружины
+
+&lt;img src="img/talkxx/flow-spring.png" width="90%" /&gt;
+.vsmall[Jenny, B., Stephen, D.M., Muehlenhaus, I., Marston, B.E., Sharma, R., Zhang, E., Jenny, H., 2017. Force-directed layout of origin-destination flow maps. International Journal of Geographical Information Science 31, 1521–1540. https://doi.org/10.1080/13658816.2017.1307378]
+
+---
+
+## Карты потоков
+
+Взаимное действие сил отталкивания
+
+&lt;img src="img/talkxx/flow-flow.png" width="75%" /&gt;
+.vsmall[Jenny, B., Stephen, D.M., Muehlenhaus, I., Marston, B.E., Sharma, R., Zhang, E., Jenny, H., 2017. Force-directed layout of origin-destination flow maps. International Journal of Geographical Information Science 31, 1521–1540. https://doi.org/10.1080/13658816.2017.1307378]
+
+---
+
+## Карты потоков
+
+Ограничение кривизны линии прямоугольником с пропорциями 1:2
+
+&lt;img src="img/talkxx/flow-curvature.png" width="60%" /&gt;
+.vsmall[Jenny, B., Stephen, D.M., Muehlenhaus, I., Marston, B.E., Sharma, R., Zhang, E., Jenny, H., 2017. Force-directed layout of origin-destination flow maps. International Journal of Geographical Information Science 31, 1521–1540. https://doi.org/10.1080/13658816.2017.1307378]
+
+---
+
+## Карты потоков
+
+Ограничение кривизны линии прямоугольником с пропорциями 1:2
+
+&lt;img src="img/talkxx/flow-curvature-result.png" width="80%" /&gt;
+.vsmall[Jenny, B., Stephen, D.M., Muehlenhaus, I., Marston, B.E., Sharma, R., Zhang, E., Jenny, H., 2017. Force-directed layout of origin-destination flow maps. International Journal of Geographical Information Science 31, 1521–1540. https://doi.org/10.1080/13658816.2017.1307378]
+
+---
+
+## Карты потоков
+
+Перемещение контрольной точки по спирали для устранения пересечений
+
+&lt;img src="img/talkxx/flow-spiral.png" width="80%" /&gt;
+.vsmall[Jenny, B., Stephen, D.M., Muehlenhaus, I., Marston, B.E., Sharma, R., Zhang, E., Jenny, H., 2017. Force-directed layout of origin-destination flow maps. International Journal of Geographical Information Science 31, 1521–1540. https://doi.org/10.1080/13658816.2017.1307378]
+
+---
+
+## Распределительные карты потоков
+
+Расчетный каркас для распределения потоков
+
+&lt;img src="img/talkxx/steiner1.png" width="90%" /&gt;
+.vsmall[Sun, S., 2018. A spatial one-to-many flow layout algorithm using triangulation, approximate Steiner trees, and path smoothing. Cartography and Geographic Information Science 1–17. https://doi.org/10.1080/15230406.2018.1437359]
+
+---
+
+## Распределительные карты потоков
+
+Дерево Штейнера
+
+&lt;img src="img/talkxx/steiner2.png" width="80%" /&gt;
+.vsmall[Sun, S., 2018. A spatial one-to-many flow layout algorithm using triangulation, approximate Steiner trees, and path smoothing. Cartography and Geographic Information Science 1–17. https://doi.org/10.1080/15230406.2018.1437359]
+
+---
+
+## Распределительные карты потоков
+
+Пример — исходные данные
+
+&lt;img src="img/talkxx/steiner-world00.png" width="75%" /&gt;
+.vsmall[Sun, S., 2018. A spatial one-to-many flow layout algorithm using triangulation, approximate Steiner trees, and path smoothing. Cartography and Geographic Information Science 1–17. https://doi.org/10.1080/15230406.2018.1437359]
+
+---
+
+## Распределительные карты потоков
+
+Стандартное распределение потоков
+
+&lt;img src="img/talkxx/steiner-world1.png" width="75%" /&gt;
+.vsmall[Sun, S., 2018. A spatial one-to-many flow layout algorithm using triangulation, approximate Steiner trees, and path smoothing. Cartography and Geographic Information Science 1–17. https://doi.org/10.1080/15230406.2018.1437359]
+
+---
+
+## Распределительные карты потоков
+
+Распределение потоков с высоким весом суши
+
+&lt;img src="img/talkxx/steiner-world2.png" width="75%" /&gt;
+.vsmall[Sun, S., 2018. A spatial one-to-many flow layout algorithm using triangulation, approximate Steiner trees, and path smoothing. Cartography and Geographic Information Science 1–17. https://doi.org/10.1080/15230406.2018.1437359]
+
+---
+
+## Распределительные карты потоков
+
+Исходные данные с дополнительными точками
+
+&lt;img src="img/talkxx/steiner-world01.png" width="75%" /&gt;
+.vsmall[Sun, S., 2018. A spatial one-to-many flow layout algorithm using triangulation, approximate Steiner trees, and path smoothing. Cartography and Geographic Information Science 1–17. https://doi.org/10.1080/15230406.2018.1437359]
+
+---
+
+## Распределительные карты потоков
+
+Распределение потоков с дополнительными точками
+
+&lt;img src="img/talkxx/steiner-world3.png" width="75%" /&gt;
+.vsmall[Sun, S., 2018. A spatial one-to-many flow layout algorithm using triangulation, approximate Steiner trees, and path smoothing. Cartography and Geographic Information Science 1–17. https://doi.org/10.1080/15230406.2018.1437359]
+
+---
+
+## Распределительные карты потоков
+
+Дополнительные точки и высокий вес суши
+
+&lt;img src="img/talkxx/steiner-world4.png" width="75%" /&gt;
+.vsmall[Sun, S., 2018. A spatial one-to-many flow layout algorithm using triangulation, approximate Steiner trees, and path smoothing. Cartography and Geographic Information Science 1–17. https://doi.org/10.1080/15230406.2018.1437359]
+
+---
+
+## Распределительные карты потоков
+
+Спиральные деревья
+
+&lt;img src="img/talkxx/distr-spiral.png" width="75%" /&gt;
+.vsmall[Buchin, K., Speckmann, B., Verbeek, K., 2011. Flow Map Layout via Spiral Trees. IEEE Transactions on Visualization and Computer Graphics 17, 2536–2544. https://doi.org/10.1109/TVCG.2011.202]
+
+---
+
+## Распределительные карты потоков
+
+Пакетирование заготовок
+
+&lt;img src="img/talkxx/distr-stub.png" width="75%" /&gt;
+.vsmall[Nocaj, A., Brandes, U., 2013. Stub Bundling and Confluent Spirals for Geographic Networks, in: Wismath, S., Wolff, A. (Eds.), Graph Drawing. Springer International Publishing, Cham, pp. 388–399. https://doi.org/10.1007/978-3-319-03841-4_34]
+
+---
+
+## Распределительные карты потоков
+
+Дерево Штейнера
+
+&lt;img src="img/talkxx/distr-steiner.png" width="75%" /&gt;
+.vsmall[Buchin, K., Speckmann, B., Verbeek, K., 2011. Flow Map Layout via Spiral Trees. IEEE Transactions on Visualization and Computer Graphics 17, 2536–2544. https://doi.org/10.1109/TVCG.2011.202]
+
+
+---
+
+## Распределительные карты потоков
+
+Импорт продуктов в Великобританию
+
+&lt;img src="img/talkxx/footprint.png" width="100%" /&gt;
+.vsmall[D. Phan, L. Xiao, R. Yeh, P. Hanrahan, and T. Winograd. Flow map layout. In Proc. IEEE Symposium on Information Visualization (INFOVIS ’05), pages 219–224, 2005]
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

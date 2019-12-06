@@ -126,6 +126,37 @@ knitr::include_graphics("img/talkxx/australia.png")
 
 ---
 
+## Схематизация
+
+Замена отрезков дугами окружностей
+
+```{r, out.width = "100%", fig.cap=""}
+knitr::include_graphics("img/talkxx/arcs.png")
+```
+
+.vsmall[van Goethem, A., Meulemans, W., Speckmann, B., Wood, J., 2015. Exploring Curved Schematization of Territorial Outlines. Visualization and Computer Graphics, IEEE Transactions on 21, 889–902. https://doi.org/10.1109/TVCG.2015.2401025]
+
+---
+
+## Схематизация
+
+Схематизация дугами окружностей
+
+.left-60[
+```{r, out.width = "90%", fig.cap=""}
+knitr::include_graphics("img/talkxx/italy_art.png")
+```
+]
+
+.right-40[
+```{r, out.width = "100%", fig.cap=""}
+knitr::include_graphics("img/talkxx/france_art.png")
+```
+.vsmall[van Goethem, A., Meulemans, W., Speckmann, B., Wood, J., 2015. Exploring Curved Schematization of Territorial Outlines. Visualization and Computer Graphics, IEEE Transactions on 21, 889–902. https://doi.org/10.1109/TVCG.2015.2401025]
+]
+
+---
+
 ## Фокус-контекст
 
 Схематизация может использоваться для выделения самых важных объектов (фокуса) на карте
@@ -143,3 +174,226 @@ knitr::include_graphics("img/talkxx/iberian_focus.png")
 knitr::include_graphics("img/talkxx/germany_focus.png")
 ```
 .vsmall[van Dijk, T., van Goethem, A., Haunert, J.-H., Meulemans, W., Speckmann, B., 2013. Accentuating focus maps via partial schematization, in: Proceedings of the 21st ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems - SIGSPATIAL’13, pp. 428–431. https://doi.org/10.1145/2525314.2525452]
+
+---
+
+## Фокус-контекст
+
+Важные объекты могут быть преувеличены в размерах
+
+```{r, out.width = "100%", fig.cap=""}
+knitr::include_graphics("img/talkxx/britain.png")
+```
+
+.vsmall[van Dijk, T., van Goethem, A., Haunert, J.-H., Meulemans, W., Speckmann, B., 2013. Accentuating focus maps via partial schematization, in: Proceedings of the 21st ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems - SIGSPATIAL’13, pp. 428–431. https://doi.org/10.1145/2525314.2525452]
+
+---
+
+## Карты потоков
+
+Карты потоков нуждаются в специальных алгоритмах схематизации маршрутов перемещения
+
+```{r, out.width = "90%", fig.cap=""}
+knitr::include_graphics("img/talkxx/flow-europe.png")
+```
+.vsmall[Jenny, B., Stephen, D.M., Muehlenhaus, I., Marston, B.E., Sharma, R., Zhang, E., Jenny, H., 2018. Design principles for origin-destination flow maps. Cartography and Geographic Information Science 45, 62–75. https://doi.org/10.1080/15230406.2016.1262280]
+
+---
+
+## Карты потоков
+
+Основные принципы создания карт потоков
+
+```{r, out.width = "100%", fig.cap=""}
+knitr::include_graphics("img/talkxx/flow-principles.png")
+```
+
+.vsmall[Jenny, B., Stephen, D.M., Muehlenhaus, I., Marston, B.E., Sharma, R., Zhang, E., Jenny, H., 2018. Design principles for origin-destination flow maps. Cartography and Geographic Information Science 45, 62–75. https://doi.org/10.1080/15230406.2016.1262280]
+
+---
+
+## Карты потоков
+
+Натяжение отрезка перемещения под действием невидимой пружины
+
+```{r, out.width = "90%", fig.cap=""}
+knitr::include_graphics("img/talkxx/flow-spring.png")
+```
+.vsmall[Jenny, B., Stephen, D.M., Muehlenhaus, I., Marston, B.E., Sharma, R., Zhang, E., Jenny, H., 2017. Force-directed layout of origin-destination flow maps. International Journal of Geographical Information Science 31, 1521–1540. https://doi.org/10.1080/13658816.2017.1307378]
+
+---
+
+## Карты потоков
+
+Взаимное действие сил отталкивания
+
+```{r, out.width = "75%", fig.cap=""}
+knitr::include_graphics("img/talkxx/flow-flow.png")
+```
+.vsmall[Jenny, B., Stephen, D.M., Muehlenhaus, I., Marston, B.E., Sharma, R., Zhang, E., Jenny, H., 2017. Force-directed layout of origin-destination flow maps. International Journal of Geographical Information Science 31, 1521–1540. https://doi.org/10.1080/13658816.2017.1307378]
+
+---
+
+## Карты потоков
+
+Ограничение кривизны линии прямоугольником с пропорциями 1:2
+
+```{r, out.width = "60%", fig.cap=""}
+knitr::include_graphics("img/talkxx/flow-curvature.png")
+```
+.vsmall[Jenny, B., Stephen, D.M., Muehlenhaus, I., Marston, B.E., Sharma, R., Zhang, E., Jenny, H., 2017. Force-directed layout of origin-destination flow maps. International Journal of Geographical Information Science 31, 1521–1540. https://doi.org/10.1080/13658816.2017.1307378]
+
+---
+
+## Карты потоков
+
+Ограничение кривизны линии прямоугольником с пропорциями 1:2
+
+```{r, out.width = "80%", fig.cap=""}
+knitr::include_graphics("img/talkxx/flow-curvature-result.png")
+```
+.vsmall[Jenny, B., Stephen, D.M., Muehlenhaus, I., Marston, B.E., Sharma, R., Zhang, E., Jenny, H., 2017. Force-directed layout of origin-destination flow maps. International Journal of Geographical Information Science 31, 1521–1540. https://doi.org/10.1080/13658816.2017.1307378]
+
+---
+
+## Карты потоков
+
+Перемещение контрольной точки по спирали для устранения пересечений
+
+```{r, out.width = "80%", fig.cap=""}
+knitr::include_graphics("img/talkxx/flow-spiral.png")
+```
+.vsmall[Jenny, B., Stephen, D.M., Muehlenhaus, I., Marston, B.E., Sharma, R., Zhang, E., Jenny, H., 2017. Force-directed layout of origin-destination flow maps. International Journal of Geographical Information Science 31, 1521–1540. https://doi.org/10.1080/13658816.2017.1307378]
+
+---
+
+## Распределительные карты потоков
+
+Расчетный каркас для распределения потоков
+
+```{r, out.width = "90%", fig.cap=""}
+knitr::include_graphics("img/talkxx/steiner1.png")
+```
+.vsmall[Sun, S., 2018. A spatial one-to-many flow layout algorithm using triangulation, approximate Steiner trees, and path smoothing. Cartography and Geographic Information Science 1–17. https://doi.org/10.1080/15230406.2018.1437359]
+
+---
+
+## Распределительные карты потоков
+
+Дерево Штейнера
+
+```{r, out.width = "80%", fig.cap=""}
+knitr::include_graphics("img/talkxx/steiner2.png")
+```
+.vsmall[Sun, S., 2018. A spatial one-to-many flow layout algorithm using triangulation, approximate Steiner trees, and path smoothing. Cartography and Geographic Information Science 1–17. https://doi.org/10.1080/15230406.2018.1437359]
+
+---
+
+## Распределительные карты потоков
+
+Пример — исходные данные
+
+```{r, out.width = "75%", fig.cap=""}
+knitr::include_graphics("img/talkxx/steiner-world00.png")
+```
+.vsmall[Sun, S., 2018. A spatial one-to-many flow layout algorithm using triangulation, approximate Steiner trees, and path smoothing. Cartography and Geographic Information Science 1–17. https://doi.org/10.1080/15230406.2018.1437359]
+
+---
+
+## Распределительные карты потоков
+
+Стандартное распределение потоков
+
+```{r, out.width = "75%", fig.cap=""}
+knitr::include_graphics("img/talkxx/steiner-world1.png")
+```
+.vsmall[Sun, S., 2018. A spatial one-to-many flow layout algorithm using triangulation, approximate Steiner trees, and path smoothing. Cartography and Geographic Information Science 1–17. https://doi.org/10.1080/15230406.2018.1437359]
+
+---
+
+## Распределительные карты потоков
+
+Распределение потоков с высоким весом суши
+
+```{r, out.width = "75%", fig.cap=""}
+knitr::include_graphics("img/talkxx/steiner-world2.png")
+```
+.vsmall[Sun, S., 2018. A spatial one-to-many flow layout algorithm using triangulation, approximate Steiner trees, and path smoothing. Cartography and Geographic Information Science 1–17. https://doi.org/10.1080/15230406.2018.1437359]
+
+---
+
+## Распределительные карты потоков
+
+Исходные данные с дополнительными точками
+
+```{r, out.width = "75%", fig.cap=""}
+knitr::include_graphics("img/talkxx/steiner-world01.png")
+```
+.vsmall[Sun, S., 2018. A spatial one-to-many flow layout algorithm using triangulation, approximate Steiner trees, and path smoothing. Cartography and Geographic Information Science 1–17. https://doi.org/10.1080/15230406.2018.1437359]
+
+---
+
+## Распределительные карты потоков
+
+Распределение потоков с дополнительными точками
+
+```{r, out.width = "75%", fig.cap=""}
+knitr::include_graphics("img/talkxx/steiner-world3.png")
+```
+.vsmall[Sun, S., 2018. A spatial one-to-many flow layout algorithm using triangulation, approximate Steiner trees, and path smoothing. Cartography and Geographic Information Science 1–17. https://doi.org/10.1080/15230406.2018.1437359]
+
+---
+
+## Распределительные карты потоков
+
+Дополнительные точки и высокий вес суши
+
+```{r, out.width = "75%", fig.cap=""}
+knitr::include_graphics("img/talkxx/steiner-world4.png")
+```
+.vsmall[Sun, S., 2018. A spatial one-to-many flow layout algorithm using triangulation, approximate Steiner trees, and path smoothing. Cartography and Geographic Information Science 1–17. https://doi.org/10.1080/15230406.2018.1437359]
+
+---
+
+## Распределительные карты потоков
+
+Спиральные деревья
+
+```{r, out.width = "75%", fig.cap=""}
+knitr::include_graphics("img/talkxx/distr-spiral.png")
+```
+.vsmall[Buchin, K., Speckmann, B., Verbeek, K., 2011. Flow Map Layout via Spiral Trees. IEEE Transactions on Visualization and Computer Graphics 17, 2536–2544. https://doi.org/10.1109/TVCG.2011.202]
+
+---
+
+## Распределительные карты потоков
+
+Пакетирование заготовок
+
+```{r, out.width = "75%", fig.cap=""}
+knitr::include_graphics("img/talkxx/distr-stub.png")
+```
+.vsmall[Nocaj, A., Brandes, U., 2013. Stub Bundling and Confluent Spirals for Geographic Networks, in: Wismath, S., Wolff, A. (Eds.), Graph Drawing. Springer International Publishing, Cham, pp. 388–399. https://doi.org/10.1007/978-3-319-03841-4_34]
+
+---
+
+## Распределительные карты потоков
+
+Дерево Штейнера
+
+```{r, out.width = "75%", fig.cap=""}
+knitr::include_graphics("img/talkxx/distr-steiner.png")
+```
+.vsmall[Buchin, K., Speckmann, B., Verbeek, K., 2011. Flow Map Layout via Spiral Trees. IEEE Transactions on Visualization and Computer Graphics 17, 2536–2544. https://doi.org/10.1109/TVCG.2011.202]
+
+
+---
+
+## Распределительные карты потоков
+
+Импорт продуктов в Великобританию
+
+```{r, out.width = "100%", fig.cap=""}
+knitr::include_graphics("img/talkxx/footprint.png")
+```
+.vsmall[D. Phan, L. Xiao, R. Yeh, P. Hanrahan, and T. Winograd. Flow map layout. In Proc. IEEE Symposium on Information Visualization (INFOVIS ’05), pages 219–224, 2005]
