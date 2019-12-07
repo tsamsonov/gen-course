@@ -18,6 +18,54 @@ output:
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
+## Карты
+
+```{r, out.width = "95%", fig.cap=""}
+knitr::include_graphics("img/talkxx/runoff_1.png")
+```
+
+---
+
+## Карты
+
+```{r, out.width = "95%", fig.cap=""}
+knitr::include_graphics("img/talkxx/runoff_2.png")
+```
+
+---
+
+## Аэрокосмические снимки
+
+```{r, out.width = "90%", fig.cap=""}
+knitr::include_graphics("img/talkxx/msu.png")
+```
+
+---
+
+## Трехмерные модели
+
+```{r, out.width = "120%", fig.cap=""}
+knitr::include_graphics("img/talkxx/3d.png")
+```
+
+---
+
+## Картографические анимации
+
+<video width="640" height="480">
+<source src="img/talkxx/carbon.mp4" type="video/mp4">
+</video>
+
+---
+
+## Виртуальные модели
+
+<video width="640" height="480">
+<source src="img/talkxx/vr.mp4" type="video/mp4">
+</video>
+
+---
+
 ## Геоизображение
 
 .large[__Геоизображение__ — это модель земных (планетных) объектов или процессов, представленная в графической образной форме.] 
@@ -32,60 +80,12 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Картографические геоизображения
 
-```{r, out.width = "95%", fig.cap=""}
-knitr::include_graphics("img/talkxx/runoff_1.png")
-```
+__.red[Карта]__ — это математически определенное, уменьшенное, генерализованное изображение поверхности Земли, другого небесного тела или космического пространства, показывающее расположенные или спроецированные на них объекты в принятой системе условных знаков.
 
----
-
-## Картографические геоизображения
-
-```{r, out.width = "95%", fig.cap=""}
-knitr::include_graphics("img/talkxx/runoff_2.png")
-```
-
----
-
-## Дистанционные геоизображения
-
-```{r, out.width = "90%", fig.cap=""}
-knitr::include_graphics("img/talkxx/msu.png")
-```
-
----
-
-## Трехмерные геоизображения
-
-```{r, out.width = "120%", fig.cap=""}
-knitr::include_graphics("img/talkxx/3d.png")
-```
-
----
-
-## Динамические геоизображения
-
-<video width="640" height="480">
-<source src="img/talkxx/carbon.mp4" type="video/mp4">
-</video>
-
----
-
-## Виртуальные геоизображения
-
-<video width="640" height="480">
-<source src="img/talkxx/vr.mp4" type="video/mp4">
-</video>
-
----
-
-## Картографические геоизображения
-
-__.red[Карта]__ — это математически определенное, уменьшенное, генерализованное изображение поверхности Земли, другого небесного тела или космического пространства, показывающее расположенные или спроецированне на них объекты в принятой системе условных знаков.
-
-- карты и планы местности
+__.blue[С элементами схематизации]__:
 - схематизированные карты
+- схемы и карты потоков
 - анаморфированные карты
-- схемы
 - картоиды
 
 ---
@@ -177,15 +177,76 @@ knitr::include_graphics("img/talkxx/germany_focus.png")
 
 ---
 
-## Фокус-контекст
+## Карты-бусы (necklace maps)
 
-Важные объекты могут быть преувеличены в размерах
+Схематизация взаимного положения объектов позволяет устранить перекрытия между символами
 
-```{r, out.width = "100%", fig.cap=""}
-knitr::include_graphics("img/talkxx/britain.png")
+```{r, out.width = "90%", fig.cap=""}
+knitr::include_graphics("img/talkxx/necklace.png")
 ```
+.vsmall[Speckmann, A., Verbeek, K., 2010. Necklace maps. IEEE Transactions on Visualization and Computer Graphics 16, 881–889. https://doi.org/10.1109/TVCG.2010.180]
 
-.vsmall[van Dijk, T., van Goethem, A., Haunert, J.-H., Meulemans, W., Speckmann, B., 2013. Accentuating focus maps via partial schematization, in: Proceedings of the 21st ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems - SIGSPATIAL’13, pp. 428–431. https://doi.org/10.1145/2525314.2525452]
+---
+
+## Карты-бусы (necklace maps)
+
+Местоположение каждой диаграммы может быть вычислено по радус-вектору или сектору
+
+```{r, out.width = "90%", fig.cap=""}
+knitr::include_graphics("img/talkxx/necklace-intervals.png")
+```
+.vsmall[Speckmann, A., Verbeek, K., 2010. Necklace maps. IEEE Transactions on Visualization and Computer Graphics 16, 881–889. https://doi.org/10.1109/TVCG.2010.180]
+
+---
+
+## Карты-бусы (necklace maps)
+
+Результат визуализации будет различным:
+
+```{r, out.width = "90%", fig.cap=""}
+knitr::include_graphics("img/talkxx/necklace-optimized.png")
+```
+.vsmall[Speckmann, A., Verbeek, K., 2010. Necklace maps. IEEE Transactions on Visualization and Computer Graphics 16, 881–889. https://doi.org/10.1109/TVCG.2010.180]
+
+---
+
+## Карты-бусы (necklace maps)
+
+Размещение в два яруса и вдоль кривой:
+
+.pull-left[
+```{r, out.width = "90%", fig.cap=""}
+knitr::include_graphics("img/talkxx/necklace-double.png")
+```
+]
+.pull-right[
+```{r, out.width = "90%", fig.cap=""}
+knitr::include_graphics("img/talkxx/necklace-splines.png")
+```
+]
+.vsmall[Speckmann, A., Verbeek, K., 2010. Necklace maps. IEEE Transactions on Visualization and Computer Graphics 16, 881–889. https://doi.org/10.1109/TVCG.2010.180]
+
+---
+
+## Карты-бусы (necklace maps)
+
+Для оптимизации графической нагрузки можно использовать не полные окружности, а их дуги:
+
+```{r, out.width = "90%", fig.cap=""}
+knitr::include_graphics("img/talkxx/necklace-usa.png")
+```
+.vsmall[Speckmann, A., Verbeek, K., 2010. Necklace maps. IEEE Transactions on Visualization and Computer Graphics 16, 881–889. https://doi.org/10.1109/TVCG.2010.180]
+
+---
+
+## Карты-бусы (necklace maps)
+
+Не все объекты нуждаются в таких диаграммах. Карта количества медалей на Олимпиаде-2010 в Ванкувере:
+
+```{r, out.width = "90%", fig.cap=""}
+knitr::include_graphics("img/talkxx/necklace-world.png")
+```
+.vsmall[Speckmann, A., Verbeek, K., 2010. Necklace maps. IEEE Transactions on Visualization and Computer Graphics 16, 881–889. https://doi.org/10.1109/TVCG.2010.180]
 
 ---
 
@@ -267,6 +328,17 @@ knitr::include_graphics("img/talkxx/flow-spiral.png")
 
 ---
 
+## Потоки на картах-бусах
+
+Два метода схематизации можно объединить в один:
+
+```{r, out.width = "50%", fig.cap=""}
+knitr::include_graphics("img/talkxx/necklace-flows.png")
+```
+.vsmall[Speckmann, A., Verbeek, K., 2010. Necklace maps. IEEE Transactions on Visualization and Computer Graphics 16, 881–889. https://doi.org/10.1109/TVCG.2010.180]
+
+---
+
 ## Распределительные карты потоков
 
 Расчетный каркас для распределения потоков
@@ -280,12 +352,24 @@ knitr::include_graphics("img/talkxx/steiner1.png")
 
 ## Распределительные карты потоков
 
-Дерево Штейнера
+Минимальное остовное дерево (задача Штейнера)
 
 ```{r, out.width = "80%", fig.cap=""}
 knitr::include_graphics("img/talkxx/steiner2.png")
 ```
 .vsmall[Sun, S., 2018. A spatial one-to-many flow layout algorithm using triangulation, approximate Steiner trees, and path smoothing. Cartography and Geographic Information Science 1–17. https://doi.org/10.1080/15230406.2018.1437359]
+
+---
+
+### Решение задачи Штейнера
+
+Алгоритм Крускала
+
+```{r, out.width = "60%", fig.cap=""}
+knitr::include_graphics("img/talkxx/MST_Kruskal.gif")
+```
+
+.vsmall[https://upload.wikimedia.org/wikipedia/commons/0/01/MST_Kruskal.gif]
 
 ---
 
@@ -397,3 +481,15 @@ knitr::include_graphics("img/talkxx/distr-steiner.png")
 knitr::include_graphics("img/talkxx/footprint.png")
 ```
 .vsmall[D. Phan, L. Xiao, R. Yeh, P. Hanrahan, and T. Winograd. Flow map layout. In Proc. IEEE Symposium on Information Visualization (INFOVIS ’05), pages 219–224, 2005]
+
+---
+
+## Фокальные анаморфозы
+
+Позволяют увеличивать фокус-объекты
+
+```{r, out.width = "100%", fig.cap=""}
+knitr::include_graphics("img/talkxx/britain.png")
+```
+
+.vsmall[van Dijk, T., van Goethem, A., Haunert, J.-H., Meulemans, W., Speckmann, B., 2013. Accentuating focus maps via partial schematization, in: Proceedings of the 21st ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems - SIGSPATIAL’13, pp. 428–431. https://doi.org/10.1145/2525314.2525452]

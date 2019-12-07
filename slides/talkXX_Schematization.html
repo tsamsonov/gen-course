@@ -22,6 +22,46 @@ class: center, middle, inverse, title-slide
 
 
 
+## Карты
+
+&lt;img src="img/talkxx/runoff_1.png" width="95%" /&gt;
+
+---
+
+## Карты
+
+&lt;img src="img/talkxx/runoff_2.png" width="95%" /&gt;
+
+---
+
+## Аэрокосмические снимки
+
+&lt;img src="img/talkxx/msu.png" width="90%" /&gt;
+
+---
+
+## Трехмерные модели
+
+&lt;img src="img/talkxx/3d.png" width="120%" /&gt;
+
+---
+
+## Картографические анимации
+
+&lt;video width="640" height="480"&gt;
+&lt;source src="img/talkxx/carbon.mp4" type="video/mp4"&gt;
+&lt;/video&gt;
+
+---
+
+## Виртуальные модели
+
+&lt;video width="640" height="480"&gt;
+&lt;source src="img/talkxx/vr.mp4" type="video/mp4"&gt;
+&lt;/video&gt;
+
+---
+
 ## Геоизображение
 
 .large[__Геоизображение__ — это модель земных (планетных) объектов или процессов, представленная в графической образной форме.] 
@@ -36,52 +76,12 @@ class: center, middle, inverse, title-slide
 
 ## Картографические геоизображения
 
-&lt;img src="img/talkxx/runoff_1.png" width="95%" /&gt;
+__.red[Карта]__ — это математически определенное, уменьшенное, генерализованное изображение поверхности Земли, другого небесного тела или космического пространства, показывающее расположенные или спроецированные на них объекты в принятой системе условных знаков.
 
----
-
-## Картографические геоизображения
-
-&lt;img src="img/talkxx/runoff_2.png" width="95%" /&gt;
-
----
-
-## Дистанционные геоизображения
-
-&lt;img src="img/talkxx/msu.png" width="90%" /&gt;
-
----
-
-## Трехмерные геоизображения
-
-&lt;img src="img/talkxx/3d.png" width="120%" /&gt;
-
----
-
-## Динамические геоизображения
-
-&lt;video width="640" height="480"&gt;
-&lt;source src="img/talkxx/carbon.mp4" type="video/mp4"&gt;
-&lt;/video&gt;
-
----
-
-## Виртуальные геоизображения
-
-&lt;video width="640" height="480"&gt;
-&lt;source src="img/talkxx/vr.mp4" type="video/mp4"&gt;
-&lt;/video&gt;
-
----
-
-## Картографические геоизображения
-
-__.red[Карта]__ — это математически определенное, уменьшенное, генерализованное изображение поверхности Земли, другого небесного тела или космического пространства, показывающее расположенные или спроецированне на них объекты в принятой системе условных знаков.
-
-- карты и планы местности
+__.blue[С элементами схематизации]__:
 - схематизированные карты
+- схемы и карты потоков
 - анаморфированные карты
-- схемы
 - картоиды
 
 ---
@@ -155,13 +155,62 @@ __Схематизация__ — это геометрическое упрощ�
 
 ---
 
-## Фокус-контекст
+## Карты-бусы (necklace maps)
 
-Важные объекты могут быть преувеличены в размерах
+Схематизация взаимного положения объектов позволяет устранить перекрытия между символами
 
-&lt;img src="img/talkxx/britain.png" width="100%" /&gt;
+&lt;img src="img/talkxx/necklace.png" width="90%" /&gt;
+.vsmall[Speckmann, A., Verbeek, K., 2010. Necklace maps. IEEE Transactions on Visualization and Computer Graphics 16, 881–889. https://doi.org/10.1109/TVCG.2010.180]
 
-.vsmall[van Dijk, T., van Goethem, A., Haunert, J.-H., Meulemans, W., Speckmann, B., 2013. Accentuating focus maps via partial schematization, in: Proceedings of the 21st ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems - SIGSPATIAL’13, pp. 428–431. https://doi.org/10.1145/2525314.2525452]
+---
+
+## Карты-бусы (necklace maps)
+
+Местоположение каждой диаграммы может быть вычислено по радус-вектору или сектору
+
+&lt;img src="img/talkxx/necklace-intervals.png" width="90%" /&gt;
+.vsmall[Speckmann, A., Verbeek, K., 2010. Necklace maps. IEEE Transactions on Visualization and Computer Graphics 16, 881–889. https://doi.org/10.1109/TVCG.2010.180]
+
+---
+
+## Карты-бусы (necklace maps)
+
+Результат визуализации будет различным:
+
+&lt;img src="img/talkxx/necklace-optimized.png" width="90%" /&gt;
+.vsmall[Speckmann, A., Verbeek, K., 2010. Necklace maps. IEEE Transactions on Visualization and Computer Graphics 16, 881–889. https://doi.org/10.1109/TVCG.2010.180]
+
+---
+
+## Карты-бусы (necklace maps)
+
+Размещение в два яруса и вдоль кривой:
+
+.pull-left[
+&lt;img src="img/talkxx/necklace-double.png" width="90%" /&gt;
+]
+.pull-right[
+&lt;img src="img/talkxx/necklace-splines.png" width="90%" /&gt;
+]
+.vsmall[Speckmann, A., Verbeek, K., 2010. Necklace maps. IEEE Transactions on Visualization and Computer Graphics 16, 881–889. https://doi.org/10.1109/TVCG.2010.180]
+
+---
+
+## Карты-бусы (necklace maps)
+
+Для оптимизации графической нагрузки можно использовать не полные окружности, а их дуги:
+
+&lt;img src="img/talkxx/necklace-usa.png" width="90%" /&gt;
+.vsmall[Speckmann, A., Verbeek, K., 2010. Necklace maps. IEEE Transactions on Visualization and Computer Graphics 16, 881–889. https://doi.org/10.1109/TVCG.2010.180]
+
+---
+
+## Карты-бусы (necklace maps)
+
+Не все объекты нуждаются в таких диаграммах. Карта количества медалей на Олимпиаде-2010 в Ванкувере:
+
+&lt;img src="img/talkxx/necklace-world.png" width="90%" /&gt;
+.vsmall[Speckmann, A., Verbeek, K., 2010. Necklace maps. IEEE Transactions on Visualization and Computer Graphics 16, 881–889. https://doi.org/10.1109/TVCG.2010.180]
 
 ---
 
@@ -229,6 +278,15 @@ __Схематизация__ — это геометрическое упрощ�
 
 ---
 
+## Потоки на картах-бусах
+
+Два метода схематизации можно объединить в один:
+
+&lt;img src="img/talkxx/necklace-flows.png" width="50%" /&gt;
+.vsmall[Speckmann, A., Verbeek, K., 2010. Necklace maps. IEEE Transactions on Visualization and Computer Graphics 16, 881–889. https://doi.org/10.1109/TVCG.2010.180]
+
+---
+
 ## Распределительные карты потоков
 
 Расчетный каркас для распределения потоков
@@ -240,10 +298,20 @@ __Схематизация__ — это геометрическое упрощ�
 
 ## Распределительные карты потоков
 
-Дерево Штейнера
+Минимальное остовное дерево (задача Штейнера)
 
 &lt;img src="img/talkxx/steiner2.png" width="80%" /&gt;
 .vsmall[Sun, S., 2018. A spatial one-to-many flow layout algorithm using triangulation, approximate Steiner trees, and path smoothing. Cartography and Geographic Information Science 1–17. https://doi.org/10.1080/15230406.2018.1437359]
+
+---
+
+### Решение задачи Штейнера
+
+Алгоритм Крускала
+
+&lt;img src="img/talkxx/MST_Kruskal.gif" width="60%" /&gt;
+
+.vsmall[https://upload.wikimedia.org/wikipedia/commons/0/01/MST_Kruskal.gif]
 
 ---
 
@@ -335,6 +403,16 @@ __Схематизация__ — это геометрическое упрощ�
 
 &lt;img src="img/talkxx/footprint.png" width="100%" /&gt;
 .vsmall[D. Phan, L. Xiao, R. Yeh, P. Hanrahan, and T. Winograd. Flow map layout. In Proc. IEEE Symposium on Information Visualization (INFOVIS ’05), pages 219–224, 2005]
+
+---
+
+## Фокальные анаморфозы
+
+Позволяют увеличивать фокус-объекты
+
+&lt;img src="img/talkxx/britain.png" width="100%" /&gt;
+
+.vsmall[van Dijk, T., van Goethem, A., Haunert, J.-H., Meulemans, W., Speckmann, B., 2013. Accentuating focus maps via partial schematization, in: Proceedings of the 21st ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems - SIGSPATIAL’13, pp. 428–431. https://doi.org/10.1145/2525314.2525452]
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
