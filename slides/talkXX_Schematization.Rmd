@@ -250,6 +250,67 @@ knitr::include_graphics("img/talkxx/necklace-world.png")
 
 ---
 
+## Стенокарты (stenomaps)
+
+__.green[Стенография]__ — способ письма посредством особых знаков и целого ряда сокращений, дающий возможность быстро записывать устную речь 
+
+```{r, out.width = "75%", fig.cap=""}
+knitr::include_graphics("img/talkxx/stenography.jpg")
+```
+
+---
+
+## Стенокарты (stenomaps)
+
+Можно ли представить сложный контур на карте простым росчерком пера?
+
+```{r, out.width = "50%", fig.cap=""}
+knitr::include_graphics("img/talkxx/france-glyphs.png")
+```
+.vsmall[van Goethem, A., Reimer, A., Speckmann, B., Wood, J., 2014. Stenomaps: Shorthand for shapes. IEEE Trans. Visual. Comput. Graphics 20, 2053–2062. https://doi.org/10.1109/TVCG.2014.2346274]
+
+---
+
+## Стенокарты (stenomaps)
+
+Стенографический символ можно рассматривать как один из уровней генерализации объекта:
+```{r, out.width = "90%", fig.cap=""}
+knitr::include_graphics("img/talkxx/stenomaps-levels.png")
+```
+Основой для построения такого символа является медианная ось объекта и ее конечные точки:
+```{r, out.width = "90%", fig.cap=""}
+knitr::include_graphics("img/talkxx/stenomaps-backbone.png")
+```
+.vsmall[van Goethem, A., Reimer, A., Speckmann, B., Wood, J., 2014. Stenomaps: Shorthand for shapes. IEEE Trans. Visual. Comput. Graphics 20, 2053–2062. https://doi.org/10.1109/TVCG.2014.2346274]
+
+---
+
+## Стенокарты (stenomaps)
+
+Соотношение границы, медианной оси и позвоночника (backbone) полигона:
+
+```{r, out.width = "100%", fig.cap=""}
+knitr::include_graphics("img/talkxx/stenomaps-backbone2.png")
+```
+.vsmall[van Goethem, A., Reimer, A., Speckmann, B., Wood, J., 2014. Stenomaps: Shorthand for shapes. IEEE Trans. Visual. Comput. Graphics 20, 2053–2062. https://doi.org/10.1109/TVCG.2014.2346274]
+
+---
+
+## Стенокарты (stenomaps)
+
+```{r, out.width = "100%", fig.cap=""}
+knitr::include_graphics("img/talkxx/stenomaps-res1.png")
+```
+
+.vsmall[van Goethem, A., Reimer, A., Speckmann, B., Wood, J., 2014. Stenomaps: Shorthand for shapes. IEEE Trans. Visual. Comput. Graphics 20, 2053–2062. https://doi.org/10.1109/TVCG.2014.2346274]
+
+---
+
+class: center, inverse
+background-image: url("img/talkxx/stenomaps-res2.png")
+
+---
+
 ## Карты потоков
 
 Карты потоков нуждаются в специальных алгоритмах схематизации маршрутов перемещения
@@ -336,6 +397,17 @@ knitr::include_graphics("img/talkxx/flow-spiral.png")
 knitr::include_graphics("img/talkxx/necklace-flows.png")
 ```
 .vsmall[Speckmann, A., Verbeek, K., 2010. Necklace maps. IEEE Transactions on Visualization and Computer Graphics 16, 881–889. https://doi.org/10.1109/TVCG.2010.180]
+
+---
+
+## Распределительные карты потоков
+
+Показывают перемещение из одного источника во множество целей
+
+```{r, out.width = "80%", fig.cap=""}
+knitr::include_graphics("img/talkxx/flow-census.png")
+```
+.vsmall[Sun, S., 2018. A spatial one-to-many flow layout algorithm using triangulation, approximate Steiner trees, and path smoothing. Cartography and Geographic Information Science 1–17. https://doi.org/10.1080/15230406.2018.1437359]
 
 ---
 
@@ -470,7 +542,6 @@ knitr::include_graphics("img/talkxx/distr-steiner.png")
 ```
 .vsmall[Buchin, K., Speckmann, B., Verbeek, K., 2011. Flow Map Layout via Spiral Trees. IEEE Transactions on Visualization and Computer Graphics 17, 2536–2544. https://doi.org/10.1109/TVCG.2011.202]
 
-
 ---
 
 ## Распределительные карты потоков
@@ -484,12 +555,109 @@ knitr::include_graphics("img/talkxx/footprint.png")
 
 ---
 
-## Фокальные анаморфозы
+class: inverse
 
-Позволяют увеличивать фокус-объекты
+## Анаморфозы (cartograms)
+
+На картах-анаморфозах объекты масштабируются в зависимости от величины показателя
+
+> Показатель должен быть __экстенсивным__, то есть _суммироваться_ по территории, а не _осредняться_.
 
 ```{r, out.width = "100%", fig.cap=""}
-knitr::include_graphics("img/talkxx/britain.png")
+knitr::include_graphics("img/talkxx/roser-cartogram.png")
 ```
 
+---
+
+class: center, inverse
+background-image: url("img/talkxx/roser-cartogram.png")
+background-position: center
+background-size: contain
+
+## Растровые анаморфозы
+
+---
+
+class: center, inverse
+background-image: url("img/talkxx/roser-cartogram.png")
+background-position: center
+background-size: 200%
+
+---
+
+## Векторные анаморфозы
+
+Картографические — получаются на основе преобразования координат
+
+```{r, out.width = "90%", fig.cap=""}
+knitr::include_graphics("img/talkxx/cartograms1.png")
+```
+
+---
+
+## Векторные анаморфозы
+
+Схематичные — получаются заменой площадей простыми фигурами
+
+```{r, out.width = "90%", fig.cap=""}
+knitr::include_graphics("img/talkxx/cartograms2.png")
+```
+
+---
+
+## Фокальные анаморфозы
+
+Позволяют избирательно увеличивать объекты в соответствии с их важностью
+```{r, out.width = "80%", fig.cap=""}
+knitr::include_graphics("img/talkxx/britain_focus1.png")
+```
 .vsmall[van Dijk, T., van Goethem, A., Haunert, J.-H., Meulemans, W., Speckmann, B., 2013. Accentuating focus maps via partial schematization, in: Proceedings of the 21st ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems - SIGSPATIAL’13, pp. 428–431. https://doi.org/10.1145/2525314.2525452]
+
+---
+
+## Фокальные анаморфозы
+
+Позволяют избирательно увеличивать объекты в соответствии с их важностью
+```{r, out.width = "80%", fig.cap=""}
+knitr::include_graphics("img/talkxx/britain_focus2.png")
+```
+.vsmall[van Dijk, T., van Goethem, A., Haunert, J.-H., Meulemans, W., Speckmann, B., 2013. Accentuating focus maps via partial schematization, in: Proceedings of the 21st ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems - SIGSPATIAL’13, pp. 428–431. https://doi.org/10.1145/2525314.2525452]
+
+---
+
+## Картоиды
+
+__.red[Картоиды]__ — идеализированные (абстрактные) теоретико-картографические модели, схематически отражающие  конфигурацию, пространственную структуру и связи геосистем.
+
+> .blue[Иногда между картоидами и анаморфозами не прооводят разницы, хотя на самом деле принципы их построения существенно различны, и используются они для разных целей.]
+
+---
+
+## Картоиды
+
+__Поляризованный ландшафт__ (по Б.Б.Родоману) — иллюстрирует общие закономерности расположения функциональных зон культурного ландшафта
+```{r, out.width = "80%", fig.cap=""}
+knitr::include_graphics("img/talkxx/rodoman.jpg")
+```
+
+---
+
+## Идеальный материк
+
+Географические пояса, зональные типы ландшафтов  и почвенно-геохимические поля
+```{r, out.width = "80%", fig.cap=""}
+knitr::include_graphics("img/talkxx/ideal.png")
+```
+.vsmall[по А.М.Рябчикову и М.А.Глазовской]
+
+---
+
+## Картографические геоизображения
+
+__.red[Карта]__ — это математически определенное, уменьшенное, генерализованное изображение поверхности Земли, другого небесного тела или космического пространства, показывающее расположенные или спроецированные на них объекты в принятой системе условных знаков.
+
+__.blue[С элементами схематизации]__:
+- схематизированные карты
+- схемы и карты потоков
+- анаморфированные карты
+- картоиды
