@@ -19,8 +19,10 @@ h3 { margin-top: 0;}
 }
 .red { color: crimson; }
 .blue { color: steelblue; }
+.green { color: forestgreen; }
 .large { font-size: 25pt; }
 .small { font-size: 20pt;}
+.vsmall { font-size: 10pt; line-height: 0.5; line-height: 1.2; display: block;}
 
 .left-column>p{
   font-size: 20pt;

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>A Задание №1. Отбор точечных объектов | Картографические базы данных</title>
   <meta name="description" content="Курс лекций по генерализации пространственных данных" />
-  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
 
   <meta property="og:title" content="A Задание №1. Отбор точечных объектов | Картографические базы данных" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Тимофей Самсонов" />
 
 
-<meta name="date" content="2019-11-25" />
+<meta name="date" content="2020-01-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -85,8 +85,13 @@
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="lines.html"><a href="lines.html"><i class="fa fa-check"></i><b>4</b> Линии</a><ul>
-<li class="chapter" data-level="4.1" data-path="lines.html"><a href="lines.html#lines-simpl"><i class="fa fa-check"></i><b>4.1</b> Геометрическое упрощение</a></li>
+<li class="chapter" data-level="4.1" data-path="lines.html"><a href="lines.html#lines-simpl"><i class="fa fa-check"></i><b>4.1</b> Геометрическое упрощение</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="lines.html"><a href="lines.html#lines-simpl-over"><i class="fa fa-check"></i><b>4.1.1</b> Краткий обзор</a></li>
+</ul></li>
 <li class="chapter" data-level="4.2" data-path="lines.html"><a href="lines.html#lines-select"><i class="fa fa-check"></i><b>4.2</b> Отбор</a></li>
+<li class="chapter" data-level="4.3" data-path="lines.html"><a href="lines.html#lines-schem"><i class="fa fa-check"></i><b>4.3</b> Схематизация</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="lines.html"><a href="lines.html#lines-schem-over"><i class="fa fa-check"></i><b>4.3.1</b> Краткий обзор</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="polygons.html"><a href="polygons.html"><i class="fa fa-check"></i><b>5</b> Полигоны</a><ul>
 <li class="chapter" data-level="5.1" data-path="polygons.html"><a href="polygons.html#polygons-skeleton"><i class="fa fa-check"></i><b>5.1</b> Скелетизация (построение срединной оси)</a></li>
@@ -244,7 +249,7 @@
 <li>Сформировать поля <code>Importance</code> и <code>Size</code>, используя следующее отображение атрибутов:</li>
 </ol>
 <table>
-<caption><span id="tab:unnamed-chunk-4">Таблица A.1: </span>Параметры заполнения полей</caption>
+<caption><span id="tab:unnamed-chunk-6">Таблица A.1: </span>Параметры заполнения полей</caption>
 <thead>
 <tr class="header">
 <th align="center">PLACE</th>
@@ -292,7 +297,7 @@
 <li>картограмму условной графической нагрузки</li>
 </ul></li>
 </ol>
-<div class="figure"><span id="fig:unnamed-chunk-5"></span>
+<div class="figure"><span id="fig:unnamed-chunk-7"></span>
 <img src="img/selection.png" alt="Пример оформления результатов работы" width="80%" />
 <p class="caption">
 Рис. A.1: Пример оформления результатов работы
@@ -337,12 +342,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -354,6 +358,10 @@ gitbook.start({
 "text": null
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },
