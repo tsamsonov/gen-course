@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>A Задание №1. Отбор точечных объектов | Картографические базы данных</title>
   <meta name="description" content="Курс лекций по генерализации пространственных данных" />
-  <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
 
   <meta property="og:title" content="A Задание №1. Отбор точечных объектов | Картографические базы данных" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Тимофей Самсонов" />
 
 
-<meta name="date" content="2020-01-22" />
+<meta name="date" content="2020-03-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -50,8 +50,6 @@
 
 
 
-<script src="libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
 
 
 
@@ -109,6 +107,7 @@
 <li class="chapter" data-level="A" data-path="points-sel-work.html"><a href="points-sel-work.html"><i class="fa fa-check"></i><b>A</b> Задание №1. Отбор точечных объектов</a><ul>
 <li class="chapter" data-level="" data-path="points-sel-work.html"><a href="points-sel-work.html#реализация-алгоритма-settlement-spacing"><i class="fa fa-check"></i>Реализация алгоритма Settlement Spacing</a></li>
 <li class="chapter" data-level="" data-path="points-sel-work.html"><a href="points-sel-work.html#реализация-модели-оценки-условной-графической-нагрузки"><i class="fa fa-check"></i>Реализация модели оценки условной графической нагрузки</a></li>
+<li class="chapter" data-level="" data-path="points-sel-work.html"><a href="points-sel-work.html#преобразование-созданных-моделей-геообработки-в-инструменты-python-toolbox"><i class="fa fa-check"></i>Преобразование созданных моделей геообработки в инструменты Python Toolbox</a></li>
 <li class="chapter" data-level="" data-path="points-sel-work.html"><a href="points-sel-work.html#отбор-населенных-пунктов-для-карты-масштаба-14-000-000"><i class="fa fa-check"></i>Отбор населенных пунктов для карты масштаба 1:4 000 000</a></li>
 <li class="chapter" data-level="" data-path="points-sel-work.html"><a href="points-sel-work.html#отчет"><i class="fa fa-check"></i>Отчет</a></li>
 </ul></li>
@@ -239,14 +238,23 @@
 <li>Сохраняет полученную сетку в выходной файл.</li>
 </ol>
 </div>
+<div id="преобразование-созданных-моделей-геообработки-в-инструменты-python-toolbox" class="section level2 unnumbered">
+<h2>Преобразование созданных моделей геообработки в инструменты Python Toolbox</h2>
+<p>В данной части задания необходимо переписать созданные модели на языке программирования Python и оформить их в виде инструмента геообработки <em>ArcGIS Python Toolbox</em>.</p>
+<ul>
+<li>Первая модель (отбор точек) переписывается совместно с преподавателем в классе.
+— Вторая модель (оценка условной графической нагрузки) переписывается самостоятельно.</li>
+</ul>
+<p>При выполнении задания в качестве справочника используется <a href="https://desktop.arcgis.com/ru/arcmap/latest/analyze/creating-tools/a-quick-tour-of-python-toolboxes.htm"><strong>официальное руководство</strong></a> по созданию инструментов <em>Python Toolbox</em>.</p>
+</div>
 <div id="отбор-населенных-пунктов-для-карты-масштаба-14-000-000" class="section level2 unnumbered">
 <h2>Отбор населенных пунктов для карты масштаба 1:4 000 000</h2>
-<p>В данной — заключительной — части задания необходимо произвести отбор населенных пунктов, используя собственные модели геообработки, а также произвести графическую оценку полученных результатов.</p>
+<p>В данной — заключительной — части задания необходимо произвести отбор населенных пунктов, используя собственные скрипты, а также произвести графическую оценку полученных результатов.</p>
 <p><strong>Алгоритм выполнения задания:</strong></p>
 <ol style="list-style-type: decimal">
-<li>Скачать данные <em>OSM</em> на территорию Субъекта Федерации</li>
-<li>Перепроецировать слой <code>settlement-points</code> в наилучшую проекцию для выбранной территории</li>
-<li>Сформировать поля <code>Importance</code> и <code>Size</code>, используя следующее отображение атрибутов:</li>
+<li><p>Скачать данные <em>OSM</em> на территорию Субъекта Федерации. <em>Не следует</em> для выполнения работы брать субъекты с малым числом населенных пунктов (Мурманская область, Еврейская АО, Республика Кламыкия и т.п.).</p></li>
+<li><p>Перепроецировать слой <code>settlement-points</code> в наилучшую проекцию для выбранной территории</p></li>
+<li><p>Сформировать поля <code>Importance</code> и <code>Size</code>, используя следующее отображение атрибутов:</p></li>
 </ol>
 <table>
 <caption><span id="tab:unnamed-chunk-6">Таблица A.1: </span>Параметры заполнения полей</caption>
@@ -286,9 +294,16 @@
 </tbody>
 </table>
 <ol start="4" style="list-style-type: decimal">
-<li>Используя фрагмент данных и значения параметра <em>Scale</em> в диапазоне от <span class="math inline">\(1000\)</span> до <span class="math inline">\(10000\)</span> с шагом <span class="math inline">\(1000\)</span>, подобрать регрессионную зависимость между значением параметра масштабирования Scale и средней графической нагрузкой (<span class="math inline">\(ед.~на~см^2\)</span>) в масштабе <span class="math inline">\(1:4~000~000\)</span>. Средняя графическая нагрузка оценивается как среднее значение по всем ненулевым ячейкам регулярной сетки. Размер сетки — <span class="math inline">\(1~см^2\)</span> в результирующем масштабе.</li>
-<li>Выполнить отбор населенных пунктов с графической нагрузкой <span class="math inline">\(1\)</span>, <span class="math inline">\(3\)</span> и <span class="math inline">\(5\)</span> населенных пункта на <span class="math inline">\(см^2\)</span> для масштаба <span class="math inline">\(1:4~000~000\)</span>. Соответствующий параметр <em>Scale</em> подберите, используя найденную регрессионную зависимость.</li>
-<li>Оформить результаты в виде картосхемы, отображающей:
+<li><p>Используя фрагмент данных и значения параметра <span class="math inline">\(С\)</span> (Scale) в диапазоне от <span class="math inline">\(1000\)</span> до <span class="math inline">\(10000\)</span> с шагом <span class="math inline">\(1000\)</span>, подобрать регрессионную зависимость вида <span class="math inline">\(y = \alpha x^{-\beta}\)</span> между значением параметра масштабирования <span class="math inline">\(C\)</span> (Scale) и средней графической нагрузкой (<span class="math inline">\(ед.~на~см^2\)</span>) в масштабе <span class="math inline">\(1:4~000~000\)</span>. Средняя графическая нагрузка оценивается как среднее значение по всем ненулевым ячейкам регулярной сетки. Размер сетки — <span class="math inline">\(1~см^2\)</span> в результирующем масштабе.</p>
+<blockquote>
+<p>Для <span class="math inline">\(С = 2000, 4000, 8000\)</span> необходимо зафиксировать время работы инструмента, чтобы в дальнейшем сравнить его с временем работы модели геообработки.</p>
+</blockquote>
+<p>Найденная зависимость должна иметь примерно следующий вид:</p>
+<p><img src="slides/img/talk3/stl-param.png" width="1015" /></p></li>
+<li><p>Для значений параметра <span class="math inline">\(C = 2000, 4000, 8000\)</span> выполнить аналогичные вычисления с применением модели геообработки. Убедиться, что получается аналогичный результат и зафиксировать время выполнения обработки данных.</p></li>
+<li><p>Выполнить отбор населенных пунктов с графической нагрузкой <span class="math inline">\(1\)</span>, <span class="math inline">\(3\)</span> и <span class="math inline">\(5\)</span> населенных пункта на <span class="math inline">\(см^2\)</span> для масштаба <span class="math inline">\(1:4~000~000\)</span>. Соответствующий параметр <span class="math inline">\(C\)</span> (<em>Scale</em>) подберите, используя найденную регрессионную зависимость.</p></li>
+<li><p>Выполнить параметризацию параметра <span class="math inline">\(x\)</span> обобщенного закона <em>Топфера</em> для трёх полученных генерализаций, исходя из предположения, что отношение результирующего и исходного масштаба равно <span class="math inline">\(1:4\)</span>.</p></li>
+<li><p>Оформить результаты в виде серии карт, отображающей:</p>
 <ul>
 <li>границу региона</li>
 <li>множество исходных точек бледно-серым цветом</li>
@@ -297,12 +312,8 @@
 <li>картограмму условной графической нагрузки</li>
 </ul></li>
 </ol>
-<div class="figure"><span id="fig:unnamed-chunk-7"></span>
-<img src="img/selection.png" alt="Пример оформления результатов работы" width="80%" />
-<p class="caption">
-Рис. A.1: Пример оформления результатов работы
-</p>
-</div>
+<p>Пример серии карт (вы можете упорядочить изображения другим путем — например, по вертикали):</p>
+<p><img src="slides/img/talk3/mean_density.png" width="1561" /></p>
 </div>
 <div id="отчет" class="section level2 unnumbered">
 <h2>Отчет</h2>
@@ -310,9 +321,19 @@
 <ul>
 <li>цель и задачи исследования,</li>
 <li>суть метода отбора точек,</li>
-<li>суть принципа оценки графической нагрузки,</li>
+<li>суть принципа оценки условной графической нагрузки,</li>
+<li>суть обобщенного закона Топфера,</li>
 <li>этапы создания моделей геообработки и их внешний вид,</li>
-<li>описание эксперимента по генерализации, включая постановку задачи, нахождение регрессионной зависимости, выполнение отбора.</li>
+<li>технология создания инструментов Python Toolbox, определения их параметров и типов параметров</li>
+<li>процесс преобразования моделей геообработки в инструменты Python Toolbox, фактические отличия скрипта и модели — какие инструменты переехали в неизменном виде, а что поменялось.</li>
+<li>описание эксперимента по генерализации, включая:
+<ul>
+<li>постановку задачи,</li>
+<li>нахождение регрессионной зависимости,</li>
+<li>сравнение времени работы модели и скрипта,</li>
+<li>выполнение отбора,</li>
+<li>оценку результатов в графическом (карты условной нагрузки) и численном (параметризация обобщенного закона Топфера) виде.</li>
+</ul></li>
 </ul>
 
 </div>

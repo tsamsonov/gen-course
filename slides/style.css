@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Cuprum:400,400i,700,700i&subset=cyrillic');
 @import url('https://fonts.googleapis.com/css?family=Scada:400,400i,700,700i&subset=cyrillic');
 
-body { font-family: 'Scada', serif; font-size: 22pt; }
-p { font-size: 22pt; margin-top: 0;}
-ul { font-size: 22pt;}
-ol { font-size: 22pt; }
+body { font-family: 'Scada', serif; font-size: 20pt; }
+p { font-size: 20pt; margin-top: 0;}
+ul { font-size: 20pt;}
+ol { font-size: 20pt; }
 h3 { margin-top: 0;}
 .caption { font-size: 20pt; }
 .right-column { padding: 0px; }
@@ -21,7 +21,7 @@ h3 { margin-top: 0;}
 .blue { color: steelblue; }
 .green { color: forestgreen; }
 .large { font-size: 25pt; }
-.small { font-size: 20pt;}
+.small { font-size: 18pt;}
 .vsmall { font-size: 10pt; line-height: 0.5; line-height: 1.2; display: block;}
 
 .left-column>p{
