@@ -1,6 +1,6 @@
 ---
 title: "Кластеризация точечных объектов"
-subtitle: "Картографические базы данных. Лекция №4"
+subtitle: "Геоинформационное картографирование"
 author: "Тимофей Самсонов"
 date: "`r Sys.Date()`"
 output:
@@ -205,7 +205,7 @@ knitr::include_graphics("img/talk3/kmeans-irr.png")
 
 **ISODATA** означает *Iterative Self-Organizing Data Analysis Technique Algorithm*
 
-Метод начинает работу с одного кластера и выполняет рекурсивное разделение множества вдоль его наиболее протяженной оси до тех пор пока все внутрикластерные расстояния не будут в пределах заданного допуска.
+Метод начинает работу с одного кластера и выполняет рекурсивное разделение множества поперек его наиболее протяженной оси до тех пор пока все внутрикластерные расстояния не будут в пределах заданного допуска.
 
 **Ball, Geoffrey H., Hall, David J.** (1965) *Isodata: a method of data analysis and pattern classification* Stanford Research Institute, Menlo Park,United States. Office of Naval Research. Information Sciences Branch
 
