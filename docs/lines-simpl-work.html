@@ -187,7 +187,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="C.1.1" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#алгоритмы-генерализации"><i class="fa fa-check"></i><b>C.1.1</b> Алгоритмы генерализации</a></li>
 <li class="chapter" data-level="C.1.2" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#модифицированное-расстояние-хаусдорфа"><i class="fa fa-check"></i><b>C.1.2</b> Модифицированное расстояние Хаусдорфа</a></li>
 <li class="chapter" data-level="C.1.3" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#коэффициент-относительной-извилистости"><i class="fa fa-check"></i><b>C.1.3</b> Коэффициент относительной извилистости</a></li>
-<li class="chapter" data-level="C.1.4" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#модифицированное-расстояние-хаусдорфа-1"><i class="fa fa-check"></i><b>C.1.4</b> Модифицированное расстояние Хаусдорфа</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#часть-1.-автоматизация-метода-ли-оупеншоу"><i class="fa fa-check"></i>Часть 1. Автоматизация метода Ли-Оупеншоу</a></li>
 <li class="chapter" data-level="" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#часть-2.-автоматизация-методов-оценки-геометрической-точности-и-коэффициента-относительной-извилистости"><i class="fa fa-check"></i>Часть 2. Автоматизация методов оценки геометрической точности и коэффициента относительной извилистости</a><ul>
@@ -274,6 +273,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="модифицированное-расстояние-хаусдорфа" class="section level3">
 <h3><span class="header-section-number">C.1.2</span> Модифицированное расстояние Хаусдорфа</h3>
+<p>Модифицированное расстояние Хаусдорфа (MHD), широко используется как метрика оценки геометрической точности линий.</p>
+<p>Пусть даны два множества точек <span class="math inline">\(\mathcal{A} = \lbrace a_1,...,a_{N_a} \rbrace\)</span> и <span class="math inline">\(\mathcal{B} = \lbrace b_1,...,b_{N_b} \rbrace\)</span>. Тогда среднее расстояние между <span class="math inline">\(\mathcal{A}\)</span> и <span class="math inline">\(\mathcal{B}\)</span> может быть вычислено как <span class="math inline">\(\overline{d}(\mathcal{A},\mathcal{B}) = \frac{1}{N_a}\sum_{a \in \mathcal{A}}d(a,\mathcal{B})\)</span>, где <span class="math inline">\(d(a, \mathcal{B}) = \min_{b \in \mathcal{B}}\lVert a - b \rVert\)</span>. Аналогично, обратное расстояние между <span class="math inline">\(\mathcal{B}\)</span> и <span class="math inline">\(\mathcal{A}\)</span> вычисляется как <span class="math inline">\(\overline{d}(\mathcal{B},\mathcal{A}) = \frac{1}{N_b}\sum_{b \in \mathcal{B}}d(b,\mathcal{A})\)</span>, где <span class="math inline">\(d(b, \mathcal{A}) = \min_{a \in \mathcal{A}}\lVert b - a \rVert\)</span>.</p>
+<p>Имея прямое и обратное расстоения между <span class="math inline">\(\mathcal{A}\)</span> и <span class="math inline">\(\mathcal{B}\)</span>, модифицированное расстояние Хаусдорфа MHD вычисляется как:</p>
+<p><span class="math display">\[
+    MHD(\mathcal{A}, \mathcal{B}) = max\big(\overline{d}(\mathcal{A},\mathcal{B}), \overline{d}(\mathcal{B},\mathcal{A})\big),
+  \]</span></p>
+<p>Грубо говоря, MHD есть есть максимальное из средних расстояний от <span class="math inline">\(\mathcal{A}\)</span> к <span class="math inline">\(\mathcal{B}\)</span> и от <span class="math inline">\(\mathcal{B}\)</span> к <span class="math inline">\(\mathcal{A}\)</span>. Чем меньше значение MHD, тем интегрально ближе <span class="math inline">\(\mathcal{A}\)</span> и <span class="math inline">\(\mathcal{B}\)</span> друг к другу. Введение этой метрики вдохновлено классическим расстоянием Хаусдорфаа (в котором <span class="math inline">\(d(\mathcal{A},\mathcal{B}) = max_{a \in \mathcal{A}} d(a,\mathcal{B})\)</span>), которое, как видно из определения, чувствительно к точкам-выбросам, поскольку использует максимальное расстояние вместо среднего.</p>
+<p>При оценке геометрической точности в качестве множеств <span class="math inline">\(\mathcal{A}\)</span> и <span class="math inline">\(\mathcal{B}\)</span> используются ребра исходного и генерализованного множеств линий соответственно.</p>
 </div>
 <div id="коэффициент-относительной-извилистости" class="section level3">
 <h3><span class="header-section-number">C.1.3</span> Коэффициент относительной извилистости</h3>
@@ -292,17 +299,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <blockquote>
 <p>При вычислении относительной извилистости средствами ГИС разбиение линии на сегменты можно заменить разрезанием линии регулярной сеткой ячеек. В этом случае коэффициент <span class="math inline">\(K_j\)</span> будет вычисляться для сегмента линии, попавшего в <span class="math inline">\(j\)</span>-й квадрат.</p>
 </blockquote>
-</div>
-<div id="модифицированное-расстояние-хаусдорфа-1" class="section level3">
-<h3><span class="header-section-number">C.1.4</span> Модифицированное расстояние Хаусдорфа</h3>
-<p>Модифицированное расстояние Хаусдорфа (MHD), широко используется как метрика оценки геометрической точности линий.</p>
-<p>Пусть даны два множества точек <span class="math inline">\(\mathcal{A} = \lbrace a_1,...,a_{N_a} \rbrace\)</span> и <span class="math inline">\(\mathcal{B} = \lbrace b_1,...,b_{N_b} \rbrace\)</span>. Тогда среднее расстояние между <span class="math inline">\(\mathcal{A}\)</span> и <span class="math inline">\(\mathcal{B}\)</span> может быть вычислено как <span class="math inline">\(\overline{d}(\mathcal{A},\mathcal{B}) = \frac{1}{N_a}\sum_{a \in \mathcal{A}}d(a,\mathcal{B})\)</span>, где <span class="math inline">\(d(a, \mathcal{B}) = \min_{b \in \mathcal{B}}\lVert a - b \rVert\)</span>. Аналогично, обратное расстояние между <span class="math inline">\(\mathcal{B}\)</span> и <span class="math inline">\(\mathcal{A}\)</span> вычисляется как <span class="math inline">\(\overline{d}(\mathcal{B},\mathcal{A}) = \frac{1}{N_b}\sum_{b \in \mathcal{B}}d(b,\mathcal{A})\)</span>, где <span class="math inline">\(d(b, \mathcal{A}) = \min_{a \in \mathcal{A}}\lVert b - a \rVert\)</span>.</p>
-<p>Имея прямое и обратное расстоения между <span class="math inline">\(\mathcal{A}\)</span> и <span class="math inline">\(\mathcal{B}\)</span>, модифицированное расстояние Хаусдорфа MHD вычисляется как:</p>
-<p><span class="math display">\[
-    MHD(\mathcal{A}, \mathcal{B}) = max\big(\overline{d}(\mathcal{A},\mathcal{B}), \overline{d}(\mathcal{B},\mathcal{A})\big),
-  \]</span></p>
-<p>Грубо говоря, MHD есть есть максимальное из средних расстояний от <span class="math inline">\(\mathcal{A}\)</span> к <span class="math inline">\(\mathcal{B}\)</span> и от <span class="math inline">\(\mathcal{B}\)</span> к <span class="math inline">\(\mathcal{A}\)</span>. Чем меньше значение MHD, тем интегрально ближе <span class="math inline">\(\mathcal{A}\)</span> и <span class="math inline">\(\mathcal{B}\)</span> друг к другу. Введение этой метрики вдохновлено классическим расстоянием Хаусдорфаа (в котором <span class="math inline">\(d(\mathcal{A},\mathcal{B}) = max_{a \in \mathcal{A}} d(a,\mathcal{B})\)</span>), которое, как видно из определения, чувствительно к точкам-выбросам, поскольку использует максимальное расстояние вместо среднего.</p>
-<p>При оценке геометрической точности в качестве множеств <span class="math inline">\(\mathcal{A}\)</span> и <span class="math inline">\(\mathcal{B}\)</span> используются ребра исходного и генерализованного множеств линий соответственно.</p>
 </div>
 </div>
 <div id="часть-1.-автоматизация-метода-ли-оупеншоу" class="section level2 unnumbered">
@@ -328,9 +324,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <blockquote>
 <p><em>Примечание</em>: <em>шаги g) – j) нужны для того, чтобы середины соседних отрезков, полученные на шаге f) приобрели общий идентификатор для их соединения</em>.</p>
 </blockquote></li>
-<li><p>Создайте модель геообработки “LiOpenshaw Line Simplification”.</p></li>
-<li><p>Реализуйте последовательность действий, выполненную на шаге 2, в виде модели геообработки LiOpenshaw.</p></li>
-<li><p>Вынесите в качестве параметров модели следующие объекты:</p>
+<li><p>Создайте набор инструментов Python Toolbox “Line Simplification”.</p></li>
+<li><p>Реализуйте последовательность действий, выполненную на шаге 2, в виде инструмента геообработки LiOpenshaw.</p></li>
+<li><p>Вынесите в качестве параметров инструмента следующие объекты:</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>Входной слой линий</p></li>
 <li><p>Разрешение сетки по X</p></li>
@@ -338,9 +334,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Экстент сетки</p></li>
 <li><p>Выходной слой линий</p></li>
 </ol></li>
-<li><p>Убедитесь, что для остальных параметров в модели стоит опция <em>Intermediate</em> (промежуточный).</p></li>
+<li><p>Убедитесь, что для остальных параметров в инструмента стоит опция <em>Intermediate</em> (промежуточный).</p></li>
 <li><p>Протестируйте инструмент на слое <strong>Island</strong>, используя разное разрешение (2-10 км)</p></li>
-<li><p>Изложите ваш опыт создания инструмента в отчете, включая краткое описание среды Model Builder, интерпретацию метода Ли-Оупеншоу в терминах инструмента геообработки, процесс создания модели и оформления ее параметров. Проиллюстрируйте текст снимками экрана.</p></li>
+<li><p>Изложите ваш опыт создания инструмента в отчете, включая интерпретацию метода Ли-Оупеншоу в терминах инструмента геообработки, процесс создания инструмента и оформления его параметров. Проиллюстрируйте текст снимками экрана.</p></li>
 </ol>
 </div>
 <div id="часть-2.-автоматизация-методов-оценки-геометрической-точности-и-коэффициента-относительной-извилистости" class="section level2 unnumbered">
@@ -365,14 +361,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 Рис. C.6: Пример визуализации векторов смещения линии
 </p>
 </div>
-<blockquote>
-<p>Чтобы символика присваивалась автоматически по результатам выполнения модели геообработки, необходимо заготовить файл *.lyr и положить его в туже папку, что и ваша модель. Далее в свойствах итогового класса объектов в Model Builder укажите созданный файл на вкладке <em>Layer Symbology</em>.</p>
-</blockquote></li>
+<p><!-- > Чтобы символика присваивалась автоматически по результатам выполнения модели геообработки, необходимо заготовить файл \*.lyr и положить его в туже папку, что и ваша модель. Далее в свойствах итогового класса объектов в Model Builder укажите созданный файл на вкладке *Layer Symbology*. --></p></li>
 <li><p>Вычислите среднее расстояние от исходной линии до генерализованной путем осреднения поля <em>Shape_Length</em> (<strong>Summary Statistics</strong>)</p></li>
 <li><p>Вычислите аналогичным образом обратное расстояние (для этого потребуется генерализованную линию превратить в точки).</p></li>
 <li><p>Получите Модифицированное Хаусдорфово расстояние путем нахождения максимума из полученных значений (<strong>Calculate Value</strong>). Чтобы извлечь значения, используйте функцию <strong>Get Field Value.</strong></p></li>
 </ol>
-<p>Модель должна включать следующие параметры:</p>
+<p>Инструмент должен включать следующие параметры:</p>
 <ul>
 <li><p>Исходные линии</p></li>
 <li><p>Генерализованные линии</p></li>
@@ -381,7 +375,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="автоматизация-вычисления-коэффициента-относительной-извилистости-оценка-морфологического-соответствия" class="section level3 unnumbered">
 <h3>Автоматизация вычисления коэффициента относительной извилистости (оценка морфологического соответствия)</h3>
-<p>Создайте новый инструемнт Python Toolbox <em>Sinuosity</em>, модифицировав модель генерализации, созданную ранее для алгоритма Ли-Оупеншоу. Вам необходимо внутри каждого квадрата поделить длину исходной линии на длину отрезка, соединяющего точки пересечения с линиями сетки. А затем посчитать среднее из полученных значений (<strong>Summary Statistics</strong>).</p>
+<p>Создайте новый инструемнт Python Toolbox <em>Sinuosity</em>, модифицировав инструмент генерализации, созданный ранее для алгоритма Ли-Оупеншоу. Вам необходимо внутри каждого квадрата поделить длину исходной линии на длину отрезка, соединяющего точки пересечения с линиями сетки. А затем посчитать среднее из полученных значений (<strong>Summary Statistics</strong>).</p>
 </div>
 <div id="отчет-2" class="section level3 unnumbered">
 <h3>Отчет</h3>
@@ -390,7 +384,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="часть-3.-сравнение-алгоритмов-ли-оупеншоу-ванга-мюллера-дугласа-пейкера-и-висвалингам-уайатта" class="section level2 unnumbered">
 <h2>Часть 3. Сравнение алгоритмов Ли-Оупеншоу, Ванга-Мюллера, Дугласа-Пейкера и Висвалингам-Уайатта</h2>
-<p>Сравните результаты работы вашей модели и инструмента <strong>Simplify Line</strong> в режимах BEND_SIMPLIFY (алгоритм Ванга-Мюллера), POINT_REMOVE (алгоритм Дугласа-Пейкера) и WEIGHTED_AREA (алгоритм Висвалингам-Уайатта).</p>
+<p>Сравните результаты работы вашего инструмента и инструмента <strong>Simplify Line</strong> в режимах BEND_SIMPLIFY (алгоритм Ванга-Мюллера), POINT_REMOVE (алгоритм Дугласа-Пейкера) и WEIGHTED_AREA (алгоритм Висвалингам-Уайатта).</p>
 <ol style="list-style-type: decimal">
 <li><p>Используя шаг сетки, равный 2 мм в результирующем масштабе (<em>1:4 000 000</em>), упростите линию с помощью метода Ли-Оупеншоу.</p></li>
 <li><p>Подберите параметры алгоритмов Дугласа-Пейкера, Ванга-Мюллера и Висвалингам-Уайатта таким образом, чтобы количество результирующих точек в линиях было примерно равно (±5%) количеству точек после генерализации методом Ли-Оупеншоу. Выпишите эти параметры в отчет. Для подсчета количества точек используйте инструмент <strong>Feature Vertices to Points</strong></p></li>
