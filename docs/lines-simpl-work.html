@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>C Задание №3. Геометрическое упрощение линий | Картографические базы данных</title>
   <meta name="description" content="Курс лекций по генерализации пространственных данных" />
-  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
   <meta property="og:title" content="C Задание №3. Геометрическое упрощение линий | Картографические базы данных" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Тимофей Самсонов" />
 
 
-<meta name="date" content="2020-03-19" />
+<meta name="date" content="2020-03-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -50,10 +50,72 @@
 
 
 
-<script src="libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
 
 
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -121,6 +183,12 @@
 <li class="chapter" data-level="" data-path="points-clust-work.html"><a href="points-clust-work.html#отчет-1"><i class="fa fa-check"></i>Отчет</a></li>
 </ul></li>
 <li class="chapter" data-level="C" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html"><i class="fa fa-check"></i><b>C</b> Задание №3. Геометрическое упрощение линий</a><ul>
+<li class="chapter" data-level="C.1" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#теоретические-сведения"><i class="fa fa-check"></i><b>C.1</b> Теоретические сведения</a><ul>
+<li class="chapter" data-level="C.1.1" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#алгоритмы-генерализации"><i class="fa fa-check"></i><b>C.1.1</b> Алгоритмы генерализации</a></li>
+<li class="chapter" data-level="C.1.2" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#модифицированное-расстояние-хаусдорфа"><i class="fa fa-check"></i><b>C.1.2</b> Модифицированное расстояние Хаусдорфа</a></li>
+<li class="chapter" data-level="C.1.3" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#коэффициент-относительной-извилистости"><i class="fa fa-check"></i><b>C.1.3</b> Коэффициент относительной извилистости</a></li>
+<li class="chapter" data-level="C.1.4" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#модифицированное-расстояние-хаусдорфа-1"><i class="fa fa-check"></i><b>C.1.4</b> Модифицированное расстояние Хаусдорфа</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#часть-1.-автоматизация-метода-ли-оупеншоу"><i class="fa fa-check"></i>Часть 1. Автоматизация метода Ли-Оупеншоу</a></li>
 <li class="chapter" data-level="" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#часть-2.-автоматизация-методов-оценки-геометрической-точности-и-коэффициента-относительной-извилистости"><i class="fa fa-check"></i>Часть 2. Автоматизация методов оценки геометрической точности и коэффициента относительной извилистости</a><ul>
 <li><a href="lines-simpl-work.html#автоматизация-вычисления-модифицрованного-хаусдорфова-расстояния-mhd-оценка-геометрической-точности">Автоматизация вычисления модифицрованного Хаусдорфова расстояния <strong>MHD</strong> (оценка геометрической точности)</a></li>
@@ -170,7 +238,11 @@
 <div id="lines-simpl-work" class="section level1">
 <h1><span class="header-section-number">C</span> Задание №3. Геометрическое упрощение линий</h1>
 <p><strong>Цель задания</strong> — освоение методики геометрического упрощения линий.</p>
-<p><strong>Аннотация</strong>. Необходимо реализовать метод Ли-Оупеншоу для генерализации линий. Для этого в среде Model Builder создается модель геообработки, осуществляющая последовательный запуск инструментов ArcToolbox. После создания инструмента необходимо сравнить результаты работы алгоритма с тем, что получается при обработке линий посредством алгоритма Дугласа-Пейкера, Ванга-Мюллера и Висвалингам-Уайатта. Задание выполняется в ГИС-пакете ArcGIS 10.5.</p>
+<p><strong>Аннотация</strong>. Необходимо реализовать метод Ли-Оупеншоу для генерализации линий. Для этого на языке программирования Python создается инструмент Python Toolbox, осуществляющий последовательный запуск инструментов ArcToolbox. Помимо этого релаизуются инструменты для вычисления коэффициента относительной извилистости и модифицированного расстояния Хаусдорфа. После создания инструмента необходимо сравнить результаты работы алгоритма с тем, что получается при обработке линий посредством алгоритма Дугласа-Пейкера, Ванга-Мюллера и Висвалингам-Уайатта. Задание выполняется в ГИС-пакете ArcGIS.</p>
+<div id="теоретические-сведения" class="section level2">
+<h2><span class="header-section-number">C.1</span> Теоретические сведения</h2>
+<div id="алгоритмы-генерализации" class="section level3">
+<h3><span class="header-section-number">C.1.1</span> Алгоритмы генерализации</h3>
 <p><strong>Алгоритм Ли-Оупеншоу</strong> <span class="citation">(Li and Openshaw <a href="#ref-Li:1992jg" role="doc-biblioref">1992</a>)</span> использует «естественный принцип», суть которого заключается в удалении деталей, размер которых менее видимой величины. Для этого на исходное множество линий накладывается регулярная сет ка ячеек с разрешением <em>d</em> Участок линии, пересекающий ячейку, имеет точку входа в нее и точку выхода. Этот участок заменяется на середину отрезка, соединяющего две данные точки. Таким образом, удаляются все изгибы, находящиеся внутри ячеек. Принцип работы алгоритма иллюстрирует Рис. <a href="lines-simpl-work.html#fig:lio">C.1</a>. Видно, что по своему поведению результирующая линия похожа на скользящее среднее.</p>
 <div class="figure"><span id="fig:lio"></span>
 <img src="img/li-openshaw.png" alt="Принцип работы алгоритма Ли-Оупеншоу" width="50%" />
@@ -198,6 +270,40 @@
 <p class="caption">
 Рис. C.4: Принцип работы алгоритма Висвалингам-Уайатта
 </p>
+</div>
+</div>
+<div id="модифицированное-расстояние-хаусдорфа" class="section level3">
+<h3><span class="header-section-number">C.1.2</span> Модифицированное расстояние Хаусдорфа</h3>
+</div>
+<div id="коэффициент-относительной-извилистости" class="section level3">
+<h3><span class="header-section-number">C.1.3</span> Коэффициент относительной извилистости</h3>
+<p><strong>Коэффициент извилистости</strong> — мера извилистости объекта, вычисляемая как отношение длины линии к длине отрезка, соединяющего ее концы. Пусть линия <span class="math inline">\(L\)</span> состоит из <span class="math inline">\(n\)</span> узлов, соединенных ребрами. Тогда коэффициент ее извилистости будет равен:</p>
+<p><span class="math display">\[K = \frac{\sum_{i=1}^{n-1} l_{i, i+1}}{l_{1,n}}\]</span></p>
+<p>где <span class="math inline">\(l_{i,k}\)</span> — Евклидово расстояние между i-м и k-м узлом линии.</p>
+<p>Коэффициент извилистости зависит от конфигурации сглаживающей, описывающей общую траекторию линии. В предельном случае, когда имеют дело с замкнутой фигурой, величина <span class="math inline">\(К\)</span> не определена, т.к. длина стягивающей хорды равняется нулю. Чтобы избежать этого, можно вычислить отношение длины линии не к стягивающей, а к сглаживающей, т.е. вычислить <em>относительную извилистость</em>. Для этого можно сегментировать линию одним из двух способов: либо сдвигаться на одинаковое значение стягивающей хорды, либо сдвигаться вдоль самой линии с равным шагом. Второй подход вычислительно более эффективен, так как он не требует поиска пересечения с окружностью, а также поиска следующей по ходу линии точки (пересечений может быть несколько в случае извилистой линии). Коэффициент относительной извилистости, вычисляемый при таком подходе, имеет следующий вид:</p>
+<p><span class="math display">\[\overline{K} = \frac{\sum_{j=1}^{m} K_j}{m}\]</span></p>
+<p>где <span class="math inline">\(K_j\)</span> — коэффициент извилистости для <span class="math inline">\(k\)</span>-го сегмента линии, <span class="math inline">\(m\)</span> — число сегментов.</p>
+<div class="figure"><span id="fig:sinuosity"></span>
+<img src="img/sinuosity.png" alt="Подходы к вычислению коэффициента относительной извилистости: а) с фиксированной длиной стягивающей хорды; б) с фиксированной длиной сегмента линии" width="100%" />
+<p class="caption">
+Рис. C.5: Подходы к вычислению коэффициента относительной извилистости: а) с фиксированной длиной стягивающей хорды; б) с фиксированной длиной сегмента линии
+</p>
+</div>
+<blockquote>
+<p>При вычислении относительной извилистости средствами ГИС разбиение линии на сегменты можно заменить разрезанием линии регулярной сеткой ячеек. В этом случае коэффициент <span class="math inline">\(K_j\)</span> будет вычисляться для сегмента линии, попавшего в <span class="math inline">\(j\)</span>-й квадрат.</p>
+</blockquote>
+</div>
+<div id="модифицированное-расстояние-хаусдорфа-1" class="section level3">
+<h3><span class="header-section-number">C.1.4</span> Модифицированное расстояние Хаусдорфа</h3>
+<p>Модифицированное расстояние Хаусдорфа (MHD), широко используется как метрика оценки геометрической точности линий.</p>
+<p>Пусть даны два множества точек <span class="math inline">\(\mathcal{A} = \lbrace a_1,...,a_{N_a} \rbrace\)</span> и <span class="math inline">\(\mathcal{B} = \lbrace b_1,...,b_{N_b} \rbrace\)</span>. Тогда среднее расстояние между <span class="math inline">\(\mathcal{A}\)</span> и <span class="math inline">\(\mathcal{B}\)</span> может быть вычислено как <span class="math inline">\(\overline{d}(\mathcal{A},\mathcal{B}) = \frac{1}{N_a}\sum_{a \in \mathcal{A}}d(a,\mathcal{B})\)</span>, где <span class="math inline">\(d(a, \mathcal{B}) = \min_{b \in \mathcal{B}}\lVert a - b \rVert\)</span>. Аналогично, обратное расстояние между <span class="math inline">\(\mathcal{B}\)</span> и <span class="math inline">\(\mathcal{A}\)</span> вычисляется как <span class="math inline">\(\overline{d}(\mathcal{B},\mathcal{A}) = \frac{1}{N_b}\sum_{b \in \mathcal{B}}d(b,\mathcal{A})\)</span>, где <span class="math inline">\(d(b, \mathcal{A}) = \min_{a \in \mathcal{A}}\lVert b - a \rVert\)</span>.</p>
+<p>Имея прямое и обратное расстоения между <span class="math inline">\(\mathcal{A}\)</span> и <span class="math inline">\(\mathcal{B}\)</span>, модифицированное расстояние Хаусдорфа MHD вычисляется как:</p>
+<p><span class="math display">\[
+    MHD(\mathcal{A}, \mathcal{B}) = max\big(\overline{d}(\mathcal{A},\mathcal{B}), \overline{d}(\mathcal{B},\mathcal{A})\big),
+  \]</span></p>
+<p>Грубо говоря, MHD есть есть максимальное из средних расстояний от <span class="math inline">\(\mathcal{A}\)</span> к <span class="math inline">\(\mathcal{B}\)</span> и от <span class="math inline">\(\mathcal{B}\)</span> к <span class="math inline">\(\mathcal{A}\)</span>. Чем меньше значение MHD, тем интегрально ближе <span class="math inline">\(\mathcal{A}\)</span> и <span class="math inline">\(\mathcal{B}\)</span> друг к другу. Введение этой метрики вдохновлено классическим расстоянием Хаусдорфаа (в котором <span class="math inline">\(d(\mathcal{A},\mathcal{B}) = max_{a \in \mathcal{A}} d(a,\mathcal{B})\)</span>), которое, как видно из определения, чувствительно к точкам-выбросам, поскольку использует максимальное расстояние вместо среднего.</p>
+<p>При оценке геометрической точности в качестве множеств <span class="math inline">\(\mathcal{A}\)</span> и <span class="math inline">\(\mathcal{B}\)</span> используются ребра исходного и генерализованного множеств линий соответственно.</p>
+</div>
 </div>
 <div id="часть-1.-автоматизация-метода-ли-оупеншоу" class="section level2 unnumbered">
 <h2>Часть 1. Автоматизация метода Ли-Оупеншоу</h2>
@@ -241,7 +347,7 @@
 <h2>Часть 2. Автоматизация методов оценки геометрической точности и коэффициента относительной извилистости</h2>
 <div id="автоматизация-вычисления-модифицрованного-хаусдорфова-расстояния-mhd-оценка-геометрической-точности" class="section level3 unnumbered">
 <h3>Автоматизация вычисления модифицрованного Хаусдорфова расстояния <strong>MHD</strong> (оценка геометрической точности)</h3>
-<p>Модель <em>Modified</em> <em>Hausdorff Distance</em> должна включать следующие этапы.</p>
+<p>Инструмент Python Toolbox <em>Modified</em> <em>Hausdorff Distance</em> должty включать следующие этапы.</p>
 <ol style="list-style-type: decimal">
 <li><p>Конвертируйте исходную линию в точки (<strong>Feature vertices to points</strong>).</p></li>
 <li><p>Добавьте в таблицу поле ID, запишите в него значение OBJECTID (<strong>Add Field, Calculate Field</strong>)</p></li>
@@ -251,11 +357,12 @@
 <li><p>Замените значения поля <em>Sort</em> в полученном слое на 1 (<strong>Calculate Field)</strong>.</p></li>
 <li><p>Добавьте содержимое полученного слоя к точечному классу, содержащему исходные точки (<strong>Append</strong>).</p></li>
 <li><p>Конвертируйте полученные точки в линии векторов смещения (<strong>Points to Line</strong>). В качестве Line Field используйте поле ID, в качестве Sort Field – поле Sort.</p></li>
-<li><p>Визуализируйте полученный слой стрелками как на Рис. <a href="lines-simpl-work.html#fig:shift">C.5</a>.</p>
+<li><p>Визуализируйте полученный слой стрелками как на Рис. <a href="lines-simpl-work.html#fig:shift">C.6</a>.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="lines-simpl-work.html#cb1-1"></a>knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;img/shift-vectors.png&quot;</span>)</span></code></pre></div>
 <div class="figure"><span id="fig:shift"></span>
 <img src="img/shift-vectors.png" alt="Пример визуализации векторов смещения линии" width="100%" />
 <p class="caption">
-Рис. C.5: Пример визуализации векторов смещения линии
+Рис. C.6: Пример визуализации векторов смещения линии
 </p>
 </div>
 <blockquote>
@@ -274,11 +381,11 @@
 </div>
 <div id="автоматизация-вычисления-коэффициента-относительной-извилистости-оценка-морфологического-соответствия" class="section level3 unnumbered">
 <h3>Автоматизация вычисления коэффициента относительной извилистости (оценка морфологического соответствия)</h3>
-<p>Создайте новую модель геообработки <em>Sinuosity</em>, модифицировав модель генерализации, созданную ранее для алгоритма Ли-Оупеншоу. Вам необходимо внутри каждого квадрата поделить длину исходной линии на длину отрезка, соединяющего точки пересечения с линиями сетки. А затем посчитать среднее из полученных значений (<strong>Summary Statistics</strong>).</p>
+<p>Создайте новый инструемнт Python Toolbox <em>Sinuosity</em>, модифицировав модель генерализации, созданную ранее для алгоритма Ли-Оупеншоу. Вам необходимо внутри каждого квадрата поделить длину исходной линии на длину отрезка, соединяющего точки пересечения с линиями сетки. А затем посчитать среднее из полученных значений (<strong>Summary Statistics</strong>).</p>
 </div>
 <div id="отчет-2" class="section level3 unnumbered">
 <h3>Отчет</h3>
-<p>Опишите ваш опыт разработки моделей оценки геометрической точности морфологического соответствия для линий. Сопроводите данный раздел отчета снимками экрана и примерами получаемых результатов</p>
+<p>Опишите ваш опыт разработки инструментов оценки геометрической точности и морфологического соответствия для линий. Сопроводите данный раздел отчета снимками экрана и примерами получаемых результатов</p>
 </div>
 </div>
 <div id="часть-3.-сравнение-алгоритмов-ли-оупеншоу-ванга-мюллера-дугласа-пейкера-и-висвалингам-уайатта" class="section level2 unnumbered">
@@ -293,7 +400,7 @@
 <li><p>Оцените алгоритмы по следующим критериям:</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>При каких параметрах инструментов количество результирующих узлов линий одинаково?</p></li>
-<li><p>Хаусдорфово расстояние. Насколько эффективно алгоритм использует точки? Какой из алгоритмов дает контур, наиболее близко повторяющий исходную кривую?</p></li>
+<li><p>Модоифицированное хаусдорфово расстояние. Насколько эффективно алгоритм использует точки? Какой из алгоритмов дает контур, наиболее близко повторяющий исходную кривую?</p></li>
 <li><p>Относительная извилистость. Насколько сглаженным/угловатым получается изображение? Какой из алгоритмов дает значение извилистости более близкое к оригиналу?</p></li>
 <li><p>Какой метод на ваш взгляд дает наиболее удовлетворительные результаты с точки зрения принципов картографической генерализации и лучше передает морфологию объектов?</p></li>
 </ol></li>
