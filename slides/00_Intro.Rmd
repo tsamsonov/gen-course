@@ -1,0 +1,27 @@
+---
+title: "Введение"
+subtitle: "Генерализация пространственных данных"
+author: "Тимофей Самсонов"
+institute: "Кафедра картографии и геоинформатики"
+date: "`r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: 16:9
+---
+
+<style type="text/css">
+.remark-code, .remark-inline-code {
+    font-size: 14px;
+}
+
+.remark-slide-content {
+    font-size: 18px;
+}
+
+</style>
+
+# Get Started

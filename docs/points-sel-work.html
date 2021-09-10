@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>A Задание №1. Отбор точечных объектов | Картографические базы данных</title>
   <meta name="description" content="Курс лекций по генерализации пространственных данных" />
-  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="A Задание №1. Отбор точечных объектов | Картографические базы данных" />
   <meta property="og:type" content="book" />
@@ -24,15 +24,16 @@
 <meta name="author" content="Тимофей Самсонов" />
 
 
-<meta name="date" content="2020-04-16" />
+<meta name="date" content="2021-09-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="databases.html"/>
-<link rel="next" href="points-clust-work.html"/>
+<link rel="prev" href="index.html"/>
+
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -50,8 +51,9 @@
 
 
 
-<script src="libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
 
 
 
@@ -72,85 +74,15 @@
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Введение</a></li>
-<li class="part"><span><b>I Теоретические основы</b></span></li>
-<li class="chapter" data-level="1" data-path="scale.html"><a href="scale.html"><i class="fa fa-check"></i><b>1</b> Масштаб и иерархия</a></li>
-<li class="chapter" data-level="2" data-path="conceptual.html"><a href="conceptual.html"><i class="fa fa-check"></i><b>2</b> Концепции</a></li>
-<li class="part"><span><b>II Геометрия</b></span></li>
-<li class="chapter" data-level="3" data-path="points.html"><a href="points.html"><i class="fa fa-check"></i><b>3</b> Точки</a><ul>
-<li class="chapter" data-level="3.1" data-path="points.html"><a href="points.html#points-sel"><i class="fa fa-check"></i><b>3.1</b> Отбор</a><ul>
-<li class="chapter" data-level="3.1.1" data-path="points.html"><a href="points.html#краткий-обзор"><i class="fa fa-check"></i><b>3.1.1</b> Краткий обзор</a></li>
-</ul></li>
-<li class="chapter" data-level="3.2" data-path="points.html"><a href="points.html#points-clust"><i class="fa fa-check"></i><b>3.2</b> Кластеризация и регионизация</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="points.html"><a href="points.html#краткий-обзор-1"><i class="fa fa-check"></i><b>3.2.1</b> Краткий обзор</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="lines.html"><a href="lines.html"><i class="fa fa-check"></i><b>4</b> Линии</a><ul>
-<li class="chapter" data-level="4.1" data-path="lines.html"><a href="lines.html#lines-simpl"><i class="fa fa-check"></i><b>4.1</b> Геометрическое упрощение</a><ul>
-<li class="chapter" data-level="4.1.1" data-path="lines.html"><a href="lines.html#lines-simpl-over"><i class="fa fa-check"></i><b>4.1.1</b> Краткий обзор</a></li>
-</ul></li>
-<li class="chapter" data-level="4.2" data-path="lines.html"><a href="lines.html#lines-select"><i class="fa fa-check"></i><b>4.2</b> Отбор</a></li>
-<li class="chapter" data-level="4.3" data-path="lines.html"><a href="lines.html#lines-schem"><i class="fa fa-check"></i><b>4.3</b> Схематизация</a><ul>
-<li class="chapter" data-level="4.3.1" data-path="lines.html"><a href="lines.html#lines-schem-over"><i class="fa fa-check"></i><b>4.3.1</b> Краткий обзор</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="polygons.html"><a href="polygons.html"><i class="fa fa-check"></i><b>5</b> Полигоны</a><ul>
-<li class="chapter" data-level="5.1" data-path="polygons.html"><a href="polygons.html#polygons-skeleton"><i class="fa fa-check"></i><b>5.1</b> Скелетизация (построение срединной оси)</a></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="surfaces.html"><a href="surfaces.html"><i class="fa fa-check"></i><b>6</b> Поля (поверхности)</a></li>
-<li class="part"><span><b>III Семантика, время и символика</b></span></li>
-<li class="chapter" data-level="7" data-path="semantic.html"><a href="semantic.html"><i class="fa fa-check"></i><b>7</b> Семантика</a></li>
-<li class="chapter" data-level="8" data-path="temporal.html"><a href="temporal.html"><i class="fa fa-check"></i><b>8</b> Время</a></li>
-<li class="chapter" data-level="9" data-path="symbolic.html"><a href="symbolic.html"><i class="fa fa-check"></i><b>9</b> Символика</a></li>
-<li class="part"><span><b>IV Моделирование</b></span></li>
-<li class="chapter" data-level="10" data-path="models.html"><a href="models.html"><i class="fa fa-check"></i><b>10</b> Модели генерализации</a></li>
-<li class="chapter" data-level="11" data-path="data-structures.html"><a href="data-structures.html"><i class="fa fa-check"></i><b>11</b> Структуры данных</a></li>
-<li class="chapter" data-level="12" data-path="databases.html"><a href="databases.html"><i class="fa fa-check"></i><b>12</b> Картографические базы данных</a></li>
 <li class="appendix"><span><b>Задания</b></span></li>
-<li class="chapter" data-level="A" data-path="points-sel-work.html"><a href="points-sel-work.html"><i class="fa fa-check"></i><b>A</b> Задание №1. Отбор точечных объектов</a><ul>
+<li class="chapter" data-level="A" data-path="points-sel-work.html"><a href="points-sel-work.html"><i class="fa fa-check"></i><b>A</b> Задание №1. Отбор точечных объектов</a>
+<ul>
 <li class="chapter" data-level="" data-path="points-sel-work.html"><a href="points-sel-work.html#реализация-алгоритма-settlement-spacing"><i class="fa fa-check"></i>Реализация алгоритма Settlement Spacing</a></li>
 <li class="chapter" data-level="" data-path="points-sel-work.html"><a href="points-sel-work.html#реализация-модели-оценки-условной-графической-нагрузки"><i class="fa fa-check"></i>Реализация модели оценки условной графической нагрузки</a></li>
-<li class="chapter" data-level="" data-path="points-sel-work.html"><a href="points-sel-work.html#преобразование-созданных-моделей-геообработки-в-инструменты-python-toolbox"><i class="fa fa-check"></i>Преобразование созданных моделей геообработки в инструменты Python Toolbox</a></li>
 <li class="chapter" data-level="" data-path="points-sel-work.html"><a href="points-sel-work.html#отбор-населенных-пунктов-для-карты-масштаба-14-000-000"><i class="fa fa-check"></i>Отбор населенных пунктов для карты масштаба 1:4 000 000</a></li>
+<li class="chapter" data-level="A.1" data-path="points-sel-work.html"><a href="points-sel-work.html#реализация-и-применение-алгоритма-взвешенной-эффективной-площади"><i class="fa fa-check"></i><b>A.1</b> Реализация и применение алгоритма взвешенной эффективной площади</a></li>
+<li class="chapter" data-level="A.2" data-path="points-sel-work.html"><a href="points-sel-work.html#оценка-полученных-результатов"><i class="fa fa-check"></i><b>A.2</b> Оценка полученных результатов</a></li>
 <li class="chapter" data-level="" data-path="points-sel-work.html"><a href="points-sel-work.html#отчет"><i class="fa fa-check"></i>Отчет</a></li>
-</ul></li>
-<li class="chapter" data-level="B" data-path="points-clust-work.html"><a href="points-clust-work.html"><i class="fa fa-check"></i><b>B</b> Задание №2. Кластеризация системы расселения</a><ul>
-<li class="chapter" data-level="" data-path="points-clust-work.html"><a href="points-clust-work.html#изучение-работы-методов-кластеризации-и-регионизации"><i class="fa fa-check"></i>Изучение работы методов кластеризации и регионизации</a></li>
-<li class="chapter" data-level="" data-path="points-clust-work.html"><a href="points-clust-work.html#автоматизация-выделения-регионов-и-центроидов-кластеров"><i class="fa fa-check"></i>Автоматизация выделения регионов и центроидов кластеров</a></li>
-<li class="chapter" data-level="B.1" data-path="points-clust-work.html"><a href="points-clust-work.html#автоматизация-расчета-критериев-качества-кластеризации"><i class="fa fa-check"></i><b>B.1</b> Автоматизация расчета критериев качества кластеризации</a></li>
-<li class="chapter" data-level="" data-path="points-clust-work.html"><a href="points-clust-work.html#кластеризация-системы-расселения-субъекта"><i class="fa fa-check"></i>Кластеризация системы расселения субъекта</a></li>
-<li class="chapter" data-level="" data-path="points-clust-work.html"><a href="points-clust-work.html#отчет-1"><i class="fa fa-check"></i>Отчет</a></li>
-</ul></li>
-<li class="chapter" data-level="C" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html"><i class="fa fa-check"></i><b>C</b> Задание №3. Геометрическое упрощение линий</a><ul>
-<li class="chapter" data-level="C.1" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#теоретические-сведения"><i class="fa fa-check"></i><b>C.1</b> Теоретические сведения</a><ul>
-<li class="chapter" data-level="C.1.1" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#алгоритмы-генерализации"><i class="fa fa-check"></i><b>C.1.1</b> Алгоритмы генерализации</a></li>
-<li class="chapter" data-level="C.1.2" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#модифицированное-расстояние-хаусдорфа"><i class="fa fa-check"></i><b>C.1.2</b> Модифицированное расстояние Хаусдорфа</a></li>
-<li class="chapter" data-level="C.1.3" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#коэффициент-относительной-извилистости"><i class="fa fa-check"></i><b>C.1.3</b> Коэффициент относительной извилистости</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#часть-1.-автоматизация-метода-ли-оупеншоу"><i class="fa fa-check"></i>Часть 1. Автоматизация метода Ли-Оупеншоу</a></li>
-<li class="chapter" data-level="" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#часть-2.-автоматизация-методов-оценки-геометрической-точности-и-коэффициента-относительной-извилистости"><i class="fa fa-check"></i>Часть 2. Автоматизация методов оценки геометрической точности и коэффициента относительной извилистости</a><ul>
-<li><a href="lines-simpl-work.html#автоматизация-вычисления-модифицрованного-хаусдорфова-расстояния-mhd-оценка-геометрической-точности">Автоматизация вычисления модифицрованного Хаусдорфова расстояния <strong>MHD</strong> (оценка геометрической точности)</a></li>
-<li class="chapter" data-level="" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#автоматизация-вычисления-коэффициента-относительной-извилистости-оценка-морфологического-соответствия"><i class="fa fa-check"></i>Автоматизация вычисления коэффициента относительной извилистости (оценка морфологического соответствия)</a></li>
-<li class="chapter" data-level="" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#отчет-2"><i class="fa fa-check"></i>Отчет</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#часть-3.-сравнение-алгоритмов-ли-оупеншоу-ванга-мюллера-дугласа-пейкера-и-висвалингам-уайатта"><i class="fa fa-check"></i>Часть 3. Сравнение алгоритмов Ли-Оупеншоу, Ванга-Мюллера, Дугласа-Пейкера и Висвалингам-Уайатта</a></li>
-</ul></li>
-<li class="chapter" data-level="D" data-path="lines-network-work.html"><a href="lines-network-work.html"><i class="fa fa-check"></i><b>D</b> Задание №4. Отбор элементов транспортной сети</a><ul>
-<li class="chapter" data-level="" data-path="lines-network-work.html"><a href="lines-network-work.html#часть-1.-подготовка-исходных-данных"><i class="fa fa-check"></i>Часть 1. Подготовка исходных данных</a></li>
-<li class="chapter" data-level="" data-path="lines-network-work.html"><a href="lines-network-work.html#часть-2.-создание-инструмента-геообработки-python-toolbox-для-отбора-элементов-транспортной-сети"><i class="fa fa-check"></i>Часть 2. Создание инструмента геообработки Python Toolbox для отбора элементов транспортной сети</a></li>
-<li class="chapter" data-level="" data-path="lines-network-work.html"><a href="lines-network-work.html#часть-3.-создание-инструента-python-toolbox-для-оценки-относительной-графической-нагрузки-по-линейным-объектам"><i class="fa fa-check"></i>Часть 3. Создание инструента Python Toolbox для оценки относительной графической нагрузки по линейным объектам</a></li>
-<li class="chapter" data-level="" data-path="lines-network-work.html"><a href="lines-network-work.html#часть-4.-создание-и-анализ-карты-транспортной-связности-районных-центров-субъекта"><i class="fa fa-check"></i>Часть 4. Создание и анализ карты транспортной связности районных центров субъекта</a></li>
-</ul></li>
-<li class="chapter" data-level="E" data-path="polygons-skeleton-work.html"><a href="polygons-skeleton-work.html"><i class="fa fa-check"></i><b>E</b> Задание №5. Скелетизация площадных объектов гидрографии</a><ul>
-<li class="chapter" data-level="" data-path="polygons-skeleton-work.html"><a href="polygons-skeleton-work.html#часть-1.-подготовка-входных-данных"><i class="fa fa-check"></i>Часть 1. Подготовка входных данных</a></li>
-<li class="chapter" data-level="" data-path="polygons-skeleton-work.html"><a href="polygons-skeleton-work.html#часть-2.-автоматизация-построения-скелета-фигуры"><i class="fa fa-check"></i>Часть 2. Автоматизация построения скелета фигуры</a></li>
-<li class="chapter" data-level="" data-path="polygons-skeleton-work.html"><a href="polygons-skeleton-work.html#часть-3.-построение-сетевой-модели-данных"><i class="fa fa-check"></i>Часть 3. Построение сетевой модели данных</a></li>
-<li class="chapter" data-level="" data-path="polygons-skeleton-work.html"><a href="polygons-skeleton-work.html#часть-4.-автоматизация-построения-срединной-оси-фигуры"><i class="fa fa-check"></i>Часть 4. Автоматизация построения срединной оси фигуры</a></li>
-<li class="chapter" data-level="" data-path="polygons-skeleton-work.html"><a href="polygons-skeleton-work.html#часть-5.-построение-срединной-оси-и-описание-результатов"><i class="fa fa-check"></i>Часть 5. Построение срединной оси и описание результатов</a></li>
-</ul></li>
-<li class="chapter" data-level="F" data-path="ex-dem.html"><a href="ex-dem.html"><i class="fa fa-check"></i><b>F</b> Задание №6. Генерализация цифровой модели рельефа</a><ul>
-<li class="chapter" data-level="F.1" data-path="ex-dem.html"><a href="ex-dem.html#ex-dem-data"><i class="fa fa-check"></i><b>F.1</b> Подготовка исходных данных</a></li>
-<li class="chapter" data-level="F.2" data-path="ex-dem.html"><a href="ex-dem.html#ex-dem-iter"><i class="fa fa-check"></i><b>F.2</b> Автоматизация итерационного сглаживания ЦМР</a></li>
-<li class="chapter" data-level="F.3" data-path="ex-dem.html"><a href="ex-dem.html#ex-dem-iter"><i class="fa fa-check"></i><b>F.3</b> Сравнение структурной генерализации и глобальной фильтрации ЦМР</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://istina.msu.ru/profile/tsamsonov/" target="blank">Тимофей Самсонов</a></li>
@@ -172,62 +104,50 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="points-sel-work" class="section level1">
+<div id="points-sel-work" class="section level1" number="1">
 <h1><span class="header-section-number">A</span> Задание №1. Отбор точечных объектов</h1>
 <p><strong>Цель задания</strong> — освоение методики автоматизированного отбора точечных объектов на примере населенных пунктов.</p>
 <p>Задачи:</p>
 <ol style="list-style-type: decimal">
-<li>Изучить принципы, заложенные в метод отбора (исключения) точек <em>Settlement Spacing</em>.</li>
-<li>Реализовать метод <em>Settlement Spacing</em> в среде <strong>ArcGIS Desktop</strong> с помощью среды автоматизации процессов геообработки <strong>Model Builder</strong>.</li>
-<li>Реализовать метод оценки графической нагрузки по сетке регулярных квадратов средствами <strong>Model Builder</strong>.</li>
-<li>Преобразовать созданные модели в инструменты геообработки Python Toolbox на языке программирования Python.</li>
+<li>Изучить принципы, заложенные в методы отбора (исключения) точек <em>Settlement Spacing</em> (прореживание населенных пунктов) и <em>Voronoy-based</em> (взвешенной эффективной площади).</li>
+<li>Реализовать метод <em>Settlement Spacing</em> в виде инструмента геообработки Python Toolbox.</li>
 <li>Подготовить слой населенных пунктов субъекта РФ на основе данных <em>OpenStreetMap</em>.</li>
+<li>Реализовать оценку графической нагрузки в виде инструмента геообработки Python Toolbox.</li>
+<li>Выполнить параметризацию коэффициента масштабирования для метода <em>Settlement Spacing</em> при графической нагрузке <span class="math inline">\(2\)</span>, <span class="math inline">\(4\)</span> и <span class="math inline">\(6\)</span> <span class="math inline">\(см^{-2}\)</span></li>
 <li>Осуществить автоматизированный отбор населенных пунктов для масштаба <span class="math inline">\(1:4~000~000\)</span>.</li>
-<li>Сравнить производительность созданных моделей и скриптов.</li>
-<li>Выполнить численную, графическую и географическую оценку результатов генерализации.</li>
+<li>Реализовать метод взвешенной эффективной площади в виде инструмента геообработки Python Toolbox</li>
+<li>Осуществить автоматизированный отбор населенных пунктов для масштаба <span class="math inline">\(1:4~000~000\)</span>, оставив такое же количество населенных пунктов, что и в методе Settlement Spacing.</li>
+<li>Выполнить численную, графическую и географическую оценку результатов генерализации обоими методами. Сравнить результаты между собой.</li>
 </ol>
+<p>При выполнении задания в качестве справочника используется <a href="https://desktop.arcgis.com/ru/arcmap/latest/analyze/creating-tools/a-quick-tour-of-python-toolboxes.htm"><strong>официальное руководство</strong></a> по созданию инструментов <em>Python Toolbox</em>.</p>
 <div id="реализация-алгоритма-settlement-spacing" class="section level2 unnumbered">
 <h2>Реализация алгоритма Settlement Spacing</h2>
 <p><strong>Входные параметры:</strong></p>
 <ol style="list-style-type: decimal">
 <li>Точечный слой (<em>Input Points</em>).</li>
-<li>Поле веса точки (<em>Importance Field</em>). Выносится в качестве параметра из инструмента <strong>Get Field Value</strong> (2.2).</li>
-<li>Поле сохранения точки (<em>Remain Field</em>). Выносится в качестве параметра из инструмента <strong>Calculate Field</strong> (6).</li>
-<li>Масштабирующий коэффициент (<em>Scale</em>). Вводится как свободный параметр типа <em>Double</em>.</li>
+<li>Поле веса точки (<em>Importance Field</em>).</li>
+<li>Поле сохранения точки (<em>Remain Field</em>).</li>
+<li>Масштабирующий коэффициент (<em>Scale</em>).</li>
 </ol>
-<p><strong>Требования к входным параметрам:</strong></p>
-<ol style="list-style-type: decimal">
-<li>Поля, указанные в параметрах <em>Importance Field</em> и <em>Remain Field</em> должны быть уже созданы в слое.</li>
-<li>Данные должны быть физически отсортированы в порядке увеличения поля <code>Importance</code> (чем больше значение этого поля, тем менее важной является точка). Для этого можно использовать инструмент <strong>Sort</strong>.</li>
-<li>Поле Remain по умолчанию должно быть пустым или заполненным нулями.</li>
-</ol>
-<p>Допустимые значения поля <em>Remain</em>:</p>
-<ul>
-<li><span class="math inline">\(0\)</span> — флаг не установлен.</li>
-<li><span class="math inline">\(1\)</span> — точку необходимо оставить.</li>
-<li><span class="math inline">\(2\)</span> — точку необходимо убрать.</li>
-</ul>
-<p><strong>Предусловия:</strong>
-Необходимо расставить предусловия таким образом, чтобы каждый инструмент <strong>A</strong>, использующий вычисленное значение <strong>B</strong>, выполнялся после того как вычислится <strong>B</strong>.</p>
 <p><strong>Входные данные:</strong>
 Тестирование инструмента производится на примере слоя <code>poppnt_ural</code> (можно вырезать из него небольшой фрагмент из нескольких десятков точек.</p>
 <p><strong>Результат:</strong>
-По результатам выполнения инструмента каждой точке в поле <em>Remain Field</em> должно быть проставлено значение <span class="math inline">\(1\)</span> (оставить) или <span class="math inline">\(2\)</span> (убрать).</p>
+По результатам выполнения инструмента каждой точке в поле <em>Remain Field</em> должно быть проставлено значение <span class="math inline">\(1\)</span> (оставить) или <span class="math inline">\(0\)</span> (убрать).</p>
 <p><strong>Алгоритм решения задачи:</strong></p>
 <ol style="list-style-type: decimal">
-<li><p><em>Поток 1</em></p>
-<p>1.1. Создать слой из точек (<strong>Make Feature Layer</strong>)</p>
-<p>1.2. Выбрать точки (уже отобранные + текущая) по атрибутам (<strong>Select Layer by Attributes</strong>). Подсказка: используйте двойное условие, в котором поле <code>Remain</code> сравнивается с <span class="math inline">\(1\)</span>, а поле <code>OBJECTID</code> сравнивается со значением <code>Value</code>, полученным на шаге 2.1.</p></li>
-<li><p><em>Поток 2</em></p>
-<p>2.1. Выбрать текущую точку с помощью итератора (<strong>Iterate Feature Selection</strong>)</p>
-<p>2.2. Извлечь значение поля <code>Importance</code> (<strong>Get Field Value</strong>)</p>
-<p>2.3. Вычислить радиус буферной зоны (<strong>Calculate Value</strong>) как произведение <code>Importance</code> (2.2) и входного параметра <em>Scale</em>.</p>
-<p>2.4. Построить буферную зону, используя вычисленное значение 2.3 (Buffer)</p></li>
-<li><p>Довыбрать (<code>SUBSET_SELECTION</code>) буферной зоной (2.4) отобранные точки + текущую (1.2) с помощью пространственного запроса (<strong>Select Layer by Location</strong>).
-&gt; Внимание: в результате должны остаться только те точки, которые пересекаются буферной зоной!</p></li>
-<li><p>Подсчитать количество отобранных на шаге 3 точек (<strong>Get Count</strong>)</p></li>
-<li><p>Вычислить значение флага отбора точек, используя результат шага 4 (<strong>Calculate Value</strong>). Если выборка содержит 1 точку, то значение флага должно быть равно 1, если больше точек, то оно должно быть равно 2. Подсказка: тип выходного поля сделайте равным Long, но для вычисления используйте логическое выражение, результатом которого будет являться <code>Ложь (0)</code> или <code>Истина (1)</code>.</p></li>
-<li><p>Вычислите поле <code>Remain</code> для текущей точки (2.1), используя значение флага отбора, полученное на шаге 5 (<strong>Calculate Field</strong>).</p></li>
+<li><p>Отсортировать точки в соответствии со значением поля <code>Importance</code> так чтобы первыми были точки с наибольшим весом (<strong>Sort</strong>).</p></li>
+<li><p>Добавить в полученный класс пространственных объектов поле <em>Remain Field</em>.</p></li>
+<li><p>Создать слой из него (<strong>Make Feature Layer</strong>).</p></li>
+<li><p>Создать обновляющий итератор, который будет ходить по всем точкам отсортированного класса пространственных объектов (<code>arcpy.da.UpdateCursor</code>).</p></li>
+<li><p>Организовать цикл по всем строками итератора, выполнив следующие действия для текущей точки:</p>
+<p>4.2. Извлечь значение поля <code>Importance</code> (<strong>Get Field Value</strong>)</p>
+<p>4.3. Вычислить радиус буферной зоны (<strong>Calculate Value</strong>) как произведение поля <code>Importance</code> и входного параметра <em>Scale</em>.</p>
+<p>4.4. Построить буферную зону, используя вычисленное значение 2.3 (<strong>Buffer</strong>).</p>
+<p>4.5. Выбрать в слое (3) уже отобранные точки по значению атрибута (<strong>Select Layer by Attributes</strong>).</p>
+<p>4.6. Довыбрать (<code>SUBSET_SELECTION</code>) буферной зоной (4.4) отобранные точки (4.5) с помощью пространственного запроса (<strong>Select Layer by Location</strong>).</p>
+<p>4.7. Подсчитать количество отобранных точек (<strong>Get Count</strong>).</p>
+<p>4.8. Вычислить флаг отбора для текущей точки (2.1), в зависимости от того, сколько точек выбралось на предыдущем шаге.</p>
+<p>4.9. Записать результат в поле <strong>Remain field</strong> (<code>updateRow</code>)</p></li>
 </ol>
 </div>
 <div id="реализация-модели-оценки-условной-графической-нагрузки" class="section level2 unnumbered">
@@ -241,21 +161,12 @@
 </ol>
 <p><strong>Требования к входным данным:</strong></p>
 <p>Поле <em>Size Field</em> должно содержать размеры значков, используемых для визуализации точек. Если значения всех размеров равны <span class="math inline">\(1\)</span>, вы получите обычную густоту точек на единицу площади.</p>
-<p>Необходимо самостоятельно реализовать модель геообработки, которая:</p>
+<p>Необходимо самостоятельно ArcGIS Python Toolbox, который:</p>
 <ol style="list-style-type: decimal">
 <li>Строит регулярную сетку с заданным разрешением и охватом, покрывающим входной набор точек с небольшим запасом. Подсказка: вам необходимо построить горизонтальный ограничивающий прямоугольник (<strong>Minimum Bounding Geometry</strong>), буферизовать его на величину разрешения сетки (<strong>Buffer</strong>) и подать буфер в качестве экстента в инструмент генерации регулярной сетки (<strong>Create Fishnet</strong>).</li>
 <li>Подсчитывает суммарный графический вес точек в каждой ячейке и записывает результат в новое поле. Подсказка: вам понадобятся инструменты статистики (<strong>Tabulate Intersection</strong>), и присоединения поля (<strong>Join Field</strong>).</li>
 <li>Сохраняет полученную сетку в выходной файл.</li>
 </ol>
-</div>
-<div id="преобразование-созданных-моделей-геообработки-в-инструменты-python-toolbox" class="section level2 unnumbered">
-<h2>Преобразование созданных моделей геообработки в инструменты Python Toolbox</h2>
-<p>В данной части задания необходимо переписать созданные модели на языке программирования Python и оформить их в виде инструмента геообработки <em>ArcGIS Python Toolbox</em>.</p>
-<ul>
-<li>Первая модель (отбор точек) переписывается совместно с преподавателем в классе.
-— Вторая модель (оценка условной графической нагрузки) переписывается самостоятельно.</li>
-</ul>
-<p>При выполнении задания в качестве справочника используется <a href="https://desktop.arcgis.com/ru/arcmap/latest/analyze/creating-tools/a-quick-tour-of-python-toolboxes.htm"><strong>официальное руководство</strong></a> по созданию инструментов <em>Python Toolbox</em>.</p>
 </div>
 <div id="отбор-населенных-пунктов-для-карты-масштаба-14-000-000" class="section level2 unnumbered">
 <h2>Отбор населенных пунктов для карты масштаба 1:4 000 000</h2>
@@ -267,52 +178,60 @@
 <li><p>Сформировать поля <code>Importance</code> и <code>Size</code>, используя следующее отображение атрибутов:</p></li>
 </ol>
 <table>
-<caption><span id="tab:unnamed-chunk-6">Таблица A.1: </span>Параметры заполнения полей</caption>
 <thead>
 <tr class="header">
-<th align="center">PLACE</th>
-<th align="center">Importance</th>
-<th align="center">Size</th>
+<th align="left">PLACE</th>
+<th align="right">Importance</th>
+<th align="right">Size</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="center">City</td>
-<td align="center">1</td>
-<td align="center">5</td>
+<td align="left">City</td>
+<td align="right">1</td>
+<td align="right">5</td>
 </tr>
 <tr class="even">
-<td align="center">Town</td>
-<td align="center">2</td>
-<td align="center">3</td>
+<td align="left">Town</td>
+<td align="right">2</td>
+<td align="right">3</td>
 </tr>
 <tr class="odd">
-<td align="center">Village</td>
-<td align="center">3</td>
-<td align="center">1</td>
+<td align="left">Village</td>
+<td align="right">3</td>
+<td align="right">1</td>
 </tr>
 <tr class="even">
-<td align="center">Hamlet</td>
-<td align="center">4</td>
-<td align="center">1</td>
+<td align="left">Hamlet</td>
+<td align="right">4</td>
+<td align="right">1</td>
 </tr>
 <tr class="odd">
-<td align="center">Locality</td>
-<td align="center">5</td>
-<td align="center">1</td>
+<td align="left">Locality</td>
+<td align="right">5</td>
+<td align="right">1</td>
 </tr>
 </tbody>
 </table>
 <ol start="4" style="list-style-type: decimal">
 <li><p>Используя фрагмент данных и значения параметра <span class="math inline">\(С\)</span> (Scale) в диапазоне от <span class="math inline">\(1000\)</span> до <span class="math inline">\(10000\)</span> с шагом <span class="math inline">\(1000\)</span>, подобрать регрессионную зависимость вида <span class="math inline">\(y = \alpha x^{-\beta}\)</span> между значением параметра масштабирования <span class="math inline">\(C\)</span> (Scale) и средней графической нагрузкой (<span class="math inline">\(ед.~на~см^2\)</span>) в масштабе <span class="math inline">\(1:4~000~000\)</span>. Средняя графическая нагрузка оценивается как среднее значение по всем ненулевым ячейкам регулярной сетки. Размер сетки — <span class="math inline">\(1~см^2\)</span> в результирующем масштабе.</p>
-<blockquote>
-<p>Для <span class="math inline">\(С = 2000, 4000, 8000\)</span> необходимо зафиксировать время работы инструмента, чтобы в дальнейшем сравнить его с временем работы модели геообработки.</p>
-</blockquote>
 <p>Найденная зависимость должна иметь примерно следующий вид:</p>
-<p><img src="slides/img/talk3/stl-param.png" width="1015" /></p></li>
-<li><p>Для значений параметра <span class="math inline">\(C = 2000, 4000, 8000\)</span> выполнить аналогичные вычисления с применением модели геообработки. Убедиться, что получается аналогичный результат и зафиксировать время выполнения обработки данных.</p></li>
-<li><p>Выполнить отбор населенных пунктов с графической нагрузкой <span class="math inline">\(1\)</span>, <span class="math inline">\(3\)</span> и <span class="math inline">\(5\)</span> населенных пункта на <span class="math inline">\(см^2\)</span> для масштаба <span class="math inline">\(1:4~000~000\)</span>. Соответствующий параметр <span class="math inline">\(C\)</span> (<em>Scale</em>) подберите, используя найденную регрессионную зависимость.</p></li>
-<li><p>Выполнить параметризацию параметра <span class="math inline">\(x\)</span> обобщенного закона <em>Топфера</em> для трёх полученных генерализаций, исходя из предположения, что отношение результирующего и исходного масштаба равно <span class="math inline">\(1:4\)</span>.</p></li>
+<p><img src="slides/OLD/img/talk3/stl-param.png" width="1015" /></p></li>
+<li><p>Выполнить отбор населенных пунктов с графической нагрузкой <span class="math inline">\(2\)</span>, <span class="math inline">\(4\)</span> и <span class="math inline">\(6\)</span> населенных пункта на <span class="math inline">\(см^2\)</span> для масштаба <span class="math inline">\(1:4~000~000\)</span>. Соответствующий параметр <span class="math inline">\(C\)</span> (<em>Scale</em>) подберите, используя найденную регрессионную зависимость.</p></li>
+</ol>
+</div>
+<div id="реализация-и-применение-алгоритма-взвешенной-эффективной-площади" class="section level2" number="1.1">
+<h2><span class="header-section-number">A.1</span> Реализация и применение алгоритма взвешенной эффективной площади</h2>
+<ol style="list-style-type: decimal">
+<li><p>Реализуйте самостоятельно алгоритм взвешенной эффективной площади в виде инструмента ArcGIS Python Toolbox. Параметры инструмента будут аналогичны инструменту Settlementa Spacing, за исключением параметра масштабирования (Scale), который следует заменить на параметр интенсивности прореживание (Selection intensity), который определяет долю (в %) точек, которые надо сохранить.</p></li>
+<li><p>Используя разработанный инструмент, выполните отбор точек, сохранив процент, аналогичный тому, что был получен в Settlement Spacing при нагрузках 2, 4 и 6.</p></li>
+</ol>
+</div>
+<div id="оценка-полученных-результатов" class="section level2" number="1.2">
+<h2><span class="header-section-number">A.2</span> Оценка полученных результатов</h2>
+<ol style="list-style-type: decimal">
+<li><p>Выполнить параметризацию параметра <span class="math inline">\(x\)</span> обобщенного закона <em>Топфера</em> для трёх полученных генерализаций по каждому из двух алгоритмов, исходя из предположения, что отношение результирующего и исходного масштаба равно <span class="math inline">\(1:40\)</span>.</p></li>
+<li><p>Построить карты графической нагрузки для обоих алгоритмов.</p></li>
 <li><p>Оформить результаты в виде серии карт, отображающей:</p>
 <ul>
 <li>границу региона</li>
@@ -323,7 +242,7 @@
 </ul></li>
 </ol>
 <p>Пример серии карт (вы можете упорядочить изображения другим путем — например, по вертикали):</p>
-<p><img src="slides/img/talk3/mean_density.png" width="1561" /></p>
+<p><img src="slides/OLD/img/talk3/mean_density.png" width="1561" /></p>
 </div>
 <div id="отчет" class="section level2 unnumbered">
 <h2>Отчет</h2>
@@ -333,9 +252,7 @@
 <li>суть метода отбора точек,</li>
 <li>суть принципа оценки условной графической нагрузки,</li>
 <li>суть обобщенного закона Топфера,</li>
-<li>этапы создания моделей геообработки и их внешний вид,</li>
 <li>технология создания инструментов Python Toolbox, определения их параметров и типов параметров</li>
-<li>процесс преобразования моделей геообработки в инструменты Python Toolbox, фактические отличия скрипта и модели — какие инструменты переехали в неизменном виде, а что поменялось.</li>
 <li>описание эксперимента по генерализации, включая:
 <ul>
 <li>постановку задачи,</li>
@@ -353,8 +270,8 @@
           </div>
         </div>
       </div>
-<a href="databases.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="points-clust-work.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="index.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -377,6 +294,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
