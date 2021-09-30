@@ -80,9 +80,9 @@
 <li class="chapter" data-level="" data-path="points-sel-work.html"><a href="points-sel-work.html#реализация-алгоритма-settlement-spacing"><i class="fa fa-check"></i>Реализация алгоритма Settlement Spacing</a></li>
 <li class="chapter" data-level="" data-path="points-sel-work.html"><a href="points-sel-work.html#реализация-модели-оценки-условной-графической-нагрузки"><i class="fa fa-check"></i>Реализация модели оценки условной графической нагрузки</a></li>
 <li class="chapter" data-level="" data-path="points-sel-work.html"><a href="points-sel-work.html#отбор-населенных-пунктов-для-карты-масштаба-14-000-000"><i class="fa fa-check"></i>Отбор населенных пунктов для карты масштаба 1:4 000 000</a></li>
-<li class="chapter" data-level="A.1" data-path="points-sel-work.html"><a href="points-sel-work.html#реализация-алгоритма-взвешенной-эффективной-площади"><i class="fa fa-check"></i><b>A.1</b> Реализация алгоритма взвешенной эффективной площади</a></li>
-<li class="chapter" data-level="A.2" data-path="points-sel-work.html"><a href="points-sel-work.html#применение-алгоритма-взвешенной-эффективной-площади"><i class="fa fa-check"></i><b>A.2</b> Применение алгоритма взвешенной эффективной площади</a></li>
-<li class="chapter" data-level="A.3" data-path="points-sel-work.html"><a href="points-sel-work.html#оценка-полученных-результатов"><i class="fa fa-check"></i><b>A.3</b> Оценка полученных результатов</a></li>
+<li class="chapter" data-level="" data-path="points-sel-work.html"><a href="points-sel-work.html#реализация-алгоритма-взвешенной-эффективной-площади"><i class="fa fa-check"></i>Реализация алгоритма взвешенной эффективной площади</a></li>
+<li class="chapter" data-level="" data-path="points-sel-work.html"><a href="points-sel-work.html#применение-алгоритма-взвешенной-эффективной-площади"><i class="fa fa-check"></i>Применение алгоритма взвешенной эффективной площади</a></li>
+<li class="chapter" data-level="" data-path="points-sel-work.html"><a href="points-sel-work.html#оценка-полученных-результатов"><i class="fa fa-check"></i>Оценка полученных результатов</a></li>
 <li class="chapter" data-level="" data-path="points-sel-work.html"><a href="points-sel-work.html#отчет"><i class="fa fa-check"></i>Отчет</a></li>
 </ul></li>
 <li class="divider"></li>
@@ -226,8 +226,8 @@
 <li><p>Выполнить отбор населенных пунктов с графической нагрузкой <span class="math inline">\(2\)</span>, <span class="math inline">\(4\)</span> и <span class="math inline">\(6\)</span> населенных пункта на <span class="math inline">\(см^2\)</span> для масштаба <span class="math inline">\(1:4~000~000\)</span>. Соответствующий параметр <span class="math inline">\(C\)</span> (<em>Scale</em>) подберите, используя найденную регрессионную зависимость.</p></li>
 </ol>
 </div>
-<div id="реализация-алгоритма-взвешенной-эффективной-площади" class="section level2" number="1.1">
-<h2><span class="header-section-number">A.1</span> Реализация алгоритма взвешенной эффективной площади</h2>
+<div id="реализация-алгоритма-взвешенной-эффективной-площади" class="section level2 unnumbered">
+<h2>Реализация алгоритма взвешенной эффективной площади</h2>
 <p><strong>Входные параметры:</strong></p>
 <ol style="list-style-type: decimal">
 <li>Входной точечный слой (<em>Input Points</em>).</li>
@@ -277,12 +277,12 @@
 <li><p>Сбросьте прогресс-бар (<strong><code>arcpy.ResetProgressor</code></strong>).</p></li>
 </ol>
 </div>
-<div id="применение-алгоритма-взвешенной-эффективной-площади" class="section level2" number="1.2">
-<h2><span class="header-section-number">A.2</span> Применение алгоритма взвешенной эффективной площади</h2>
+<div id="применение-алгоритма-взвешенной-эффективной-площади" class="section level2 unnumbered">
+<h2>Применение алгоритма взвешенной эффективной площади</h2>
 <p>Используя разработанный инструмент, выполните отбор точек, сохранив процент, аналогичный тому, что был получен в Settlement Spacing при нагрузках <span class="math inline">\(2\)</span>, <span class="math inline">\(4\)</span> и <span class="math inline">\(6\)</span>.</p>
 </div>
-<div id="оценка-полученных-результатов" class="section level2" number="1.3">
-<h2><span class="header-section-number">A.3</span> Оценка полученных результатов</h2>
+<div id="оценка-полученных-результатов" class="section level2 unnumbered">
+<h2>Оценка полученных результатов</h2>
 <ol style="list-style-type: decimal">
 <li><p>Выполнить параметризацию параметра <span class="math inline">\(x\)</span> обобщенного закона <em>Топфера</em> для трёх полученных генерализаций по каждому из двух алгоритмов, исходя из предположения, что отношение результирующего и исходного масштаба равно <span class="math inline">\(1:40\)</span>.</p></li>
 <li><p>Построить карты графической нагрузки для обоих алгоритмов.</p></li>
