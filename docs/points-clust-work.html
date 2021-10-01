@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>B Задание №2. Кластеризация системы расселения | Картографические базы данных</title>
   <meta name="description" content="Курс лекций по генерализации пространственных данных" />
-  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="B Задание №2. Кластеризация системы расселения | Картографические базы данных" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Тимофей Самсонов" />
 
 
-<meta name="date" content="2020-04-16" />
+<meta name="date" content="2021-10-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,8 @@
   
   
 <link rel="prev" href="points-sel-work.html"/>
-<link rel="next" href="lines-simpl-work.html"/>
+
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -50,8 +51,9 @@
 
 
 
-<script src="libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
 
 
 
@@ -72,85 +74,24 @@
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Введение</a></li>
-<li class="part"><span><b>I Теоретические основы</b></span></li>
-<li class="chapter" data-level="1" data-path="scale.html"><a href="scale.html"><i class="fa fa-check"></i><b>1</b> Масштаб и иерархия</a></li>
-<li class="chapter" data-level="2" data-path="conceptual.html"><a href="conceptual.html"><i class="fa fa-check"></i><b>2</b> Концепции</a></li>
-<li class="part"><span><b>II Геометрия</b></span></li>
-<li class="chapter" data-level="3" data-path="points.html"><a href="points.html"><i class="fa fa-check"></i><b>3</b> Точки</a><ul>
-<li class="chapter" data-level="3.1" data-path="points.html"><a href="points.html#points-sel"><i class="fa fa-check"></i><b>3.1</b> Отбор</a><ul>
-<li class="chapter" data-level="3.1.1" data-path="points.html"><a href="points.html#краткий-обзор"><i class="fa fa-check"></i><b>3.1.1</b> Краткий обзор</a></li>
-</ul></li>
-<li class="chapter" data-level="3.2" data-path="points.html"><a href="points.html#points-clust"><i class="fa fa-check"></i><b>3.2</b> Кластеризация и регионизация</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="points.html"><a href="points.html#краткий-обзор-1"><i class="fa fa-check"></i><b>3.2.1</b> Краткий обзор</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="lines.html"><a href="lines.html"><i class="fa fa-check"></i><b>4</b> Линии</a><ul>
-<li class="chapter" data-level="4.1" data-path="lines.html"><a href="lines.html#lines-simpl"><i class="fa fa-check"></i><b>4.1</b> Геометрическое упрощение</a><ul>
-<li class="chapter" data-level="4.1.1" data-path="lines.html"><a href="lines.html#lines-simpl-over"><i class="fa fa-check"></i><b>4.1.1</b> Краткий обзор</a></li>
-</ul></li>
-<li class="chapter" data-level="4.2" data-path="lines.html"><a href="lines.html#lines-select"><i class="fa fa-check"></i><b>4.2</b> Отбор</a></li>
-<li class="chapter" data-level="4.3" data-path="lines.html"><a href="lines.html#lines-schem"><i class="fa fa-check"></i><b>4.3</b> Схематизация</a><ul>
-<li class="chapter" data-level="4.3.1" data-path="lines.html"><a href="lines.html#lines-schem-over"><i class="fa fa-check"></i><b>4.3.1</b> Краткий обзор</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="polygons.html"><a href="polygons.html"><i class="fa fa-check"></i><b>5</b> Полигоны</a><ul>
-<li class="chapter" data-level="5.1" data-path="polygons.html"><a href="polygons.html#polygons-skeleton"><i class="fa fa-check"></i><b>5.1</b> Скелетизация (построение срединной оси)</a></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="surfaces.html"><a href="surfaces.html"><i class="fa fa-check"></i><b>6</b> Поля (поверхности)</a></li>
-<li class="part"><span><b>III Семантика, время и символика</b></span></li>
-<li class="chapter" data-level="7" data-path="semantic.html"><a href="semantic.html"><i class="fa fa-check"></i><b>7</b> Семантика</a></li>
-<li class="chapter" data-level="8" data-path="temporal.html"><a href="temporal.html"><i class="fa fa-check"></i><b>8</b> Время</a></li>
-<li class="chapter" data-level="9" data-path="symbolic.html"><a href="symbolic.html"><i class="fa fa-check"></i><b>9</b> Символика</a></li>
-<li class="part"><span><b>IV Моделирование</b></span></li>
-<li class="chapter" data-level="10" data-path="models.html"><a href="models.html"><i class="fa fa-check"></i><b>10</b> Модели генерализации</a></li>
-<li class="chapter" data-level="11" data-path="data-structures.html"><a href="data-structures.html"><i class="fa fa-check"></i><b>11</b> Структуры данных</a></li>
-<li class="chapter" data-level="12" data-path="databases.html"><a href="databases.html"><i class="fa fa-check"></i><b>12</b> Картографические базы данных</a></li>
 <li class="appendix"><span><b>Задания</b></span></li>
-<li class="chapter" data-level="A" data-path="points-sel-work.html"><a href="points-sel-work.html"><i class="fa fa-check"></i><b>A</b> Задание №1. Отбор точечных объектов</a><ul>
+<li class="chapter" data-level="A" data-path="points-sel-work.html"><a href="points-sel-work.html"><i class="fa fa-check"></i><b>A</b> Задание №1. Отбор точечных объектов</a>
+<ul>
 <li class="chapter" data-level="" data-path="points-sel-work.html"><a href="points-sel-work.html#реализация-алгоритма-settlement-spacing"><i class="fa fa-check"></i>Реализация алгоритма Settlement Spacing</a></li>
 <li class="chapter" data-level="" data-path="points-sel-work.html"><a href="points-sel-work.html#реализация-модели-оценки-условной-графической-нагрузки"><i class="fa fa-check"></i>Реализация модели оценки условной графической нагрузки</a></li>
-<li class="chapter" data-level="" data-path="points-sel-work.html"><a href="points-sel-work.html#преобразование-созданных-моделей-геообработки-в-инструменты-python-toolbox"><i class="fa fa-check"></i>Преобразование созданных моделей геообработки в инструменты Python Toolbox</a></li>
 <li class="chapter" data-level="" data-path="points-sel-work.html"><a href="points-sel-work.html#отбор-населенных-пунктов-для-карты-масштаба-14-000-000"><i class="fa fa-check"></i>Отбор населенных пунктов для карты масштаба 1:4 000 000</a></li>
+<li class="chapter" data-level="" data-path="points-sel-work.html"><a href="points-sel-work.html#реализация-алгоритма-взвешенной-эффективной-площади"><i class="fa fa-check"></i>Реализация алгоритма взвешенной эффективной площади</a></li>
+<li class="chapter" data-level="" data-path="points-sel-work.html"><a href="points-sel-work.html#применение-алгоритма-взвешенной-эффективной-площади"><i class="fa fa-check"></i>Применение алгоритма взвешенной эффективной площади</a></li>
+<li class="chapter" data-level="" data-path="points-sel-work.html"><a href="points-sel-work.html#оценка-полученных-результатов"><i class="fa fa-check"></i>Оценка полученных результатов</a></li>
 <li class="chapter" data-level="" data-path="points-sel-work.html"><a href="points-sel-work.html#отчет"><i class="fa fa-check"></i>Отчет</a></li>
 </ul></li>
-<li class="chapter" data-level="B" data-path="points-clust-work.html"><a href="points-clust-work.html"><i class="fa fa-check"></i><b>B</b> Задание №2. Кластеризация системы расселения</a><ul>
+<li class="chapter" data-level="B" data-path="points-clust-work.html"><a href="points-clust-work.html"><i class="fa fa-check"></i><b>B</b> Задание №2. Кластеризация системы расселения</a>
+<ul>
 <li class="chapter" data-level="" data-path="points-clust-work.html"><a href="points-clust-work.html#изучение-работы-методов-кластеризации-и-регионизации"><i class="fa fa-check"></i>Изучение работы методов кластеризации и регионизации</a></li>
 <li class="chapter" data-level="" data-path="points-clust-work.html"><a href="points-clust-work.html#автоматизация-выделения-регионов-и-центроидов-кластеров"><i class="fa fa-check"></i>Автоматизация выделения регионов и центроидов кластеров</a></li>
 <li class="chapter" data-level="B.1" data-path="points-clust-work.html"><a href="points-clust-work.html#автоматизация-расчета-критериев-качества-кластеризации"><i class="fa fa-check"></i><b>B.1</b> Автоматизация расчета критериев качества кластеризации</a></li>
 <li class="chapter" data-level="" data-path="points-clust-work.html"><a href="points-clust-work.html#кластеризация-системы-расселения-субъекта"><i class="fa fa-check"></i>Кластеризация системы расселения субъекта</a></li>
 <li class="chapter" data-level="" data-path="points-clust-work.html"><a href="points-clust-work.html#отчет-1"><i class="fa fa-check"></i>Отчет</a></li>
-</ul></li>
-<li class="chapter" data-level="C" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html"><i class="fa fa-check"></i><b>C</b> Задание №3. Геометрическое упрощение линий</a><ul>
-<li class="chapter" data-level="C.1" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#теоретические-сведения"><i class="fa fa-check"></i><b>C.1</b> Теоретические сведения</a><ul>
-<li class="chapter" data-level="C.1.1" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#алгоритмы-генерализации"><i class="fa fa-check"></i><b>C.1.1</b> Алгоритмы генерализации</a></li>
-<li class="chapter" data-level="C.1.2" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#модифицированное-расстояние-хаусдорфа"><i class="fa fa-check"></i><b>C.1.2</b> Модифицированное расстояние Хаусдорфа</a></li>
-<li class="chapter" data-level="C.1.3" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#коэффициент-относительной-извилистости"><i class="fa fa-check"></i><b>C.1.3</b> Коэффициент относительной извилистости</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#часть-1.-автоматизация-метода-ли-оупеншоу"><i class="fa fa-check"></i>Часть 1. Автоматизация метода Ли-Оупеншоу</a></li>
-<li class="chapter" data-level="" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#часть-2.-автоматизация-методов-оценки-геометрической-точности-и-коэффициента-относительной-извилистости"><i class="fa fa-check"></i>Часть 2. Автоматизация методов оценки геометрической точности и коэффициента относительной извилистости</a><ul>
-<li><a href="lines-simpl-work.html#автоматизация-вычисления-модифицрованного-хаусдорфова-расстояния-mhd-оценка-геометрической-точности">Автоматизация вычисления модифицрованного Хаусдорфова расстояния <strong>MHD</strong> (оценка геометрической точности)</a></li>
-<li class="chapter" data-level="" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#автоматизация-вычисления-коэффициента-относительной-извилистости-оценка-морфологического-соответствия"><i class="fa fa-check"></i>Автоматизация вычисления коэффициента относительной извилистости (оценка морфологического соответствия)</a></li>
-<li class="chapter" data-level="" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#отчет-2"><i class="fa fa-check"></i>Отчет</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#часть-3.-сравнение-алгоритмов-ли-оупеншоу-ванга-мюллера-дугласа-пейкера-и-висвалингам-уайатта"><i class="fa fa-check"></i>Часть 3. Сравнение алгоритмов Ли-Оупеншоу, Ванга-Мюллера, Дугласа-Пейкера и Висвалингам-Уайатта</a></li>
-</ul></li>
-<li class="chapter" data-level="D" data-path="lines-network-work.html"><a href="lines-network-work.html"><i class="fa fa-check"></i><b>D</b> Задание №4. Отбор элементов транспортной сети</a><ul>
-<li class="chapter" data-level="" data-path="lines-network-work.html"><a href="lines-network-work.html#часть-1.-подготовка-исходных-данных"><i class="fa fa-check"></i>Часть 1. Подготовка исходных данных</a></li>
-<li class="chapter" data-level="" data-path="lines-network-work.html"><a href="lines-network-work.html#часть-2.-создание-инструмента-геообработки-python-toolbox-для-отбора-элементов-транспортной-сети"><i class="fa fa-check"></i>Часть 2. Создание инструмента геообработки Python Toolbox для отбора элементов транспортной сети</a></li>
-<li class="chapter" data-level="" data-path="lines-network-work.html"><a href="lines-network-work.html#часть-3.-создание-инструента-python-toolbox-для-оценки-относительной-графической-нагрузки-по-линейным-объектам"><i class="fa fa-check"></i>Часть 3. Создание инструента Python Toolbox для оценки относительной графической нагрузки по линейным объектам</a></li>
-<li class="chapter" data-level="" data-path="lines-network-work.html"><a href="lines-network-work.html#часть-4.-создание-и-анализ-карты-транспортной-связности-районных-центров-субъекта"><i class="fa fa-check"></i>Часть 4. Создание и анализ карты транспортной связности районных центров субъекта</a></li>
-</ul></li>
-<li class="chapter" data-level="E" data-path="polygons-skeleton-work.html"><a href="polygons-skeleton-work.html"><i class="fa fa-check"></i><b>E</b> Задание №5. Скелетизация площадных объектов гидрографии</a><ul>
-<li class="chapter" data-level="" data-path="polygons-skeleton-work.html"><a href="polygons-skeleton-work.html#часть-1.-подготовка-входных-данных"><i class="fa fa-check"></i>Часть 1. Подготовка входных данных</a></li>
-<li class="chapter" data-level="" data-path="polygons-skeleton-work.html"><a href="polygons-skeleton-work.html#часть-2.-автоматизация-построения-скелета-фигуры"><i class="fa fa-check"></i>Часть 2. Автоматизация построения скелета фигуры</a></li>
-<li class="chapter" data-level="" data-path="polygons-skeleton-work.html"><a href="polygons-skeleton-work.html#часть-3.-построение-сетевой-модели-данных"><i class="fa fa-check"></i>Часть 3. Построение сетевой модели данных</a></li>
-<li class="chapter" data-level="" data-path="polygons-skeleton-work.html"><a href="polygons-skeleton-work.html#часть-4.-автоматизация-построения-срединной-оси-фигуры"><i class="fa fa-check"></i>Часть 4. Автоматизация построения срединной оси фигуры</a></li>
-<li class="chapter" data-level="" data-path="polygons-skeleton-work.html"><a href="polygons-skeleton-work.html#часть-5.-построение-срединной-оси-и-описание-результатов"><i class="fa fa-check"></i>Часть 5. Построение срединной оси и описание результатов</a></li>
-</ul></li>
-<li class="chapter" data-level="F" data-path="ex-dem.html"><a href="ex-dem.html"><i class="fa fa-check"></i><b>F</b> Задание №6. Генерализация цифровой модели рельефа</a><ul>
-<li class="chapter" data-level="F.1" data-path="ex-dem.html"><a href="ex-dem.html#ex-dem-data"><i class="fa fa-check"></i><b>F.1</b> Подготовка исходных данных</a></li>
-<li class="chapter" data-level="F.2" data-path="ex-dem.html"><a href="ex-dem.html#ex-dem-iter"><i class="fa fa-check"></i><b>F.2</b> Автоматизация итерационного сглаживания ЦМР</a></li>
-<li class="chapter" data-level="F.3" data-path="ex-dem.html"><a href="ex-dem.html#ex-dem-iter"><i class="fa fa-check"></i><b>F.3</b> Сравнение структурной генерализации и глобальной фильтрации ЦМР</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://istina.msu.ru/profile/tsamsonov/" target="blank">Тимофей Самсонов</a></li>
@@ -172,7 +113,7 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="points-clust-work" class="section level1">
+<div id="points-clust-work" class="section level1" number="2">
 <h1><span class="header-section-number">B</span> Задание №2. Кластеризация системы расселения</h1>
 <p><strong>Цель задания</strong> — освоение методов кластеризации и регионизации точек, построения центроидов и оценки качества кластеризации. В качестве метода кластеризации предлагается использовать <em>DBSCAN</em>. В качестве метода построения региона — <em>альфа-оболочку</em>.</p>
 <p>Исходные данные: точки населенных пунктов из Самостоятельной работы №1.</p>
@@ -217,7 +158,7 @@
 <li>После выполнения цикла конвертируйте полигоны в выходные точки центроидов (<code>FeatureToPoint_management</code>).</li>
 </ol>
 </div>
-<div id="автоматизация-расчета-критериев-качества-кластеризации" class="section level2">
+<div id="автоматизация-расчета-критериев-качества-кластеризации" class="section level2" number="2.1">
 <h2><span class="header-section-number">B.1</span> Автоматизация расчета критериев качества кластеризации</h2>
 <p>Необходимо самостоятельно реализовать инструмент, который рассчитывает критерии качества кластеризации: среднее внутрикластерное и межкластерное расстояния, а также их соотношение. Для реализации инструмента необходимо с помощью <code>arcpy.da.SearchCursor</code> прочесть координаты и номера кластеров всех точек, рассчитать все попарные расстояния между ними и далее агрегировать полученную информацию в виде искомых показателей. Результирующие значения выводятся в лог инструмента посредством <code>arcpy.AddMessage(...)</code>.</p>
 </div>
@@ -230,7 +171,7 @@
 <li>Для каждого уровня кластеризации подготовьте изображение, включающее: а) исходные точки, б) регионы кластеров, в) центроиды кластеров. Точки и регионы должны быть помечены разными цветами по номерам кластеров. Центроиды должны быть показаны окружностями радиуса, пропорционального количеству входящих точек.</li>
 </ol>
 Пример изображения кластеров:
-<div class="figure"><span id="fig:unnamed-chunk-9"></span>
+<div class="figure"><span id="fig:unnamed-chunk-4"></span>
 <img src="img/clustering.png" alt="Пример оформления результатов работы" width="100%" />
 <p class="caption">
 Рис. B.1: Пример оформления результатов работы
@@ -257,8 +198,8 @@
           </div>
         </div>
       </div>
-<a href="points-sel-work.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="lines-simpl-work.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="points-sel-work.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -281,6 +222,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
