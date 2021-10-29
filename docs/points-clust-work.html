@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>B Задание №2. Кластеризация системы расселения | Картографические базы данных</title>
   <meta name="description" content="Курс лекций по генерализации пространственных данных" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="B Задание №2. Кластеризация системы расселения | Картографические базы данных" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Тимофей Самсонов" />
 
 
-<meta name="date" content="2021-10-01" />
+<meta name="date" content="2021-10-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,9 +32,10 @@
   
   
 <link rel="prev" href="points-sel-work.html"/>
-
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link rel="next" href="lines-simpl-work.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,12 +51,33 @@
 
 
 
-
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -89,9 +111,26 @@
 <ul>
 <li class="chapter" data-level="" data-path="points-clust-work.html"><a href="points-clust-work.html#изучение-работы-методов-кластеризации-и-регионизации"><i class="fa fa-check"></i>Изучение работы методов кластеризации и регионизации</a></li>
 <li class="chapter" data-level="" data-path="points-clust-work.html"><a href="points-clust-work.html#автоматизация-выделения-регионов-и-центроидов-кластеров"><i class="fa fa-check"></i>Автоматизация выделения регионов и центроидов кластеров</a></li>
-<li class="chapter" data-level="B.1" data-path="points-clust-work.html"><a href="points-clust-work.html#автоматизация-расчета-критериев-качества-кластеризации"><i class="fa fa-check"></i><b>B.1</b> Автоматизация расчета критериев качества кластеризации</a></li>
+<li class="chapter" data-level="" data-path="points-clust-work.html"><a href="points-clust-work.html#автоматизация-расчета-критериев-качества-кластеризации"><i class="fa fa-check"></i>Автоматизация расчета критериев качества кластеризации</a></li>
 <li class="chapter" data-level="" data-path="points-clust-work.html"><a href="points-clust-work.html#кластеризация-системы-расселения-субъекта"><i class="fa fa-check"></i>Кластеризация системы расселения субъекта</a></li>
 <li class="chapter" data-level="" data-path="points-clust-work.html"><a href="points-clust-work.html#отчет-1"><i class="fa fa-check"></i>Отчет</a></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html"><i class="fa fa-check"></i><b>C</b> Задание №3. Геометрическое упрощение линий</a>
+<ul>
+<li class="chapter" data-level="C.1" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#теоретические-сведения"><i class="fa fa-check"></i><b>C.1</b> Теоретические сведения</a>
+<ul>
+<li class="chapter" data-level="C.1.1" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#алгоритмы-генерализации"><i class="fa fa-check"></i><b>C.1.1</b> Алгоритмы генерализации</a></li>
+<li class="chapter" data-level="C.1.2" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#модифицированное-расстояние-хаусдорфа"><i class="fa fa-check"></i><b>C.1.2</b> Модифицированное расстояние Хаусдорфа</a></li>
+<li class="chapter" data-level="C.1.3" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#коэффициент-относительной-извилистости"><i class="fa fa-check"></i><b>C.1.3</b> Коэффициент относительной извилистости</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#часть-1.-автоматизация-метода-ли-оупеншоу"><i class="fa fa-check"></i>Часть 1. Автоматизация метода Ли-Оупеншоу</a></li>
+<li class="chapter" data-level="" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#часть-2.-автоматизация-методов-оценки-геометрической-точности-и-коэффициента-относительной-извилистости"><i class="fa fa-check"></i>Часть 2. Автоматизация методов оценки геометрической точности и коэффициента относительной извилистости</a>
+<ul>
+<li><a href="lines-simpl-work.html#автоматизация-вычисления-модифицрованного-хаусдорфова-расстояния-mhd-оценка-геометрической-точности">Автоматизация вычисления модифицрованного Хаусдорфова расстояния <strong>MHD</strong> (оценка геометрической точности)</a></li>
+<li class="chapter" data-level="" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#автоматизация-вычисления-коэффициента-относительной-извилистости-оценка-морфологического-соответствия"><i class="fa fa-check"></i>Автоматизация вычисления коэффициента относительной извилистости (оценка морфологического соответствия)</a></li>
+<li class="chapter" data-level="" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#отчет-2"><i class="fa fa-check"></i>Отчет</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#часть-3.-сравнение-алгоритмов-ли-оупеншоу-ванга-мюллера-дугласа-пейкера-и-висвалингам-уайатта"><i class="fa fa-check"></i>Часть 3. Сравнение алгоритмов Ли-Оупеншоу, Ванга-Мюллера, Дугласа-Пейкера и Висвалингам-Уайатта</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://istina.msu.ru/profile/tsamsonov/" target="blank">Тимофей Самсонов</a></li>
@@ -158,8 +197,8 @@
 <li>После выполнения цикла конвертируйте полигоны в выходные точки центроидов (<code>FeatureToPoint_management</code>).</li>
 </ol>
 </div>
-<div id="автоматизация-расчета-критериев-качества-кластеризации" class="section level2" number="2.1">
-<h2><span class="header-section-number">B.1</span> Автоматизация расчета критериев качества кластеризации</h2>
+<div id="автоматизация-расчета-критериев-качества-кластеризации" class="section level2 unnumbered">
+<h2>Автоматизация расчета критериев качества кластеризации</h2>
 <p>Необходимо самостоятельно реализовать инструмент, который рассчитывает критерии качества кластеризации: среднее внутрикластерное и межкластерное расстояния, а также их соотношение. Для реализации инструмента необходимо с помощью <code>arcpy.da.SearchCursor</code> прочесть координаты и номера кластеров всех точек, рассчитать все попарные расстояния между ними и далее агрегировать полученную информацию в виде искомых показателей. Результирующие значения выводятся в лог инструмента посредством <code>arcpy.AddMessage(...)</code>.</p>
 </div>
 <div id="кластеризация-системы-расселения-субъекта" class="section level2 unnumbered">
@@ -171,7 +210,7 @@
 <li>Для каждого уровня кластеризации подготовьте изображение, включающее: а) исходные точки, б) регионы кластеров, в) центроиды кластеров. Точки и регионы должны быть помечены разными цветами по номерам кластеров. Центроиды должны быть показаны окружностями радиуса, пропорционального количеству входящих точек.</li>
 </ol>
 Пример изображения кластеров:
-<div class="figure"><span id="fig:unnamed-chunk-4"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-4"></span>
 <img src="img/clustering.png" alt="Пример оформления результатов работы" width="100%" />
 <p class="caption">
 Рис. B.1: Пример оформления результатов работы
@@ -198,12 +237,11 @@
           </div>
         </div>
       </div>
-<a href="points-sel-work.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="points-sel-work.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="lines-simpl-work.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -243,6 +281,10 @@ gitbook.start({
 "text": null
 },
 "download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section",
 "edit": "https://github.com/tsamsonov/gen-course/edit/master/%s"

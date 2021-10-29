@@ -1,4 +1,14 @@
 fig:unnamed-chunk-4
+fig:lio
+fig:wang
+fig:douglas
+fig:visvalingam
+fig:sinuosity
+fig:shift
 points-sel-work
 points-clust-work
-автоматизация-расчета-критериев-качества-кластеризации
+lines-simpl-work
+теоретические-сведения
+алгоритмы-генерализации
+модифицированное-расстояние-хаусдорфа
+коэффициент-относительной-извилистости
