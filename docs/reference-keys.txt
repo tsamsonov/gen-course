@@ -5,6 +5,7 @@ fig:douglas
 fig:visvalingam
 fig:sinuosity
 fig:shift
+tab:unnamed-chunk-5
 points-sel-work
 points-clust-work
 lines-simpl-work
@@ -12,3 +13,4 @@ lines-simpl-work
 алгоритмы-генерализации
 модифицированное-расстояние-хаусдорфа
 коэффициент-относительной-извилистости
+lines-network-work

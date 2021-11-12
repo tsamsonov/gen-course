@@ -19,7 +19,7 @@ rmd_files:
     - "Ex01-PointSelection.Rmd"
     - "Ex02-PointClustering.Rmd"
     - "Ex03-LineSimplification.Rmd"
-    # - "Ex04-LineSelection.Rmd"
+    - "Ex04-LineSelection.Rmd"
     # - "Ex05-PolygonAxis.Rmd"
     # - "Ex06-ReliefGeneralization.Rmd"
 language:
