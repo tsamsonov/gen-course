@@ -24,7 +24,7 @@
 <meta name="author" content="Тимофей Самсонов" />
 
 
-<meta name="date" content="2021-11-12" />
+<meta name="date" content="2021-11-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -163,26 +163,28 @@ div.csl-indent {
 <h1><span class="header-section-number">D</span> Задание №4. Отбор элементов транспортной сети</h1>
 <p><strong>Цель задания</strong> — освоение методики отбора элементов транспортных сетей с использованием алгоритмов на графах</p>
 <p><strong>Аннотация</strong>. Задание посвящено знакомству с методикой автоматизированного отбора дорог для мелкомасштабного картографирования. Необходимо реализовать алгоритм прореживания транспортной сети (отбора линий), основанный на принципе маршрутной связности населенных пунктов. Дополнительно реализуется расчет условной графической нагрузки для линий. Задание выполняется путем разработки инструмента геообработки Python Toolbox с модулем <em>Network Analyst</em> (<code>arcpy.na</code>).</p>
-<p>Предлагаемый для реализации алгоритм основан на предположении, что в результирующем масштабе необходимо показывать транспортные коммуникации, по которым проходят кратчайшие маршруты между соседними населенными пунктами. Понятие соседства при решении этой задачи может быть формализовано разоличными способами: по количеству <span class="citation">(<a href="#ref-krivosheina:2012" role="doc-biblioref">Samsonov and Krivosheina 2012</a>)</span>, либо по смежности <span class="citation">(<a href="#ref-Schmid:2013wh" role="doc-biblioref">Schmid and Janatzek 2013</a>)</span>. В настоящей работе используется соседство по смежности: соседними считаются населенные пункты, у которых соприкасаются ячейки Вороного. Общая схема алгоритма выглядит следующим обазом:</p>
+<p>Предлагаемый для реализации алгоритм основан на предположении, что в результирующем масштабе необходимо показывать транспортные пути, по которым проходят кратчайшие маршруты между соседними населенными пунктами. Понятие соседства при решении этой задачи может быть формализовано разоличными способами: по количеству <span class="citation">(<a href="#ref-krivosheina:2012" role="doc-biblioref">Samsonov and Krivosheina 2012</a>)</span>, либо по смежности <span class="citation">(<a href="#ref-Schmid:2013wh" role="doc-biblioref">Schmid and Janatzek 2013</a>)</span>. В настоящей работе используется соседство по смежности: соседними считаются населенные пункты, у которых соприкасаются ячейки Вороного. Общая схема алгоритма выглядит следующим обазом:</p>
 <ol style="list-style-type: decimal">
 <li>Строится граф дорожной сети.</li>
 <li>Строится диаграмма Вороного населенных пунктов.</li>
 <li>Организуется цикл по точкам населенных пунктов:
 <ul>
 <li>выбирается текущая точка (<em>центральная</em>);</li>
-<li>выбирается относящаяся к центральной точке ячейка Вороного;</li>
+<li>выбирается относящаяся к текущей точке ячейка Вороного;</li>
 <li>для выбранной ячейки выбираются смежные с ней (касающиеся по границе);</li>
 <li>выбираются соответствующие соседним ячейкам точки населенных пунктов;</li>
 <li>от каждой соседней точки строится маршрут до центральной точки (решается задача <em>Closest Facility</em>)</li>
 <li>линии, по которым прошли маршруты, помечаются флагом.</li>
 </ul></li>
 </ol>
-<p>В результате выполнения алгоритма все транспортные коммуникации, которые оказались задействованы в кратчайших маршрутах, будут помечены специальным флагом. Генерализация завершается исключением непомеченных линий (физическое удаление не требуется, достаточно выполнить атрибутивный запрос).</p>
+<p>В результате выполнения алгоритма все транспортные пути, которые оказались задействованы в кратчайших маршрутах, будут помечены специальным флагом. Генерализация завершается исключением непомеченных линий (физическое удаление не требуется, достаточно выполнить атрибутивный запрос).</p>
 <div id="часть-1.-подготовка-исходных-данных" class="section level2 unnumbered">
 <h2>Часть 1. Подготовка исходных данных</h2>
-<ol style="list-style-type: decimal">
-<li><p>Добавьте в исходные слой линий целочисленное поле <em>Show</em>, которое будет заполняться флагом отбора.</p></li>
-<li><p>Создайте набор пространственных объектов (<strong>Feature Dataset</strong>) внутри базы геоданных и импортируйте в него класс дорожной сети (<em>rdslin</em>).</p></li>
+<ol start="0" style="list-style-type: decimal">
+<li><p>Выберите регион для выполнения задания и скопируйте себе соответствующую базу данных из архива приложенного к данному заданию.</p></li>
+<li><p>Добавьте в исходный слой линий (<code>rdslin</code>) целочисленное поле <em>Show</em>, которое будет заполняться флагом отбора.</p></li>
+<li><p>Добавьте в исходный слой населенных пунктов (<code>poppnt</code>) целочисленное статуса <em>Status</em>, которое будет хранить роль населенного пункта в процессе отбора элементов транспортной сети. Заполните это поле следующим образом: единица (<span class="math inline">\(1\)</span>) должна стоять у населенных пунктов, располагающихся внутри выбранного субъекта и имеющих статус не ниже райцентра, двойка (<span class="math inline">\(2\)</span>) должна стоять у всех населенных пунктов, располагающихся за пределами субъекта. Все остальные населенные пункты (располагающиеся внутри субъекта, но имеющие статус ниже райцентра) должны иметь значение <span class="math inline">\(0\)</span>.</p></li>
+<li><p>Создайте набор пространственных объектов (<strong>Feature Dataset</strong>) внутри базы геоданных и импортируйте в него слой дорожной сети.</p></li>
 <li><p>Создайте в слое дорог новое целочисленное поле <em>Hierarchy</em> и заполните его значениями:</p>
 <ul>
 <li>1 — для автомагистралей и усовершенствованных шоссе</li>
@@ -204,32 +206,33 @@ div.csl-indent {
 <li>исходные точки (<strong>Input Points</strong>),</li>
 <li>исходные линии (<strong>Input Lines</strong>),</li>
 <li>набор сетевых данных (<strong>Input Network Dataset</strong>)</li>
+<li>поле статуса (<strong>Status Field</strong>)</li>
 <li>поле видимости (<strong>Show Field</strong>)</li>
 </ul>
-<p>Реализуйте модель в соответствии со следующей последовательностью действий:</p>
+<p>По результатам выполнения инструмента в поле <strong>Show Field</strong> должно быть проставлено значение <span class="math inline">\(1\)</span> для отобранных линий. Все остальные линии должны иметь значение <span class="math inline">\(0\)</span>.
+Реализуйте скрипт геообработки в соответствии со следующей последовательностью действий:</p>
 <ol style="list-style-type: decimal">
-<li><p>Создать диаграмму Вороного точек (<strong>Create Thiessen Polygons</strong>). Разместите диаграмму в памяти компьютера (<code>in_memory\voronoy</code>).</p></li>
 <li><p>Создать слой линий (<strong>Create Feature Layer</strong>).</p></li>
-<li><p>Создать слой точек (<strong>Create Feature Layer</strong>).</p></li>
+<li><p>Создать слой точек (<strong>Create Feature Layer</strong>), оставив в нем только точки, со статусом выше <span class="math inline">\(0\)</span> (используйте параметр <code>where_clause</code>)</p></li>
+<li><p>Создать диаграмму Вороного для полученного слоя точек (<strong>Create Thiessen Polygons</strong>). Разместите диаграмму в памяти компьютера (<code>in_memory\voronoy</code>).</p></li>
 <li><p>Создать слой диаграммы Вороного (<strong>Create Feature Layer</strong>).</p></li>
-<li><p>Создать поисковый курсор для последовательного обхода ячеек (<code>rows = arcpy.da.SearchCursor(...)</code>)</p></li>
-<li><p>Организовать обход всех ячеек диаграммы Вороного 1 с помощью курсора (<code>for row in rows:</code>. Все дальнейшие операции выполняются внутри цикла.</p></li>
-<li><p>Прочитать идентификатор текущего объекта (<code>id = row[0]</code>).</p></li>
-<li><p>Выбрать текущую ячейку Вороного в слое диаграммы 4 по идентификатору (<strong>Select By Attributes</strong>)</p></li>
-<li><p>Выбрать с помощью полигона 7 его соседей, используя правило BOUNDARY_TOUCHES (<strong>Select By Location</strong>).</p></li>
-<li><p>Выбрать в слое точек 3 соседей с помощью полигонов 9, используя правило INTERSECT (<strong>Select By Location</strong>).</p></li>
-<li><p>Создать на основе сетевого набора данных слой поиска ближайших пунктов обслуживания (<strong>Make Closest Facility Layer</strong>). В качестве параметра <em>Number of Facilities to Find</em> оставьте 1. Установите режим движения TRAVEL_FROM<em>.</em></p></li>
-<li><p>Добавить в слой поиска 11 точки соседей 10 (<strong>Add Locations</strong> в режиме <em>Incidents</em>)</p></li>
-<li><p>Выбрать текущую точку с помощью полигона 8, используя правило WITHIN (<strong>Select By Location</strong>).</p></li>
-<li><p>Добавить в слой поиска текущую точку 13 (<strong>Add Locations</strong> в режиме <em>Facilities</em>).</p></li>
-<li><p>Очистить выборку в слое диаграммы Вороного 4 (<strong>Select By Attributes</strong> в режиме <code>CLEAR\_SELECTION</code>).</p></li>
-<li><p>Очистить выборку в слое точек 3. (<strong>Select By Attributes</strong> в режиме <code>CLEAR\_SELECTION</code>).</p></li>
-<li><p>Запустить расчет задачи <em>Closest Facility</em> для слоя 11 (<strong>Solve</strong>)</p></li>
-<li><p>Извлечь линии маршрутов <em>Routes</em> (<strong>Select Data</strong>) из слоя 17.</p></li>
-<li><p>Выбрать линии 2 маршрутами 17 (<strong>Select By Location</strong>), используя правило <code>SHARE_A_LINE_SEGMENT_WITH</code>.</p></li>
-<li><p>Вычислить поле <em>Show Field</em> для линий 2, используя калькулятор поля (<strong>Calculate Field</strong>). Проставить выделенным линиям значение 1.</p></li>
-<li><p>Очистить выборку в слое линий 2. (<strong>Select By Attributes</strong> в режиме <code>CLEAR_SELECTION</code>).</p></li>
-<li><p>Удалить слой <em>Closest Facility</em> 10 (<strong>Delete</strong>).</p></li>
+<li><p>Создать поисковый курсор (<code>rows = arcpy.da.SearchCursor(...)</code>) для последовательного обхода ячеек диаграммы Вороного (1), оставив в нем только поле статуса и поле геометрии.</p></li>
+<li><p>Организовать цикл по строкам созданного курсора (<code>for row in rows:</code>). Все дальнейшие операции выполняются внутри цикла.</p></li>
+<li><p>Если текущая ячейка имеет статус <span class="math inline">\(2\)</span>, перейти на следующую итерацию цикла.</p></li>
+<li><p>Создать на основе сетевого набора данных слой поиска ближайших пунктов обслуживания (<strong>Make Closest Facility Layer</strong>). В качестве параметра <em>Number of Facilities to Find</em> оставьте 1. Установите режим движения <code>TRAVEL_FROM</code>.</p></li>
+<li><p>Выбрать точку населенного пункта геометрией объекта текущей строки курсора (<code>row[1]</code>, если геометрическое поле указано вторым по порядку), используя правило <code>WITHIN</code> (<strong>Select By Location</strong>).</p></li>
+<li><p>Добавить в слой поиска выбранную точку (<strong>Add Locations</strong> в режиме <em>Facilities</em>).</p></li>
+<li><p>Выбрать с помощью геометрии текущего полигона (<code>row[1]</code>) его соседей, используя правило (<strong>Select By Location</strong>).</p></li>
+<li><p>Выбрать в слое точек с помощью выбранных полигонов, используя правило INTERSECT (<strong>Select By Location</strong>).</p></li>
+<li><p>Добавить в слой поиска ближайших пунктов обслуживания точки соседей (<strong>Add Locations</strong> в режиме <em>Incidents</em>)</p></li>
+<li><p>Очистить выборку в слое диаграммы Вороного (<strong>Select By Attributes</strong> в режиме <code>CLEAR\_SELECTION</code>).</p></li>
+<li><p>Очистить выборку в слое точек (<strong>Select By Attributes</strong> в режиме <code>CLEAR\_SELECTION</code>).</p></li>
+<li><p>Запустить расчет задачи <em>Closest Facility</em> (<strong>Solve</strong>)</p></li>
+<li><p>Извлечь линии маршрутов <em>Routes</em> (<strong>Select Data</strong>) из полученного слоя.</p></li>
+<li><p>Выбрать линии в слое дорог маршрутами (<strong>Select By Location</strong>), используя правило <code>SHARE_A_LINE_SEGMENT_WITH</code>.</p></li>
+<li><p>Вычислить поле <em>Show Field</em> для выбранных линий 2, используя калькулятор поля (<strong>Calculate Field</strong>). Проставить выделенным линиям значение 1.</p></li>
+<li><p>Очистить выборку в слое линий. (<strong>Select By Attributes</strong> в режиме <code>CLEAR_SELECTION</code>).</p></li>
+<li><p>Удалить слой <em>Closest Facility</em> (<strong>Delete</strong>).</p></li>
 </ol>
 </div>
 <div id="часть-3.-создание-инструента-python-toolbox-для-оценки-относительной-графической-нагрузки-по-линейным-объектам" class="section level2 unnumbered">
@@ -250,7 +253,7 @@ div.csl-indent {
 <p><strong>Указания к выполнению:</strong></p>
 <p>В качестве отправной точки можно использовать инструмент геообработки для оценки относительной графической нагрузки точечных объектов, разработанный вами в Самостоятельной работе №1. В процессе экспериментальной работы используйте следующие толщины линий (в пикселах):</p>
 <table>
-<caption><span id="tab:unnamed-chunk-5">Таблица D.1: </span>Параметры толщины линии</caption>
+<caption><span id="tab:unnamed-chunk-1">Таблица D.1: </span>Параметры толщины линии</caption>
 <thead>
 <tr class="header">
 <th align="right">Класс</th>
@@ -277,7 +280,7 @@ div.csl-indent {
 <h2>Часть 4. Создание и анализ карты транспортной связности районных центров субъекта</h2>
 <p>Используя разработанные инструменты отбора и оценки графической нагрузки, выполните заключительную часть работы:</p>
 <ol style="list-style-type: decimal">
-<li><p>Выполните отбор элементов дорожной сети, проходящих через районные центры (poppnt_dist). Оформите результат в виде карты масштаба 1:8 000 000. Используйте толщины линий 3, 1.5 и 0.75 пункта соответственно. На схеме должны быть подписаны все районные центры, нанесена граница субъекта и оформлена легенда по трем классам дорог.</p></li>
+<li><p>Выполните отбор элементов дорожной сети, проходящих через районные центры выбранного субъекта. Оформите результат в виде карты масштаба 1:8 000 000. Используйте толщины линий 3, 1.5 и 0.75 пункта соответственно. На схеме должны быть подписаны все районные центры внутри и за пределами субъекта, нанесена граница субъекта и оформлена легенда по трем классам дорог.</p></li>
 <li><p>Вычислите условную графическую нагрузку <u>всех</u> исходных дорог в масштабе 1:1 000 000 (размер квадрата 2х2 см в масштабе карты). Используйте толщины линий 6, 3 и 1.5 пункта соответственно. Оформите картограмму графической нагрузки в масштабе 1:8 000 000.</p></li>
 <li><p>Вычислите условную графическую нагрузку отобранных дорог в масштабе 1:8 000 000 (размер квадрата 2х2 см в масштабе карты). Используйте толщины линий 3, 1.5 и 0.75 пункта соответственно. Оформите картограмму графической нагрузки в масштабе 1:8 000 000.</p></li>
 <li><p>Напишите отчет о проделанной работе, включающий:</p>
@@ -292,25 +295,10 @@ div.csl-indent {
 
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div class="csl-entry">
-Douglas, D. H., and T. K. Peucker. 1973. <span>“Algorithms for the Reduction of the Number of Points Required to Represent a Digitized Line or Its Caricature.”</span> <em>The Canadian Cartographer</em>, no. 10(2): 112–22.
-</div>
-<div class="csl-entry">
-Li, Zhilin, and Stan Openshaw. 1992. <span>“Algorithms for <span>Automated Line Generalization Based</span> on a <span>Natural Principle</span> of <span>Objective Generalization</span>.”</span> <em>International Journal of Geographical Information Systems</em> 6 (5): 373–89. <a href="https://doi.org/10.1080/02693799208901921">https://doi.org/10.1080/02693799208901921</a>.
-</div>
-<div class="csl-entry">
 Samsonov, T, and A Krivosheina. 2012. <span>“Joint Generalization of City Points and Road Network for Small-Scale Mapping,”</span> 1–7.
 </div>
 <div class="csl-entry">
 Schmid, Falko, and H A Janatzek. 2013. <span>“A Method for High-Level Street Network Extraction of <span>OpenStreetMap</span> Data in <span>OpenScienceMap</span>,”</span> 14.
-</div>
-<div class="csl-entry">
-Visvalingam, M, and J D Whyatt. 1993. <span>“Line <span>Generalisation</span> by <span>Repeated Elimination</span> of <span>Points</span>.”</span> <em>The Cartographic Journal</em> 30 (1): 46–51. <a href="https://doi.org/10.1179/caj.1993.30.1.46">https://doi.org/10.1179/caj.1993.30.1.46</a>.
-</div>
-<div class="csl-entry">
-Wang, Zeshen, and Jean-Claude Müller. 1998. <span>“Line <span>Generalization Based</span> on <span>Analysis</span> of <span>Shape Characteristics</span>.”</span> <em>Cartography and Geographic Information Science</em> 25 (1): 3–15. <a href="https://doi.org/10.1559/152304098782441750">https://doi.org/10.1559/152304098782441750</a>.
-</div>
-<div class="csl-entry">
-Zhou, Sheng, and Christopher B Jones. 2005. <span>“Shape-<span>Aware Line Generalisation With Weighted Effective Area</span>.”</span> In <em>Developments in <span>Spatial Data Handling</span></em>, 12. <span>Berlin, Heidelberg</span>: Springer.
 </div>
 </div>
 </div>
