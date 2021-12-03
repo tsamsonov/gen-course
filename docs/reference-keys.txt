@@ -6,6 +6,8 @@ fig:visvalingam
 fig:sinuosity
 fig:shift
 tab:unnamed-chunk-5
+fig:skeleton
+fig:medaxis
 points-sel-work
 points-clust-work
 lines-simpl-work
@@ -14,4 +16,4 @@ lines-simpl-work
 модифицированное-расстояние-хаусдорфа
 коэффициент-относительной-извилистости
 lines-network-work
-tab:unnamed-chunk-1
+polygons-skeleton-work
