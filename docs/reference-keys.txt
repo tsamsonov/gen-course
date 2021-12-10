@@ -8,6 +8,8 @@ fig:shift
 tab:unnamed-chunk-5
 fig:skeleton
 fig:medaxis
+fig:demgen
+fig:gebco-download
 points-sel-work
 points-clust-work
 lines-simpl-work
@@ -17,3 +19,6 @@ lines-simpl-work
 коэффициент-относительной-извилистости
 lines-network-work
 polygons-skeleton-work
+ex-dem
+ex-dem-data
+ex-dem-iter

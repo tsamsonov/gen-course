@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>F Задание №6. Генерализация цифровой модели рельефа | Картографические базы данных</title>
   <meta name="description" content="Курс лекций по генерализации пространственных данных" />
-  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="F Задание №6. Генерализация цифровой модели рельефа | Картографические базы данных" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Тимофей Самсонов" />
 
 
-<meta name="date" content="2020-04-16" />
+<meta name="date" content="2021-12-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,9 @@
   
 <link rel="prev" href="polygons-skeleton-work.html"/>
 
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,11 +51,33 @@
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
-<script src="libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
 
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -72,82 +96,59 @@
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Введение</a></li>
-<li class="part"><span><b>I Теоретические основы</b></span></li>
-<li class="chapter" data-level="1" data-path="scale.html"><a href="scale.html"><i class="fa fa-check"></i><b>1</b> Масштаб и иерархия</a></li>
-<li class="chapter" data-level="2" data-path="conceptual.html"><a href="conceptual.html"><i class="fa fa-check"></i><b>2</b> Концепции</a></li>
-<li class="part"><span><b>II Геометрия</b></span></li>
-<li class="chapter" data-level="3" data-path="points.html"><a href="points.html"><i class="fa fa-check"></i><b>3</b> Точки</a><ul>
-<li class="chapter" data-level="3.1" data-path="points.html"><a href="points.html#points-sel"><i class="fa fa-check"></i><b>3.1</b> Отбор</a><ul>
-<li class="chapter" data-level="3.1.1" data-path="points.html"><a href="points.html#краткий-обзор"><i class="fa fa-check"></i><b>3.1.1</b> Краткий обзор</a></li>
-</ul></li>
-<li class="chapter" data-level="3.2" data-path="points.html"><a href="points.html#points-clust"><i class="fa fa-check"></i><b>3.2</b> Кластеризация и регионизация</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="points.html"><a href="points.html#краткий-обзор-1"><i class="fa fa-check"></i><b>3.2.1</b> Краткий обзор</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="lines.html"><a href="lines.html"><i class="fa fa-check"></i><b>4</b> Линии</a><ul>
-<li class="chapter" data-level="4.1" data-path="lines.html"><a href="lines.html#lines-simpl"><i class="fa fa-check"></i><b>4.1</b> Геометрическое упрощение</a><ul>
-<li class="chapter" data-level="4.1.1" data-path="lines.html"><a href="lines.html#lines-simpl-over"><i class="fa fa-check"></i><b>4.1.1</b> Краткий обзор</a></li>
-</ul></li>
-<li class="chapter" data-level="4.2" data-path="lines.html"><a href="lines.html#lines-select"><i class="fa fa-check"></i><b>4.2</b> Отбор</a></li>
-<li class="chapter" data-level="4.3" data-path="lines.html"><a href="lines.html#lines-schem"><i class="fa fa-check"></i><b>4.3</b> Схематизация</a><ul>
-<li class="chapter" data-level="4.3.1" data-path="lines.html"><a href="lines.html#lines-schem-over"><i class="fa fa-check"></i><b>4.3.1</b> Краткий обзор</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="polygons.html"><a href="polygons.html"><i class="fa fa-check"></i><b>5</b> Полигоны</a><ul>
-<li class="chapter" data-level="5.1" data-path="polygons.html"><a href="polygons.html#polygons-skeleton"><i class="fa fa-check"></i><b>5.1</b> Скелетизация (построение срединной оси)</a></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="surfaces.html"><a href="surfaces.html"><i class="fa fa-check"></i><b>6</b> Поля (поверхности)</a></li>
-<li class="part"><span><b>III Семантика, время и символика</b></span></li>
-<li class="chapter" data-level="7" data-path="semantic.html"><a href="semantic.html"><i class="fa fa-check"></i><b>7</b> Семантика</a></li>
-<li class="chapter" data-level="8" data-path="temporal.html"><a href="temporal.html"><i class="fa fa-check"></i><b>8</b> Время</a></li>
-<li class="chapter" data-level="9" data-path="symbolic.html"><a href="symbolic.html"><i class="fa fa-check"></i><b>9</b> Символика</a></li>
-<li class="part"><span><b>IV Моделирование</b></span></li>
-<li class="chapter" data-level="10" data-path="models.html"><a href="models.html"><i class="fa fa-check"></i><b>10</b> Модели генерализации</a></li>
-<li class="chapter" data-level="11" data-path="data-structures.html"><a href="data-structures.html"><i class="fa fa-check"></i><b>11</b> Структуры данных</a></li>
-<li class="chapter" data-level="12" data-path="databases.html"><a href="databases.html"><i class="fa fa-check"></i><b>12</b> Картографические базы данных</a></li>
 <li class="appendix"><span><b>Задания</b></span></li>
-<li class="chapter" data-level="A" data-path="points-sel-work.html"><a href="points-sel-work.html"><i class="fa fa-check"></i><b>A</b> Задание №1. Отбор точечных объектов</a><ul>
+<li class="chapter" data-level="A" data-path="points-sel-work.html"><a href="points-sel-work.html"><i class="fa fa-check"></i><b>A</b> Задание №1. Отбор точечных объектов</a>
+<ul>
 <li class="chapter" data-level="" data-path="points-sel-work.html"><a href="points-sel-work.html#реализация-алгоритма-settlement-spacing"><i class="fa fa-check"></i>Реализация алгоритма Settlement Spacing</a></li>
 <li class="chapter" data-level="" data-path="points-sel-work.html"><a href="points-sel-work.html#реализация-модели-оценки-условной-графической-нагрузки"><i class="fa fa-check"></i>Реализация модели оценки условной графической нагрузки</a></li>
-<li class="chapter" data-level="" data-path="points-sel-work.html"><a href="points-sel-work.html#преобразование-созданных-моделей-геообработки-в-инструменты-python-toolbox"><i class="fa fa-check"></i>Преобразование созданных моделей геообработки в инструменты Python Toolbox</a></li>
 <li class="chapter" data-level="" data-path="points-sel-work.html"><a href="points-sel-work.html#отбор-населенных-пунктов-для-карты-масштаба-14-000-000"><i class="fa fa-check"></i>Отбор населенных пунктов для карты масштаба 1:4 000 000</a></li>
+<li class="chapter" data-level="" data-path="points-sel-work.html"><a href="points-sel-work.html#реализация-алгоритма-взвешенной-эффективной-площади"><i class="fa fa-check"></i>Реализация алгоритма взвешенной эффективной площади</a></li>
+<li class="chapter" data-level="" data-path="points-sel-work.html"><a href="points-sel-work.html#применение-алгоритма-взвешенной-эффективной-площади"><i class="fa fa-check"></i>Применение алгоритма взвешенной эффективной площади</a></li>
+<li class="chapter" data-level="" data-path="points-sel-work.html"><a href="points-sel-work.html#оценка-полученных-результатов"><i class="fa fa-check"></i>Оценка полученных результатов</a></li>
 <li class="chapter" data-level="" data-path="points-sel-work.html"><a href="points-sel-work.html#отчет"><i class="fa fa-check"></i>Отчет</a></li>
 </ul></li>
-<li class="chapter" data-level="B" data-path="points-clust-work.html"><a href="points-clust-work.html"><i class="fa fa-check"></i><b>B</b> Задание №2. Кластеризация системы расселения</a><ul>
+<li class="chapter" data-level="B" data-path="points-clust-work.html"><a href="points-clust-work.html"><i class="fa fa-check"></i><b>B</b> Задание №2. Кластеризация системы расселения</a>
+<ul>
 <li class="chapter" data-level="" data-path="points-clust-work.html"><a href="points-clust-work.html#изучение-работы-методов-кластеризации-и-регионизации"><i class="fa fa-check"></i>Изучение работы методов кластеризации и регионизации</a></li>
 <li class="chapter" data-level="" data-path="points-clust-work.html"><a href="points-clust-work.html#автоматизация-выделения-регионов-и-центроидов-кластеров"><i class="fa fa-check"></i>Автоматизация выделения регионов и центроидов кластеров</a></li>
-<li class="chapter" data-level="B.1" data-path="points-clust-work.html"><a href="points-clust-work.html#автоматизация-расчета-критериев-качества-кластеризации"><i class="fa fa-check"></i><b>B.1</b> Автоматизация расчета критериев качества кластеризации</a></li>
+<li class="chapter" data-level="" data-path="points-clust-work.html"><a href="points-clust-work.html#автоматизация-расчета-критериев-качества-кластеризации"><i class="fa fa-check"></i>Автоматизация расчета критериев качества кластеризации</a></li>
 <li class="chapter" data-level="" data-path="points-clust-work.html"><a href="points-clust-work.html#кластеризация-системы-расселения-субъекта"><i class="fa fa-check"></i>Кластеризация системы расселения субъекта</a></li>
 <li class="chapter" data-level="" data-path="points-clust-work.html"><a href="points-clust-work.html#отчет-1"><i class="fa fa-check"></i>Отчет</a></li>
 </ul></li>
-<li class="chapter" data-level="C" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html"><i class="fa fa-check"></i><b>C</b> Задание №3. Геометрическое упрощение линий</a><ul>
-<li class="chapter" data-level="C.1" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#теоретические-сведения"><i class="fa fa-check"></i><b>C.1</b> Теоретические сведения</a><ul>
+<li class="chapter" data-level="C" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html"><i class="fa fa-check"></i><b>C</b> Задание №3. Геометрическое упрощение линий</a>
+<ul>
+<li class="chapter" data-level="C.1" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#теоретические-сведения"><i class="fa fa-check"></i><b>C.1</b> Теоретические сведения</a>
+<ul>
 <li class="chapter" data-level="C.1.1" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#алгоритмы-генерализации"><i class="fa fa-check"></i><b>C.1.1</b> Алгоритмы генерализации</a></li>
 <li class="chapter" data-level="C.1.2" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#модифицированное-расстояние-хаусдорфа"><i class="fa fa-check"></i><b>C.1.2</b> Модифицированное расстояние Хаусдорфа</a></li>
 <li class="chapter" data-level="C.1.3" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#коэффициент-относительной-извилистости"><i class="fa fa-check"></i><b>C.1.3</b> Коэффициент относительной извилистости</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#часть-1.-автоматизация-метода-ли-оупеншоу"><i class="fa fa-check"></i>Часть 1. Автоматизация метода Ли-Оупеншоу</a></li>
-<li class="chapter" data-level="" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#часть-2.-автоматизация-методов-оценки-геометрической-точности-и-коэффициента-относительной-извилистости"><i class="fa fa-check"></i>Часть 2. Автоматизация методов оценки геометрической точности и коэффициента относительной извилистости</a><ul>
+<li class="chapter" data-level="" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#часть-2.-автоматизация-методов-оценки-геометрической-точности-и-коэффициента-относительной-извилистости"><i class="fa fa-check"></i>Часть 2. Автоматизация методов оценки геометрической точности и коэффициента относительной извилистости</a>
+<ul>
 <li><a href="lines-simpl-work.html#автоматизация-вычисления-модифицрованного-хаусдорфова-расстояния-mhd-оценка-геометрической-точности">Автоматизация вычисления модифицрованного Хаусдорфова расстояния <strong>MHD</strong> (оценка геометрической точности)</a></li>
 <li class="chapter" data-level="" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#автоматизация-вычисления-коэффициента-относительной-извилистости-оценка-морфологического-соответствия"><i class="fa fa-check"></i>Автоматизация вычисления коэффициента относительной извилистости (оценка морфологического соответствия)</a></li>
 <li class="chapter" data-level="" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#отчет-2"><i class="fa fa-check"></i>Отчет</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#часть-3.-сравнение-алгоритмов-ли-оупеншоу-ванга-мюллера-дугласа-пейкера-и-висвалингам-уайатта"><i class="fa fa-check"></i>Часть 3. Сравнение алгоритмов Ли-Оупеншоу, Ванга-Мюллера, Дугласа-Пейкера и Висвалингам-Уайатта</a></li>
 </ul></li>
-<li class="chapter" data-level="D" data-path="lines-network-work.html"><a href="lines-network-work.html"><i class="fa fa-check"></i><b>D</b> Задание №4. Отбор элементов транспортной сети</a><ul>
+<li class="chapter" data-level="D" data-path="lines-network-work.html"><a href="lines-network-work.html"><i class="fa fa-check"></i><b>D</b> Задание №4. Отбор элементов транспортной сети</a>
+<ul>
 <li class="chapter" data-level="" data-path="lines-network-work.html"><a href="lines-network-work.html#часть-1.-подготовка-исходных-данных"><i class="fa fa-check"></i>Часть 1. Подготовка исходных данных</a></li>
 <li class="chapter" data-level="" data-path="lines-network-work.html"><a href="lines-network-work.html#часть-2.-создание-инструмента-геообработки-python-toolbox-для-отбора-элементов-транспортной-сети"><i class="fa fa-check"></i>Часть 2. Создание инструмента геообработки Python Toolbox для отбора элементов транспортной сети</a></li>
 <li class="chapter" data-level="" data-path="lines-network-work.html"><a href="lines-network-work.html#часть-3.-создание-инструента-python-toolbox-для-оценки-относительной-графической-нагрузки-по-линейным-объектам"><i class="fa fa-check"></i>Часть 3. Создание инструента Python Toolbox для оценки относительной графической нагрузки по линейным объектам</a></li>
 <li class="chapter" data-level="" data-path="lines-network-work.html"><a href="lines-network-work.html#часть-4.-создание-и-анализ-карты-транспортной-связности-районных-центров-субъекта"><i class="fa fa-check"></i>Часть 4. Создание и анализ карты транспортной связности районных центров субъекта</a></li>
 </ul></li>
-<li class="chapter" data-level="E" data-path="polygons-skeleton-work.html"><a href="polygons-skeleton-work.html"><i class="fa fa-check"></i><b>E</b> Задание №5. Скелетизация площадных объектов гидрографии</a><ul>
+<li class="chapter" data-level="E" data-path="polygons-skeleton-work.html"><a href="polygons-skeleton-work.html"><i class="fa fa-check"></i><b>E</b> Задание №5. Скелетизация площадных объектов гидрографии</a>
+<ul>
 <li class="chapter" data-level="" data-path="polygons-skeleton-work.html"><a href="polygons-skeleton-work.html#часть-1.-подготовка-входных-данных"><i class="fa fa-check"></i>Часть 1. Подготовка входных данных</a></li>
 <li class="chapter" data-level="" data-path="polygons-skeleton-work.html"><a href="polygons-skeleton-work.html#часть-2.-автоматизация-построения-скелета-фигуры"><i class="fa fa-check"></i>Часть 2. Автоматизация построения скелета фигуры</a></li>
 <li class="chapter" data-level="" data-path="polygons-skeleton-work.html"><a href="polygons-skeleton-work.html#часть-3.-построение-сетевой-модели-данных"><i class="fa fa-check"></i>Часть 3. Построение сетевой модели данных</a></li>
 <li class="chapter" data-level="" data-path="polygons-skeleton-work.html"><a href="polygons-skeleton-work.html#часть-4.-автоматизация-построения-срединной-оси-фигуры"><i class="fa fa-check"></i>Часть 4. Автоматизация построения срединной оси фигуры</a></li>
 <li class="chapter" data-level="" data-path="polygons-skeleton-work.html"><a href="polygons-skeleton-work.html#часть-5.-построение-срединной-оси-и-описание-результатов"><i class="fa fa-check"></i>Часть 5. Построение срединной оси и описание результатов</a></li>
 </ul></li>
-<li class="chapter" data-level="F" data-path="ex-dem.html"><a href="ex-dem.html"><i class="fa fa-check"></i><b>F</b> Задание №6. Генерализация цифровой модели рельефа</a><ul>
+<li class="chapter" data-level="F" data-path="ex-dem.html"><a href="ex-dem.html"><i class="fa fa-check"></i><b>F</b> Задание №6. Генерализация цифровой модели рельефа</a>
+<ul>
 <li class="chapter" data-level="F.1" data-path="ex-dem.html"><a href="ex-dem.html#ex-dem-data"><i class="fa fa-check"></i><b>F.1</b> Подготовка исходных данных</a></li>
 <li class="chapter" data-level="F.2" data-path="ex-dem.html"><a href="ex-dem.html#ex-dem-iter"><i class="fa fa-check"></i><b>F.2</b> Автоматизация итерационного сглаживания ЦМР</a></li>
 <li class="chapter" data-level="F.3" data-path="ex-dem.html"><a href="ex-dem.html#ex-dem-iter"><i class="fa fa-check"></i><b>F.3</b> Сравнение структурной генерализации и глобальной фильтрации ЦМР</a></li>
@@ -172,26 +173,26 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="ex-dem" class="section level1">
+<div id="ex-dem" class="section level1" number="6">
 <h1><span class="header-section-number">F</span> Задание №6. Генерализация цифровой модели рельефа</h1>
 <p><strong>Цель задания</strong> — овладение различными техниками генерализации ЦМР.</p>
 <p>В настоящем задании необходимо сравнить два метода мелкомасштабной генерализации ЦМР: глобальная фильтрация и структурная генерализация.</p>
 <p><strong>Задачи</strong> работы включают подготовку исходных данных, разработку программного инструмента итерационного сглаживания ЦМР, выполнение генерализации ЦМР методами структурной генерализации и глобальной фильтрации, а также сравнительный анализ полученных результатов</p>
-<div id="ex-dem-data" class="section level2">
+<div id="ex-dem-data" class="section level2" number="6.1">
 <h2><span class="header-section-number">F.1</span> Подготовка исходных данных</h2>
 <ol style="list-style-type: decimal">
 <li><p>Закачайте набор инструментов <a href="https://github.com/tsamsonov/generalize-dem">DEM Generalization</a> и разархивируйте его:</p>
-<div class="figure"><span id="fig:demgen"></span>
+<div class="figure"><span style="display:block;" id="fig:demgen"></span>
 <img src="img/generalize-dem.png" alt="Инструмент генерализации ЦМР DEM Generalization" width="100%" />
 <p class="caption">
 Рис. F.1: Инструмент генерализации ЦМР DEM Generalization
 </p>
 </div></li>
-<li><p>Закачайте фрагмент ЦМР <em>GEBCO 2019</em> размером <span class="math inline">\(10^\circ \times 10^\circ\)</span>, используя <a href="https://download.gebco.net/">веб-интерфейс</a>. Для этого включите показ градусной сетки (<em>Show graticule</em>), выберите формат <em>GeoTIFF</em> и, используя CTRL + клик, обведите квадрат со сторонами, примерно совпадающими с линиями сетки, кратными 5 градусам:</p>
-<div class="figure"><span id="fig:gebco-download"></span>
-<img src="img/download-gebco.png" alt="Загрузка цифровой модели рельефа GEBCO 2019" width="100%" />
+<li><p>Закачайте фрагмент ЦМР <em>GEBCO 2021</em> размером <span class="math inline">\(10^\circ \times 10^\circ\)</span>, используя <a href="https://download.gebco.net/">веб-интерфейс</a>. Для этого включите показ градусной сетки (<em>Show graticule</em>), выберите формат <em>GeoTIFF</em> и, используя CTRL + клик, обведите квадрат со сторонами, примерно совпадающими с линиями сетки, кратными 5 градусам:</p>
+<div class="figure"><span style="display:block;" id="fig:gebco-download"></span>
+<img src="img/download-gebco.png" alt="Загрузка цифровой модели рельефа GEBCO" width="100%" />
 <p class="caption">
-Рис. F.2: Загрузка цифровой модели рельефа GEBCO 2019
+Рис. F.2: Загрузка цифровой модели рельефа GEBCO
 </p>
 </div>
 <p>На выбор предлагаются фрагменты с центрами в следующих точках:</p>
@@ -222,7 +223,7 @@
 </blockquote></li>
 </ol>
 </div>
-<div id="ex-dem-iter" class="section level2">
+<div id="ex-dem-iter" class="section level2" number="6.2">
 <h2><span class="header-section-number">F.2</span> Автоматизация итерационного сглаживания ЦМР</h2>
 <p>В данной части задания необходимо создать набор инструментов <em>Python Toolbox</em>, содержащий один инструмент <strong>Iterate Focal Statistics</strong>, который выполняет последовательное сглаживание цифровой модели рельефа фильтром среднего в несколько проходов с использованием заданных параметров.</p>
 <p><strong>Предварительное чтение:</strong></p>
@@ -257,7 +258,7 @@
 </ul></li>
 </ol>
 </div>
-<div id="ex-dem-iter" class="section level2">
+<div id="ex-dem-iter" class="section level2" number="6.3">
 <h2><span class="header-section-number">F.3</span> Сравнение структурной генерализации и глобальной фильтрации ЦМР</h2>
 <p>В данной части задания необходимо выполнить генерализацию фрагмента глобальной ЦМР двумя методами: структурная генерализация и глобальная фильтрация.</p>
 <ol style="list-style-type: decimal">
@@ -333,27 +334,27 @@
 <p>В разделе анализа результатов необходимо сравнить качество полученных ЦМР с точки зрения географического правдоподобия и точности отображения рельефа. Анализ должен опираться как на визуальное сравнение изображений, так и на рассчитанные для каждой ЦМР описательные статистики.</p>
 <hr />
 
-<div id="refs" class="references">
-<div>
-<p>Douglas, D. H., and T. K. Peucker. 1973. “Algorithms for the Reduction of the Number of Points Required to Represent a Digitized Line or Its Caricature.” <em>The Canadian Cartographer</em>, no. 10(2): 112–22.</p>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div class="csl-entry">
+Douglas, D. H., and T. K. Peucker. 1973. <span>“Algorithms for the Reduction of the Number of Points Required to Represent a Digitized Line or Its Caricature.”</span> <em>The Canadian Cartographer</em>, no. 10(2): 112–22.
 </div>
-<div>
-<p>Li, Zhilin, and Stan Openshaw. 1992. “Algorithms for Automated Line Generalization Based on a Natural Principle of Objective Generalization.” <em>International Journal of Geographical Information Systems</em> 6 (5): 373–89. <a href="https://doi.org/10.1080/02693799208901921">https://doi.org/10.1080/02693799208901921</a>.</p>
+<div class="csl-entry">
+Li, Zhilin, and Stan Openshaw. 1992. <span>“Algorithms for <span>Automated Line Generalization Based</span> on a <span>Natural Principle</span> of <span>Objective Generalization</span>.”</span> <em>International Journal of Geographical Information Systems</em> 6 (5): 373–89. <a href="https://doi.org/10.1080/02693799208901921">https://doi.org/10.1080/02693799208901921</a>.
 </div>
-<div>
-<p>Samsonov, T, and A Krivosheina. 2012. “Joint Generalization of City Points and Road Network for Small-Scale Mapping,” 1–7.</p>
+<div class="csl-entry">
+Samsonov, T, and A Krivosheina. 2012. <span>“Joint Generalization of City Points and Road Network for Small-Scale Mapping,”</span> 1–7.
 </div>
-<div>
-<p>Schmid, Falko, and H A Janatzek. 2013. “A Method for High-Level Street Network Extraction of OpenStreetMap Data in OpenScienceMap,” 14.</p>
+<div class="csl-entry">
+Schmid, Falko, and H A Janatzek. 2013. <span>“A Method for High-Level Street Network Extraction of <span>OpenStreetMap</span> Data in <span>OpenScienceMap</span>,”</span> 14.
 </div>
-<div>
-<p>Visvalingam, M, and J D Whyatt. 1993. “Line Generalisation by Repeated Elimination of Points.” <em>The Cartographic Journal</em> 30 (1): 46–51. <a href="https://doi.org/10.1179/caj.1993.30.1.46">https://doi.org/10.1179/caj.1993.30.1.46</a>.</p>
+<div class="csl-entry">
+Visvalingam, M, and J D Whyatt. 1993. <span>“Line <span>Generalisation</span> by <span>Repeated Elimination</span> of <span>Points</span>.”</span> <em>The Cartographic Journal</em> 30 (1): 46–51. <a href="https://doi.org/10.1179/caj.1993.30.1.46">https://doi.org/10.1179/caj.1993.30.1.46</a>.
 </div>
-<div>
-<p>Wang, Zeshen, and Jean-Claude Müller. 1998. “Line Generalization Based on Analysis of Shape Characteristics.” <em>Cartography and Geographic Information Science</em> 25 (1): 3–15. <a href="https://doi.org/10.1559/152304098782441750">https://doi.org/10.1559/152304098782441750</a>.</p>
+<div class="csl-entry">
+Wang, Zeshen, and Jean-Claude Müller. 1998. <span>“Line <span>Generalization Based</span> on <span>Analysis</span> of <span>Shape Characteristics</span>.”</span> <em>Cartography and Geographic Information Science</em> 25 (1): 3–15. <a href="https://doi.org/10.1559/152304098782441750">https://doi.org/10.1559/152304098782441750</a>.
 </div>
-<div>
-<p>Zhou, Sheng, and Christopher B Jones. 2005. “Shape-Aware Line Generalisation with Weighted Effective Area.” In <em>Developments in Spatial Data Handling</em>, 12. Berlin, Heidelberg: Springer.</p>
+<div class="csl-entry">
+Zhou, Sheng, and Christopher B Jones. 2005. <span>“Shape-<span>Aware Line Generalisation With Weighted Effective Area</span>.”</span> In <em>Developments in <span>Spatial Data Handling</span></em>, 12. <span>Berlin, Heidelberg</span>: Springer.
 </div>
 </div>
 </div>
@@ -368,7 +369,6 @@
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -387,6 +387,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -407,6 +408,10 @@ gitbook.start({
 "text": null
 },
 "download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section",
 "edit": "https://github.com/tsamsonov/gen-course/edit/master/%s"

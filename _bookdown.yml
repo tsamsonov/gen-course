@@ -21,7 +21,7 @@ rmd_files:
     - "Ex03-LineSimplification.Rmd"
     - "Ex04-LineSelection.Rmd"
     - "Ex05-PolygonAxis.Rmd"
-    # - "Ex06-ReliefGeneralization.Rmd"
+    - "Ex06-ReliefGeneralization.Rmd"
 language:
   label:
     fig: 'Рис. '
