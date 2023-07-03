@@ -1,0 +1,17 @@
+*.css     linguist-vendored
+*.js      linguist-vendored
+*.tex     linguist-vendored
+*.bib     linguist-vendored
+*.sh      linguist-vendored
+*.aux     linguist-vendored
+*.html    linguist-vendored
+*.pdf    linguist-vendored
+*.eps    linguist-vendored
+*.ps    linguist-vendored
+Makefile  linguist-vendored
+docs/* linguist-vendored
+slides/* linguist-vendored
+_book/* linguist-vendored
+*.Rmd linguist-detectable
+*.qmd linguist-detectable
+*.md linguist-detectable
