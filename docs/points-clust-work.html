@@ -4,19 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>B Задание №2. Кластеризация системы расселения | Картографические базы данных</title>
+  <title>B Задание №2. Кластеризация системы расселения | Генерализация пространственных данных</title>
   <meta name="description" content="Курс лекций по генерализации пространственных данных" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="B Задание №2. Кластеризация системы расселения | Картографические базы данных" />
+  <meta property="og:title" content="B Задание №2. Кластеризация системы расселения | Генерализация пространственных данных" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="Курс лекций по генерализации пространственных данных" />
   <meta name="github-repo" content="tsamsonov/gen-course" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="B Задание №2. Кластеризация системы расселения | Картографические базы данных" />
+  <meta name="twitter:title" content="B Задание №2. Кластеризация системы расселения | Генерализация пространственных данных" />
   
   <meta name="twitter:description" content="Курс лекций по генерализации пространственных данных" />
   
@@ -24,7 +23,7 @@
 <meta name="author" content="Тимофей Самсонов" />
 
 
-<meta name="date" content="2021-12-10" />
+<meta name="date" content="2024-09-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +32,6 @@
   
 <link rel="prev" href="points-sel-work.html"/>
 <link rel="next" href="lines-simpl-work.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,16 +49,22 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -100,10 +104,9 @@ div.csl-indent {
 <li class="chapter" data-level="A" data-path="points-sel-work.html"><a href="points-sel-work.html"><i class="fa fa-check"></i><b>A</b> Задание №1. Отбор точечных объектов</a>
 <ul>
 <li class="chapter" data-level="" data-path="points-sel-work.html"><a href="points-sel-work.html#реализация-алгоритма-settlement-spacing"><i class="fa fa-check"></i>Реализация алгоритма Settlement Spacing</a></li>
+<li class="chapter" data-level="" data-path="points-sel-work.html"><a href="points-sel-work.html#реализация-алгоритма-взвешенной-эффективной-площади"><i class="fa fa-check"></i>Реализация алгоритма взвешенной эффективной площади</a></li>
 <li class="chapter" data-level="" data-path="points-sel-work.html"><a href="points-sel-work.html#реализация-модели-оценки-условной-графической-нагрузки"><i class="fa fa-check"></i>Реализация модели оценки условной графической нагрузки</a></li>
 <li class="chapter" data-level="" data-path="points-sel-work.html"><a href="points-sel-work.html#отбор-населенных-пунктов-для-карты-масштаба-14-000-000"><i class="fa fa-check"></i>Отбор населенных пунктов для карты масштаба 1:4 000 000</a></li>
-<li class="chapter" data-level="" data-path="points-sel-work.html"><a href="points-sel-work.html#реализация-алгоритма-взвешенной-эффективной-площади"><i class="fa fa-check"></i>Реализация алгоритма взвешенной эффективной площади</a></li>
-<li class="chapter" data-level="" data-path="points-sel-work.html"><a href="points-sel-work.html#применение-алгоритма-взвешенной-эффективной-площади"><i class="fa fa-check"></i>Применение алгоритма взвешенной эффективной площади</a></li>
 <li class="chapter" data-level="" data-path="points-sel-work.html"><a href="points-sel-work.html#оценка-полученных-результатов"><i class="fa fa-check"></i>Оценка полученных результатов</a></li>
 <li class="chapter" data-level="" data-path="points-sel-work.html"><a href="points-sel-work.html#отчет"><i class="fa fa-check"></i>Отчет</a></li>
 </ul></li>
@@ -126,7 +129,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#часть-1.-автоматизация-метода-ли-оупеншоу"><i class="fa fa-check"></i>Часть 1. Автоматизация метода Ли-Оупеншоу</a></li>
 <li class="chapter" data-level="" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#часть-2.-автоматизация-методов-оценки-геометрической-точности-и-коэффициента-относительной-извилистости"><i class="fa fa-check"></i>Часть 2. Автоматизация методов оценки геометрической точности и коэффициента относительной извилистости</a>
 <ul>
-<li><a href="lines-simpl-work.html#автоматизация-вычисления-модифицрованного-хаусдорфова-расстояния-mhd-оценка-геометрической-точности">Автоматизация вычисления модифицрованного Хаусдорфова расстояния <strong>MHD</strong> (оценка геометрической точности)</a></li>
+<li class="chapter" data-level="" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#автоматизация-вычисления-модифицрованного-хаусдорфова-расстояния-mhd-оценка-геометрической-точности"><i class="fa fa-check"></i>Автоматизация вычисления модифицрованного Хаусдорфова расстояния <strong>MHD</strong> (оценка геометрической точности)</a></li>
 <li class="chapter" data-level="" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#автоматизация-вычисления-коэффициента-относительной-извилистости-оценка-морфологического-соответствия"><i class="fa fa-check"></i>Автоматизация вычисления коэффициента относительной извилистости (оценка морфологического соответствия)</a></li>
 <li class="chapter" data-level="" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#отчет-2"><i class="fa fa-check"></i>Отчет</a></li>
 </ul></li>
@@ -165,7 +168,7 @@ div.csl-indent {
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Картографические базы данных</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Генерализация пространственных данных</a>
           </h1>
         </div>
 
@@ -173,12 +176,12 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="points-clust-work" class="section level1" number="2">
-<h1><span class="header-section-number">B</span> Задание №2. Кластеризация системы расселения</h1>
+<div id="points-clust-work" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">B</span> Задание №2. Кластеризация системы расселения<a href="points-clust-work.html#points-clust-work" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p><strong>Цель задания</strong> — освоение методов кластеризации и регионизации точек, построения центроидов и оценки качества кластеризации. В качестве метода кластеризации предлагается использовать <em>DBSCAN</em>. В качестве метода построения региона — <em>альфа-оболочку</em>.</p>
 <p>Исходные данные: точки населенных пунктов из Самостоятельной работы №1.</p>
-<div id="изучение-работы-методов-кластеризации-и-регионизации" class="section level2 unnumbered">
-<h2>Изучение работы методов кластеризации и регионизации</h2>
+<div id="изучение-работы-методов-кластеризации-и-регионизации" class="section level2 unnumbered hasAnchor">
+<h2>Изучение работы методов кластеризации и регионизации<a href="points-clust-work.html#изучение-работы-методов-кластеризации-и-регионизации" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>На данном этапе необходимо изучить принципы работы метода кластеризации DBSCAN, построения альфа-оболочки и центроида полигона:</p>
 <ol style="list-style-type: decimal">
 <li>Метод <strong>DBSCAN</strong> доступен в виде инструмента Python, приложенного к данному заданию.</li>
@@ -187,8 +190,8 @@ div.csl-indent {
 </ol>
 <p>Меняя параметры инструментов (расстояния, количество точек), ознакомьтесь с тем, как это влияет на получаемый результат. Оболочки, как и кластеры стройте для набора данных <code>test</code>.</p>
 </div>
-<div id="автоматизация-выделения-регионов-и-центроидов-кластеров" class="section level2 unnumbered">
-<h2>Автоматизация выделения регионов и центроидов кластеров</h2>
+<div id="автоматизация-выделения-регионов-и-центроидов-кластеров" class="section level2 unnumbered hasAnchor">
+<h2>Автоматизация выделения регионов и центроидов кластеров<a href="points-clust-work.html#автоматизация-выделения-регионов-и-центроидов-кластеров" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Необходимо создать инструмент Python Toolbox, который будет принимать на вход слой маркированных точек и выдавать класс пространственных объектов с альфа-оболочками каждого кластера, а также центроидами кластеров</p>
 <p><strong>Параметры инструмента:</strong></p>
 <ol style="list-style-type: decimal">
@@ -218,12 +221,12 @@ div.csl-indent {
 <li>После выполнения цикла конвертируйте полигоны в выходные точки центроидов (<code>FeatureToPoint_management</code>).</li>
 </ol>
 </div>
-<div id="автоматизация-расчета-критериев-качества-кластеризации" class="section level2 unnumbered">
-<h2>Автоматизация расчета критериев качества кластеризации</h2>
+<div id="автоматизация-расчета-критериев-качества-кластеризации" class="section level2 unnumbered hasAnchor">
+<h2>Автоматизация расчета критериев качества кластеризации<a href="points-clust-work.html#автоматизация-расчета-критериев-качества-кластеризации" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Необходимо самостоятельно реализовать инструмент, который рассчитывает критерии качества кластеризации: среднее внутрикластерное и межкластерное расстояния, а также их соотношение. Для реализации инструмента необходимо с помощью <code>arcpy.da.SearchCursor</code> прочесть координаты и номера кластеров всех точек, рассчитать все попарные расстояния между ними и далее агрегировать полученную информацию в виде искомых показателей. Результирующие значения выводятся в лог инструмента посредством <code>arcpy.AddMessage(...)</code>.</p>
 </div>
-<div id="кластеризация-системы-расселения-субъекта" class="section level2 unnumbered">
-<h2>Кластеризация системы расселения субъекта</h2>
+<div id="кластеризация-системы-расселения-субъекта" class="section level2 unnumbered hasAnchor">
+<h2>Кластеризация системы расселения субъекта<a href="points-clust-work.html#кластеризация-системы-расселения-субъекта" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
 <li>Cпроецируйте исходные данные в проекцию, оптимальную для выбранного региона.</li>
 <li>Используя созданный инструмент, постройте серию из 5 кластеризаций населенных пунктов выбранного вами субъекта. Количество точек в кластере оставьте постоянным (3), но меняйте значение расстояния кластеризации. Расстояния подберите таким образом, чтобы различия в кластеризации были очевидны и помогали выявлять пространственные группировки разного масштаба.</li>
@@ -239,8 +242,8 @@ div.csl-indent {
 </div>
 <p>Перед вставкой данных карт в отчет добавьте на них элементы географической основы или используйте карту-подложку в виде картографического веб-сервиса.</p>
 </div>
-<div id="отчет-1" class="section level2 unnumbered">
-<h2>Отчет</h2>
+<div id="отчет-1" class="section level2 unnumbered hasAnchor">
+<h2>Отчет<a href="points-clust-work.html#отчет-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Напишите отчет о проделанной работе, включающий:</p>
 <ol style="list-style-type: decimal">
 <li>Цель и задачи работы.</li>
@@ -320,7 +323,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

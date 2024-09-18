@@ -4,19 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>F Задание №6. Генерализация цифровой модели рельефа | Картографические базы данных</title>
+  <title>F Задание №6. Генерализация цифровой модели рельефа | Генерализация пространственных данных</title>
   <meta name="description" content="Курс лекций по генерализации пространственных данных" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="F Задание №6. Генерализация цифровой модели рельефа | Картографические базы данных" />
+  <meta property="og:title" content="F Задание №6. Генерализация цифровой модели рельефа | Генерализация пространственных данных" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="Курс лекций по генерализации пространственных данных" />
   <meta name="github-repo" content="tsamsonov/gen-course" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="F Задание №6. Генерализация цифровой модели рельефа | Картографические базы данных" />
+  <meta name="twitter:title" content="F Задание №6. Генерализация цифровой модели рельефа | Генерализация пространственных данных" />
   
   <meta name="twitter:description" content="Курс лекций по генерализации пространственных данных" />
   
@@ -24,7 +23,7 @@
 <meta name="author" content="Тимофей Самсонов" />
 
 
-<meta name="date" content="2021-12-10" />
+<meta name="date" content="2024-09-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +32,6 @@
   
 <link rel="prev" href="polygons-skeleton-work.html"/>
 
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,16 +49,22 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -100,10 +104,9 @@ div.csl-indent {
 <li class="chapter" data-level="A" data-path="points-sel-work.html"><a href="points-sel-work.html"><i class="fa fa-check"></i><b>A</b> Задание №1. Отбор точечных объектов</a>
 <ul>
 <li class="chapter" data-level="" data-path="points-sel-work.html"><a href="points-sel-work.html#реализация-алгоритма-settlement-spacing"><i class="fa fa-check"></i>Реализация алгоритма Settlement Spacing</a></li>
+<li class="chapter" data-level="" data-path="points-sel-work.html"><a href="points-sel-work.html#реализация-алгоритма-взвешенной-эффективной-площади"><i class="fa fa-check"></i>Реализация алгоритма взвешенной эффективной площади</a></li>
 <li class="chapter" data-level="" data-path="points-sel-work.html"><a href="points-sel-work.html#реализация-модели-оценки-условной-графической-нагрузки"><i class="fa fa-check"></i>Реализация модели оценки условной графической нагрузки</a></li>
 <li class="chapter" data-level="" data-path="points-sel-work.html"><a href="points-sel-work.html#отбор-населенных-пунктов-для-карты-масштаба-14-000-000"><i class="fa fa-check"></i>Отбор населенных пунктов для карты масштаба 1:4 000 000</a></li>
-<li class="chapter" data-level="" data-path="points-sel-work.html"><a href="points-sel-work.html#реализация-алгоритма-взвешенной-эффективной-площади"><i class="fa fa-check"></i>Реализация алгоритма взвешенной эффективной площади</a></li>
-<li class="chapter" data-level="" data-path="points-sel-work.html"><a href="points-sel-work.html#применение-алгоритма-взвешенной-эффективной-площади"><i class="fa fa-check"></i>Применение алгоритма взвешенной эффективной площади</a></li>
 <li class="chapter" data-level="" data-path="points-sel-work.html"><a href="points-sel-work.html#оценка-полученных-результатов"><i class="fa fa-check"></i>Оценка полученных результатов</a></li>
 <li class="chapter" data-level="" data-path="points-sel-work.html"><a href="points-sel-work.html#отчет"><i class="fa fa-check"></i>Отчет</a></li>
 </ul></li>
@@ -126,7 +129,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#часть-1.-автоматизация-метода-ли-оупеншоу"><i class="fa fa-check"></i>Часть 1. Автоматизация метода Ли-Оупеншоу</a></li>
 <li class="chapter" data-level="" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#часть-2.-автоматизация-методов-оценки-геометрической-точности-и-коэффициента-относительной-извилистости"><i class="fa fa-check"></i>Часть 2. Автоматизация методов оценки геометрической точности и коэффициента относительной извилистости</a>
 <ul>
-<li><a href="lines-simpl-work.html#автоматизация-вычисления-модифицрованного-хаусдорфова-расстояния-mhd-оценка-геометрической-точности">Автоматизация вычисления модифицрованного Хаусдорфова расстояния <strong>MHD</strong> (оценка геометрической точности)</a></li>
+<li class="chapter" data-level="" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#автоматизация-вычисления-модифицрованного-хаусдорфова-расстояния-mhd-оценка-геометрической-точности"><i class="fa fa-check"></i>Автоматизация вычисления модифицрованного Хаусдорфова расстояния <strong>MHD</strong> (оценка геометрической точности)</a></li>
 <li class="chapter" data-level="" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#автоматизация-вычисления-коэффициента-относительной-извилистости-оценка-морфологического-соответствия"><i class="fa fa-check"></i>Автоматизация вычисления коэффициента относительной извилистости (оценка морфологического соответствия)</a></li>
 <li class="chapter" data-level="" data-path="lines-simpl-work.html"><a href="lines-simpl-work.html#отчет-2"><i class="fa fa-check"></i>Отчет</a></li>
 </ul></li>
@@ -165,7 +168,7 @@ div.csl-indent {
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Картографические базы данных</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Генерализация пространственных данных</a>
           </h1>
         </div>
 
@@ -173,13 +176,13 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="ex-dem" class="section level1" number="6">
-<h1><span class="header-section-number">F</span> Задание №6. Генерализация цифровой модели рельефа</h1>
+<div id="ex-dem" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">F</span> Задание №6. Генерализация цифровой модели рельефа<a href="ex-dem.html#ex-dem" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p><strong>Цель задания</strong> — овладение различными техниками генерализации ЦМР.</p>
 <p>В настоящем задании необходимо сравнить два метода мелкомасштабной генерализации ЦМР: глобальная фильтрация и структурная генерализация.</p>
 <p><strong>Задачи</strong> работы включают подготовку исходных данных, разработку программного инструмента итерационного сглаживания ЦМР, выполнение генерализации ЦМР методами структурной генерализации и глобальной фильтрации, а также сравнительный анализ полученных результатов</p>
-<div id="ex-dem-data" class="section level2" number="6.1">
-<h2><span class="header-section-number">F.1</span> Подготовка исходных данных</h2>
+<div id="ex-dem-data" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">F.1</span> Подготовка исходных данных<a href="ex-dem.html#ex-dem-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
 <li><p>Закачайте набор инструментов <a href="https://github.com/tsamsonov/generalize-dem">DEM Generalization</a> и разархивируйте его:</p>
 <div class="figure"><span style="display:block;" id="fig:demgen"></span>
@@ -223,8 +226,8 @@ div.csl-indent {
 </blockquote></li>
 </ol>
 </div>
-<div id="ex-dem-iter" class="section level2" number="6.2">
-<h2><span class="header-section-number">F.2</span> Автоматизация итерационного сглаживания ЦМР</h2>
+<div id="ex-dem-iter" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">F.2</span> Автоматизация итерационного сглаживания ЦМР<a href="ex-dem.html#ex-dem-iter" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>В данной части задания необходимо создать набор инструментов <em>Python Toolbox</em>, содержащий один инструмент <strong>Iterate Focal Statistics</strong>, который выполняет последовательное сглаживание цифровой модели рельефа фильтром среднего в несколько проходов с использованием заданных параметров.</p>
 <p><strong>Предварительное чтение:</strong></p>
 <ol style="list-style-type: decimal">
@@ -258,8 +261,8 @@ div.csl-indent {
 </ul></li>
 </ol>
 </div>
-<div id="ex-dem-iter" class="section level2" number="6.3">
-<h2><span class="header-section-number">F.3</span> Сравнение структурной генерализации и глобальной фильтрации ЦМР</h2>
+<div id="ex-dem-iter" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">F.3</span> Сравнение структурной генерализации и глобальной фильтрации ЦМР<a href="ex-dem.html#ex-dem-iter" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>В данной части задания необходимо выполнить генерализацию фрагмента глобальной ЦМР двумя методами: структурная генерализация и глобальная фильтрация.</p>
 <ol style="list-style-type: decimal">
 <li><p>Выполните генерализацию ЦМР с использованием инструмента <strong>Generalize DEM</strong>, указав слой <em>ocean</em> в качестве параметра <em>Marine area polygon feature layer</em>. Для начала выполните генерализацию со стандартными параметрами, после этого включите сглаживание ЦМР в блоке <em>Widening and Smoothing</em> и усильте генерализационный эффект в блоке <em>Main parameters</em> таким образом чтобы результирующая ЦМР по детализации соответствовала масштабу 1:10 000 000.</p></li>
@@ -334,7 +337,7 @@ div.csl-indent {
 <p>В разделе анализа результатов необходимо сравнить качество полученных ЦМР с точки зрения географического правдоподобия и точности отображения рельефа. Анализ должен опираться как на визуальное сравнение изображений, так и на рассчитанные для каждой ЦМР описательные статистики.</p>
 <hr />
 
-<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
 <div class="csl-entry">
 Douglas, D. H., and T. K. Peucker. 1973. <span>“Algorithms for the Reduction of the Number of Points Required to Represent a Digitized Line or Its Caricature.”</span> <em>The Canadian Cartographer</em>, no. 10(2): 112–22.
 </div>
@@ -426,7 +429,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');
