@@ -18,7 +18,7 @@ rmd_files:
     # - "12-Databases.Rmd"
     - "Ex01-PointSelection.Rmd"
     - "Ex02-PointClustering.Rmd"
-    # - "Ex03-LineSimplification.Rmd"
+    - "Ex03-LineSimplification.Rmd"
     # - "Ex04-LineSelection.Rmd"
     # - "Ex05-PolygonAxis.Rmd"
     # - "Ex06-ReliefGeneralization.Rmd"
