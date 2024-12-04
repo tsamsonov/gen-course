@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>C Задание №3. Геометрическое упрощение линий | Генерализация пространственных данных</title>
   <meta name="description" content="Курс лекций по генерализации пространственных данных" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
   <meta property="og:title" content="C Задание №3. Геометрическое упрощение линий | Генерализация пространственных данных" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Тимофей Самсонов" />
 
 
-<meta name="date" content="2024-11-13" />
+<meta name="date" content="2024-12-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="points-clust-work.html"/>
-
+<link rel="next" href="lines-network-work.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -130,6 +130,13 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path=""><a href="#%D0%BE%D1%82%D1%87%D0%B5%D1%82-2"><i class="fa fa-check"></i>Отчет</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path=""><a href="#%D1%87%D0%B0%D1%81%D1%82%D1%8C-2.-%D1%81%D1%80%D0%B0%D0%B2%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5-%D0%B0%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC%D0%BE%D0%B2-%D0%B3%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D0%BB%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8"><i class="fa fa-check"></i>Часть 2. Сравнение алгоритмов генерализации</a></li>
+</ul></li>
+<li class="chapter" data-level="D" data-path="lines-network-work.html"><a href="lines-network-work.html"><i class="fa fa-check"></i><b>D</b> Задание №4. Отбор элементов транспортной сети</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#%D1%87%D0%B0%D1%81%D1%82%D1%8C-1.-%D0%BF%D0%BE%D0%B4%D0%B3%D0%BE%D1%82%D0%BE%D0%B2%D0%BA%D0%B0-%D0%B8%D1%81%D1%85%D0%BE%D0%B4%D0%BD%D1%8B%D1%85-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85"><i class="fa fa-check"></i>Часть 1. Подготовка исходных данных</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%D1%87%D0%B0%D1%81%D1%82%D1%8C-2.-%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-%D1%81%D0%BA%D1%80%D0%B8%D0%BF%D1%82%D0%B0-%D0%B4%D0%BB%D1%8F-%D0%BE%D1%82%D0%B1%D0%BE%D1%80%D0%B0-%D1%8D%D0%BB%D0%B5%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2-%D1%82%D1%80%D0%B0%D0%BD%D1%81%D0%BF%D0%BE%D1%80%D1%82%D0%BD%D0%BE%D0%B9-%D1%81%D0%B5%D1%82%D0%B8"><i class="fa fa-check"></i>Часть 2. Создание скрипта для отбора элементов транспортной сети</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%D1%87%D0%B0%D1%81%D1%82%D1%8C-3.-%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-%D1%81%D0%BA%D1%80%D0%B8%D0%BF%D1%82%D0%B0-%D0%B4%D0%BB%D1%8F-%D0%BE%D1%86%D0%B5%D0%BD%D0%BA%D0%B8-%D0%BE%D1%82%D0%BD%D0%BE%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D0%B9-%D0%B3%D1%80%D0%B0%D1%84%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B9-%D0%BD%D0%B0%D0%B3%D1%80%D1%83%D0%B7%D0%BA%D0%B8-%D0%BF%D0%BE-%D0%BB%D0%B8%D0%BD%D0%B5%D0%B9%D0%BD%D1%8B%D0%BC-%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82%D0%B0%D0%BC"><i class="fa fa-check"></i>Часть 3. Создание скрипта для оценки относительной графической нагрузки по линейным объектам</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%D1%87%D0%B0%D1%81%D1%82%D1%8C-4.-%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-%D0%B8-%D0%B0%D0%BD%D0%B0%D0%BB%D0%B8%D0%B7-%D0%BA%D0%B0%D1%80%D1%82%D1%8B-%D1%82%D1%80%D0%B0%D0%BD%D1%81%D0%BF%D0%BE%D1%80%D1%82%D0%BD%D0%BE%D0%B9-%D1%81%D0%B2%D1%8F%D0%B7%D0%BD%D0%BE%D1%81%D1%82%D0%B8-%D1%80%D0%B0%D0%B9%D0%BE%D0%BD%D0%BD%D1%8B%D1%85-%D1%86%D0%B5%D0%BD%D1%82%D1%80%D0%BE%D0%B2-%D1%81%D1%83%D0%B1%D1%8A%D0%B5%D0%BA%D1%82%D0%B0"><i class="fa fa-check"></i>Часть 4. Создание и анализ карты транспортной связности районных центров субъекта</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://istina.msu.ru/profile/tsamsonov/" target="blank">Тимофей Самсонов</a></li>
@@ -262,23 +269,6 @@ div.csl-indent {
 <li><p>Изложите в отчете свой опыт сравнительного анализа алгоритмов генерализации.</p></li>
 </ol>
 
-<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
-<div class="csl-entry">
-Douglas, D. H., and T. K. Peucker. 1973. <span>“Algorithms for the Reduction of the Number of Points Required to Represent a Digitized Line or Its Caricature.”</span> <em>The Canadian Cartographer</em>, no. 10(2): 112–22.
-</div>
-<div class="csl-entry">
-Li, Zhilin, and Stan Openshaw. 1992. <span>“Algorithms for <span>Automated Line Generalization Based</span> on a <span>Natural Principle</span> of <span>Objective Generalization</span>.”</span> <em>International Journal of Geographical Information Systems</em> 6 (5): 373–89. <a href="https://doi.org/10.1080/02693799208901921">https://doi.org/10.1080/02693799208901921</a>.
-</div>
-<div class="csl-entry">
-Visvalingam, M, and J D Whyatt. 1993. <span>“Line <span>Generalisation</span> by <span>Repeated Elimination</span> of <span>Points</span>.”</span> <em>The Cartographic Journal</em> 30 (1): 46–51. <a href="https://doi.org/10.1179/caj.1993.30.1.46">https://doi.org/10.1179/caj.1993.30.1.46</a>.
-</div>
-<div class="csl-entry">
-Wang, Zeshen, and Jean-Claude Müller. 1998. <span>“Line <span>Generalization Based</span> on <span>Analysis</span> of <span>Shape Characteristics</span>.”</span> <em>Cartography and Geographic Information Science</em> 25 (1): 3–15. <a href="https://doi.org/10.1559/152304098782441750">https://doi.org/10.1559/152304098782441750</a>.
-</div>
-<div class="csl-entry">
-Zhou, Sheng, and Christopher B Jones. 2005. <span>“Shape-<span>Aware Line Generalisation With Weighted Effective Area</span>.”</span> In <em>Developments in <span>Spatial Data Handling</span></em>, 12. <span>Berlin, Heidelberg</span>: Springer.
-</div>
-</div>
 </div>
 </div>
 <h3>References</h3>
@@ -304,8 +294,8 @@ Zhou, Sheng, and Christopher B Jones. 2005. <span>“Shape-<span>Aware Line Gene
           </div>
         </div>
       </div>
-<a href="points-clust-work.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="points-clust-work.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="lines-network-work.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
